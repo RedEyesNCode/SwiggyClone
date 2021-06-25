@@ -4,7 +4,7 @@
 
 #####  The Complete Swiggy Clone made with Kotlin using MVVM and Retrofit and Backend made with SpringBoot using Java
 
-### I just Posted AWS Keys for Few mins and My bill was 2500 , it's funny in both ways if you know what i am saying
+### I just Posted AWS Keys for Few mins and My bill was 2500 , it's funny in both ways if you know what i am saying.
 
 #### DESIGN OF THE ENTIRE APP
 
