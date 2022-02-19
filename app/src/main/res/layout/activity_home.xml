@@ -1,9 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".homeScreen.HomeActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/locationicon"
+            android:contentDescription="swiggylocation"
+            android:layout_width="@dimen/_20sdp"
+            android:src="@drawable/ic_location"
+            android:layout_height="@dimen/_20sdp">
+        </ImageView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_toRightOf="@id/locationicon"
+            android:fontFamily="@font/firasans_medium"
+            android:gravity="center"
+            android:text="Indore Stay"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_8sdp">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/locationicon"
+            android:fontFamily="@font/firasans_medium"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:text="15, Sayaji Square, Scheme NO 54, Indore, Mad"
+            android:textColor="@color/gray_black"
+            android:textSize="@dimen/_8sdp">
+        </TextView>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_offers"></ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/locationicon"
+                android:fontFamily="@font/firasans_medium"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:padding="@dimen/_2sdp"
+                android:text="Offers"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_8sdp">
+            </TextView>
+        </LinearLayout>
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:layout_height="wrap_content">
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/swiggyOneLayout"
+            android:background="@drawable/swiggy_one_home_gradient"
+            android:layout_width="match_parent"
+            android:padding="@dimen/_8sdp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="@dimen/_9sdp"
+                android:text="Swiggy one"
+                android:fontFamily="@font/firasans_medium"
+                android:textColor="@color/black">
+            </TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_8sdp"
+                android:gravity="start"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:text="Get unlimited benefits @ 75/month \n on Restaurants and Genie"
+                android:fontFamily="@font/firasans_medium"
+                android:textColor="@color/black">
+            </TextView>
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/recv_swiggyservices"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            tools:itemCount="3"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/swiggy_service_list">
+        </androidx.recyclerview.widget.RecyclerView>
+        </TableLayout>
+    </ScrollView>
+
+
+
+
+
+</LinearLayout>

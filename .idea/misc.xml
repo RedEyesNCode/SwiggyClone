@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/swiggy_one_home_gradient.xml" value="0.2" />
+        <entry key="app/src/main/res/drawable/swiggy_service_bg.xml" value="0.203" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/swiggy_service_list.xml" value="0.33" />
       </map>
     </option>
   </component>

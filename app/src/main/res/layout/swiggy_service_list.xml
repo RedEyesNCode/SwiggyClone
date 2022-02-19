@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_marginHorizontal="@dimen/_18sdp"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_12sdp"
+        android:background="@drawable/swiggy_service_bg">
+        <ImageView
+            android:layout_width="@dimen/_35sdp"
+            android:src="@drawable/burger"
+            android:layout_centerInParent="true"
+            android:layout_height="@dimen/_35sdp">
+        </ImageView>
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/tvSwiggyService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_4sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_toRightOf="@id/locationicon"
+        android:fontFamily="@font/firasans_medium"
+        android:gravity="center"
+        android:text="Food"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_8sdp">
+
+    </TextView>
+
+
+
+
+</LinearLayout>
