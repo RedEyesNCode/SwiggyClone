@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/toppick_mainlayout"
+    android:layout_width="wrap_content"
+    android:layout_marginHorizontal="@dimen/_4sdp"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:padding="@dimen/_4sdp"
+        android:background="@drawable/explore_now_bg"
+        android:layout_height="wrap_content">
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="@dimen/_45sdp"
+            android:id="@+id/ivRestaurantToppick"
+            android:layout_height="@dimen/_45sdp"
+            android:contentDescription="restaturant top pick"
+            android:src="@drawable/ic_northindian">
+        </com.makeramen.roundedimageview.RoundedImageView>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_below="@id/ivRestaurantToppick"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_8sdp"
+                android:text="Naveen's \nBapu ki Kutia"
+                android:fontFamily="@font/firasans_medium"
+                android:textColor="@color/black"></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_8sdp"
+                android:text="20-30 mins"
+                android:fontFamily="@font/firesans_regular"
+                android:textColor="@color/gray_black"></TextView>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>

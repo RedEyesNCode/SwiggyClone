@@ -182,12 +182,87 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp">
+            <ImageView
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:contentDescription="top_picks_icon"
+                android:src="@drawable/ic_picks"></ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:fontFamily="@font/firesans_bold"
+                android:text="Top Picks For You"
+                android:textSize="@dimen/_7sdp">
+            </TextView>
 
 
 
         </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/recvtopPicks"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/top_picks_list"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            tools:itemCount="5"
+            android:layout_marginTop="@dimen/_4sdp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp">
+                <ImageView
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:contentDescription="top_picks_icon"
+                    android:src="@drawable/ic_dinner"></ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:fontFamily="@font/firesans_bold"
+                    android:text="Dinner Recommedations"
+                    android:textSize="@dimen/_7sdp">
+                </TextView>
+
+
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tvOrderFromOptional"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/gray_black"
+                android:layout_gravity="center"
+                android:gravity="start"
+                android:fontFamily="@font/firesans_regular"
+                android:text="Because you ordered from Sagar Gaire - Awadhpuri"
+                android:textSize="@dimen/_6sdp">
+            </TextView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/recv_restaurants"
+            tools:itemCount="4"
+            android:layout_marginTop="@dimen/_4sdp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
+        </TableLayout>
     </ScrollView>
+
 
 
 

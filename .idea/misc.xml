@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.25" />
         <entry key="app/src/main/res/layout/swiggy_service_list.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/top_picks_list.xml" value="0.67" />
       </map>
     </option>
   </component>

@@ -46,4 +46,9 @@ dependencies {
     //Sdp libary implementation for the Accurrate Layout.
 
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    //Implmentation of the circle image view for use in various places.
+
+
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
 }
