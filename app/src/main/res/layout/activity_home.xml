@@ -254,6 +254,7 @@
             android:layout_width="match_parent"
             android:id="@+id/recv_restaurants"
             tools:itemCount="4"
+            tools:listitem="@layout/home_restaurant_list"
             android:layout_marginTop="@dimen/_4sdp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             android:orientation="horizontal"

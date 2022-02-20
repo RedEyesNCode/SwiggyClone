@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".userAccount.UserAccountFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/firesans_bold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp"
+                android:text="ASHUTOSH SINGH">
+            </TextView>
+            <TextView
+                android:id="@+id/tvEditProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/firasans_medium"
+                android:textColor="@color/orange"
+                android:gravity="right|center_vertical"
+                android:textSize="@dimen/_10sdp"
+                android:text="EDIT">
+            </TextView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_4sdp">
+            <TextView
+                android:id="@+id/tvUserNumber"
+                android:textColor="@color/gray_black"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/firesans_regular"
+                android:text="6261319133"
+                android:maxLength="10"
+                android:textSize="@dimen/_9sdp"
+                android:layout_height="wrap_content">
+
+            </TextView>
+            <TextView
+                android:id="@+id/tvUserEmail"
+                android:textColor="@color/gray_black"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/firesans_regular"
+                android:text="norecoilrecoil@gmail.com"
+                android:layout_marginLeft="@dimen/_4sdp"
+                android:textSize="@dimen/_9sdp"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_height="2dp"
+            android:background="@color/black"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/firasans_medium"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                android:text=" My Account">
+            </TextView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_4sdp">
+            <TextView
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/firesans_regular"
+                android:text="Addresses, Favorites, Offers \u0026 Settings"
+                android:textSize="@dimen/_7sdp"
+                android:layout_height="wrap_content">
+
+            </TextView>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/gray_black"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/firasans_medium"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                android:text=" Payments \u0026 Refunds">
+            </TextView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_4sdp">
+            <TextView
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/firesans_regular"
+                android:text="Refund Status \u0026 Payment Modes"
+                android:textSize="@dimen/_7sdp"
+                android:layout_height="wrap_content">
+
+            </TextView>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/gray_black"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/firasans_medium"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                android:text="Swiggy Money">
+            </TextView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_4sdp">
+            <TextView
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/firesans_regular"
+                android:text="View Account Balance \u0026 Transaction History"
+                android:textSize="@dimen/_7sdp"
+                android:layout_height="wrap_content">
+
+            </TextView>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/gray_black"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/firasans_medium"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                android:text="Help ">
+            </TextView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_4sdp">
+            <TextView
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:fontFamily="@font/firesans_regular"
+                android:text="FAQs \u0026 Links"
+                android:textSize="@dimen/_8sdp"
+                android:layout_height="wrap_content">
+
+            </TextView>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/gray_black"/>
+
+
+    </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_marginTop="@dimen/_8sdp"
+    android:background="#DFDFDF"
+    android:padding="@dimen/_12sdp"
+    android:layout_height="wrap_content">
+
+</LinearLayout>
+
+
+
+</LinearLayout>
