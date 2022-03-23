@@ -19,13 +19,24 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         //Replacing the home Fragment the home Fragment
+        initViewClick()
+
+    }
+    fun initViewClick(){
         var fragmentUtils = FragmentUtils()
+
         fragmentUtils.addFragmentBackStack(supportFragmentManager,R.id.mainHomeContainer,HomeFragment(),HomeFragment().tagFragment,true)
         binding.btnUserAccount.setOnClickListener {
 
             fragmentUtils.addFragmentBackStack(supportFragmentManager,R.id.mainHomeContainer,UserAccountFragment(),UserAccountFragment().tagFragment,true)
 
         }
+        binding.btnHome.setOnClickListener {
+            fragmentUtils.addFragmentBackStack(supportFragmentManager,R.id.mainHomeContainer,HomeFragment(),HomeFragment().tagFragment,true)
+
+        }
+
+
 
 
     }

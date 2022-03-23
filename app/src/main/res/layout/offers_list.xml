@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/_8sdp"
+        android:padding="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        app:cardElevation="@dimen/_4sdp"
+        android:orientation="horizontal"
+        android:background="@drawable/home_blue_gradient">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#0035A1"
+                android:fontFamily="@font/firasans_medium"
+                android:text="GRAB"
+                android:textSize="@dimen/_11sdp">
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#0035A1"
+                android:fontFamily="@font/firasans_medium"
+                android:text="60 % OFF"
+                android:textSize="@dimen/_11sdp">
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#0035A1"
+                android:fontFamily="@font/firesans_regular"
+                android:text="Relish on flavorsome \ncuisines \u0026 delights from \ntop eateries"
+                android:textSize="@dimen/_8sdp">
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#0035A1"
+                android:background="@drawable/explore_now_bg"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:fontFamily="@font/firasans_medium"
+                android:text="EXPLORE NOW"
+                android:paddingVertical="@dimen/_4sdp"
+                android:paddingHorizontal="@dimen/_11sdp"
+                android:textSize="@dimen/_8sdp">
+            </TextView>
+
+
+
+
+
+
+        </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_75sdp"
+            android:layout_gravity="left"
+            android:contentDescription="home_banner_card"
+            android:src="@drawable/ic_biryani">
+        </ImageView>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:paddingVertical="@dimen/_8sdp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="@dimen/_4sdp"
+        android:background="@drawable/explore_now_bg"
+        android:layout_height="wrap_content">
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="@dimen/_45sdp"
+            android:id="@+id/ivRestaurantToppick"
+            android:layout_height="@dimen/_45sdp"
+            android:contentDescription="restaturant top pick"
+            android:src="@drawable/ic_northindian">
+        </com.makeramen.roundedimageview.RoundedImageView>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="@dimen/_12sdp"
+            android:layout_toRightOf="@id/ivRestaurantToppick"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvRestaurantName"
+                android:textSize="@dimen/_8sdp"
+                android:text="Naveen's  Bapu ki Kutia"
+                android:fontFamily="@font/firasans_medium"
+                android:textColor="@color/black">
+            </TextView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvRating"
+                    android:textSize="@dimen/_8sdp"
+                    android:paddingRight="@dimen/_4sdp"
+                    android:text="4.0 Ratings"
+                    android:fontFamily="@font/firesans_regular"
+                    android:textColor="@color/black">
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_8sdp"
+                    android:id="@+id/deliveryTime"
+                    android:paddingHorizontal="@dimen/_4sdp"
+                    android:text="30 - 35 mins"
+                    android:fontFamily="@font/firesans_regular"
+                    android:textColor="@color/black">
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_8sdp"
+                    android:paddingHorizontal="@dimen/_4sdp"
+                    android:id="@+id/tvPrice"
+                    android:text="$ 300 for Two"
+                    android:fontFamily="@font/firesans_regular"
+                    android:textColor="@color/black">
+                </TextView>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvCuisines"
+                android:textSize="@dimen/_8sdp"
+                android:paddingRight="@dimen/_4sdp"
+                android:text="North Indian, Chinese, South Indian, Punjabi"
+                android:fontFamily="@font/firesans_regular"
+                android:textColor="@color/black">
+            </TextView>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

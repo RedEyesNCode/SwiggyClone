@@ -11,8 +11,11 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.35625" />
-        <entry key="app/src/main/res/layout/fragment_user_account.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_search_food.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/fragment_user_account.xml" value="0.33" />
         <entry key="app/src/main/res/layout/home_restaurant_list.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/offers_list.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/restuarant_detail_list.xml" value="0.5" />
         <entry key="app/src/main/res/layout/swiggy_service_list.xml" value="0.33" />
         <entry key="app/src/main/res/layout/top_picks_list.xml" value="0.67" />
       </map>
