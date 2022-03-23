@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlinapp.swiggyclone.R
 import com.kotlinapp.swiggyclone.databinding.ActivityHomeBinding
 import com.kotlinapp.swiggyclone.homeScreen.adapters.SwiggyServiceAdapter
+import com.kotlinapp.swiggyclone.searchFood.SearchFoodFragment
 import com.kotlinapp.swiggyclone.userAccount.UserAccountFragment
 import com.kotlinapp.swiggyclone.utils.FragmentUtils
 
@@ -35,6 +36,10 @@ class HomeActivity : AppCompatActivity() {
             fragmentUtils.addFragmentBackStack(supportFragmentManager,R.id.mainHomeContainer,HomeFragment(),HomeFragment().tagFragment,true)
 
         }
+        binding.btnFood.setOnClickListener {
+            fragmentUtils.addFragmentBackStack(supportFragmentManager,R.id.mainHomeContainer,SearchFoodFragment(),SearchFoodFragment().tagFragment,true)
+        }
+
 
 
 

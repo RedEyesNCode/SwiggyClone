@@ -6,11 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kotlinapp.swiggyclone.databinding.SwiggyServiceListBinding
 
-class SwiggyServiceAdapter(private var list: List<String>, private var context: Context) :
-
-
-
-    RecyclerView.Adapter<SwiggyServiceAdapter.MyViewHolder>() {
+class SwiggyServiceAdapter(private var list: List<String>, private var context: Context) : RecyclerView.Adapter<SwiggyServiceAdapter.MyViewHolder>() {
     private lateinit var swiggyServiceListBinding:SwiggyServiceListBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
