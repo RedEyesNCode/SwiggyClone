@@ -1,0 +1,10 @@
+1. /homefeed - displays Top picks for restaurants, popular curations, top offers , Restaurants Nearby
+2. /searches - displays recent searches , Trending Searches , Popular Cuisines.
+3. /Food - Offers, All Restaurants ~ Each of the restaurant have the following datas >> Name , Rating , Time , Price , Cuisines, Location
+4. /getUserAccount - Name , number, email , Previous Orders >> Restuarant Name , Delivery Boy Name , Items , Price , Status , Rating Status
+5. /addresses >> 1. edit address 2. save address 3. share address
+6. /updateOrderRatingStatus 
+7. /restaurantDetail  (id) >> Name, Cuisines , Location , Distance , Rating , Delivery Time , Cost aprrox, Offers ,
+8. /restaurantMenu - Recommeded Starters , Combo , Main Course, Chinese, Breakfast etc
+9. /addToFav and /RemoveFromFav - Add a restaurant to Favorite
+10. /getAllFavRestaurants
