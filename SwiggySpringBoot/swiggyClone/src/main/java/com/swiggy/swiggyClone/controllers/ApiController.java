@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @RestController
 @RequestMapping("/swiggy")
 public class ApiController {
@@ -58,6 +56,14 @@ public class ApiController {
         return apiService.updateUser(id,signupModel.getUserName());
 
     }
+
+    @GetMapping("/getWishList")
+    public UserWishlistResponse getUserWishlist(@Param("userId") Long id){
+
+        return new UserWishlistResponse("success",200,"Found Wishlist",apiService.getUserWishList(id));
+
+    }
+
 
 
 
