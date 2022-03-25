@@ -27,6 +27,15 @@ public class ApiController {
 
     }
 
+    //Api to get the login response from the db.
+    @PostMapping("/login")
+    public LoginResponse loginUser(@RequestBody LoginBody loginBody){
+
+        return new LoginResponse("success",200,"Login Successfully !",apiService.loginUser(loginBody.getNumber(), loginBody.getPassword()));
+    }
+
+
+
     //Api to store user data at the sign up screen
     @PostMapping("/signup")
     public SignupResponse postSignupUser(@RequestBody SignupModel signupModel){
@@ -63,6 +72,35 @@ public class ApiController {
         return new UserWishlistResponse("success",200,"Found Wishlist",apiService.getUserWishList(id));
 
     }
+    //Api to fetch all the restaurant List in the DB.
+    @GetMapping("/getRestaurantlist")
+    public RestaurantListResponse getRestaurants(){
+        return new RestaurantListResponse("success",200,"Restarants Found !",apiService.getRestaurants());
+    }
+
+
+    //Api to add a Restaurant to Wishlist by Id
+    @PostMapping("/addtoWislist")
+    public StatusCodeModel addToWislist(@Param("restaurantId") Long restaurantId, @Param("userId") Long userId){
+
+        return apiService.addRestaurantToWishList(restaurantId, userId);
+
+
+    }
+
+    //Api to get Restaurant detail by Id.
+    @PostMapping("/getRestaurantDetail")
+    public RestaurantDetailResponse getRestaurantDetail(@Param("restaurantId") Long restaurantId){
+
+
+        return new RestaurantDetailResponse("success",200,"Found Restaurant Detail",apiService.getRestaurantDetails(restaurantId));
+
+    }
+
+
+
+
+
 
 
 

@@ -34,8 +34,14 @@ public interface UserDataRepository extends JpaRepository<SignupModel, Long> {
     int updateUserNamebyId(String userNameQuery, Long id);
 
 
+    //Query to check if the User Exists in the database or not.
+    @Query("SELECT s FROM SignupModel s WHERE s.number =:number AND s.password=:password")
+    Optional<SignupModel> loginUser(String number, String password);
 
 
+
+    @Query("SELECT s FROM SignupModel s WHERE s.number =:number AND s.password=:password")
+    SignupModel loginUserData(String number, String password);
 
 
 }

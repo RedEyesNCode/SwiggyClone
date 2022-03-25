@@ -1,25 +1,27 @@
 package com.swiggy.swiggyClone.dataModel;
 
+import java.util.List;
+
 public class UserWishlistResponse extends StatusCodeModel {
 
 
-    private WishListModel data;
+    private List<WishListModel> data;
 
 
-    public UserWishlistResponse(String status, int code, String message, WishListModel data) {
+    public UserWishlistResponse(String status, int code, String message, List<WishListModel> data) {
         super(status, code, message);
         this.data = data;
     }
 
-    public WishListModel getData() {
+    public List<WishListModel> getData() {
         return data;
     }
 
-    public void setData(WishListModel data) {
+    public void setData(List<WishListModel> data) {
         this.data = data;
     }
 
-    public UserWishlistResponse(String status, int code, WishListModel data) {
+    public UserWishlistResponse(String status, int code, List<WishListModel> data) {
         super(status, code);
         this.data = data;
     }

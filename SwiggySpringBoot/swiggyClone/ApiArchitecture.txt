@@ -8,3 +8,9 @@
 8. /restaurantMenu - Recommeded Starters , Combo , Main Course, Chinese, Breakfast etc
 9. /addToFav and /RemoveFromFav - Add a restaurant to Favorite
 10. /getAllFavRestaurants
+11. /addtoWishby ID
+12. /remove from wishlist by id
+13. /restaurantDetailById
+14. /restaurantOffersById
+15. /restaurantMenuById
+16 ./generalOffers
