@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.kotlinapp.swiggyclone.R
+import com.kotlinapp.swiggyclone.auth.view.LoginActivity
 import com.kotlinapp.swiggyclone.databinding.ActivitySplashBinding
 import com.kotlinapp.swiggyclone.homeScreen.HomeActivity
 
@@ -23,7 +24,7 @@ class SplashActivity : AppCompatActivity() {
 
         var handler = Handler().postDelayed(Runnable {
 
-            var intentHome = Intent(this,HomeActivity::class.java)
+            var intentHome = Intent(this,LoginActivity::class.java)
             startActivity(intentHome)
 
 

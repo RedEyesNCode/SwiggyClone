@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/_8sdp"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_marginHorizontal="@dimen/_4sdp"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginBottom="@dimen/_4sdp"
+        android:background="@drawable/helpcard_bg"
+        android:padding="@dimen/_2sdp">
+
+
+        <LinearLayout
+            android:id="@+id/layout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/_10sdp">
+
+            <TextView
+                android:id="@+id/tv_product_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+                android:fontFamily="@font/firesans_bold"
+                android:text="Chicken Twister x2 , Chicken Lollipop x2"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp" />
+
+            <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:fontFamily="@font/firesans_regular"
+                android:text="Awadhpuri"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_9sdp"></TextView>
+
+            <TextView
+                android:id="@+id/tvOrderTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:fontFamily="@font/firesans_bold"
+                android:gravity="start"
+                android:singleLine="true"
+                android:text=" $ 454"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_8sdp">
+
+            </TextView>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:id="@+id/cancelTrackLayout"
+        android:visibility="visible"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginHorizontal="@dimen/_4sdp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/btnCancelOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/background_button_orange"
+            android:fontFamily="@font/firesans_regular"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/btnRefundPayment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:baselineAligned="false"
+                android:fontFamily="@font/firesans_bold"
+                android:gravity="center"
+                android:paddingVertical="@dimen/_6sdp"
+                android:text="REORDER"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_9sdp"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/btnTrackOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_4sdp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/background_edit_text_orange"
+            android:fontFamily="@font/firesans_bold">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingVertical="@dimen/_5sdp"
+                android:text="Rate Order"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/_9sdp">
+
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

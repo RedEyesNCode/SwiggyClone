@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/pending_status"
+        android:layout_width="wrap_content"
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:layout_weight="1"
+        android:background="@drawable/pending_status_bg"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/_12sdp"
+        android:paddingTop="@dimen/_2sdp"
+        android:paddingBottom="@dimen/_2sdp">
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/firesans_bold"
+            android:text="La Pinoz Pizza"
+            android:id="@+id/tvSearchName"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/_8sdp">
+        </TextView>
+    </LinearLayout>
+
+
+</LinearLayout>

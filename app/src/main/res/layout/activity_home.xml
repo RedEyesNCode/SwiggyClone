@@ -86,8 +86,8 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:layout_width="@dimen/_35sdp"
-                android:layout_height="@dimen/_35sdp"
                 android:src="@drawable/ic_search"
+                android:layout_height="@dimen/_35sdp"
                 android:padding="@dimen/_8sdp">
             </ImageView>
             <TextView

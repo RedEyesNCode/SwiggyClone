@@ -1,14 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:focusable="true"
+    android:clickable="true"
     tools:context=".searchCuisines.FragmentSearchCuisines">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/orange"
+            app:hintTextColor="@color/black"
+            app:boxCornerRadiusTopStart="@dimen/_4sdp"
+            app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
+            app:boxCornerRadiusTopEnd="@dimen/_4sdp"
+            app:boxCornerRadiusBottomStart="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:outlineSpotShadowColor="@color/orange"
+            style="@style/EditTextOutLineStyle">
+            <EditText
+                android:layout_width="match_parent"
+                android:id="@+id/edtNumber"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:fontFamily="@font/firesans_regular"
+                android:singleLine="true"
+                android:hint="@string/searchcuisines"
+                android:background="@null"
+                android:textColorHint="@color/gray_black"
+                android:textSize="@dimen/_12sdp">
+            </EditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
-</FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/firesans_bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:textSize="@dimen/_13sdp"
+            android:text="Recent Searches">
+        </TextView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recvRecentSearches"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_12sdp"
+            tools:listitem="@layout/recent_searches_list"
+            tools:itemCount="4"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/firesans_bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:textSize="@dimen/_13sdp"
+            android:text="Trending Searches">
+        </TextView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recvTrendingSearches"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_12sdp"
+            tools:listitem="@layout/recent_searches_list"
+            tools:itemCount="4"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/firesans_bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:textSize="@dimen/_13sdp"
+            android:text="Popular Cuisines">
+        </TextView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recvPopularCuisines"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_12sdp"
+            tools:listitem="@layout/swiggy_service_list"
+            tools:itemCount="4"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+</LinearLayout>

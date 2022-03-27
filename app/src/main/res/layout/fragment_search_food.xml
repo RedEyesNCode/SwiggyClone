@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:clickable="true"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".searchFood.SearchFoodFragment">
@@ -14,13 +17,13 @@
         android:background="@color/white"
         android:layout_marginTop="@dimen/_8sdp"
         android:layout_height="wrap_content">
+
         <ImageView
             android:id="@+id/locationicon"
-            android:contentDescription="swiggylocation"
             android:layout_width="@dimen/_20sdp"
-            android:src="@drawable/ic_location"
-            android:layout_height="@dimen/_20sdp">
-        </ImageView>
+            android:layout_height="@dimen/_20sdp"
+            android:contentDescription="swiggylocation"
+            android:src="@drawable/ic_location"></ImageView>
 
         <TextView
             android:layout_width="wrap_content"
@@ -86,7 +89,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="horizontal"
                 tools:listitem="@layout/offers_list"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
             </androidx.recyclerview.widget.RecyclerView>
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
