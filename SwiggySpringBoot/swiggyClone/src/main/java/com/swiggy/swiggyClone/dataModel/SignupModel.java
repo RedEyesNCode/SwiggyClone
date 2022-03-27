@@ -39,6 +39,13 @@ public class SignupModel {
         this.password = password;
     }
 
+    public SignupModel(String userEmail, String number, String password, String userName) {
+        this.userEmail = userEmail;
+        this.number = number;
+        this.password = password;
+        this.userName = userName;
+    }
+
     public SignupModel() {
     }
 

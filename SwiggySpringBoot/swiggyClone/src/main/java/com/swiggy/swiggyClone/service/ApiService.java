@@ -2,16 +2,11 @@ package com.swiggy.swiggyClone.service;
 
 
 import com.swiggy.swiggyClone.dataModel.*;
-import com.swiggy.swiggyClone.repository.RestaurantDetailRepository;
-import com.swiggy.swiggyClone.repository.RestaurantRepository;
-import com.swiggy.swiggyClone.repository.UserDataRepository;
-import com.swiggy.swiggyClone.repository.WishListRepository;
+import com.swiggy.swiggyClone.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,17 +18,31 @@ public class ApiService {
     private WishListRepository wishListRepository;
     private RestaurantRepository restaurantRepository;
     private RestaurantDetailRepository restaurantDetailRepository;
+    private PopularCurationsRespository popularCurationsRespository;
+    private PopularBrandsRepository popularBrandsRepository;
+    private OffersRespository offersRespository;
+    private PastOrdersRepository pastOrdersRepository;
+
+
 
 
 
 
     @Autowired
     public ApiService(UserDataRepository userDataRepository, WishListRepository wishListRepository, RestaurantRepository restaurantRepository,
-                      RestaurantDetailRepository restaurantDetailRepository) {
+                      RestaurantDetailRepository restaurantDetailRepository, PopularBrandsRepository popularBrandsRepository,
+                      PopularCurationsRespository popularCurationsRespository, OffersRespository offersRespository,
+                      PastOrdersRepository pastOrdersRepository) {
         this.userDataRepository = userDataRepository;
         this.wishListRepository = wishListRepository;
         this.restaurantRepository = restaurantRepository;
+        this.pastOrdersRepository = pastOrdersRepository;
         this.restaurantDetailRepository = restaurantDetailRepository;
+        this.popularBrandsRepository = popularBrandsRepository;
+        this.popularCurationsRespository = popularCurationsRespository;
+        this.offersRespository = offersRespository;
+
+
 
     }
 
@@ -141,10 +150,32 @@ public class ApiService {
         Optional<SignupModel> signupModelOptional = userDataRepository.loginUser(number, password);
         if(signupModelOptional.isPresent()){
 
-            return userDataRepository.loginUserData(number,password);
+            Optional<SignupModel> optionalSignupModel = userDataRepository.loginUserData(number,password);
+            return optionalSignupModel.get();
         }else {
             throw new IllegalArgumentException();
         }
+    }
+
+    //Home Feed Response from the api
+    public HomeFeedResponse getHomeFeed(){
+
+
+
+        return new HomeFeedResponse("success",200,"Home Feed Response",restaurantRepository.findAll(),offersRespository.findAll(),popularBrandsRepository.findAll(),popularCurationsRespository.findAll());
+
+
+
+    }
+
+
+    //Get the user past Order by id
+    public List<PastOrders> getUserPastOrder(int userID){
+
+
+        return pastOrdersRepository.getUserPastOrders(userID);
+
+
     }
 
 

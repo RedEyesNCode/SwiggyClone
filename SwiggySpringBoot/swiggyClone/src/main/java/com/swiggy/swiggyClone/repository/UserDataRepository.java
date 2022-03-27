@@ -41,7 +41,7 @@ public interface UserDataRepository extends JpaRepository<SignupModel, Long> {
 
 
     @Query("SELECT s FROM SignupModel s WHERE s.number =:number AND s.password=:password")
-    SignupModel loginUserData(String number, String password);
+    Optional<SignupModel> loginUserData(String number, String password);
 
 
 }

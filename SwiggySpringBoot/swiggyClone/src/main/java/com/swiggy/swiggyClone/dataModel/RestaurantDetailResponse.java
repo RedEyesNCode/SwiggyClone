@@ -1,7 +1,5 @@
 package com.swiggy.swiggyClone.dataModel;
 
-import java.util.List;
-
 public class RestaurantDetailResponse extends StatusCodeModel {
     public RestaurantDetailResponse(String status, int code, String message) {
         super(status, code, message);

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/swiggy")
 public class ApiController {
@@ -29,9 +31,9 @@ public class ApiController {
 
     //Api to get the login response from the db.
     @PostMapping("/login")
-    public LoginResponse loginUser(@RequestBody LoginBody loginBody){
+    public LoginResponse loginUser(@Param("number") String number, @Param("password") String password){
 
-        return new LoginResponse("success",200,"Login Successfully !",apiService.loginUser(loginBody.getNumber(), loginBody.getPassword()));
+        return new LoginResponse("success",200,"Login Successfully",apiService.loginUser(number, password).getId(),apiService.loginUser(number,password));
     }
 
 
@@ -94,6 +96,32 @@ public class ApiController {
 
 
         return new RestaurantDetailResponse("success",200,"Found Restaurant Detail",apiService.getRestaurantDetails(restaurantId));
+
+    }
+
+    //Api to get Home Feed Screen Response
+    @GetMapping("/getFeed")
+    public HomeFeedResponse getHomeFeed(){
+
+
+        return apiService.getHomeFeed();
+    }
+
+    //Api to get past order of a user by UserId
+    @PostMapping("/getUserPastOrders")
+    public PastOrdersResponse getPastOrderOfUser(@Param("userId") int userId){
+
+        List<PastOrders> pastOrders = apiService.getUserPastOrder(userId);
+
+        if(pastOrders.size()==0){
+            return new PastOrdersResponse("fail",200,"Record Not  Found",apiService.getUserPastOrder(userId));
+
+        }else {
+            return new PastOrdersResponse("success",200,"Record Found",apiService.getUserPastOrder(userId));
+
+        }
+
+
 
     }
 

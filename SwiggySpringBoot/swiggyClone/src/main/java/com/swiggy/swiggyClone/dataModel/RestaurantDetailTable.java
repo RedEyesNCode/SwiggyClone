@@ -1,6 +1,5 @@
 package com.swiggy.swiggyClone.dataModel;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -12,10 +11,9 @@ public class RestaurantDetailTable {
 
 
     @Id
-    @SequenceGenerator(name = "restaurant_detail_sequence", sequenceName = "restaurant_detail_sequence",allocationSize = 1)
+    @SequenceGenerator(name = "restaurant_detail_sequence", sequenceName = "restaurant_detail_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "restaurant_detail_sequence")
     private Long restaurantDetailId;
-
 
 
     private String RestaurantName;
