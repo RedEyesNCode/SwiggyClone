@@ -23,6 +23,12 @@ public class ApiService {
     private OffersRespository offersRespository;
     private PastOrdersRepository pastOrdersRepository;
 
+    private DessertMenuRepository dessertMenuRepository;
+    private MenuItemRepository menuItemRepository;
+    private PizzaMenuItemRepository pizzaMenuItemRepository;
+    private SnacksMenuRepository snacksMenuRepository;
+
+
 
 
 
@@ -32,15 +38,22 @@ public class ApiService {
     public ApiService(UserDataRepository userDataRepository, WishListRepository wishListRepository, RestaurantRepository restaurantRepository,
                       RestaurantDetailRepository restaurantDetailRepository, PopularBrandsRepository popularBrandsRepository,
                       PopularCurationsRespository popularCurationsRespository, OffersRespository offersRespository,
-                      PastOrdersRepository pastOrdersRepository) {
+                      PastOrdersRepository pastOrdersRepository,
+                      DessertMenuRepository dessertMenuRepository, MenuItemRepository menuItemRepository,
+                      PizzaMenuItemRepository pizzaMenuItemRepository, SnacksMenuRepository snacksMenuRepository) {
         this.userDataRepository = userDataRepository;
         this.wishListRepository = wishListRepository;
         this.restaurantRepository = restaurantRepository;
+
         this.pastOrdersRepository = pastOrdersRepository;
         this.restaurantDetailRepository = restaurantDetailRepository;
         this.popularBrandsRepository = popularBrandsRepository;
         this.popularCurationsRespository = popularCurationsRespository;
         this.offersRespository = offersRespository;
+        this.dessertMenuRepository = dessertMenuRepository;
+        this.menuItemRepository = menuItemRepository;
+        this.pizzaMenuItemRepository = pizzaMenuItemRepository;
+        this.snacksMenuRepository = snacksMenuRepository;
 
 
 
@@ -170,13 +183,21 @@ public class ApiService {
 
 
     //Get the user past Order by id
-    public List<PastOrders> getUserPastOrder(int userID){
+
+    public List<PastOrders> getUserPastOrder(int userID){return pastOrdersRepository.getUserPastOrders(userID);}
+
+    //Get Restaurant Meny by Restaurant Id;
+
+    public RestaurantMenuResponse getRestaurantMenuByid(){
 
 
-        return pastOrdersRepository.getUserPastOrders(userID);
-
-
+        return new RestaurantMenuResponse("success",200,"All this FOr 4 Hearts !",pizzaMenuItemRepository.findAll(),dessertMenuRepository.findAll(),menuItemRepository.findAll(),snacksMenuRepository.findAll());
     }
+
+
+
+
+
 
 
 

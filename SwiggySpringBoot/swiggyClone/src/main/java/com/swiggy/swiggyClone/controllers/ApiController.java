@@ -124,6 +124,16 @@ public class ApiController {
 
 
     }
+    //Getting the restaurant menu by Restaurant Id;
+    @PostMapping("/getRestaurantMenu")
+    public RestaurantMenuResponse getRestaurantMenuById(){
+
+
+
+        return apiService.getRestaurantMenuByid();
+
+    }
+
 
 
 

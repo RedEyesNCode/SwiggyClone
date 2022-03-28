@@ -19,7 +19,9 @@ public class DatabaseConfiguration {
                                         PopularBrandsRepository popularBrandsRepository,
                                         PopularCurationsRespository popularCurationsRespository,
                                         OffersRespository offersRespository, UserDataRepository userDataRepository,
-                                        PastOrdersRepository pastOrdersRepository){
+                                        PastOrdersRepository pastOrdersRepository,
+                                        PizzaMenuItemRepository pizzaMenuItemRepository, DessertMenuRepository dessertMenuRepository,
+                                        MenuItemRepository menuItemRepository,SnacksMenuRepository snacksMenuRepository){
 
 
         return args -> {
@@ -62,12 +64,72 @@ public class DatabaseConfiguration {
             RestaurantDetailTable r41 = new RestaurantDetailTable("Ranjeet's Kitchen","North Indian, Non Veg","Vijay Nagar",37.4267861,37.4267861,4.5,"35-40 mins","430");
             RestaurantDetailTable r51 = new RestaurantDetailTable("Nafees Restaurant","North Indian, South Indian, Snacks","Indore , MP",37.4267861,37.4267861,3.8,"35-40 mins","600");
             RestaurantDetailTable r61 = new RestaurantDetailTable("Oven Story Pizza","Italian, Mexican","Awadhpuri",37.4267861,37.4267861,4.0,"35-40 mins","500");
+
+            RestaurantDetailTable r20 = new RestaurantDetailTable("Mc Donal's","American Fast Food","South Tukoganj",37.4267861,37.4267861,4.0,"35-40 mins","200");
+            RestaurantDetailTable r22 = new RestaurantDetailTable("Burger King","Fast Food and Burgers","Near Haveli",37.4267861,37.4267861,3.0,"35-40 mins","450");
+            RestaurantDetailTable r33 = new RestaurantDetailTable("Sharma & Vishnu","Chinese, North Indian , SOuth Indian","56 Dukan",37.4267861,37.4267861,4.0,"35-40 mins","120");
+            RestaurantDetailTable r44 = new RestaurantDetailTable("Biryani by Kilo","Biryani, Non Veg","Vijay Nagar",37.4267861,37.4267861,4.5,"35-40 mins","430");
+            RestaurantDetailTable r55 = new RestaurantDetailTable("KFC ","Chicken Fast Food , American","Indore , MP",37.4267861,37.4267861,3.8,"35-40 mins","600");
+
+
             restaurantDetailTables.add(r1);
             restaurantDetailTables.add(r21);
             restaurantDetailTables.add(r31);
             restaurantDetailTables.add(r41);
             restaurantDetailTables.add(r51);
             restaurantDetailTables.add(r61);
+
+            restaurantDetailTables.add(r20);
+            restaurantDetailTables.add(r22);
+            restaurantDetailTables.add(r33);
+            restaurantDetailTables.add(r44);
+            restaurantDetailTables.add(r55);
+
+
+            //Adding the Restaurant Menu Table.
+
+
+            List<MenuItemModel> menuItemsRecomended = new ArrayList<>();
+            menuItemsRecomended.add(new MenuItemModel("Veg Biryani",true,89.00,"Serves 1"));
+            menuItemsRecomended.add(new MenuItemModel("Sagar Gaire Special Thali.",true,280.00,"| Serves-1 || Medium spicy | (Paneer, Chole, Mix Veg, Dal Makhani, Rajma, Rice, 3 Roti/2 laccha paratha, 1 Sweet, Salad, and Achar)"));
+            menuItemsRecomended.add(new MenuItemModel("Butter Paneer Masala ",true,89.00,"Serves 1"));
+            menuItemsRecomended.add(new MenuItemModel("Laccha Paratha ",true,160.00,"Rich and creamy dish, made of mildly sweet gravy made with butter, cashewnut paste, tomato gravy, paneer and traditional spices."));
+            menuItemsRecomended.add(new MenuItemModel("Manchurian Fried Rice",true,160.00,"| Serves-1 || Medium spicy | Yummy balls of mixed veggies fried until golden and coated in a medley of sauce rich in sweet, sour and spicy flavours. Further tossed with fried rice."));
+            menuItemsRecomended.add(new MenuItemModel("Steam Veg. Momos(8 pc)",true,110.00,"| Serves-1 || Medium spicy |"));
+            menuItemRepository.saveAll(menuItemsRecomended);
+
+            List<SnacksMenuItemModel> snacks = new ArrayList<>();
+
+            snacks.add(new SnacksMenuItemModel("Crispy Corn ",true,250.00,"Serves 1"));
+            snacks.add(new SnacksMenuItemModel("Chilli Paneer(Serves 1).",true,258.00,"Battered and deep fried paneer cubes, crunchy onions and capsicums combined together in a spicy and slightly sour chilli sauce."));
+            snacks.add(new SnacksMenuItemModel("Butter Paneer Masala ",true,89.00,"Serves 1"));
+            snacks.add(new SnacksMenuItemModel("Paneer 65 ",true,248.00,"Rich and creamy dish, made of mildly sweet gravy made with butter, cashewnut paste, tomato gravy, paneer and traditional spices."));
+            snacks.add(new SnacksMenuItemModel("Veg Kothay",true,160.00,"| Serves-1 || Medium spicy | Tasty and crispy dish made of chopped onions, cauliflower, garlic, chilli fried until golden and coated in cornflour salt with medley of sauce rich in sweet,sour and spicy flavours."));
+            snacks.add(new SnacksMenuItemModel("Veg Combi",true,180.00,"| Serves-1 || Medium spicy |"));
+            snacksMenuRepository.saveAll(snacks);
+
+
+            List<PizzaMenuItemModel> pizzas = new ArrayList<>();
+
+            pizzas.add(new PizzaMenuItemModel("Paneer Cheese Pizza ",true,262.00,"Serves 1"));
+            pizzas.add(new PizzaMenuItemModel("Mushroom Cheese Pizza",true,258.00,"Battered and deep fried paneer cubes, crunchy onions and capsicums combined together in a spicy and slightly sour chilli sauce."));
+            pizzas.add(new PizzaMenuItemModel("Hot Garlic Pizza ",true,89.00,"Serves 1"));
+            pizzas.add(new PizzaMenuItemModel("Veg Cheese Pizza ",true,215.00,"Rich and creamy dish, made of mildly sweet gravy made with butter, cashewnut paste, tomato gravy, paneer and traditional spices."));
+            pizzas.add(new PizzaMenuItemModel("Margherita Pizza",true,235.00,"| Serves-1 || Medium spicy | Tasty and crispy dish made of chopped onions, cauliflower, garlic, chilli fried until golden and coated in cornflour salt with medley of sauce rich in sweet,sour and spicy flavours."));
+            pizzas.add(new PizzaMenuItemModel("Onion Capsicum Pizza",true,222.00,"| Serves-1 || Medium spicy |"));
+
+            pizzaMenuItemRepository.saveAll(pizzas);
+
+            List<DessertMenuItemModel> dessert = new ArrayList<>();
+            dessert.add(new DessertMenuItemModel("Chocolate Brownie Shake",true,220.00,"Severs 1"));
+            dessert.add(new DessertMenuItemModel("Butterscotch Milkshake Brownie Shake",true,133.00,"Severs 1"));
+            dessert.add(new DessertMenuItemModel("Mango Milkshake Brownie Shake",true,220.00,"Severs 1"));
+            dessert.add(new DessertMenuItemModel("Strawberry Brownie Shake",true,133.00,"Severs 1"));
+
+            dessertMenuRepository.saveAll(dessert);
+
+
+
 
             restaurantDetailRepository.saveAll(restaurantDetailTables);
 
