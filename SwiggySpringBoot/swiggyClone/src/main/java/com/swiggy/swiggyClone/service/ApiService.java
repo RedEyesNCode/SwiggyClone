@@ -27,6 +27,8 @@ public class ApiService {
     private MenuItemRepository menuItemRepository;
     private PizzaMenuItemRepository pizzaMenuItemRepository;
     private SnacksMenuRepository snacksMenuRepository;
+    private AllergensRepo allergensRepo;
+
 
 
 
@@ -39,6 +41,7 @@ public class ApiService {
                       RestaurantDetailRepository restaurantDetailRepository, PopularBrandsRepository popularBrandsRepository,
                       PopularCurationsRespository popularCurationsRespository, OffersRespository offersRespository,
                       PastOrdersRepository pastOrdersRepository,
+                      AllergensRepo allergensRepo,
                       DessertMenuRepository dessertMenuRepository, MenuItemRepository menuItemRepository,
                       PizzaMenuItemRepository pizzaMenuItemRepository, SnacksMenuRepository snacksMenuRepository) {
         this.userDataRepository = userDataRepository;
@@ -53,6 +56,8 @@ public class ApiService {
         this.dessertMenuRepository = dessertMenuRepository;
         this.menuItemRepository = menuItemRepository;
         this.pizzaMenuItemRepository = pizzaMenuItemRepository;
+        this.allergensRepo = allergensRepo;
+
         this.snacksMenuRepository = snacksMenuRepository;
 
 
@@ -194,6 +199,18 @@ public class ApiService {
         return new RestaurantMenuResponse("success",200,"All this FOr 4 Hearts !",pizzaMenuItemRepository.findAll(),dessertMenuRepository.findAll(),menuItemRepository.findAll(),snacksMenuRepository.findAll());
     }
 
+
+    // Get PastOrder Detail by Id
+    public Allergens getPastOrderDetail(Long id){
+
+        Optional<Allergens> allergens = allergensRepo.findById(id);
+        if(allergens.isPresent()){
+            return allergensRepo.getById(id);
+        }else {
+            throw new IllegalArgumentException();
+        }
+
+    }
 
 
 

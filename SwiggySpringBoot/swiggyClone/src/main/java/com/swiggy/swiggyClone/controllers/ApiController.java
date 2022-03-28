@@ -134,6 +134,13 @@ public class ApiController {
 
     }
 
+    @PostMapping("/getPastOrderDetail")
+    public PastOrderDetailResponse getOrderDEtailsPAst(@Param("id") Long id){
+
+
+        return  new PastOrderDetailResponse("success",200,"Record Found !",apiService.getPastOrderDetail(id));
+
+    }
 
 
 

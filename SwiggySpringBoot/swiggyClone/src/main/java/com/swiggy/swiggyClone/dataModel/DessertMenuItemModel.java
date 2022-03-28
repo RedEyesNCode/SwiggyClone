@@ -8,8 +8,8 @@ import javax.persistence.*;
 public class DessertMenuItemModel {
 
     @Id
-    @SequenceGenerator(name = "dessert_menu_sequence", sequenceName = "dessert_menu_sequence",allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "dessert_menu_sequence")
+    @SequenceGenerator(name = "recommended_menu_sequence", sequenceName = "recommended_menu_sequence",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "recommended_menu_sequence")
     private Long menuId;
 
 
@@ -31,9 +31,6 @@ public class DessertMenuItemModel {
         this.isVeg = isVeg;
         this.price = price;
         this.description = description;
-    }
-
-    public DessertMenuItemModel() {
     }
 
     public Long getMenuId() {

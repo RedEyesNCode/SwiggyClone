@@ -8,8 +8,8 @@ import javax.persistence.*;
 public class PastOrders {
 
     @Id
-    @SequenceGenerator(name = "users_data_sequence", sequenceName = "users_data_sequence",allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_data_sequence")
+    @SequenceGenerator(name = "past_order_sequence", sequenceName = "past_order_sequence",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "past_order_sequence")
     private Long pastOrderId;
 
 
@@ -18,6 +18,28 @@ public class PastOrders {
     private String location;
     private Double orderTotal;
     private String orderStatus;
+
+
+    @OneToOne(mappedBy = "",orphanRemoval = false,cascade = {CascadeType.PERSIST,CascadeType.REFRESH})
+    Allergens past_orders_detail;
+
+
+    public PastOrders(int userID, String restaurantName, String location, Double orderTotal, String orderStatus, Allergens past_orders_detail) {
+        this.userID = userID;
+        this.restaurantName = restaurantName;
+        this.location = location;
+        this.orderTotal = orderTotal;
+        this.orderStatus = orderStatus;
+        this.past_orders_detail = past_orders_detail;
+    }
+
+    public Allergens getPast_orders_detail() {
+        return past_orders_detail;
+    }
+
+    public void setPast_orders_detail(Allergens past_orders_detail) {
+        this.past_orders_detail = past_orders_detail;
+    }
 
     public PastOrders(int userID, String restaurantName, String location, Double orderTotal, String orderStatus) {
         this.userID = userID;
@@ -38,15 +60,8 @@ public class PastOrders {
     public PastOrders() {
     }
 
-    public PastOrders(String restaurantName, String location, Double orderTotal, String orderStatus) {
-        this.restaurantName = restaurantName;
-        this.location = location;
-        this.orderTotal = orderTotal;
-        this.orderStatus = orderStatus;
-    }
 
-    public PastOrders(Long pastOrderId, String restaurantName, String location, Double orderTotal, String orderStatus) {
-        this.pastOrderId = pastOrderId;
+    public PastOrders(String restaurantName, String location, Double orderTotal, String orderStatus) {
         this.restaurantName = restaurantName;
         this.location = location;
         this.orderTotal = orderTotal;
@@ -93,3 +108,4 @@ public class PastOrders {
         this.orderStatus = orderStatus;
     }
 }
+

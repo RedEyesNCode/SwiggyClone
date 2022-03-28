@@ -71,7 +71,6 @@ public class DatabaseConfiguration {
             RestaurantDetailTable r44 = new RestaurantDetailTable("Biryani by Kilo","Biryani, Non Veg","Vijay Nagar",37.4267861,37.4267861,4.5,"35-40 mins","430");
             RestaurantDetailTable r55 = new RestaurantDetailTable("KFC ","Chicken Fast Food , American","Indore , MP",37.4267861,37.4267861,3.8,"35-40 mins","600");
 
-
             restaurantDetailTables.add(r1);
             restaurantDetailTables.add(r21);
             restaurantDetailTables.add(r31);
@@ -84,6 +83,8 @@ public class DatabaseConfiguration {
             restaurantDetailTables.add(r33);
             restaurantDetailTables.add(r44);
             restaurantDetailTables.add(r55);
+
+            restaurantDetailRepository.saveAll(restaurantDetailTables);
 
 
             //Adding the Restaurant Menu Table.
@@ -131,7 +132,7 @@ public class DatabaseConfiguration {
 
 
 
-            restaurantDetailRepository.saveAll(restaurantDetailTables);
+
 
             List<PopularCurations> popularCurations = new ArrayList<>();
             PopularCurations popularCurations1 = new PopularCurations("Biryani");
@@ -198,7 +199,8 @@ public class DatabaseConfiguration {
             pastOrders.add(new PastOrders(1,"Al-beik","Indrapuri",457.00,"Delivered"));
             pastOrders.add(new PastOrders(1,"Al-beik","Indrapuri",457.00,"Delivered"));
             pastOrders.add(new PastOrders(2,"Sagar Gaire","Indrapuri",457.00,"Delivered"));
-            pastOrders.add(new PastOrders(3,"KFC","Indrapuri",1077.00,"Delivered"));
+            pastOrders.add(new PastOrders(3,"KFC","Indrapuri",1077.00,"Delivered",new Allergens(true,true,true)));
+
             pastOrders.add(new PastOrders(4,"Ranjeet Kitchen","Indrapuri",457.00,"Delivered"));
 
             pastOrdersRepository.saveAll(pastOrders);
