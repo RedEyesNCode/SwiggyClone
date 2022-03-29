@@ -3,6 +3,7 @@ package com.swiggy.swiggyClone.controllers;
 
 import com.swiggy.swiggyClone.dataModel.*;
 import com.swiggy.swiggyClone.service.ApiService;
+import io.jsonwebtoken.SignatureException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
@@ -143,7 +144,12 @@ public class ApiController {
     }
 
 
+    @ExceptionHandler(SignatureException.class)
+    public StatusCodeModel HandlerException(){
+        return new StatusCodeModel("fail",400,"Invalid TOken Signature");
 
+
+    }
 
 
 

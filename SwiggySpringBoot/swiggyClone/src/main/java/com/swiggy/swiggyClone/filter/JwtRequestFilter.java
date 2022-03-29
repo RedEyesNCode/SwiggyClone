@@ -1,9 +1,10 @@
 package com.swiggy.swiggyClone.filter;
 
+import com.swiggy.swiggyClone.controllers.UserContoller;
 import com.swiggy.swiggyClone.service.MyUserDetails;
 import com.swiggy.swiggyClone.utils.JWTUtil;
+import io.jsonwebtoken.SignatureException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -35,10 +36,8 @@ public class JwtRequestFilter extends OncePerRequestFilter{
 		
 		if(authHeader != null) {
 			jwt = authHeader;
-			ResponseEntity<?> responseEntity = jwtUtil.extractUserName(jwt);
-			if(responseEntity.getStatusCodeValue()==200){
-				username = (String) responseEntity.getBody();
-			}
+			username = jwtUtil.extractUserName(jwt);
+
 		}
 		
 		if(username != null && SecurityContextHolder.getContext().getAuthentication() == null ) {

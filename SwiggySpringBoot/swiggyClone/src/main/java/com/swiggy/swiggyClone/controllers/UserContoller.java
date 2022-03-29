@@ -7,16 +7,15 @@ import com.swiggy.swiggyClone.dataModel.StatusCodeModel;
 import com.swiggy.swiggyClone.service.ApiService;
 import com.swiggy.swiggyClone.service.MyUserDetails;
 import com.swiggy.swiggyClone.utils.JWTUtil;
+import io.jsonwebtoken.SignatureException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserContoller {
@@ -77,5 +76,17 @@ public class UserContoller {
 		final String jwt = jwtUtil.generateToken(userDetails);
 
 		return ResponseEntity.ok(new AuthenticationResponse("success",200,"Login SuccessFullly",jwt,apiService.loginUser(authRequest.getUsername(), authRequest.getPassword())));
+	}
+
+	@RequestMapping("/403")
+	public String accessDenied() {
+		return "errors/403";
+	}
+
+	@ExceptionHandler(SignatureException.class)
+	public StatusCodeModel HandlerException(){
+		return new StatusCodeModel("fail",400,"Invalid TOken Signature");
+
+
 	}
 }

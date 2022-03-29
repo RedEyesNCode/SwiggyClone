@@ -1,5 +1,6 @@
 package com.swiggy.swiggyClone.security;
 
+import com.swiggy.swiggyClone.filter.CustomAccessDeniedHandler;
 import com.swiggy.swiggyClone.filter.JwtRequestFilter;
 import com.swiggy.swiggyClone.service.MyUserDetails;
 
@@ -14,7 +15,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @EnableWebSecurity
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
@@ -23,6 +26,11 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 	private MyUserDetails myUserDetailsService;
 	@Autowired
 	private JwtRequestFilter jwtRequestFilter;
+
+	@Bean
+	public AccessDeniedHandler accessDeniedHandler(){
+		return new CustomAccessDeniedHandler();
+	}
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -34,7 +42,9 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 		http.csrf().disable()
 			.authorizeRequests().antMatchers("/authJWT").permitAll()
 			.anyRequest().authenticated()
-			.and().sessionManagement()
+			.and()
+				.exceptionHandling().accessDeniedHandler(accessDeniedHandler()).and()
+				.sessionManagement()
 			.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
@@ -50,4 +60,5 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 		return super.authenticationManagerBean();
 	}
+
 }
