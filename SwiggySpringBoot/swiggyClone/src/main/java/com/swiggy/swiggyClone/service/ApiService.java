@@ -4,6 +4,7 @@ package com.swiggy.swiggyClone.service;
 import com.swiggy.swiggyClone.dataModel.*;
 import com.swiggy.swiggyClone.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -79,7 +80,7 @@ public class ApiService {
     public SignupResponse signupUser(SignupModel signupModel){
 
         Optional<SignupModel> signupModelOptional = userDataRepository.findbyEmail(signupModel.getUserEmail());
-        Optional<SignupModel> signupModelOptionalPassword = userDataRepository.findbyPassword(signupModel.getNumber());
+        Optional<SignupModel> signupModelOptionalPassword = userDataRepository.findbyNumber(signupModel.getNumber());
 
 
         if(signupModelOptional.isPresent() || signupModelOptionalPassword.isPresent()){
@@ -173,6 +174,19 @@ public class ApiService {
             return optionalSignupModel.get();
         }else {
             throw new IllegalArgumentException();
+        }
+    }
+
+    //Login User JWT
+    public ResponseEntity<?> loginUserJWT(String number, String password){
+
+        Optional<SignupModel> signupModelOptional = userDataRepository.loginUser(number, password);
+        if(signupModelOptional.isPresent()){
+
+            Optional<SignupModel> optionalSignupModel = userDataRepository.loginUserData(number,password);
+            return ResponseEntity.ok(optionalSignupModel.get());
+        }else {
+            return ResponseEntity.badRequest().body(new StatusCodeModel("fail",400,"User not found"));
         }
     }
 
