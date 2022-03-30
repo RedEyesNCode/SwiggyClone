@@ -8,8 +8,8 @@ import javax.persistence.*;
 public class AddressTable {
 
     @Id
-    @SequenceGenerator(name = "users_data_sequence", sequenceName = "users_data_sequence",allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_data_sequence")
+    @SequenceGenerator(name = "address_data_sequence", sequenceName = "address_data_sequence",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "address_data_sequence")
     private Long addressId;
 
 

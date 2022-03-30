@@ -2,6 +2,7 @@ package com.swiggy.swiggyClone.controllers;
 
 
 import com.swiggy.swiggyClone.dataModel.*;
+import com.swiggy.swiggyClone.exceptionHandling.ForbiddenException;
 import com.swiggy.swiggyClone.service.ApiService;
 import io.jsonwebtoken.SignatureException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ public class ApiController {
 
 
     private ApiService apiService;
+    //YOU CAN ONLY HANDLE CONTROLLER EXCEPTIONS BY A COMMON EXCEPTION HANDLER CLASS
 
 
     @Autowired
@@ -35,7 +37,18 @@ public class ApiController {
     @PostMapping("/login")
     public LoginResponse loginUser(@Param("number") String number, @Param("password") String password){
 
-        return new LoginResponse("success",200,"Login Successfully",apiService.loginUser(number, password).getId(),apiService.loginUser(number,password));
+        SignupModel signupModel = apiService.loginUser(number, password);
+        if(signupModel.getUserName().isEmpty()){
+            //YOU CAN ONLY HANDLE CONTROLLER EXCEPTIONS BY A COMMON EXCEPTION HANDLER CLASS
+
+            throw new ForbiddenException("User Not Found");
+        }else {
+            return new LoginResponse("success",200,"Login Successfully",apiService.loginUser(number, password).getId(),apiService.loginUser(number,password));
+
+        }
+
+
+
     }
 
 
@@ -59,8 +72,16 @@ public class ApiController {
     //Api to fetch the user data on behalf of the id.
     @GetMapping("/getUser")
     public UserDataResponse getUser(@Param("userId") Long id){
-        UserDataResponse userDataResponse = new UserDataResponse("success",200,"Found user",apiService.getUser(id));
-        return userDataResponse;
+        SignupModel userDataResponseService = apiService.getUser(id);
+        if(userDataResponseService.getUserName().isEmpty()){
+            throw new ForbiddenException("No User Found !");
+        }else {
+            UserDataResponse userDataResponse = new UserDataResponse("success",200,"Found user",apiService.getUser(id));
+            return userDataResponse;
+        }
+
+
+
     }
     //Update the user data according to the id
     @PostMapping("/updateUser")
@@ -103,7 +124,7 @@ public class ApiController {
 
     //Api to get Home Feed Screen Response
     @GetMapping("/getFeed")
-    public HomeFeedResponse getHomeFeed(){
+    public HomeFeedResponse getHomeFeed()throws SignatureException{
 
 
         return apiService.getHomeFeed();
@@ -150,33 +171,27 @@ public class ApiController {
         if(apiService.getUserAddressByUserID(id).size()==0){
 
 
-            return new AddressUserResponse("success",200,"Record Found !", apiService.getUserAddressByUserID(id));
+            return new AddressUserResponse("fail",200,"Record Not Found !", new ArrayList<>());
         }else {
 
 
-            return new AddressUserResponse("fail",200,"Record Not Found",new ArrayList<>());
+            return new AddressUserResponse("success",200,"Record Found",apiService.getUserAddressByUserID(id));
         }
 
     }
 
     @PostMapping("/saveUserAddress")
     public StatusCodeModel saveUserAddressByID(@RequestBody AddressBody addressBody){
-
-
-
         return apiService.saveUserAddress(addressBody);
 
     }
 
-
-
-
-    @ExceptionHandler(SignatureException.class)
-    public StatusCodeModel HandlerException(){
-        return new StatusCodeModel("fail",400,"Invalid TOken Signature");
-
-
+    @GetMapping("/403")
+    public String error(){
+        return "Error 403";
     }
+
+
 
 
 

@@ -43,7 +43,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 			.authorizeRequests().antMatchers("/authJWT").permitAll()
 			.anyRequest().authenticated()
 			.and()
-				.exceptionHandling().accessDeniedHandler(accessDeniedHandler()).and()
+				.exceptionHandling().accessDeniedPage("/403").and()
 				.sessionManagement()
 			.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

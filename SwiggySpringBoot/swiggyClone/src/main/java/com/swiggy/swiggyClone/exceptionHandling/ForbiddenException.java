@@ -1,28 +1,19 @@
 package com.swiggy.swiggyClone.exceptionHandling;
 
 
+import com.swiggy.swiggyClone.controllers.ApiController;
+import com.swiggy.swiggyClone.dataModel.StatusCodeModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(value = HttpStatus.NOT_FOUND)
-public class ForbiddenException extends RuntimeException {
 
-    public ForbiddenException() {
-    }
+public class ForbiddenException extends RuntimeException {
+    private static final long serialVersionUID = 1L;
 
     public ForbiddenException(String message) {
         super(message);
-    }
-
-    public ForbiddenException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    public ForbiddenException(Throwable cause) {
-        super(cause);
-    }
-
-    public ForbiddenException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
     }
 }

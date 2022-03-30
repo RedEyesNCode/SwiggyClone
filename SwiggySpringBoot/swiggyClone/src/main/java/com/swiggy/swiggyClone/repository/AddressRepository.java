@@ -13,6 +13,6 @@ import java.util.List;
 public interface AddressRepository extends JpaRepository<AddressTable,Long> {
 
 
-    @Query("SELECT s FROM AddressTable s WHERE s.userId = :id")
-    List<AddressTable> findByUserId(Long id);
+    @Query("SELECT s FROM AddressTable s WHERE s.userId = :userId")
+    List<AddressTable> findByUserId(Long userId);
 }

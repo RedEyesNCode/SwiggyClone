@@ -2,6 +2,8 @@ package com.swiggy.swiggyClone.service;
 
 
 import com.swiggy.swiggyClone.dataModel.*;
+import com.swiggy.swiggyClone.exceptionHandling.CommonException;
+import com.swiggy.swiggyClone.exceptionHandling.ForbiddenException;
 import com.swiggy.swiggyClone.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -61,7 +63,7 @@ public class ApiService {
         this.menuItemRepository = menuItemRepository;
         this.pizzaMenuItemRepository = pizzaMenuItemRepository;
         this.allergensRepo = allergensRepo;
-
+        this.addressRepository = addressRepository;
         this.snacksMenuRepository = snacksMenuRepository;
 
 
@@ -69,6 +71,8 @@ public class ApiService {
     }
 
 
+
+    //NEVER THROW EXCEPTIONS FROM THE SERVICE CLASS IN SPRING BOOT.
 
 
 
@@ -124,7 +128,7 @@ public class ApiService {
             return userDataRepository.getById(id);
 
         }else {
-            throw new IllegalArgumentException();
+            return new SignupModel("","","","");
         }
 
     }
@@ -175,7 +179,7 @@ public class ApiService {
             Optional<SignupModel> optionalSignupModel = userDataRepository.loginUserData(number,password);
             return optionalSignupModel.get();
         }else {
-            throw new IllegalArgumentException();
+            return new SignupModel("","","","");
         }
     }
 
@@ -238,20 +242,7 @@ public class ApiService {
 
     //Get user Address by id
     public List<AddressTable> getUserAddressByUserID(Long id){
-        List<AddressTable> addressTable = addressRepository.findByUserId(id);
-
-        if(addressTable.size()!=0){
-
-            return addressTable;
-
-
-        }else {
-
-            List<AddressTable> newEmptyAddressTable = new ArrayList<>();
-
-            return newEmptyAddressTable;
-        }
-
+        return addressRepository.findByUserId(id);
 
     }
 
@@ -264,7 +255,6 @@ public class ApiService {
                 addressBody.getAddress(), addressBody.getPostalCode(), addressBody.getCity()));
         return new StatusCodeModel("success",200,"Address Saved Successfully !");
     }
-
 
 
 
