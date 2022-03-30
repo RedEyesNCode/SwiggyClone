@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -142,6 +143,32 @@ public class ApiController {
         return  new PastOrderDetailResponse("success",200,"Record Found !",apiService.getPastOrderDetail(id));
 
     }
+
+    @GetMapping("/getUserAddressById")
+    public AddressUserResponse getUserAddressById(@Param("userId") Long id){
+
+        if(apiService.getUserAddressByUserID(id).size()==0){
+
+
+            return new AddressUserResponse("success",200,"Record Found !", apiService.getUserAddressByUserID(id));
+        }else {
+
+
+            return new AddressUserResponse("fail",200,"Record Not Found",new ArrayList<>());
+        }
+
+    }
+
+    @PostMapping("/saveUserAddress")
+    public StatusCodeModel saveUserAddressByID(@RequestBody AddressBody addressBody){
+
+
+
+        return apiService.saveUserAddress(addressBody);
+
+    }
+
+
 
 
     @ExceptionHandler(SignatureException.class)

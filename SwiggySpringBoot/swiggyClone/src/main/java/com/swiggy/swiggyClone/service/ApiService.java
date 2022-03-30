@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,6 +32,7 @@ public class ApiService {
     private AllergensRepo allergensRepo;
 
 
+    private AddressRepository addressRepository;
 
 
 
@@ -43,7 +45,7 @@ public class ApiService {
                       PopularCurationsRespository popularCurationsRespository, OffersRespository offersRespository,
                       PastOrdersRepository pastOrdersRepository,
                       AllergensRepo allergensRepo,
-
+                      AddressRepository addressRepository,
                       DessertMenuRepository dessertMenuRepository, MenuItemRepository menuItemRepository,
                       PizzaMenuItemRepository pizzaMenuItemRepository, SnacksMenuRepository snacksMenuRepository) {
         this.userDataRepository = userDataRepository;
@@ -227,7 +229,41 @@ public class ApiService {
 
     }
 
+
+
+
     //get All Cart items
+
+
+
+    //Get user Address by id
+    public List<AddressTable> getUserAddressByUserID(Long id){
+        List<AddressTable> addressTable = addressRepository.findByUserId(id);
+
+        if(addressTable.size()!=0){
+
+            return addressTable;
+
+
+        }else {
+
+            List<AddressTable> newEmptyAddressTable = new ArrayList<>();
+
+            return newEmptyAddressTable;
+        }
+
+
+    }
+
+    //Save User Address By Id
+    public StatusCodeModel saveUserAddress(AddressBody addressBody){
+
+        addressRepository.save(new AddressTable(addressBody.getUserId(),
+                addressBody.getFirstName(),
+                addressBody.getLastName(), addressBody.getPhoneNumber(), addressBody.getApartMent(),
+                addressBody.getAddress(), addressBody.getPostalCode(), addressBody.getCity()));
+        return new StatusCodeModel("success",200,"Address Saved Successfully !");
+    }
 
 
 

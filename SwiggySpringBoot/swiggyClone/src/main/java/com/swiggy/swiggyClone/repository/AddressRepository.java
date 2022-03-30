@@ -1,0 +1,18 @@
+package com.swiggy.swiggyClone.repository;
+
+
+import com.swiggy.swiggyClone.dataModel.AddressTable;
+import com.swiggy.swiggyClone.dataModel.WishListModel;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface AddressRepository extends JpaRepository<AddressTable,Long> {
+
+
+    @Query("SELECT s FROM AddressTable s WHERE s.userId = :id")
+    List<AddressTable> findByUserId(Long id);
+}

@@ -21,7 +21,8 @@ public class DatabaseConfiguration {
                                         OffersRespository offersRespository, UserDataRepository userDataRepository,
                                         PastOrdersRepository pastOrdersRepository,
                                         PizzaMenuItemRepository pizzaMenuItemRepository, DessertMenuRepository dessertMenuRepository,
-                                        MenuItemRepository menuItemRepository,SnacksMenuRepository snacksMenuRepository){
+                                        MenuItemRepository menuItemRepository,SnacksMenuRepository snacksMenuRepository,
+                                        AddressRepository addressRepository){
 
 
         return args -> {
@@ -204,6 +205,22 @@ public class DatabaseConfiguration {
             pastOrders.add(new PastOrders(4,"Ranjeet Kitchen","Indrapuri",457.00,"Delivered"));
 
             pastOrdersRepository.saveAll(pastOrders);
+
+
+            //Saving Dummy Addresses to the Database.
+            List<AddressTable> addressTables = new ArrayList<>();
+            addressTables.add(new AddressTable(1,"Pavan","Sharma","62631912212","HNO 45 RACHNA VIHAR","BHEL","891045","Clark County"));
+            addressTables.add(new AddressTable(1,"Ashutosh","Hidden Gem","62631912212","HNO 45 RACHNA VIHAR","BHEL","891045","Clark County"));
+            addressTables.add(new AddressTable(2,"Rahul","Sharma","892348432","HNO 45 RACHNA VIHAR","BHEL","891045","Clark County"));
+            addressTables.add(new AddressTable(1,"Nikhil","Sharma","23423453523","HNO 45 RACHNA VIHAR","BHEL","891045","Clark County"));
+            addressTables.add(new AddressTable(3,"Jhonny","Sharma","46756834","HNO 45 RACHNA VIHAR","BHEL","891045","Clark County"));
+            addressTables.add(new AddressTable(1,"Rama","Sharma","4363227785","HNO 45 RACHNA VIHAR","BHEL","891045","Clark County"));
+            addressTables.add(new AddressTable(2,"Tarun","God","51145518","HNO 45 RACHNA VIHAR","BHEL","891045","Clark County"));
+            addressTables.add(new AddressTable(2,"Ritu","Mam","4528975","HNO 45 RACHNA VIHAR","BHEL","891045","Clark County"));
+            addressTables.add(new AddressTable(3,"Shefali","Sharma","567456","HNO 45 RACHNA VIHAR","BHEL","891045","Clark County"));
+            addressTables.add(new AddressTable(3,"Khausal","Sir","43636737","HNO 45 RACHNA VIHAR","BHEL","891045","Clark County"));
+
+            addressRepository.saveAll(addressTables);
 
 
 
