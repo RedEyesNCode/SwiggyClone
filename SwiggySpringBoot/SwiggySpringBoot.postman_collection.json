@@ -1,0 +1,554 @@
+{
+	"info": {
+		"_postman_id": "5cb9de1f-dd80-4a4c-8cad-81ecf06ff9d8",
+		"name": "SwiggySpringBoot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "testApi",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/swiggy/testapi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"swiggy",
+						"testapi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signupUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userEmail\" : \"ashutosh singh\",\n    \"number\" : \"6261319133\",\n    \"password\": \"123456\",\n    \"userName\" : \"Vancher\"\n\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/swiggy/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"swiggy",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllUsers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3IiwiZXhwIjoxNjQ4NjE1Njc0LCJpYXQiOjE2NDg1Nzk2NzR9a.VoQSsfwa2Qo0FGqM5rSYKMtSsCqIiYqmaeuhBf66RXY",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/swiggy/getAllUsers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"swiggy",
+						"getAllUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUserByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/swiggy/getUser?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"swiggy",
+						"getUser"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateUserByID",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userEmail\" : \"sadfafas\",\n    \"number\" : \"1234141\",\n    \"password\": \"123456\",\n    \"userName\" : \"Geetuasshu\"\n\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/swiggy/updateUser?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"swiggy",
+						"updateUser"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUserWishListByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/swiggy/getWishList?id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"swiggy",
+						"getWishList"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getRestaurants",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3IiwiZXhwIjoxNjQ4NzAwNTQyLCJpYXQiOjE2NDg2NjQ1NDJ9.xjcBf9t3TH9ZsUwBgxIQ4qM7PMpG0Np1nL1k6ux2Mhs",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/swiggy/getRestaurantlist",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"swiggy",
+						"getRestaurantlist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addtoWishlistById's",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/swiggy/addtoWislist?restaurantId=1&userId=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"swiggy",
+						"addtoWislist"
+					],
+					"query": [
+						{
+							"key": "restaurantId",
+							"value": "1"
+						},
+						{
+							"key": "userId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getRestaurantDetail",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3IiwiZXhwIjoxNjQ4NzAwNTQyLCJpYXQiOjE2NDg2NjQ1NDJ9.xjcBf9t3TH9ZsUwBgxIQ4qM7PMpG0Np1nL1k6ux2Mhs",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/swiggy/getRestaurantDetail?restaurantId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"swiggy",
+						"getRestaurantDetail"
+					],
+					"query": [
+						{
+							"key": "restaurantId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3IiwiZXhwIjoxNjQ4Njk1MzQ5LCJpYXQiOjE2NDg2NTkzNDl9.2GDhvZgGZ3LLflFggs61h6MWY7q5tPIZJPTQjKb5ojw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/swiggy/login?number=1234567&password=123452",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"swiggy",
+						"login"
+					],
+					"query": [
+						{
+							"key": "number",
+							"value": "1234567"
+						},
+						{
+							"key": "password",
+							"value": "123452"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getFeed",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3IiwiZXhwIjoxNjQ4NjE0MTQwLCJpYXQiOjE2NDg1NzgxNDB9.R7kOhGfmEKQesPJoOJb-TTX09rutYIIVsybhO-ps-rcaw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/swiggy/getFeed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"swiggy",
+						"getFeed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUserPastOrders",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3IiwiZXhwIjoxNjQ4NjE0MTQwLCJpYXQiOjE2NDg1NzgxNDB9.R7kOhGfmEKQesPJoOJb-TTX09rutYIIVsybhO-ps-rc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/swiggy/getUserPastOrders?userId=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"swiggy",
+						"getUserPastOrders"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getRestaurantMenuGeneral",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/swiggy/getRestaurantMenu",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"swiggy",
+						"getRestaurantMenu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPastOrderDetail",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/swiggy/getPastOrderDetail?id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"swiggy",
+						"getPastOrderDetail"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllCartItems",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3IiwiZXhwIjoxNjQ4NjE0MTQwLCJpYXQiOjE2NDg1NzgxNDB9.R7kOhGfmEKQesPJoOJb-TTX09rutYIIVsybhO-ps-rc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/swiggy/getAllCartItems",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"swiggy",
+						"getAllCartItems"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllCarts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3IiwiZXhwIjoxNjQ4NzAwNTQyLCJpYXQiOjE2NDg2NjQ1NDJ9.xjcBf9t3TH9ZsUwBgxIQ4qM7PMpG0Np1nL1k6ux2Mhs",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/swiggy/getAllCarts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"swiggy",
+						"getAllCarts"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "JWT-AUTH",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"1234567\",\n    \"password\": \"123456\"\n}\n\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/authJWT",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authJWT"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUserAddressById",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3IiwiZXhwIjoxNjQ4NzAwNTQyLCJpYXQiOjE2NDg2NjQ1NDJ9.xjcBf9t3TH9ZsUwBgxIQ4qM7PMpG0Np1nL1k6ux2Mhs",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/swiggy/getUserAddressById?userId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"swiggy",
+						"getUserAddressById"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "saveUserAddress",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3IiwiZXhwIjoxNjQ4NzAwNTQyLCJpYXQiOjE2NDg2NjQ1NDJ9.xjcBf9t3TH9ZsUwBgxIQ4qM7PMpG0Np1nL1k6ux2Mhs",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\" : 1,\n    \"firstName\" : \"Ashutosh\",\n    \"lastName\" : \"Singh\",\n    \"phoneNumber\" : \"Awadhpuri\",\n    \"apartMent\": \"Awadhpuri\",\n    \"address\" : \"Awahdpuri\",\n    \"postalCode\" : \"462022\",\n    \"city\" : \"12345678\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/swiggy/saveUserAddress",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"swiggy",
+						"saveUserAddress"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
