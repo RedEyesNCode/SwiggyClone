@@ -4,6 +4,8 @@ package com.swiggy.swiggyClone.controllers;
 import com.swiggy.swiggyClone.dataModel.*;
 import com.swiggy.swiggyClone.dataModel.address.AddressBody;
 import com.swiggy.swiggyClone.dataModel.address.AddressUserResponse;
+import com.swiggy.swiggyClone.dataModel.cart.CartResponse;
+import com.swiggy.swiggyClone.dataModel.cart.OrderInsertBody;
 import com.swiggy.swiggyClone.dataModel.oneToOneRelation.ChildTable;
 import com.swiggy.swiggyClone.dataModel.oneToOneRelation.ParentTable;
 import com.swiggy.swiggyClone.exceptionHandling.ForbiddenException;
@@ -11,6 +13,7 @@ import com.swiggy.swiggyClone.service.ApiService;
 import io.jsonwebtoken.SignatureException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -205,6 +208,26 @@ public class ApiController {
         return apiService.getChildTables();
     }
 
+    @PostMapping("/addtoCart")
+    public StatusCodeModel addToCart(@RequestBody OrderInsertBody orderInsertBody){
+
+
+        return apiService.addtoCart(orderInsertBody);
+
+
+    }
+
+    @GetMapping("/getCart")
+    public ResponseEntity<?> getCart(@Param("userId") Long userId){
+        return apiService.getUserCart(userId);
+    }
+    @GetMapping("/getAllProducts")
+    public ResponseEntity<?> getAllProduct(){
+
+
+        return apiService.getAllProducts();
+
+    }
 
 
 

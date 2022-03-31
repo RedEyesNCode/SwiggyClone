@@ -1,4 +1,5 @@
-package com.swiggy.swiggyClone.dataModel;
+package com.swiggy.swiggyClone.dataModel.commonProduct;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -7,12 +8,11 @@ import javax.persistence.*;
 @Entity
 @Table
 @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
-public class MenuItemModel {
-
+public class AllProductTable {
 
     @Id
-    @SequenceGenerator(name = "recommended_menu_sequence", sequenceName = "recommended_menu_sequence",allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "recommended_menu_sequence")
+    @SequenceGenerator(name = "common_products_sequence", sequenceName = "common_products_sequence",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "common_products_sequence")
     private Long menuId;
 
 
@@ -20,13 +20,26 @@ public class MenuItemModel {
     private boolean isVeg;
     private Double price;
     private String description;
+    private String productType;
 
-    public MenuItemModel(Long menuId, String dishName, boolean isVeg, Double price, String description) {
+    public AllProductTable(String dishName, boolean isVeg, Double price, String description, String productType) {
+        this.dishName = dishName;
+        this.isVeg = isVeg;
+        this.price = price;
+        this.description = description;
+        this.productType = productType;
+    }
+
+    public AllProductTable(Long menuId, String dishName, boolean isVeg, Double price, String description, String productType) {
         this.menuId = menuId;
         this.dishName = dishName;
         this.isVeg = isVeg;
         this.price = price;
         this.description = description;
+        this.productType = productType;
+    }
+
+    public AllProductTable() {
     }
 
     public Long getMenuId() {
@@ -35,16 +48,6 @@ public class MenuItemModel {
 
     public void setMenuId(Long menuId) {
         this.menuId = menuId;
-    }
-
-    public MenuItemModel(String dishName, boolean isVeg, Double price, String description) {
-        this.dishName = dishName;
-        this.isVeg = isVeg;
-        this.price = price;
-        this.description = description;
-    }
-
-    public MenuItemModel() {
     }
 
     public String getDishName() {
@@ -77,5 +80,13 @@ public class MenuItemModel {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getProductType() {
+        return productType;
+    }
+
+    public void setProductType(String productType) {
+        this.productType = productType;
     }
 }

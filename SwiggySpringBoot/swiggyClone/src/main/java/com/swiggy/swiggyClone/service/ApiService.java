@@ -4,16 +4,21 @@ package com.swiggy.swiggyClone.service;
 import com.swiggy.swiggyClone.dataModel.*;
 import com.swiggy.swiggyClone.dataModel.address.AddressBody;
 import com.swiggy.swiggyClone.dataModel.address.AddressTable;
+import com.swiggy.swiggyClone.dataModel.cart.*;
 import com.swiggy.swiggyClone.dataModel.oneToOneRelation.ChildTable;
 import com.swiggy.swiggyClone.dataModel.oneToOneRelation.ParentTable;
 import com.swiggy.swiggyClone.repository.*;
 import com.swiggy.swiggyClone.repository.oneToOneRepository.ChildRepository;
 import com.swiggy.swiggyClone.repository.oneToOneRepository.ParentRepository;
+import com.swiggy.swiggyClone.repository.orderRepository.OrderDetailRepository;
+import com.swiggy.swiggyClone.repository.orderRepository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +45,10 @@ public class ApiService {
     private AddressRepository addressRepository;
     private ParentRepository parentRepository;
     private ChildRepository childRepository;
+    private OrderRepository orderRepository;
+    private OrderDetailRepository orderDetailRepository;
+    private AllProductsRepository allProductsRepository;
+
 
 
 
@@ -54,6 +63,9 @@ public class ApiService {
                       PopularCurationsRespository popularCurationsRespository, OffersRespository offersRespository,
                       PastOrdersRepository pastOrdersRepository,
                       AllergensRepo allergensRepo,
+                      AllProductsRepository allProductsRepository,
+                      OrderDetailRepository orderDetailRepository,
+                      OrderRepository orderRepository,
                       AddressRepository addressRepository,
                       ParentRepository parentRepository,
                       ChildRepository childRepository,
@@ -74,7 +86,10 @@ public class ApiService {
         this.allergensRepo = allergensRepo;
         this.addressRepository = addressRepository;
         this.snacksMenuRepository = snacksMenuRepository;
+        this.orderRepository = orderRepository;
+        this.orderDetailRepository = orderDetailRepository;
 
+        this.allProductsRepository = allProductsRepository;
         this.parentRepository = parentRepository;
 
 
@@ -280,6 +295,65 @@ public class ApiService {
         return childRepository.findAll();
 
     }
+
+
+    public StatusCodeModel addtoCart(OrderInsertBody orderInsertBody){
+
+        Long userId = orderInsertBody.getUserId();
+        Long  restaurantId = orderInsertBody.getRestaurantId();
+        Long  productId = orderInsertBody.getProductId();
+        OrderTable orderTable = orderRepository.save(new OrderTable(userId));
+        String localTime = LocalTime.now().toString();
+        orderDetailRepository.save(new OrderDetailTable(orderTable.getOrderId(),restaurantId,productId,localTime));
+
+        return new StatusCodeModel("success",200,"Item Added to Cart SuccessFully");
+
+
+
+    }
+
+    public ResponseEntity<?> getAllProducts(){
+        return ResponseEntity.ok(new AllProductsResponse("success",200,"Record Found",allProductsRepository.findAll()));
+    }
+
+
+    public ResponseEntity<?> getUserCart(Long userId){
+        List<OrderTable> userOrders = orderRepository.findAllOrderForUserId(userId);
+        List<Long> userOrderIds = new ArrayList<>();
+        for (int i = 0; i < userOrders.size(); i++) {
+            userOrderIds.add(userOrders.get(i).getOrderId());
+        }
+        List<OrderDetailTable> orderDetailTables = new ArrayList<>();
+        for (int i = 0; i < userOrderIds.size(); i++) {
+            orderDetailTables.add(orderDetailRepository.findOrderDetailsByOrderId(userOrderIds.get(i)));
+        }
+
+        List<CartListData> cartLists = new ArrayList<>();
+
+        if (orderDetailTables.size()!=0){
+            for (int i = 0; i < orderDetailTables.size(); i++) {
+                CartListData cartListData = new CartListData();
+                Long restaurantId = orderDetailTables.get(i).getRestaurantId();
+                Long productId = orderDetailTables.get(i).getProductId();
+                cartListData.setData(new CartData(restaurantId,restaurantDetailRepository.getById(restaurantId)));
+                cartListData.setOrderId(orderDetailTables.get(i).getOrderId());
+                cartListData.setProduct(new ProductData(productId,allProductsRepository.getById(productId)));
+                cartLists.add(cartListData);
+            }
+            CartResponse cartResponse = new CartResponse("success" ,200,"Record Found",cartLists);
+            return ResponseEntity.ok(cartResponse);
+
+        }else {
+
+            return ResponseEntity.ok(new StatusCodeModel("fail",200,"Record Not Found"));
+        }
+
+
+
+    }
+
+
+
 
 
 

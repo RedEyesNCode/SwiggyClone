@@ -24,6 +24,7 @@ public class DatabaseConfiguration {
                                         PopularCurationsRespository popularCurationsRespository,
                                         OffersRespository offersRespository, UserDataRepository userDataRepository,
                                         PastOrdersRepository pastOrdersRepository,
+                                        AllProductsRepository allProductsRepository,
                                         PizzaMenuItemRepository pizzaMenuItemRepository, DessertMenuRepository dessertMenuRepository,
                                         MenuItemRepository menuItemRepository, SnacksMenuRepository snacksMenuRepository,
                                         AddressRepository addressRepository, ParentRepository parentRepository){
@@ -135,9 +136,36 @@ public class DatabaseConfiguration {
             dessertMenuRepository.saveAll(dessert);
 
 
+            //Building the Common Products or All Products Table.
 
+            List<com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable> allProductTables = new ArrayList<>();
+            allProductTables.add(new com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable("Chocolate Brownie Shake",true,220.00,"Severs 1","dessert"));
+            allProductTables.add(new com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable("Butterscotch Milkshake Brownie Shake",true,133.00,"Severs 1","dessert"));
+            allProductTables.add(new com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable("Mango Milkshake Brownie Shake",true,220.00,"Servers 1","dessert"));
+            allProductTables.add(new com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable("Strawberry Brownie Shake",true,133.00,"Severs 1","dessert"));
 
+            allProductTables.add(new com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable("Paneer Cheese Pizza ",true,262.00,"Serves 1","pizza"));
+            allProductTables.add(new com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable("Mushroom Cheese Pizza",true,258.00,"Battered and deep fried paneer cubes, crunchy onions and capsicums combined together in a spicy and slightly sour chilli sauce.","pizza"));
+            allProductTables.add(new com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable("Hot Garlic Pizza ",true,89.00,"Serves 1","pizza"));
+            allProductTables.add(new com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable("Veg Cheese Pizza ",true,215.00,"Rich and creamy dish, made of mildly sweet gravy made with butter, cashewnut paste, tomato gravy, paneer and traditional spices.","pizza"));
+            allProductTables.add(new com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable("Margherita Pizza",true,235.00,"| Serves-1 || Medium spicy | Tasty and crispy dish made of chopped onions, cauliflower, garlic, chilli fried until golden and coated in cornflour salt with medley of sauce rich in sweet,sour and spicy flavours.","pizza"));
+            allProductTables.add(new com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable("Onion Capsicum Pizza",true,222.00,"| Serves-1 || Medium spicy |","pizza"));
 
+            allProductTables.add(new com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable("Crispy Corn ",true,250.00,"Serves 1","snacks"));
+            allProductTables.add(new com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable("Chilli Paneer(Serves 1).",true,258.00,"Battered and deep fried paneer cubes, crunchy onions and capsicums combined together in a spicy and slightly sour chilli sauce.","snacks"));
+            allProductTables.add(new com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable("Butter Paneer Masala ",true,89.00,"Serves 1","snacks"));
+            allProductTables.add(new com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable("Paneer 65 ",true,248.00,"Rich and creamy dish, made of mildly sweet gravy made with butter, cashewnut paste, tomato gravy, paneer and traditional spices.","snacks"));
+            allProductTables.add(new com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable("Veg Kothay",true,160.00,"| Serves-1 || Medium spicy | Tasty and crispy dish made of chopped onions, cauliflower, garlic, chilli fried until golden and coated in cornflour salt with medley of sauce rich in sweet,sour and spicy flavours.","snacks"));
+            allProductTables.add(new com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable("Veg Combi",true,180.00,"| Serves-1 || Medium spicy |","snacks"));
+
+            allProductTables.add(new com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable("Veg Biryani",true,89.00,"Serves 1","recommended"));
+            allProductTables.add(new com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable("Sagar Gaire Special Thali.",true,280.00,"| Serves-1 || Medium spicy | (Paneer, Chole, Mix Veg, Dal Makhani, Rajma, Rice, 3 Roti/2 laccha paratha, 1 Sweet, Salad, and Achar)","recommended"));
+            allProductTables.add(new com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable("Butter Paneer Masala ",true,89.00,"Serves 1","recommended"));
+            allProductTables.add(new com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable("Laccha Paratha ",true,160.00,"Rich and creamy dish, made of mildly sweet gravy made with butter, cashewnut paste, tomato gravy, paneer and traditional spices.","recommended"));
+            allProductTables.add(new com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable("Manchurian Fried Rice",true,160.00,"| Serves-1 || Medium spicy | Yummy balls of mixed veggies fried until golden and coated in a medley of sauce rich in sweet, sour and spicy flavours. Further tossed with fried rice.","recommended"));
+            allProductTables.add(new com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable("Steam Veg. Momos(8 pc)",true,110.00,"| Serves-1 || Medium spicy |","recommended"));
+
+            allProductsRepository.saveAll(allProductTables);
 
             List<PopularCurations> popularCurations = new ArrayList<>();
             PopularCurations popularCurations1 = new PopularCurations("Biryani");

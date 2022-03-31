@@ -8,10 +8,12 @@ import javax.persistence.*;
 public class DessertMenuItemModel {
 
     @Id
-    @SequenceGenerator(name = "recommended_menu_sequence", sequenceName = "recommended_menu_sequence",allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "recommended_menu_sequence")
-    private Long menuId;
+    @SequenceGenerator(name = "desert_menu_sequence", sequenceName = "desert_menu_sequence",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "desert_menu_sequence")
+    private Long desertMenuId;
 
+    public DessertMenuItemModel() {
+    }
 
     private String dishName;
     private boolean isVeg;
@@ -19,7 +21,7 @@ public class DessertMenuItemModel {
     private String description;
 
     public DessertMenuItemModel(Long menuId, String dishName, boolean isVeg, Double price, String description) {
-        this.menuId = menuId;
+        this.desertMenuId = menuId;
         this.dishName = dishName;
         this.isVeg = isVeg;
         this.price = price;
@@ -33,12 +35,12 @@ public class DessertMenuItemModel {
         this.description = description;
     }
 
-    public Long getMenuId() {
-        return menuId;
+    public Long getDesertMenuId() {
+        return desertMenuId;
     }
 
-    public void setMenuId(Long menuId) {
-        this.menuId = menuId;
+    public void setDesertMenuId(Long desertMenuId) {
+        this.desertMenuId = desertMenuId;
     }
 
     public String getDishName() {
