@@ -2,15 +2,18 @@ package com.swiggy.swiggyClone.service;
 
 
 import com.swiggy.swiggyClone.dataModel.*;
-import com.swiggy.swiggyClone.exceptionHandling.CommonException;
-import com.swiggy.swiggyClone.exceptionHandling.ForbiddenException;
+import com.swiggy.swiggyClone.dataModel.address.AddressBody;
+import com.swiggy.swiggyClone.dataModel.address.AddressTable;
+import com.swiggy.swiggyClone.dataModel.oneToOneRelation.ChildTable;
+import com.swiggy.swiggyClone.dataModel.oneToOneRelation.ParentTable;
 import com.swiggy.swiggyClone.repository.*;
+import com.swiggy.swiggyClone.repository.oneToOneRepository.ChildRepository;
+import com.swiggy.swiggyClone.repository.oneToOneRepository.ParentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +38,10 @@ public class ApiService {
 
 
     private AddressRepository addressRepository;
+    private ParentRepository parentRepository;
+    private ChildRepository childRepository;
+
+
 
 
 
@@ -48,12 +55,14 @@ public class ApiService {
                       PastOrdersRepository pastOrdersRepository,
                       AllergensRepo allergensRepo,
                       AddressRepository addressRepository,
+                      ParentRepository parentRepository,
+                      ChildRepository childRepository,
                       DessertMenuRepository dessertMenuRepository, MenuItemRepository menuItemRepository,
                       PizzaMenuItemRepository pizzaMenuItemRepository, SnacksMenuRepository snacksMenuRepository) {
         this.userDataRepository = userDataRepository;
         this.wishListRepository = wishListRepository;
         this.restaurantRepository = restaurantRepository;
-
+        this.childRepository = childRepository;
         this.pastOrdersRepository = pastOrdersRepository;
         this.restaurantDetailRepository = restaurantDetailRepository;
         this.popularBrandsRepository = popularBrandsRepository;
@@ -65,6 +74,8 @@ public class ApiService {
         this.allergensRepo = allergensRepo;
         this.addressRepository = addressRepository;
         this.snacksMenuRepository = snacksMenuRepository;
+
+        this.parentRepository = parentRepository;
 
 
 
@@ -255,6 +266,21 @@ public class ApiService {
                 addressBody.getAddress(), addressBody.getPostalCode(), addressBody.getCity()));
         return new StatusCodeModel("success",200,"Address Saved Successfully !");
     }
+
+    //Get all the ParentTable Entries which also gets the data from the
+    //Child Table as it has one to one relation
+    public List<ParentTable> getParentTables(){
+
+       return parentRepository.findAll();
+
+    }
+
+    public List<ChildTable> getChildTables(){
+
+        return childRepository.findAll();
+
+    }
+
 
 
 

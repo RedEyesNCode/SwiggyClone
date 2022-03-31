@@ -2,6 +2,10 @@ package com.swiggy.swiggyClone.controllers;
 
 
 import com.swiggy.swiggyClone.dataModel.*;
+import com.swiggy.swiggyClone.dataModel.address.AddressBody;
+import com.swiggy.swiggyClone.dataModel.address.AddressUserResponse;
+import com.swiggy.swiggyClone.dataModel.oneToOneRelation.ChildTable;
+import com.swiggy.swiggyClone.dataModel.oneToOneRelation.ParentTable;
 import com.swiggy.swiggyClone.exceptionHandling.ForbiddenException;
 import com.swiggy.swiggyClone.service.ApiService;
 import io.jsonwebtoken.SignatureException;
@@ -179,7 +183,6 @@ public class ApiController {
         }
 
     }
-
     @PostMapping("/saveUserAddress")
     public StatusCodeModel saveUserAddressByID(@RequestBody AddressBody addressBody){
         return apiService.saveUserAddress(addressBody);
@@ -191,6 +194,16 @@ public class ApiController {
         return "Error 403";
     }
 
+
+    @GetMapping("/getParentTable")
+    public List<ParentTable> getAllParentTables(){
+        return apiService.getParentTables();
+    }
+    @GetMapping("/getChildTables")
+    public List<ChildTable> getAllChildTables(){
+
+        return apiService.getChildTables();
+    }
 
 
 

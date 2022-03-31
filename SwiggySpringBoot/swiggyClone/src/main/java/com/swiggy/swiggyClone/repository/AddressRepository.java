@@ -1,8 +1,7 @@
 package com.swiggy.swiggyClone.repository;
 
 
-import com.swiggy.swiggyClone.dataModel.AddressTable;
-import com.swiggy.swiggyClone.dataModel.WishListModel;
+import com.swiggy.swiggyClone.dataModel.address.AddressTable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

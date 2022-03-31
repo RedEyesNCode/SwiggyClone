@@ -1,4 +1,6 @@
-package com.swiggy.swiggyClone.dataModel;
+package com.swiggy.swiggyClone.dataModel.address;
+
+import com.swiggy.swiggyClone.dataModel.StatusCodeModel;
 
 import java.util.List;
 

@@ -1,6 +1,16 @@
-package com.swiggy.swiggyClone.dataModel;
+package com.swiggy.swiggyClone.dataModel.address;
 
-public class AddressBody {
+
+import javax.persistence.*;
+
+@Entity
+@Table
+public class AddressTable {
+
+    @Id
+    @SequenceGenerator(name = "address_data_sequence", sequenceName = "address_data_sequence",allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "address_data_sequence")
+    private Long addressId;
 
 
     private int userId;
@@ -12,7 +22,9 @@ public class AddressBody {
     private String postalCode;
     private String city;
 
-    public AddressBody(int userId, String firstName, String lastName, String phoneNumber, String apartMent, String address, String postalCode, String city) {
+
+    public AddressTable(Long addressId, int userId, String firstName, String lastName, String phoneNumber, String apartMent, String address, String postalCode, String city) {
+        this.addressId = addressId;
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -21,6 +33,27 @@ public class AddressBody {
         this.address = address;
         this.postalCode = postalCode;
         this.city = city;
+    }
+
+    public AddressTable(int userId, String firstName, String lastName, String phoneNumber, String apartMent, String address, String postalCode, String city) {
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.apartMent = apartMent;
+        this.address = address;
+        this.postalCode = postalCode;
+        this.city = city;
+    }
+
+
+
+    public Long getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(Long addressId) {
+        this.addressId = addressId;
     }
 
     public int getUserId() {

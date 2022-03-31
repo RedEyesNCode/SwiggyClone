@@ -1,7 +1,11 @@
 package com.swiggy.swiggyClone.configuration;
 
 import com.swiggy.swiggyClone.dataModel.*;
+import com.swiggy.swiggyClone.dataModel.address.AddressTable;
+import com.swiggy.swiggyClone.dataModel.oneToOneRelation.ChildTable;
+import com.swiggy.swiggyClone.dataModel.oneToOneRelation.ParentTable;
 import com.swiggy.swiggyClone.repository.*;
+import com.swiggy.swiggyClone.repository.oneToOneRepository.ParentRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,8 +25,8 @@ public class DatabaseConfiguration {
                                         OffersRespository offersRespository, UserDataRepository userDataRepository,
                                         PastOrdersRepository pastOrdersRepository,
                                         PizzaMenuItemRepository pizzaMenuItemRepository, DessertMenuRepository dessertMenuRepository,
-                                        MenuItemRepository menuItemRepository,SnacksMenuRepository snacksMenuRepository,
-                                        AddressRepository addressRepository){
+                                        MenuItemRepository menuItemRepository, SnacksMenuRepository snacksMenuRepository,
+                                        AddressRepository addressRepository, ParentRepository parentRepository){
 
 
         return args -> {
@@ -221,6 +225,15 @@ public class DatabaseConfiguration {
             addressTables.add(new AddressTable(3,"Khausal","Sir","43636737","HNO 45 RACHNA VIHAR","BHEL","891045","Clark County"));
 
             addressRepository.saveAll(addressTables);
+
+
+            List<ParentTable> parentTables = new ArrayList<>();
+            parentTables.add(new ParentTable("Ashutosh","Singh",new ChildTable("AWADHPURI","EMAIL-ADDRESS")));
+            parentTables.add(new ParentTable("Ashutosh","Singh",new ChildTable("AWADHPURI","EMAIL-ADDRESS")));
+            parentTables.add(new ParentTable("Ashutosh","Singh",new ChildTable("AWADHPURI","EMAIL-ADDRESS")));
+            parentTables.add(new ParentTable("Ashutosh","Singh",new ChildTable("AWADHPURI","EMAIL-ADDRESS")));
+            parentTables.add(new ParentTable("Ashutosh","Singh",new ChildTable("AWADHPURI","EMAIL-ADDRESS")));
+            parentRepository.saveAll(parentTables);
 
 
 
