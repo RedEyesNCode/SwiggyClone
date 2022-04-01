@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.kotlinapp.swiggyclone.auth.model.LoginInputBody
 import com.kotlinapp.swiggyclone.auth.viewModel.LoginViewModel
 import com.kotlinapp.swiggyclone.base.BaseActivity
 import com.kotlinapp.swiggyclone.databinding.ActivityLoginBinding
@@ -43,7 +44,18 @@ class LoginActivity : BaseActivity() {
     }
     fun initViewClick(){
         binding!!.btnLogin.setOnClickListener {
+            var number:String = binding!!.edtNumber.text.toString()
+            var password:String = binding!!.edtPassword.text.toString()
+            //Here we are defining that the binding variable cannot be null;
+            var loginInputBody = LoginInputBody()
+            loginInputBody.password = password
+            loginInputBody.username = number
+
+
+
+            /*
             startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
+*/
         }
 
 

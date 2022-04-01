@@ -67,12 +67,18 @@ public class ApiController {
     }
 
     @GetMapping("/getAllUsers")
-    public UsersJson getAllUsers(){
+    public UsersJson getAllUsers() throws ForbiddenException{
         UsersJson usersJson =  new UsersJson();
         usersJson.setCode(200);
         usersJson.setStatus("success");
-        usersJson.setUsers(apiService.getAllUsers());
-        return usersJson;
+        try{
+            usersJson.setUsers(apiService.getAllUsers());
+            return usersJson;
+        }catch (Exception e){
+            throw new ForbiddenException("Invalid Token");
+
+        }
+
 
     }
 

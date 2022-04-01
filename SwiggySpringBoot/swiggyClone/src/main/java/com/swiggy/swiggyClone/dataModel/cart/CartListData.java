@@ -1,6 +1,7 @@
 package com.swiggy.swiggyClone.dataModel.cart;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.swiggy.swiggyClone.dataModel.placeOrder.PaymentDetailTable;
 
 import java.io.Serializable;
 
@@ -11,9 +12,25 @@ public class CartListData implements Serializable {
     private Long orderId;
     private CartData data;
     private ProductData product;
+    private PaymentDetailTable paymentDetail;
 
 
     public CartListData() {
+    }
+
+    public CartListData(Long orderId, CartData data, ProductData product, PaymentDetailTable paymentDetail) {
+        this.orderId = orderId;
+        this.data = data;
+        this.product = product;
+        this.paymentDetail = paymentDetail;
+    }
+
+    public PaymentDetailTable getPaymentDetail() {
+        return paymentDetail;
+    }
+
+    public void setPaymentDetail(PaymentDetailTable paymentDetail) {
+        this.paymentDetail = paymentDetail;
     }
 
     public CartListData(Long orderId, CartData data, ProductData product) {

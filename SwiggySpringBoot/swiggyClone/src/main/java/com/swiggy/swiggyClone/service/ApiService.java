@@ -7,6 +7,7 @@ import com.swiggy.swiggyClone.dataModel.address.AddressTable;
 import com.swiggy.swiggyClone.dataModel.cart.*;
 import com.swiggy.swiggyClone.dataModel.oneToOneRelation.ChildTable;
 import com.swiggy.swiggyClone.dataModel.oneToOneRelation.ParentTable;
+import com.swiggy.swiggyClone.dataModel.placeOrder.PaymentDetailTable;
 import com.swiggy.swiggyClone.repository.*;
 import com.swiggy.swiggyClone.repository.oneToOneRepository.ChildRepository;
 import com.swiggy.swiggyClone.repository.oneToOneRepository.ParentRepository;
@@ -49,6 +50,9 @@ public class ApiService {
     private OrderDetailRepository orderDetailRepository;
     private AllProductsRepository allProductsRepository;
 
+    private PaymentDetailRepository paymentDetailRepository;
+
+
 
 
 
@@ -63,6 +67,7 @@ public class ApiService {
                       PopularCurationsRespository popularCurationsRespository, OffersRespository offersRespository,
                       PastOrdersRepository pastOrdersRepository,
                       AllergensRepo allergensRepo,
+                      PaymentDetailRepository paymentDetailRepository,
                       AllProductsRepository allProductsRepository,
                       OrderDetailRepository orderDetailRepository,
                       OrderRepository orderRepository,
@@ -88,7 +93,7 @@ public class ApiService {
         this.snacksMenuRepository = snacksMenuRepository;
         this.orderRepository = orderRepository;
         this.orderDetailRepository = orderDetailRepository;
-
+        this.paymentDetailRepository = paymentDetailRepository;
         this.allProductsRepository = allProductsRepository;
         this.parentRepository = parentRepository;
 
@@ -298,12 +303,25 @@ public class ApiService {
 
 
     public StatusCodeModel addtoCart(OrderInsertBody orderInsertBody){
-
+        String localTime = LocalTime.now().toString();
         Long userId = orderInsertBody.getUserId();
         Long  restaurantId = orderInsertBody.getRestaurantId();
         Long  productId = orderInsertBody.getProductId();
         OrderTable orderTable = orderRepository.save(new OrderTable(userId));
-        String localTime = LocalTime.now().toString();
+        PaymentDetailTable paymentDetailTable = new PaymentDetailTable();
+        paymentDetailTable.setUserId(orderTable.getUserId());
+        paymentDetailTable.setOrderId(orderTable.getOrderId());
+        paymentDetailTable.setAmount(allProductsRepository.getById(productId).getPrice());
+        paymentDetailTable.setCreatedAt(localTime);
+        paymentDetailTable.setOrderStatus("Placed");
+        paymentDetailTable.setProvider("Cash");
+        paymentDetailRepository.save(paymentDetailTable);
+
+
+
+
+
+
         orderDetailRepository.save(new OrderDetailTable(orderTable.getOrderId(),restaurantId,productId,localTime));
 
         return new StatusCodeModel("success",200,"Item Added to Cart SuccessFully");
@@ -335,9 +353,11 @@ public class ApiService {
                 CartListData cartListData = new CartListData();
                 Long restaurantId = orderDetailTables.get(i).getRestaurantId();
                 Long productId = orderDetailTables.get(i).getProductId();
+                Long paymentDetailId = orderDetailTables.get(i).getOrderDetailId();
                 cartListData.setData(new CartData(restaurantId,restaurantDetailRepository.getById(restaurantId)));
                 cartListData.setOrderId(orderDetailTables.get(i).getOrderId());
                 cartListData.setProduct(new ProductData(productId,allProductsRepository.getById(productId)));
+                /*cartListData.setPaymentDetail(paymentDetailRepository.getById(paymentDetailId));*/
                 cartLists.add(cartListData);
             }
             CartResponse cartResponse = new CartResponse("success" ,200,"Record Found",cartLists);

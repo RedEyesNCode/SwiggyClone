@@ -3,6 +3,8 @@ package com.kotlinapp.swiggyclone.auth.repository
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.kotlinapp.swiggyclone.auth.model.LoginDataClass
+import com.kotlinapp.swiggyclone.auth.model.LoginInputBody
 import com.kotlinapp.swiggyclone.base.StatusCodeModel
 import com.kotlinapp.swiggyclone.retrofitService.RetrofitService
 import retrofit2.Call
@@ -12,6 +14,39 @@ import retrofit2.Response
 class LoginRepository {
 
     var statusCodeMutableLiveData = MutableLiveData<StatusCodeModel>()
+    var loginDataClass = MutableLiveData<LoginDataClass>()
+
+
+
+    //Calling the login api and get Access Token from the Response
+
+    fun callLoginApi(context: Context,loginInputBody: LoginInputBody):MutableLiveData<LoginDataClass>{
+        var call:Call<LoginDataClass>
+        call = RetrofitService().apiInterface.loginApi(loginInputBody)
+        call.enqueue(object :Callback<LoginDataClass>{
+
+            override fun onResponse(
+                call: Call<LoginDataClass>,
+                response: Response<LoginDataClass>
+            ) {
+
+                if(response.code()==200){
+
+                }else{
+                    var serverHandling:String =
+                }
+            }
+
+            override fun onFailure(call: Call<LoginDataClass>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
+
+
+
+
+
+    }
 
     //Calling the Api to Send the Otp to Required Number.
     fun sendOtp(context: Context): MutableLiveData<StatusCodeModel>{
