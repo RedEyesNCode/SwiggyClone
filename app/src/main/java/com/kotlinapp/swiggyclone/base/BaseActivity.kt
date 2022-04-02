@@ -1,6 +1,9 @@
 package com.kotlinapp.swiggyclone.base
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 
 open class BaseActivity :AppCompatActivity() {
@@ -36,5 +39,13 @@ open class BaseActivity :AppCompatActivity() {
 
 
     }
+
+
+
+    fun showLog(string:String){
+        Log.i("ALLTHISFOR4HEARTS",string)
+    }
+
+
 
 }

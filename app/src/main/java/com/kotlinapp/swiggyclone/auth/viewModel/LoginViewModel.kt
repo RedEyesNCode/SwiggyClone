@@ -30,7 +30,6 @@ class LoginViewModel:ViewModel() {
     var loginRepository:LoginRepository?=null
     init {
 
-        loginDataClassLiveData = MutableLiveData<LoginDataClass>()
         loginRepository = LoginRepository()
     }
 

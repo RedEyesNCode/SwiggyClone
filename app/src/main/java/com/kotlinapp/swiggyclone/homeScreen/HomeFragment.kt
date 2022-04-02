@@ -1,13 +1,17 @@
 package com.kotlinapp.swiggyclone.homeScreen
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.kotlinapp.swiggyclone.R
 import com.kotlinapp.swiggyclone.databinding.FragmentHomeBinding
+import com.kotlinapp.swiggyclone.sharedPreferences.AppSession
+import com.kotlinapp.swiggyclone.sharedPreferences.Constant
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -46,8 +50,6 @@ class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater,container,false)
-
-
 
 
         return binding.root

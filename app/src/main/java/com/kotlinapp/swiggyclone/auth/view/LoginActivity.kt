@@ -1,10 +1,10 @@
 package com.kotlinapp.swiggyclone.auth.view
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.kotlinapp.swiggyclone.auth.model.LoginDataClass
 import com.kotlinapp.swiggyclone.auth.model.LoginInputBody
@@ -14,6 +14,7 @@ import com.kotlinapp.swiggyclone.databinding.ActivityLoginBinding
 import com.kotlinapp.swiggyclone.homeScreen.HomeActivity
 import com.kotlinapp.swiggyclone.sharedPreferences.AppSession
 import com.kotlinapp.swiggyclone.sharedPreferences.Constant
+
 
 class LoginActivity : BaseActivity() {
 
@@ -41,12 +42,6 @@ class LoginActivity : BaseActivity() {
         loginViewModel.testApi(this@LoginActivity)
 
         //By !! this operator we are telling kotlin that this can't be null we are sure of that
-
-
-
-
-
-
     }
     fun initViewClick(){
         var loginInputBody = LoginInputBody()
@@ -60,15 +55,33 @@ class LoginActivity : BaseActivity() {
             var loginInputBody = LoginInputBody()
             loginInputBody.password = password
             loginInputBody.username = number
+            showLoader()
            var loginLiveData = loginViewModel.loginApiCall(this@LoginActivity, loginInputBody)
+            loginLiveData.observe(this,{
+                //Storing the accessToken in the session
 
-          loginLiveData.observe(this,{
+
+                hideLoader()
+                if(it.code==200 && it.status!!.contains("success")){
+                    AppSession(this@LoginActivity).setValue(Constant().ACCESS_TOKEN,it.Token,this@LoginActivity)
+
+                    var stringAccessToken  = AppSession(this@LoginActivity).getValue(Constant().ACCESS_TOKEN,this@LoginActivity)
+                    if(stringAccessToken==null){
+                        showLog("ERROR_SHARED_PREFERENCES")
+                    }else{
+                        showLog("STORED")
+                        showLog(stringAccessToken)
+                    }
+                    startActivity(Intent(this@LoginActivity,HomeActivity::class.java))
 
 
-              if(it.code==200){
-                  Toast.makeText(this@LoginActivity,it.message,Toast.LENGTH_LONG).show()
-              }
-          })
+
+
+
+                }
+
+
+            })
         }
 
 
@@ -76,3 +89,26 @@ class LoginActivity : BaseActivity() {
     }
 
 }
+
+
+
+
+//Save token here
+//THE MOST BASIC SHARED PREFERENCES METHOD IN KOTLIN
+
+/* //Save token here
+ val token = it.Token
+ val preferences: SharedPreferences =
+     this@LoginActivity.getSharedPreferences("MY_APP", Context.MODE_PRIVATE)
+ preferences.edit().putString("TOKEN", token).apply()
+
+
+ //Retrieve token wherever necessary
+
+
+ //Retrieve token wherever necessary
+ val preferences2: SharedPreferences =
+     this@LoginActivity.getSharedPreferences("MY_APP", Context.MODE_PRIVATE)
+ val retrivedToken =
+     preferences2.getString("TOKEN", null) //second parameter default value.
+ showLog(retrivedToken+"NEW")*/
