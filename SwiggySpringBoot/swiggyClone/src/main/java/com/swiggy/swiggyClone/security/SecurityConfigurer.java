@@ -57,11 +57,10 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable()
-			.authorizeRequests().antMatchers("/authJWT").permitAll()
+			.authorizeRequests().antMatchers("/swiggy/authJWT","/testApi","authJWT").permitAll()
 			.anyRequest().authenticated()
 			.and().sessionManagement()
-			.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-				.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).accessDeniedHandler(accessDeniedHandler());
+			.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
 		http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
