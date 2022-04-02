@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.kotlinapp.swiggyclone.auth.model.LoginDataClass
 import com.kotlinapp.swiggyclone.auth.model.LoginInputBody
@@ -35,6 +36,7 @@ class LoginActivity : BaseActivity() {
 */
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
+
         initViewClick()
 
         loginViewModel.testApi(this)
@@ -56,37 +58,41 @@ class LoginActivity : BaseActivity() {
             loginInputBody.password = password
             loginInputBody.username = number
             showLoader()
-           var loginLiveData = loginViewModel.loginApiCall(this@LoginActivity, loginInputBody)
-            loginLiveData.observe(this,{
-                //Storing the accessToken in the session
-
-
-                hideLoader()
-                if(it.code==200 && it.status!!.contains("success")){
-                    AppSession(this@LoginActivity).setValue(Constant().ACCESS_TOKEN,it.Token,this@LoginActivity)
-
-                    var stringAccessToken  = AppSession(this@LoginActivity).getValue(Constant().ACCESS_TOKEN,this@LoginActivity)
-                    if(stringAccessToken==null){
-                        showLog("ERROR_SHARED_PREFERENCES")
-                    }else{
-                        showLog("STORED")
-                        showLog(stringAccessToken)
-                    }
-                    startActivity(Intent(this@LoginActivity,HomeActivity::class.java))
-
-
-
-
-
-                }
-
-
-            })
+           loginViewModel.loginApiCall(this@LoginActivity, loginInputBody)
+            attachObservers()
         }
 
 
 
     }
+    fun attachObservers(){
+        loginViewModel.getLoginResponseLiveData().observe(this, Observer {
+
+            hideLoader()
+            if (it.code == 200 && it.status!!.contains("success")) {
+                AppSession(this@LoginActivity).setValue(Constant().ACCESS_TOKEN,it.Token,this@LoginActivity)
+
+                var stringAccessToken  = AppSession(this@LoginActivity).getValue(Constant().ACCESS_TOKEN,this@LoginActivity)
+                if(stringAccessToken==null){
+                    showLog("ERROR_SHARED_PREFERENCES")
+                }else{
+                    showLog("STORED")
+                    showLog(stringAccessToken)
+                }
+                startActivity(Intent(this@LoginActivity,HomeActivity::class.java))
+            }
+        })
+
+
+
+
+
+
+
+
+
+
+        }
 
 }
 

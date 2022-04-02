@@ -34,10 +34,21 @@ class LoginViewModel:ViewModel() {
     }
 
 
+
+
     fun testApi(context: Context):MutableLiveData<StatusCodeModel>{
         verifyOtpLiveData = LoginRepository().sendOtp(context)
         return verifyOtpLiveData as MutableLiveData<StatusCodeModel>
 
+
+    }
+
+    fun getLoginResponseLiveData():LiveData<LoginDataClass>{
+        if(loginDataClassLiveData==null){
+            loginDataClassLiveData = MutableLiveData<LoginDataClass>()
+        }
+
+        return loginDataClassLiveData as MutableLiveData<LoginDataClass>
 
     }
 
