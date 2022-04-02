@@ -3,13 +3,18 @@ package com.kotlinapp.swiggyclone.homeScreen
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.kotlinapp.swiggyclone.R
+import com.kotlinapp.swiggyclone.auth.viewModel.LoginViewModel
 import com.kotlinapp.swiggyclone.databinding.FragmentHomeBinding
+import com.kotlinapp.swiggyclone.homeScreen.viewModel.HomeViewModel
 import com.kotlinapp.swiggyclone.sharedPreferences.AppSession
 import com.kotlinapp.swiggyclone.sharedPreferences.Constant
 
@@ -29,6 +34,7 @@ class HomeFragment : Fragment() {
     private var param2: String? = null
     val tagFragment:String = HomeFragment.javaClass.simpleName
     private lateinit var binding:FragmentHomeBinding
+    private lateinit var homeViewModel: HomeViewModel
     var contextFragment: Context? = null
 
     override fun onAttach(context: Context) {
@@ -46,6 +52,13 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        homeViewModel = this!!.run {
+            ViewModelProvider(this).get(HomeViewModel::class.java)
+        }
+        initView()
+
+
+
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -73,5 +86,20 @@ class HomeFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+    fun initView(){
+
+
+
+        var accessToken : String? = AppSession(contextFragment!!).getValue(Constant().ACCESS_TOKEN,contextFragment!!)
+        Log.i("ALLTHISFOR4HEARTS",accessToken!!)
+        homeViewModel.getHomeResponse(requireContext(),accessToken)
+        homeViewModel.homeMutableLiveData.observe(this, Observer {
+
+            Toast.makeText(contextFragment,it.message,Toast.LENGTH_SHORT).show()
+
+
+
+        })
     }
 }

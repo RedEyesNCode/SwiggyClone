@@ -37,7 +37,6 @@ class LoginActivity : BaseActivity() {
 */
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
-
         initViewClick()
 
         loginViewModel.testApi(this)
@@ -61,6 +60,7 @@ class LoginActivity : BaseActivity() {
             showLoader()
            loginViewModel.loginApiCall(this@LoginActivity, loginInputBody)
             attachObservers()
+
         }
 
 
