@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -80,6 +81,9 @@ class LoginActivity : BaseActivity() {
                     showLog(stringAccessToken)
                 }
                 startActivity(Intent(this@LoginActivity,HomeActivity::class.java))
+            }else{
+
+                Toast.makeText(this@LoginActivity,"Login Failed",Toast.LENGTH_SHORT).show()
             }
         })
 

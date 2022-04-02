@@ -12,25 +12,6 @@ import android.content.SharedPreferences
      init {
          appPreferences = context.getSharedPreferences(Constant().PREFERENCES_NAME,Context.MODE_PRIVATE)
      }
-    fun getInstance(context: Context):AppSession{
-        if(appPreferences==null){
-              appSession = AppSession(context)
-            appPreferences  =context.getSharedPreferences(Constant().PREFERENCES_NAME,Context.MODE_PRIVATE)
-
-        }
-        appPreferences  =context.getSharedPreferences(Constant().PREFERENCES_NAME,Context.MODE_PRIVATE)
-
-        return appSession!!
-
-    }
-     fun getAppSession(context: Context):SharedPreferences{
-
-
-         return context.getSharedPreferences(Constant().PREFERENCES_NAME,Context.MODE_PRIVATE)
-
-
-
-     }
      fun clearAll(){
 
          appPreferences.edit().clear().commit()
