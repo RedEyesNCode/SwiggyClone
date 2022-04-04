@@ -223,6 +223,7 @@ public class ApiController {
 
     }
 
+    //Api to get cart information with the id of the user.
     @GetMapping("/getCart")
     public ResponseEntity<?> getCart(@Param("userId") Long userId){
         return apiService.getUserCart(userId);
@@ -234,6 +235,34 @@ public class ApiController {
         return apiService.getAllProducts();
 
     }
+
+    //APi to get basic swiggy genie service.
+    @GetMapping("/genie")
+    public ResponseEntity<?> getBasicSwiggyGenieProducts(){
+
+        return apiService.getBasicGenieResponse();
+
+    }
+
+
+    //Api to get the place the order by Orderid, addressId, and Userid
+    @GetMapping("/placeOrder")
+    public ResponseEntity<?> placeOrderCustomer(@RequestBody PlaceOrderBody placeOrderBody){
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

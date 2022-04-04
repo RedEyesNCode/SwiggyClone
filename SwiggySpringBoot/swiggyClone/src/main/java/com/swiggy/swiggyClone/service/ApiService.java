@@ -51,6 +51,8 @@ public class ApiService {
     private AllProductsRepository allProductsRepository;
 
     private PaymentDetailRepository paymentDetailRepository;
+    private GenieRepository genieRepository;
+
 
 
 
@@ -73,11 +75,13 @@ public class ApiService {
                       OrderRepository orderRepository,
                       AddressRepository addressRepository,
                       ParentRepository parentRepository,
+                      GenieRepository genieRepository,
                       ChildRepository childRepository,
                       DessertMenuRepository dessertMenuRepository, MenuItemRepository menuItemRepository,
                       PizzaMenuItemRepository pizzaMenuItemRepository, SnacksMenuRepository snacksMenuRepository) {
         this.userDataRepository = userDataRepository;
         this.wishListRepository = wishListRepository;
+        this.genieRepository = genieRepository;
         this.restaurantRepository = restaurantRepository;
         this.childRepository = childRepository;
         this.pastOrdersRepository = pastOrdersRepository;
@@ -371,6 +375,36 @@ public class ApiService {
 
 
     }
+
+    //Fetching the home screen data of the Swiggy Data;
+
+    public ResponseEntity<?> getBasicGenieResponse(){
+
+        List<SwiggiGenieTable> swiggiGenieTables = new ArrayList<>();
+        swiggiGenieTables = genieRepository.findAll();
+        if(swiggiGenieTables.size()==0){
+            return ResponseEntity.ok(new StatusCodeModel("fail", 200, "Record not found"));
+
+        }else {
+            return ResponseEntity.ok(new GenieResponse("success",200,"Data found", swiggiGenieTables));
+
+        }
+    }
+    //Api to fetch the details from the user and place the order accordingly.
+    public ResponseEntity<?> placeCustomerOrder(PlaceOrderBody placeOrderBody){
+
+
+
+
+
+    }
+
+    //Api to get all the Place orders By UserId of the customer.
+
+
+
+
+
 
 
 
