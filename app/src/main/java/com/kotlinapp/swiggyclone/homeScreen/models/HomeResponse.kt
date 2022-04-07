@@ -14,16 +14,16 @@ data class Restaurants (
 
     @SerializedName("restaurantId"   ) var restaurantId   : Int?     = null,
     @SerializedName("restaurantName" ) var restaurantName : String?  = null,
-    @SerializedName("rating"         ) var rating         : Int?     = null,
+    @SerializedName("rating"         ) var rating         : Double?     = null,
     @SerializedName("deliveryTime"   ) var deliveryTime   : String?  = null,
-    @SerializedName("discount"       ) var discount       : Int?     = null,
+    @SerializedName("discount"       ) var discount       : Double?     = null,
     @SerializedName("swiggyOne"      ) var swiggyOne      : Boolean? = null
 
 )
 data class Offers (
 
     @SerializedName("offerId"    ) var offerId    : Int?    = null,
-    @SerializedName("discount"   ) var discount   : Int?    = null,
+    @SerializedName("discount"   ) var discount   : Double?    = null,
     @SerializedName("couponCode" ) var couponCode : String? = null
 
 )

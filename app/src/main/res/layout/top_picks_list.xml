@@ -27,6 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_8sdp"
+                android:id="@+id/tvRestaurantName"
                 android:text="Naveen's \nBapu ki Kutia"
                 android:fontFamily="@font/firasans_medium"
                 android:textColor="@color/black"></TextView>
@@ -35,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_8sdp"
                 android:text="20-30 mins"
+                android:id="@+id/tvDeliveryTime"
                 android:fontFamily="@font/firesans_regular"
                 android:textColor="@color/gray_black"></TextView>
 

@@ -1,8 +1,6 @@
 package com.kotlinapp.swiggyclone.auth.view
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
@@ -13,7 +11,7 @@ import com.kotlinapp.swiggyclone.auth.model.LoginInputBody
 import com.kotlinapp.swiggyclone.auth.viewModel.LoginViewModel
 import com.kotlinapp.swiggyclone.base.BaseActivity
 import com.kotlinapp.swiggyclone.databinding.ActivityLoginBinding
-import com.kotlinapp.swiggyclone.homeScreen.HomeActivity
+import com.kotlinapp.swiggyclone.homeScreen.view.HomeActivity
 import com.kotlinapp.swiggyclone.sharedPreferences.AppSession
 import com.kotlinapp.swiggyclone.sharedPreferences.Constant
 
@@ -80,7 +78,7 @@ class LoginActivity : BaseActivity() {
                     showLog("STORED")
                     showLog(stringAccessToken)
                 }
-                startActivity(Intent(this@LoginActivity,HomeActivity::class.java))
+                startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
             }else{
 
                 Toast.makeText(this@LoginActivity,"Login Failed",Toast.LENGTH_SHORT).show()

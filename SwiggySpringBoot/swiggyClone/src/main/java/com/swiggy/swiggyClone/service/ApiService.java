@@ -391,13 +391,7 @@ public class ApiService {
         }
     }
     //Api to fetch the details from the user and place the order accordingly.
-    public ResponseEntity<?> placeCustomerOrder(PlaceOrderBody placeOrderBody){
 
-
-
-
-
-    }
 
     //Api to get all the Place orders By UserId of the customer.
 

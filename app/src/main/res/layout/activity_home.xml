@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".homeScreen.HomeActivity">
+    tools:context=".homeScreen.view.HomeActivity">
 
     <FrameLayout
         android:id="@+id/mainHomeContainer"

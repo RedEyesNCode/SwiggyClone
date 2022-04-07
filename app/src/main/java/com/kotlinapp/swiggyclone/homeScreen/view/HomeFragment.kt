@@ -1,4 +1,4 @@
-package com.kotlinapp.swiggyclone.homeScreen
+package com.kotlinapp.swiggyclone.homeScreen.view
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.kotlinapp.swiggyclone.R
 import com.kotlinapp.swiggyclone.auth.viewModel.LoginViewModel
 import com.kotlinapp.swiggyclone.databinding.FragmentHomeBinding
+import com.kotlinapp.swiggyclone.homeScreen.models.Restaurants
 import com.kotlinapp.swiggyclone.homeScreen.viewModel.HomeViewModel
 import com.kotlinapp.swiggyclone.sharedPreferences.AppSession
 import com.kotlinapp.swiggyclone.sharedPreferences.Constant
@@ -97,9 +98,21 @@ class HomeFragment : Fragment() {
         homeViewModel.homeMutableLiveData.observe(this, Observer {
 
             Toast.makeText(contextFragment,it.message,Toast.LENGTH_SHORT).show()
+            if(it.code==200){
+
+
+            }
+
+
 
 
 
         })
     }
+    fun setTopPicksAdapter(restaurants: ArrayList<Restaurants>){
+
+
+
+    }
+
 }

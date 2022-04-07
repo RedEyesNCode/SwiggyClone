@@ -1,11 +1,10 @@
-package com.kotlinapp.swiggyclone.homeScreen
+package com.kotlinapp.swiggyclone.homeScreen.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlinapp.swiggyclone.R
 import com.kotlinapp.swiggyclone.databinding.ActivityHomeBinding
-import com.kotlinapp.swiggyclone.homeScreen.adapters.SwiggyServiceAdapter
+import com.kotlinapp.swiggyclone.homeScreen.HomeFragment
 import com.kotlinapp.swiggyclone.searchCuisines.FragmentSearchCuisines
 import com.kotlinapp.swiggyclone.searchFood.SearchFoodFragment
 import com.kotlinapp.swiggyclone.userAccount.UserAccountFragment
@@ -27,14 +26,18 @@ class HomeActivity : AppCompatActivity() {
     fun initViewClick(){
         var fragmentUtils = FragmentUtils()
 
-        fragmentUtils.addFragmentBackStack(supportFragmentManager,R.id.mainHomeContainer,HomeFragment(),HomeFragment().tagFragment,true)
+        fragmentUtils.addFragmentBackStack(supportFragmentManager,R.id.mainHomeContainer,
+            HomeFragment(),
+            HomeFragment().tagFragment,true)
         binding.btnUserAccount.setOnClickListener {
 
             fragmentUtils.addFragmentBackStack(supportFragmentManager,R.id.mainHomeContainer,UserAccountFragment(),UserAccountFragment().tagFragment,true)
 
         }
         binding.btnHome.setOnClickListener {
-            fragmentUtils.addFragmentBackStack(supportFragmentManager,R.id.mainHomeContainer,HomeFragment(),HomeFragment().tagFragment,true)
+            fragmentUtils.addFragmentBackStack(supportFragmentManager,R.id.mainHomeContainer,
+                HomeFragment(),
+                HomeFragment().tagFragment,true)
 
         }
         binding.btnFood.setOnClickListener {

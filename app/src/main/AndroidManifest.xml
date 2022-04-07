@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SwiggyClone">
         <activity
-            android:name=".homeScreen.HomeActivity"
+            android:name=".homeScreen.view.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".splashActivity.SplashActivity"

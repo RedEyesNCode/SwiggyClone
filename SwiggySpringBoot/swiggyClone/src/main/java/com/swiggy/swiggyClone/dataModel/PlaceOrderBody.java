@@ -4,7 +4,7 @@ public class PlaceOrderBody {
 
     private Long orderId;
     private Long userId;
-    private Long addressId
+    private Long addressId;
     private String orderName;
 
     public PlaceOrderBody(Long orderId, Long userId, Long addressId, String orderName) {

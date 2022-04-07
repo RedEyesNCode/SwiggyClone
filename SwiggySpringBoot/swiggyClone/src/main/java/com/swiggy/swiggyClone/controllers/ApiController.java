@@ -245,14 +245,14 @@ public class ApiController {
     }
 
 
-    //Api to get the place the order by Orderid, addressId, and Userid
+  /*  //Api to get the place the order by Orderid, addressId, and Userid
     @GetMapping("/placeOrder")
     public ResponseEntity<?> placeOrderCustomer(@RequestBody PlaceOrderBody placeOrderBody){
 
 
 
     }
-
+*/
 
 
 
