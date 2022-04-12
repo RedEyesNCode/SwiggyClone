@@ -276,7 +276,7 @@ public class ApiService {
 
 
     //Get user Address by id
-    public List<AddressTable> getUserAddressByUserID(Long id){
+    public List<AddressTable> getUserAddressByUserID(int id){
         return addressRepository.findByUserId(id);
 
     }

@@ -179,7 +179,8 @@ public class ApiController {
     }
 
     @GetMapping("/getUserAddressById")
-    public AddressUserResponse getUserAddressById(@Param("userId") Long id){
+    public AddressUserResponse getUserAddressById(@Param("userId") int id){
+
 
         if(apiService.getUserAddressByUserID(id).size()==0){
 
