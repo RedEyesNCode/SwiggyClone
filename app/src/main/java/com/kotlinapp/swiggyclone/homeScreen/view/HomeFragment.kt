@@ -16,7 +16,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlinapp.swiggyclone.R
 import com.kotlinapp.swiggyclone.auth.viewModel.LoginViewModel
 import com.kotlinapp.swiggyclone.databinding.FragmentHomeBinding
+import com.kotlinapp.swiggyclone.homeScreen.models.Brands
 import com.kotlinapp.swiggyclone.homeScreen.models.Restaurants
+import com.kotlinapp.swiggyclone.homeScreen.view.adapters.BrandAdapter
 import com.kotlinapp.swiggyclone.homeScreen.view.adapters.RestaurantsAdapter
 import com.kotlinapp.swiggyclone.homeScreen.viewModel.HomeViewModel
 import com.kotlinapp.swiggyclone.sharedPreferences.AppSession
@@ -104,22 +106,21 @@ class HomeFragment : Fragment() {
             if(it.code==200){
                 //Got the SuccessFull response setting up the adapter
                 setTopPicksAdapter(it.restaurants)
-
+                setTopBrandsAdapter(it.brands)
 
 
             }
-
-
-
-
-
         })
     }
     fun setTopPicksAdapter(restaurants: ArrayList<Restaurants>){
         binding.recvtopPicks.adapter = RestaurantsAdapter(contextFragment!!,restaurants)
         binding.recvtopPicks.layoutManager = LinearLayoutManager(contextFragment!!,LinearLayoutManager.HORIZONTAL,false)
-
+    }
+    fun setTopBrandsAdapter(brands: ArrayList<Brands>){
+        binding.recvBrands.adapter = BrandAdapter(contextFragment!!,brands)
+        binding.recvBrands.layoutManager = LinearLayoutManager(contextFragment!!,LinearLayoutManager.HORIZONTAL,false)
 
     }
+
 
 }

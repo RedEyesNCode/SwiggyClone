@@ -70,15 +70,23 @@ class LoginActivity : BaseActivity() {
             hideLoader()
             if (it.code == 200 && it.status!!.contains("success")) {
                 AppSession(this@LoginActivity).setValue(Constant().ACCESS_TOKEN,it.Token,this@LoginActivity)
+/*
+                AppSession(this@LoginActivity).setValue(Constant().USER_ID,it.data!!.id.toString(),this@LoginActivity)
+*/
 
                 var stringAccessToken  = AppSession(this@LoginActivity).getValue(Constant().ACCESS_TOKEN,this@LoginActivity)
+
                 if(stringAccessToken==null){
                     showLog("ERROR_SHARED_PREFERENCES")
+                    Toast.makeText(this@LoginActivity,"USER SESSION NOT CREATED !",Toast.LENGTH_SHORT).show()
+
                 }else{
                     showLog("STORED")
                     showLog(stringAccessToken)
+                    startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
+
+
                 }
-                startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
             }else{
 
                 Toast.makeText(this@LoginActivity,"Login Failed",Toast.LENGTH_SHORT).show()

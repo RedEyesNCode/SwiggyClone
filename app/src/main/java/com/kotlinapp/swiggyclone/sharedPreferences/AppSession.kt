@@ -8,23 +8,24 @@ import android.content.SharedPreferences
 
     var appPreferences:SharedPreferences = context.getSharedPreferences(Constant().PREFERENCES_NAME,Context.MODE_PRIVATE)
     var appSession:AppSession?=null
+     private lateinit var editor:SharedPreferences.Editor
 
      init {
          appPreferences = context.getSharedPreferences(Constant().PREFERENCES_NAME,Context.MODE_PRIVATE)
+         editor=appPreferences.edit()
+
      }
      fun clearAll(){
 
          appPreferences.edit().clear().commit()
      }
      fun setValue(key:String?,value:String?,context: Context){
-         var editor:SharedPreferences.Editor=appPreferences.edit()
          editor.putString(key,value)
 
          //This apply is nesscary when saving something into shared preferences.
          editor.apply()
 
      }
-
      fun getValue(key: String?,context: Context): String? {
 
          if(appPreferences!=null){
