@@ -1,10 +1,7 @@
 ## KwiggBoot
 
 ***This Respository is Currently Updating on the Go.***
-<<<<<<< HEAD
-=======
 
->>>>>>> 1a67929f201cfd0ea2ae4c520f029806541aa1e0
 #####  The Complete Swiggy Clone made with Kotlin using MVVM and Retrofit and Backend made with SpringBoot using Java
 
 ***Topics Covered***
