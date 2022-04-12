@@ -12,6 +12,8 @@ public class AddressTable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "address_data_sequence")
     private Long addressId;
 
+    public AddressTable() {
+    }
 
     private int userId;
     private String firstName;

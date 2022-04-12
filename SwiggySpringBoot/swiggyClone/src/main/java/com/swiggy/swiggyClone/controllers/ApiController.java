@@ -27,6 +27,9 @@ public class ApiController {
     private ApiService apiService;
     //YOU CAN ONLY HANDLE CONTROLLER EXCEPTIONS BY A COMMON EXCEPTION HANDLER CLASS
 
+    //PLEASE USE THE REQUEST PARAM IN INTEGER AND ALSO KEEP THE key and Request Parameter same name
+    // ex - @Param("userId) int userId
+
 
     @Autowired
     public ApiController(ApiService apiService) {
@@ -179,17 +182,17 @@ public class ApiController {
     }
 
     @GetMapping("/getUserAddressById")
-    public AddressUserResponse getUserAddressById(@Param("userId") int id){
+    public AddressUserResponse getUserAddressById(@Param("userId") int userId){
 
 
-        if(apiService.getUserAddressByUserID(id).size()==0){
+        if(apiService.getUserAddressByUserID(userId).size()==0){
 
 
             return new AddressUserResponse("fail",200,"Record Not Found !", new ArrayList<>());
         }else {
 
 
-            return new AddressUserResponse("success",200,"Record Found",apiService.getUserAddressByUserID(id));
+            return new AddressUserResponse("success",200,"Record Found",apiService.getUserAddressByUserID(userId));
         }
 
     }
