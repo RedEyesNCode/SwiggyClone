@@ -140,8 +140,8 @@ Output :
 }
 ```
 - Api Name : getUser?id=x where x is the UserId you want to query about
-<<<<<<< HEAD
+
 - Api End Point : `http://localhost:8080/swiggy/getUser?id=1`
 =======
 - Api End Point : `http://localhost:8080/swiggy/getUser?id=1`
->>>>>>> 1a67929f201cfd0ea2ae4c520f029806541aa1e0
+
