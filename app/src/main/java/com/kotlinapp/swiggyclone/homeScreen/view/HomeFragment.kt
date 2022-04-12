@@ -8,13 +8,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlinapp.swiggyclone.R
 import com.kotlinapp.swiggyclone.auth.viewModel.LoginViewModel
 import com.kotlinapp.swiggyclone.databinding.FragmentHomeBinding
 import com.kotlinapp.swiggyclone.homeScreen.models.Restaurants
+import com.kotlinapp.swiggyclone.homeScreen.view.adapters.RestaurantsAdapter
 import com.kotlinapp.swiggyclone.homeScreen.viewModel.HomeViewModel
 import com.kotlinapp.swiggyclone.sharedPreferences.AppSession
 import com.kotlinapp.swiggyclone.sharedPreferences.Constant
@@ -99,6 +102,9 @@ class HomeFragment : Fragment() {
 
             Toast.makeText(contextFragment,it.message,Toast.LENGTH_SHORT).show()
             if(it.code==200){
+                //Got the SuccessFull response setting up the adapter
+                setTopPicksAdapter(it.restaurants)
+
 
 
             }
@@ -110,7 +116,8 @@ class HomeFragment : Fragment() {
         })
     }
     fun setTopPicksAdapter(restaurants: ArrayList<Restaurants>){
-
+        binding.recvtopPicks.adapter = RestaurantsAdapter(contextFragment!!,restaurants)
+        binding.recvtopPicks.layoutManager = LinearLayoutManager(contextFragment!!,LinearLayoutManager.HORIZONTAL,false)
 
 
     }

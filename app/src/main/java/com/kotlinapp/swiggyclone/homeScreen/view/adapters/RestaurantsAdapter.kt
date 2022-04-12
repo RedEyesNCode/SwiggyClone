@@ -8,7 +8,7 @@ import com.kotlinapp.swiggyclone.databinding.TopPicksListBinding
 import com.kotlinapp.swiggyclone.homeScreen.models.Restaurants
 import java.util.ArrayList
 
-class RestaurantsAdapter(var context: Context, var restaurants: ArrayList<Restaurants>) :RecyclerView.Adapter<RestaurantsAdapter.MyViewHolder>{
+class RestaurantsAdapter(var context: Context, var restaurants: ArrayList<Restaurants>) :RecyclerView.Adapter<RestaurantsAdapter.MyViewHolder>(){
 
     private lateinit var topPicksListBinding: TopPicksListBinding
 
@@ -27,6 +27,14 @@ class RestaurantsAdapter(var context: Context, var restaurants: ArrayList<Restau
                 var restaurantName = restaurant.restaurantName
                 var resturantRating = restaurant.rating
                 var deliveryTime = restaurant.deliveryTime
+
+               /* if(restaurantName!!.length>10){
+                    tvRestaurantName.text = restaurantName.substring(0,9)+" \n"+restaurantName.substring(10,restaurantName.length)
+
+                    //Used this code for solving the long text of the restaurants.
+
+
+                }*/
                 tvRestaurantName.text = restaurantName
                 tvDeliveryTime.text = deliveryTime
 
@@ -43,7 +51,7 @@ class RestaurantsAdapter(var context: Context, var restaurants: ArrayList<Restau
 
     override fun getItemCount(): Int {
 
-        restaurants.size
+       return restaurants.size
     }
 
     class MyViewHolder(topPicksListBinding: TopPicksListBinding):RecyclerView.ViewHolder(topPicksListBinding.root)

@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.kotlinapp.swiggyclone.R
 import com.kotlinapp.swiggyclone.databinding.ActivityHomeBinding
-import com.kotlinapp.swiggyclone.homeScreen.HomeFragment
 import com.kotlinapp.swiggyclone.searchCuisines.FragmentSearchCuisines
 import com.kotlinapp.swiggyclone.searchFood.SearchFoodFragment
 import com.kotlinapp.swiggyclone.userAccount.UserAccountFragment
