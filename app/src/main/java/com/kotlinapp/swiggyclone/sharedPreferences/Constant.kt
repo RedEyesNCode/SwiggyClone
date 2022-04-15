@@ -1,6 +1,9 @@
 package com.kotlinapp.swiggyclone.sharedPreferences
 
-class Constant {
+class Constant() {
+
+
+
     var PREFERENCES_NAME : String= ""
     var ACCESS_TOKEN : String = ""
     var USER_ID : String = ""
