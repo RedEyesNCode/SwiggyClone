@@ -97,7 +97,7 @@ class HomeFragment : Fragment() {
 
 
 
-        var accessToken : String? = AppSession(contextFragment!!).getValue("ACCESS_TOKEN",contextFragment!!)
+        var accessToken : String? = AppSession(contextFragment!!).getValue(Constant().ACCESS_TOKEN,contextFragment!!)
         Log.i("HOMEFRAGMENT : TOKEN : ",accessToken!!)
         homeViewModel.getHomeResponse(requireContext(),accessToken)
         homeViewModel.homeMutableLiveData.observe(this, Observer {

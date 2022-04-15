@@ -10,7 +10,7 @@ class AppSession(context: Context)  {
 
     var appPreferences:SharedPreferences = context.getSharedPreferences(Constant().PREFERENCES_NAME,Context.MODE_PRIVATE)
     var appSession:AppSession?=null
-     var editor:SharedPreferences.Editor = appPreferences.edit()
+    var editor:SharedPreferences.Editor = appPreferences.edit()
 
      fun getInstance(context: Context):AppSession{
 
