@@ -99,7 +99,10 @@ class HomeFragment : Fragment() {
 
         var accessToken : String? = AppSession(contextFragment!!).getValue(Constant().ACCESS_TOKEN,contextFragment!!)
         Log.i("HOMEFRAGMENT : TOKEN : ",accessToken!!)
+        //API CALLED BELOW
         homeViewModel.getHomeResponse(requireContext(),accessToken)
+
+        //API RESPONSE IS OBSERVED BELOW.
         homeViewModel.homeMutableLiveData.observe(this, Observer {
 
             Toast.makeText(contextFragment,it.message,Toast.LENGTH_SHORT).show()

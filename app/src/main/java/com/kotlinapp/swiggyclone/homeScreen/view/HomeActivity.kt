@@ -6,7 +6,7 @@ import com.kotlinapp.swiggyclone.R
 import com.kotlinapp.swiggyclone.databinding.ActivityHomeBinding
 import com.kotlinapp.swiggyclone.searchCuisines.FragmentSearchCuisines
 import com.kotlinapp.swiggyclone.searchFood.SearchFoodFragment
-import com.kotlinapp.swiggyclone.userAccount.UserAccountFragment
+import com.kotlinapp.swiggyclone.userAccount.view.UserAccountFragment
 import com.kotlinapp.swiggyclone.utils.FragmentUtils
 
 class HomeActivity : AppCompatActivity() {

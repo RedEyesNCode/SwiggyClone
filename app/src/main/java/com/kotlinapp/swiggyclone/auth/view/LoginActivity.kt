@@ -71,11 +71,11 @@ class LoginActivity : BaseActivity() {
             if (it.code == 200 && it.status!!.contains("success")) {
 
                 //NOT USING THE CONSTANT STRING CLASS BECAUSE IT CAN'T STORE THE SPECIFIC VALUES IN THE STRING
-                AppSession(this@LoginActivity).setValue(Constant().USER_ID,it.data!!.id.toString(),this@LoginActivity)
-                AppSession(this@LoginActivity).setValue(Constant().ACCESS_TOKEN,it.Token,this@LoginActivity)
+                AppSession(this@LoginActivity).setValue("USER_ID",it.data!!.id.toString(),this@LoginActivity)
+                AppSession(this@LoginActivity).setValue("ACCESS_TOKEN",it.Token,this@LoginActivity)
 
-                var stringAccessToken  = AppSession(this).getValue(Constant().ACCESS_TOKEN,this)
-                var userID  = AppSession(this).getValue(Constant().USER_ID,this)
+                var stringAccessToken  = AppSession(this).getValue("ACCESS_TOKEN",this)
+                var userID  = AppSession(this).getValue("USER_ID",this)
 
                 if(stringAccessToken==null){
                     showLog("ERROR_SHARED_PREFERENCES")
