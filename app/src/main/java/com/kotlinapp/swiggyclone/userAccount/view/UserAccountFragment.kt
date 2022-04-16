@@ -8,11 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlinapp.swiggyclone.R
 import com.kotlinapp.swiggyclone.databinding.FragmentUserAccountBinding
 import com.kotlinapp.swiggyclone.homeScreen.viewModel.HomeViewModel
 import com.kotlinapp.swiggyclone.sharedPreferences.AppSession
 import com.kotlinapp.swiggyclone.sharedPreferences.Constant
+import com.kotlinapp.swiggyclone.userAccount.view.adapter.PastOrderAdapter
 import com.kotlinapp.swiggyclone.userAccount.viewModel.AccountViewModel
 import com.kotlinapp.swiggyclone.utils.AppUtils
 
@@ -88,11 +90,36 @@ class UserAccountFragment : Fragment() {
     fun initView(){
 
 
-        var accessToken = AppSession(contextFragment!!).getValue("ACCESS_TOKEN",contextFragment!!)
-        var userId = AppSession(contextFragment!!).getValue("USER_ID",contextFragment!!)
+        var accessToken = AppSession(contextFragment!!).getValue(Constant().ACCESS_TOKEN,contextFragment!!)
+        var userId = AppSession(contextFragment!!).getValue(Constant().USER_ID,contextFragment!!)
 
         //HERE WE ARE TELLING KOTLIN THAT THIS TWO VALUES IE ACCESSTOKEN AND USER ID CANNOT BE NULL
         accountViewModel.getUserDetailsById(accessToken!!,userId!!.toInt())
+        //CALLING THE PAST ORDER API
+        accountViewModel.getUserPastOrderById(accessToken!!,userId!!.toInt())
+
+        accountViewModel.pastOrderResponseDataMutableLiveData.observe(this, Observer {
+
+            if(it!=null){
+                if(it.pastOrders.size!=0){
+
+                    binding.recvPastOrders.adapter = PastOrderAdapter(contextFragment!!,it.pastOrders)
+                    binding.recvPastOrders.layoutManager = LinearLayoutManager(contextFragment!!)
+
+
+
+                }
+
+
+
+            }
+
+
+
+
+
+        })
+
         accountViewModel.userDetailResponseMutableLiveData.observe(this, Observer {
 
             if(it!=null){

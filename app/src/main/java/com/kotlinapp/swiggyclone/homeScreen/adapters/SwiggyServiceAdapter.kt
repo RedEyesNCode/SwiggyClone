@@ -22,6 +22,7 @@ class SwiggyServiceAdapter(private var list: List<String>, private var context: 
             with(swiggyServiceListBinding){
                 tvSwiggyService.text = list.get(position)
 
+
             }
 
         }

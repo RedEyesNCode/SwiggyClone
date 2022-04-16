@@ -6,16 +6,19 @@ import androidx.lifecycle.MutableLiveData
 import com.kotlinapp.swiggyclone.retrofitService.ApiInterface
 import com.kotlinapp.swiggyclone.retrofitService.RetrofitService
 import com.kotlinapp.swiggyclone.userAccount.model.AddressResponseData
+import com.kotlinapp.swiggyclone.userAccount.model.PastOrderResponseData
 import com.kotlinapp.swiggyclone.userAccount.model.UserDetailResponse
 import com.kotlinapp.swiggyclone.utils.AppUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class AddressRepository {
+class AccountRepository {
 
     var addressResponseDataMutableLiveData: MutableLiveData<AddressResponseData> = MutableLiveData<AddressResponseData>()
     var userDetailsMutableLiveData:MutableLiveData<UserDetailResponse> = MutableLiveData<UserDetailResponse>()
+    var pastOrderResponseMutableLiveData:MutableLiveData<PastOrderResponseData> = MutableLiveData<PastOrderResponseData>()
+
     var apiInterface : ApiInterface ?= null
 
     init {
@@ -23,6 +26,46 @@ class AddressRepository {
     }
 
     //DEFINING ALL THE API CALLS RELATED TO ADDRESS HERE
+
+
+    //Calling the api to get the user past order's by the id of the user.
+
+    fun getUserPastOrdersById(accessToken: String, userId: Int):MutableLiveData<PastOrderResponseData>{
+        var call = apiInterface!!.getUserPastOrders(accessToken, userId)
+        call.enqueue(object :Callback<PastOrderResponseData>{
+            override fun onResponse(
+                call: Call<PastOrderResponseData>,
+                response: Response<PastOrderResponseData>
+            ) {
+                if(response.code()==200 && response.isSuccessful){
+
+                    if(response.body()!!.status!!.contains("success")){
+                        pastOrderResponseMutableLiveData.postValue(response.body())
+
+                    }else{
+                        Log.i("ALLTHISFOR4HEARTS",response.code().toString()+"ERROR")
+
+                    }
+
+                }
+
+
+            }
+
+            override fun onFailure(call: Call<PastOrderResponseData>, t: Throwable) {
+                Log.i("ALLTHISFOR4HEARTS",t.message.toString())
+                pastOrderResponseMutableLiveData.postValue(null)
+
+            }
+        })
+
+
+        return pastOrderResponseMutableLiveData;
+    }
+
+
+
+
 
     //Calling the api to get the user details by the id of the user.
     fun getUserDetailsById(accessToken: String,userId: Int):MutableLiveData<UserDetailResponse>{

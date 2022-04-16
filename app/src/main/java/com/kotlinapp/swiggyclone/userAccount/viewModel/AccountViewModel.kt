@@ -3,8 +3,9 @@ package com.kotlinapp.swiggyclone.userAccount.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.kotlinapp.swiggyclone.userAccount.accountRepository.AddressRepository
+import com.kotlinapp.swiggyclone.userAccount.accountRepository.AccountRepository
 import com.kotlinapp.swiggyclone.userAccount.model.AddressResponseData
+import com.kotlinapp.swiggyclone.userAccount.model.PastOrderResponseData
 import com.kotlinapp.swiggyclone.userAccount.model.UserDetailResponse
 
 class AccountViewModel:ViewModel() {
@@ -13,6 +14,7 @@ class AccountViewModel:ViewModel() {
     //OBSERVE THIS MUTABLE LIVE DATA IN YOUR VIEW
     var addressResponseMutableLiveData:MutableLiveData<AddressResponseData> = MutableLiveData()
     var userDetailResponseMutableLiveData:MutableLiveData<UserDetailResponse> = MutableLiveData()
+    var pastOrderResponseDataMutableLiveData : MutableLiveData<PastOrderResponseData> = MutableLiveData()
 
 
 
@@ -29,16 +31,24 @@ class AccountViewModel:ViewModel() {
     //Calling all the api's defined in the repository here/
     //Also observe each of the api response here.
 
-    var addressRepository:AddressRepository ?=null
+    var accountRepository:AccountRepository ?=null
     init {
-        addressRepository = AddressRepository()
+        accountRepository = AccountRepository()
+
+    }
+
+    //CALLING THE  GET USER PAST ORDER'S BY THE ID OF THE USER.
+    fun getUserPastOrderById(accessToken: String, userId: Int):MutableLiveData<PastOrderResponseData>{
+
+        pastOrderResponseDataMutableLiveData = accountRepository!!.getUserPastOrdersById(accessToken, userId)
+        return  pastOrderResponseDataMutableLiveData
 
     }
 
 
     //CALLING THE GET USER DETAILS BY ID API FROM THE VIEWMODEL.
     fun getUserDetailsById(accessToken:String, userId: Int):MutableLiveData<UserDetailResponse>{
-        userDetailResponseMutableLiveData = addressRepository!!.getUserDetailsById(accessToken, userId)
+        userDetailResponseMutableLiveData = accountRepository!!.getUserDetailsById(accessToken, userId)
         return userDetailResponseMutableLiveData
 
 
@@ -48,7 +58,7 @@ class AccountViewModel:ViewModel() {
 
     //CALLING THE GET ADDRESSES API FROM THE VIEW MODEL
     fun getAddressUserById(accessToken : String, userId:Int):MutableLiveData<AddressResponseData>{
-        addressResponseMutableLiveData = addressRepository!!.callGetAddressUserByID(accessToken, userId)
+        addressResponseMutableLiveData = accountRepository!!.callGetAddressUserByID(accessToken, userId)
         return addressResponseMutableLiveData
 
     }
