@@ -87,7 +87,7 @@ public class ApiController {
 
     //Api to fetch the user data on behalf of the id.
     @GetMapping("/getUser")
-    public UserDataResponse getUser(@Param("userId") Long id){
+    public UserDataResponse getUser(@Param("userId") int id){
         SignupModel userDataResponseService = apiService.getUser(id);
         if(userDataResponseService.getUserName().isEmpty()){
             throw new ForbiddenException("No User Found !");
@@ -108,7 +108,7 @@ public class ApiController {
     }
 
     @GetMapping("/getWishList")
-    public UserWishlistResponse getUserWishlist(@Param("userId") Long id){
+    public UserWishlistResponse getUserWishlist(@Param("userId") int id){
 
         return new UserWishlistResponse("success",200,"Found Wishlist",apiService.getUserWishList(id));
 
@@ -122,7 +122,7 @@ public class ApiController {
 
     //Api to add a Restaurant to Wishlist by Id
     @PostMapping("/addtoWislist")
-    public StatusCodeModel addToWislist(@Param("restaurantId") Long restaurantId, @Param("userId") Long userId){
+    public StatusCodeModel addToWislist(@Param("restaurantId") int restaurantId, @Param("userId") int userId){
 
         return apiService.addRestaurantToWishList(restaurantId, userId);
 
@@ -131,7 +131,7 @@ public class ApiController {
 
     //Api to get Restaurant detail by Id.
     @PostMapping("/getRestaurantDetail")
-    public RestaurantDetailResponse getRestaurantDetail(@Param("restaurantId") Long restaurantId){
+    public RestaurantDetailResponse getRestaurantDetail(@Param("restaurantId") int restaurantId){
 
 
         return new RestaurantDetailResponse("success",200,"Found Restaurant Detail",apiService.getRestaurantDetails(restaurantId));
@@ -174,7 +174,7 @@ public class ApiController {
     }
 
     @PostMapping("/getPastOrderDetail")
-    public PastOrderDetailResponse getOrderDEtailsPAst(@Param("id") Long id){
+    public PastOrderDetailResponse getOrderDEtailsPAst(@Param("id") int id){
 
 
         return  new PastOrderDetailResponse("success",200,"Record Found !",apiService.getPastOrderDetail(id));

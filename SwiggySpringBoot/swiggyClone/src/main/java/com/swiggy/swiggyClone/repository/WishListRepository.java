@@ -13,5 +13,5 @@ import java.util.Optional;
 public interface WishListRepository extends JpaRepository<WishListModel,Long> {
 
     @Query("SELECT s FROM WishListModel s WHERE s.userId = :id")
-    List<WishListModel> findByID(Long id);
+    List<WishListModel> findByID(int id);
 }

@@ -142,7 +142,7 @@ public class ApiService {
     }
 
     //Get the user Wishlist.
-    public List<WishListModel> getUserWishList(Long id){
+    public List<WishListModel> getUserWishList(int id){
 
         return wishListRepository.findByID(id);
 
@@ -156,11 +156,11 @@ public class ApiService {
         return userDataRepository.findAll();
     }
     //Fetching the user by ID
-    public SignupModel getUser(Long id){
+    public SignupModel getUser(int id){
         Optional<SignupModel> signupModelOptional= userDataRepository.findByID(id);
         if(signupModelOptional.isPresent()){
 
-            return userDataRepository.getById(id);
+            return userDataRepository.getById(Long.valueOf(String.valueOf(id)));
 
         }else {
             return new SignupModel("","","","");
@@ -186,22 +186,22 @@ public class ApiService {
 
     }
     //Add a restuarant to wishlist by id of restaurant
-    public StatusCodeModel addRestaurantToWishList(Long restaurantID, Long userID){
+    public StatusCodeModel addRestaurantToWishList(int restaurantID, int userID){
 
 
         //1. Fetch the restaurant data from the r-table. and insert it into w-table.
-        RestaurantsTable restaurantsTable = restaurantRepository.getById(restaurantID);
+        RestaurantsTable restaurantsTable = restaurantRepository.getById(Long.valueOf(String.valueOf(userID)));
 
-        WishListModel wishListModel = new WishListModel(userID,restaurantID,true,restaurantsTable.getRestaurantName(),restaurantsTable.getRating(),restaurantsTable.getDeliveryTime(),restaurantsTable.getDiscount(),restaurantsTable.isSwiggyOne());
+        WishListModel wishListModel = new WishListModel(Long.valueOf(String.valueOf(userID)),Long.valueOf(String.valueOf(restaurantID)),true,restaurantsTable.getRestaurantName(),restaurantsTable.getRating(),restaurantsTable.getDeliveryTime(),restaurantsTable.getDiscount(),restaurantsTable.isSwiggyOne());
 
         wishListRepository.save(wishListModel);
         return new StatusCodeModel("success",200,"Successfully added to Wishlist !");
     }
 
     //Getting the restaurant detail by id.
-    public RestaurantDetailTable getRestaurantDetails(Long id){
+    public RestaurantDetailTable getRestaurantDetails(int id){
 
-        return restaurantDetailRepository.getById(id);
+        return restaurantDetailRepository.getById(Long.valueOf(String.valueOf(id)));
 
     }
 
@@ -257,11 +257,11 @@ public class ApiService {
 
 
     // Get PastOrder Detail by Id
-    public Allergens getPastOrderDetail(Long id){
+    public Allergens getPastOrderDetail(int id){
 
-        Optional<Allergens> allergens = allergensRepo.findById(id);
+        Optional<Allergens> allergens = allergensRepo.findById(Long.valueOf(String.valueOf(id)));
         if(allergens.isPresent()){
-            return allergensRepo.getById(id);
+            return allergensRepo.getById(Long.valueOf(String.valueOf(id)));
         }else {
             throw new IllegalArgumentException();
         }

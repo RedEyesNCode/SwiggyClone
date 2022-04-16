@@ -22,7 +22,7 @@ public interface UserDataRepository extends JpaRepository<SignupModel, Long> {
     //USE PARAM TO MATCH WITH THE DATABASE or :ID
     //Below is the query to search by id in the db by sending param in the request.
     @Query("SELECT s FROM SignupModel s WHERE s.id = :id")
-    Optional<SignupModel> findByID( Long id);
+    Optional<SignupModel> findByID( int id);
     //Update the user details on behalf of the id.
 
 
