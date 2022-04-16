@@ -51,6 +51,10 @@ interface ApiInterface {
     fun getUserWishlist(@Header("Authorization") accessToken: String, @Query("id") userId: Int):Call<GetWishlistResponseData>
 
 
+    @POST("saveUserAddress")
+    fun saveUserAddress(@Header("Authorization") accessToken: String)
+
+
 
 
 
