@@ -1,11 +1,11 @@
 package com.kotlinapp.swiggyclone.retrofitService
 
-import android.database.Observable
 import com.kotlinapp.swiggyclone.auth.model.LoginDataClass
 import com.kotlinapp.swiggyclone.auth.model.LoginInputBody
-import com.kotlinapp.swiggyclone.base.StatusCodeModel
+import com.kotlinapp.swiggyclone.base.StatusCodeMessageModel
 import com.kotlinapp.swiggyclone.homeScreen.models.AllRestaurantsResponseData
 import com.kotlinapp.swiggyclone.homeScreen.models.HomeResponse
+import com.kotlinapp.swiggyclone.restaurantDetail.GetWishlistResponseData
 import com.kotlinapp.swiggyclone.userAccount.model.AddressResponseData
 import com.kotlinapp.swiggyclone.userAccount.model.PastOrderResponseData
 import com.kotlinapp.swiggyclone.userAccount.model.UserDetailResponse
@@ -16,7 +16,7 @@ interface ApiInterface {
 
 
     @GET("testapi")
-    fun testApi():Call<StatusCodeModel>
+    fun testApi():Call<StatusCodeMessageModel>
 
     @Headers("Content-Type: application/json")
     @POST("authJWT")
@@ -42,6 +42,14 @@ interface ApiInterface {
 
     @GET("getRestaurantlist")
     fun getRestaurantsList(@Header("Authorization") accessToken: String):Call<AllRestaurantsResponseData>
+
+    @POST("addtoWislist")
+    fun addToWishList(@Header("Authorization") accessToken: String, @Query("restaurantId") restaurantId:Int, @Query("userId") userId:Int):Call<StatusCodeMessageModel>
+
+
+    @GET("getWishList")
+    fun getUserWishlist(@Header("Authorization") accessToken: String, @Query("id") userId: Int):Call<GetWishlistResponseData>
+
 
 
 

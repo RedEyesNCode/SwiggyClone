@@ -8,12 +8,12 @@ import androidx.lifecycle.ViewModel
 import com.kotlinapp.swiggyclone.auth.model.LoginDataClass
 import com.kotlinapp.swiggyclone.auth.model.LoginInputBody
 import com.kotlinapp.swiggyclone.auth.repository.LoginRepository
-import com.kotlinapp.swiggyclone.base.StatusCodeModel
+import com.kotlinapp.swiggyclone.base.StatusCodeMessageModel
 import com.kotlinapp.swiggyclone.callbacks.LoginListener
 
 class LoginViewModel:ViewModel() {
 
-    var verifyOtpLiveData: MutableLiveData<StatusCodeModel>?=null
+    var verifyOtpLiveData: MutableLiveData<StatusCodeMessageModel>?=null
     var loginDataClassLiveData : MutableLiveData<LoginDataClass>?=null
     var isFailed:LiveData<String> = MutableLiveData<String>()
     var isConnecting:LiveData<String> = MutableLiveData<String>()
@@ -36,9 +36,9 @@ class LoginViewModel:ViewModel() {
 
 
 
-    fun testApi(context: Context):MutableLiveData<StatusCodeModel>{
+    fun testApi(context: Context):MutableLiveData<StatusCodeMessageModel>{
         verifyOtpLiveData = LoginRepository().sendOtp(context)
-        return verifyOtpLiveData as MutableLiveData<StatusCodeModel>
+        return verifyOtpLiveData as MutableLiveData<StatusCodeMessageModel>
 
 
     }

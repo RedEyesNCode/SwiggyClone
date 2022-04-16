@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.kotlinapp.swiggyclone.auth.model.LoginDataClass
 import com.kotlinapp.swiggyclone.auth.model.LoginInputBody
-import com.kotlinapp.swiggyclone.base.StatusCodeModel
+import com.kotlinapp.swiggyclone.base.StatusCodeMessageModel
 import com.kotlinapp.swiggyclone.callbacks.LoginListener
 import com.kotlinapp.swiggyclone.retrofitService.RetrofitService
 import com.kotlinapp.swiggyclone.utils.AppUtils
@@ -15,7 +15,7 @@ import retrofit2.Response
 
 class LoginRepository {
 
-    var statusCodeMutableLiveData = MutableLiveData<StatusCodeModel>()
+    var statusCodeMutableLiveData = MutableLiveData<StatusCodeMessageModel>()
     var loginDataClassMutableLiveData = MutableLiveData<LoginDataClass>()
 
 
@@ -66,11 +66,11 @@ class LoginRepository {
 
 
     //Calling the Api to Send the Otp to Required Number.
-    fun sendOtp(context: Context): MutableLiveData<StatusCodeModel>{
-        var call: Call<StatusCodeModel>
+    fun sendOtp(context: Context): MutableLiveData<StatusCodeMessageModel>{
+        var call: Call<StatusCodeMessageModel>
         call = RetrofitService().apiInterface.testApi()
-        call.enqueue(object : Callback<StatusCodeModel> {
-            override fun onResponse(call: Call<StatusCodeModel>, response: Response<StatusCodeModel>) {
+        call.enqueue(object : Callback<StatusCodeMessageModel> {
+            override fun onResponse(call: Call<StatusCodeMessageModel>, response: Response<StatusCodeMessageModel>) {
                 var message:String
                 var data =  response.body()
 /*
@@ -84,7 +84,7 @@ class LoginRepository {
 
             }
 
-            override fun onFailure(call: Call<StatusCodeModel>, t: Throwable) {
+            override fun onFailure(call: Call<StatusCodeMessageModel>, t: Throwable) {
 
                 Log.i("INFO :",t.message.toString())
             }

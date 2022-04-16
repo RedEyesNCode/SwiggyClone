@@ -144,7 +144,7 @@ public class ApiService {
     //Get the user Wishlist.
     public List<WishListModel> getUserWishList(int id){
 
-        return wishListRepository.findByID(id);
+        return wishListRepository.findByID(Long.valueOf(String.valueOf(id)));
 
     }
 
@@ -245,7 +245,7 @@ public class ApiService {
 
     //Get the user past Order by id
 
-    public List<PastOrders> getUserPastOrder(int userID){return pastOrdersRepository.getUserPastOrders(userID);}
+    public List<PastOrders> getUserPastOrder(int userID){return pastOrdersRepository.getUserPastOrders(Long.valueOf(String.valueOf(userID)));}
 
     //Get Restaurant Meny by Restaurant Id;
 
@@ -277,7 +277,7 @@ public class ApiService {
 
     //Get user Address by id
     public List<AddressTable> getUserAddressByUserID(int id){
-        return addressRepository.findByUserId(id);
+        return addressRepository.findByUserId(Long.valueOf(String.valueOf(id)));
 
     }
 
