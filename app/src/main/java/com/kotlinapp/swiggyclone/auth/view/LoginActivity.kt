@@ -71,6 +71,9 @@ class LoginActivity : BaseActivity() {
             if (it.code == 200 && it.status!!.contains("success")) {
 
                 //NOT USING THE CONSTANT STRING CLASS BECAUSE IT CAN'T STORE THE SPECIFIC VALUES IN THE STRING
+                    AppSession(this@LoginActivity).clearAll()
+
+
                 AppSession(this@LoginActivity).setValue("USER_ID",it.data!!.id.toString(),this@LoginActivity)
                 AppSession(this@LoginActivity).setValue("ACCESS_TOKEN",it.Token,this@LoginActivity)
 

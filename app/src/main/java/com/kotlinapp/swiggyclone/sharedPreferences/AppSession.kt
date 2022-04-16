@@ -2,6 +2,7 @@ package com.kotlinapp.swiggyclone.sharedPreferences
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 import java.lang.NullPointerException
 
 class AppSession(context: Context)  {
@@ -25,8 +26,10 @@ class AppSession(context: Context)  {
      fun clearAll(){
 
          appPreferences.edit().clear().commit()
+       Log.i("CLEAR_ALL","CALLED")
      }
      fun setValue(key:String?,value:String?,context: Context){
+
 
          if(appPreferences!=null){
              appPreferences.edit().putString(key,value).apply()

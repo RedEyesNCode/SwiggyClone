@@ -97,7 +97,7 @@ class HomeFragment : Fragment() {
 
 
 
-        var accessToken : String? = AppSession(contextFragment!!).getValue(Constant().ACCESS_TOKEN,contextFragment!!)
+        var accessToken : String? = AppSession(contextFragment!!).getValue("ACCESS_TOKEN",contextFragment!!)
         Log.i("HOMEFRAGMENT : TOKEN : ",accessToken!!)
         //API CALLED BELOW
         homeViewModel.getHomeResponse(requireContext(),accessToken)
