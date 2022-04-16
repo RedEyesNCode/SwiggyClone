@@ -1,8 +1,10 @@
 package com.kotlinapp.swiggyclone.homeScreen.homeRepository
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
+import com.kotlinapp.swiggyclone.homeScreen.models.AllRestaurantsResponseData
 import com.kotlinapp.swiggyclone.homeScreen.models.HomeResponse
 import com.kotlinapp.swiggyclone.retrofitService.ApiInterface
 import com.kotlinapp.swiggyclone.retrofitService.RetrofitService
@@ -18,12 +20,54 @@ class HomeRespository {
     // the Methods we are going to use in the Viewmodel
     // Don't define the Listener interface here.
     var homeResponseMutableLiveData:MutableLiveData<HomeResponse> = MutableLiveData<HomeResponse>()
+    var allRestaurantsResponseDataMutableLiveData:MutableLiveData<AllRestaurantsResponseData> = MutableLiveData<AllRestaurantsResponseData>()
+
+
+
     var apiInterface:ApiInterface ?=null
     init {
 
         //You can create Multiple Retrofit().apiInterface methods to according to
         //the different urls that you are going to use.
         apiInterface = RetrofitService().apiInterface
+    }
+
+    //CALLING THE GET ALL RESTAURANTS API.
+    fun getAllRestaurantsApi(context: Context, accessToken: String):MutableLiveData<AllRestaurantsResponseData>{
+        var call :Call<AllRestaurantsResponseData>
+        call = apiInterface!!.getRestaurantsList(accessToken)
+        call.enqueue(object :Callback<AllRestaurantsResponseData>{
+
+
+            override fun onResponse(
+                call: Call<AllRestaurantsResponseData>,
+                response: Response<AllRestaurantsResponseData>
+            ) {
+                if (response.code()==200 && response.isSuccessful){
+                    if(response.body()!!.message!!.contains("success")){
+                        allRestaurantsResponseDataMutableLiveData.postValue(response.body())
+
+                    }else{
+                        Log.i("ALLTHISFOR4HEARTS",response.code().toString())
+                    }
+
+
+                }
+
+
+            }
+
+            override fun onFailure(call: Call<AllRestaurantsResponseData>, t: Throwable) {
+                allRestaurantsResponseDataMutableLiveData.postValue(null)
+                Log.i("ALLTHISFOR4HEARTS",t.message.toString())
+            }
+        })
+
+        return allRestaurantsResponseDataMutableLiveData;
+
+
+
+
     }
 
 

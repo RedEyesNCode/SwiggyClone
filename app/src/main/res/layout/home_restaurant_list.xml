@@ -9,15 +9,15 @@
         android:layout_width="wrap_content"
         android:padding="@dimen/_4sdp"
         android:layout_height="wrap_content">
+
         <com.makeramen.roundedimageview.RoundedImageView
             android:layout_width="wrap_content"
+            android:layout_height="@dimen/_105sdp"
+            android:padding="@dimen/_4sdp"
             android:src="@drawable/ic_pizza"
             app:riv_border_color="@color/black"
-            android:padding="@dimen/_4sdp"
             app:riv_border_width="@dimen/_1sdp"
-            app:riv_corner_radius="@dimen/_4sdp"
-            android:layout_height="@dimen/_105sdp">
-
+            app:riv_corner_radius="@dimen/_4sdp">
 
 
         </com.makeramen.roundedimageview.RoundedImageView>

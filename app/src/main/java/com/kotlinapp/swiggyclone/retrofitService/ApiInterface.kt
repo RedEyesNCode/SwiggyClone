@@ -4,6 +4,7 @@ import android.database.Observable
 import com.kotlinapp.swiggyclone.auth.model.LoginDataClass
 import com.kotlinapp.swiggyclone.auth.model.LoginInputBody
 import com.kotlinapp.swiggyclone.base.StatusCodeModel
+import com.kotlinapp.swiggyclone.homeScreen.models.AllRestaurantsResponseData
 import com.kotlinapp.swiggyclone.homeScreen.models.HomeResponse
 import com.kotlinapp.swiggyclone.userAccount.model.AddressResponseData
 import com.kotlinapp.swiggyclone.userAccount.model.PastOrderResponseData
@@ -38,6 +39,9 @@ interface ApiInterface {
     //GET THE USER PAST ORDERS BY THE USER ID
     @POST("getUserPastOrders")
     fun getUserPastOrders(@Header("Authorization") accessToken: String, @Query("userId") userId: Int):Call<PastOrderResponseData>
+
+    @GET("getRestaurantlist")
+    fun getRestaurantsList(@Header("Authorization") accessToken: String):Call<AllRestaurantsResponseData>
 
 
 
