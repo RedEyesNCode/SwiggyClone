@@ -155,9 +155,9 @@ public class ApiService {
 
         return userDataRepository.findAll();
     }
-    //Fetching the user by ID
+    //Fetching the user by ID // TAKING LONG IN THE USER REPOSITORY ALWAYS.
     public SignupModel getUser(int id){
-        Optional<SignupModel> signupModelOptional= userDataRepository.findByID(id);
+        Optional<SignupModel> signupModelOptional= userDataRepository.findByID(Long.valueOf(String.valueOf(id)));
         if(signupModelOptional.isPresent()){
 
             return userDataRepository.getById(Long.valueOf(String.valueOf(id)));
