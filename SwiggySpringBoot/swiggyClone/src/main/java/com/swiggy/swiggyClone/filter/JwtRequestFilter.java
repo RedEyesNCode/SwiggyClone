@@ -1,6 +1,11 @@
 package com.swiggy.swiggyClone.filter;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.google.gson.Gson;
 import com.swiggy.swiggyClone.controllers.UserContoller;
+import com.swiggy.swiggyClone.dataModel.StatusCodeModel;
+import com.swiggy.swiggyClone.exceptionHandling.JwtException;
 import com.swiggy.swiggyClone.service.MyUserDetails;
 import com.swiggy.swiggyClone.utils.JWTUtil;
 import io.jsonwebtoken.SignatureException;
@@ -17,6 +22,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
 
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter{
@@ -29,14 +35,28 @@ public class JwtRequestFilter extends OncePerRequestFilter{
 	
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-			throws ServletException, IOException {
+			throws ServletException, IOException, SignatureException {
 		final String authHeader = request.getHeader("Authorization");
 		String username = null;
 		String jwt = "";
 		
 		if(authHeader != null) {
+
 			jwt = authHeader;
-			username = jwtUtil.extractUserName(jwt);
+
+			try{
+				username = jwtUtil.extractUserName(jwt);
+			}catch (SignatureException e){
+				response.addHeader("Content-Type","application/json");
+				response.setContentType("application/json");
+				Gson gson = new Gson();
+				String json = gson.toJson(new StatusCodeModel("fail",403,"Invalid Token"));
+				response.getWriter().print(json);
+				response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+	//				e.printStackTrace();
+				return;
+			}
+
 
 		}
 		
