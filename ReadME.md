@@ -12,7 +12,7 @@
     <td>Gallery Screen</td>
     </tr>
     <tr>
-    <td><img src="media/flow_chart.png" width=350 height=480></td>
+    <td><img src="media/flow_chart.png"></td>
     </tr>
 </table>
 
