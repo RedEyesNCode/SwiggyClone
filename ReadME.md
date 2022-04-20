@@ -4,6 +4,19 @@
 
 #####  The Complete Swiggy Clone made with Kotlin using MVVM and Retrofit and Backend made with SpringBoot using Java
 
+
+#### DESIGN OF THE ENTIRE APP
+
+<table>
+    <tr>
+    <td>Gallery Screen</td>
+    </tr>
+    <tr>
+    <td><img src="media/flow_chart.png" width=350 height=480></td>
+    </tr>
+</table>
+
+
 ***Topics Covered***
 ##### Front End
 - Kotlin

@@ -13,6 +13,7 @@ class AppSession(context: Context)  {
     var appSession:AppSession?=null
     var editor:SharedPreferences.Editor = appPreferences.edit()
 
+
      fun getInstance(context: Context):AppSession{
 
          return AppSession(context).also { appSession = it }

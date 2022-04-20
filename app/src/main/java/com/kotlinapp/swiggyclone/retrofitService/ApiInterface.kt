@@ -6,6 +6,7 @@ import com.kotlinapp.swiggyclone.base.StatusCodeMessageModel
 import com.kotlinapp.swiggyclone.homeScreen.models.AllRestaurantsResponseData
 import com.kotlinapp.swiggyclone.homeScreen.models.HomeResponse
 import com.kotlinapp.swiggyclone.restaurantDetail.GetWishlistResponseData
+import com.kotlinapp.swiggyclone.userAccount.model.AddressInputBody
 import com.kotlinapp.swiggyclone.userAccount.model.AddressResponseData
 import com.kotlinapp.swiggyclone.userAccount.model.PastOrderResponseData
 import com.kotlinapp.swiggyclone.userAccount.model.UserDetailResponse
@@ -52,7 +53,7 @@ interface ApiInterface {
 
 
     @POST("saveUserAddress")
-    fun saveUserAddress(@Header("Authorization") accessToken: String)
+    fun saveUserAddress(@Header("Authorization") accessToken: String , @Body addressInputBody: AddressInputBody)
 
 
 
