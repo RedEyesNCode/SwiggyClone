@@ -9,7 +9,7 @@
 
 <table>
     <tr>
-    <td>Gallery Screen</td>
+    <td>Application Design</td>
     </tr>
     <tr>
     <td><img src="media/flow_chart.png"></td>
