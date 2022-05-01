@@ -6,6 +6,7 @@ pluginManagement {
 
     }
 }
+//IN THE NEW BUILD THE PROJECT REPOSITORY ARE BEING ADDED HERE.
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {

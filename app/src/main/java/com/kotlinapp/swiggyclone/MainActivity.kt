@@ -16,26 +16,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val cropImage = registerForActivityResult(CropImageContract()) { result ->
-            if (result.isSuccessful) {
-                // use the returned uri
-                val uriContent = result.uriContent
-                val uriFilePath = result.getUriFilePath(this) // optional usage
-            } else {
-                // an error occurred
-                val exception = result.error
-            }
-        }
-        cropImageMethod(cropImage)
 
     }
 
-    private fun cropImageMethod(cropImage: ActivityResultLauncher<CropImageContractOptions>) {
-            cropImage.launch(
-                options {
-                    setGuidelines(CropImageView.Guidelines.ON)
-                }
-            )
-    }
+
 
 }
