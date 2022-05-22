@@ -13,8 +13,8 @@ import com.kotlinapp.swiggyclone.callbacks.LoginListener
 
 class LoginViewModel:ViewModel() {
 
-    var verifyOtpLiveData: MutableLiveData<StatusCodeMessageModel>?=null
-    var loginDataClassLiveData : MutableLiveData<LoginDataClass>?=null
+    var verifyOtpLiveData: MutableLiveData<StatusCodeMessageModel> = MutableLiveData()
+    var loginDataClassLiveData : MutableLiveData<LoginDataClass> = MutableLiveData<LoginDataClass>()
     var isFailed:LiveData<String> = MutableLiveData<String>()
     var isConnecting:LiveData<String> = MutableLiveData<String>()
 
@@ -52,30 +52,16 @@ class LoginViewModel:ViewModel() {
 
     }
 
-    fun loginApiCall(context: Context,loginInputBody: LoginInputBody):MutableLiveData<LoginDataClass>{
+    fun loginApiCall(context: Context,loginInputBody: LoginInputBody){
         //login repository will be intialzed by the init block
-        loginDataClassLiveData = loginRepository!!.callLoginApi(context, loginInputBody,loginListener)
-        return loginDataClassLiveData as MutableLiveData<LoginDataClass>
-    }
+         var loginDataClassLiveDataResponse = loginRepository!!.callLoginApi(context, loginInputBody)
+        //change in the mutable live data to attach the observers first.
+        loginDataClassLiveData?.postValue(loginDataClassLiveDataResponse.value)
 
-
-    //This method is used to overide an interface in kotlin and pass that variable as a parameter in  funtion of kotlin
-    var loginListener = object : LoginListener {
-
-        override fun onSuccessListener(loginDataClass: LoginDataClass) {
-            loginDataClass.Token?.let { Log.i("RETROFIT", it) }
-            loginDataClassLiveData!!.postValue(loginDataClass)
-        }
-
-        override fun onError(error: String) {
-/*
-            Toast.makeText(context,error,Toast.LENGTH_LONG).show()
-*/
-        }
     }
 
 
 
+    }
 
 
-}

@@ -3,20 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.15497601918465229" />
+        <entry key="app/src/main/res/drawable/background_button_orange.xml" value="0.1795" />
         <entry key="app/src/main/res/drawable/explore_now_bg.xml" value="0.203" />
+        <entry key="app/src/main/res/drawable/gradient_background.xml" value="0.1795" />
         <entry key="app/src/main/res/drawable/home_blue_gradient.xml" value="0.203" />
+        <entry key="app/src/main/res/drawable/rounded_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/swiggy_one_home_gradient.xml" value="0.2" />
         <entry key="app/src/main/res/drawable/swiggy_service_bg.xml" value="0.203" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.25" />
         <entry key="app/src/main/res/layout/custom_progress_dialog.xml" value="0.1921875" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_search_cuisines.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/fragment_search_food.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/fragment_signup.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_user_account.xml" value="0.33" />
         <entry key="app/src/main/res/layout/home_restaurant_list.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/login_tab.xml" value="0.375" />
         <entry key="app/src/main/res/layout/offers_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/past_order_list.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/restuarant_detail_list.xml" value="0.5" />

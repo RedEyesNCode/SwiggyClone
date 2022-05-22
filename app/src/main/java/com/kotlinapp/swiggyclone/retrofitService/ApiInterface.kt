@@ -11,6 +11,7 @@ import com.kotlinapp.swiggyclone.userAccount.model.AddressResponseData
 import com.kotlinapp.swiggyclone.userAccount.model.PastOrderResponseData
 import com.kotlinapp.swiggyclone.userAccount.model.UserDetailResponse
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 interface ApiInterface {
@@ -19,9 +20,15 @@ interface ApiInterface {
     @GET("testapi")
     fun testApi():Call<StatusCodeMessageModel>
 
+    // NEED TO TAKE CALL HERE TO INTIALZE THE CALL ADAPTER FOR THE RETROFIT.
     @Headers("Content-Type: application/json")
     @POST("authJWT")
     fun loginApi(@Body loginInputBody: LoginInputBody):Call<LoginDataClass>
+
+    @Headers("Content-Type: application/json")
+    @POST("authJWT")
+    fun loginapiCoroutines(@Body loginInputBody: LoginInputBody):Response<LoginDataClass>
+
 
 
     //HOME FEED API

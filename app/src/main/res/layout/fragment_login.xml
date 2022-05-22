@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/gray_bg_custom"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email address"
+                android:layout_marginLeft="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:textColor="@color/gray_black"
+                android:fontFamily="sans-serif-condensed-medium"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_9sdp"
+                android:id="@+id/edtloginEmail"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:inputType="textEmailAddress"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:layout_height="wrap_content">
+
+
+            </EditText>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:layout_marginLeft="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:textColor="@color/gray_black"
+                android:fontFamily="sans-serif-condensed-medium"
+                />
+            <EditText
+                android:id="@+id/edtLoginpassword"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_9sdp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:inputType="textEmailAddress"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:layout_height="wrap_content">
+
+
+            </EditText>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Forgot passcode ?"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginLeft="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:textColor="@color/orange"
+                android:fontFamily="@font/firesans_black"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="@dimen/_195sdp"
+                    android:text="LOGIN"
+                    android:id="@+id/btnLogin"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/_45sdp"
+                    android:textColor="@color/white"
+                    android:layout_height="@dimen/_45sdp"
+                    android:background="@drawable/background_button_orange"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</FrameLayout>

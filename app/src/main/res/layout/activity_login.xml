@@ -9,138 +9,62 @@
             name="viewmodel"
             type="com.kotlinapp.swiggyclone.auth.viewModel.LoginViewModel" />
     </data>
-<RelativeLayout
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".auth.view.LoginActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="@dimen/_4sdp"
-        android:layout_marginTop="@dimen/_4sdp"
-        android:fontFamily="@font/firasans_medium"
-        android:gravity="center"
-        android:text="Login 2 KWIGGBOOT"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_18sdp">
-
-    </TextView>
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_centerInParent="true"
-        android:layout_height="wrap_content">
-
-
-
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:boxStrokeColor="@color/orange"
-        app:hintTextColor="@color/black"
-        app:boxCornerRadiusTopStart="@dimen/_4sdp"
-        app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
-        app:boxCornerRadiusTopEnd="@dimen/_4sdp"
-        app:boxCornerRadiusBottomStart="@dimen/_4sdp"
-
-        android:outlineSpotShadowColor="@color/orange"
-        style="@style/EditTextOutLineStyle"
-        android:padding="@dimen/_10sdp">
-        <EditText
-            android:layout_width="match_parent"
-            android:id="@+id/edtNumber"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_3sdp"
-            android:fontFamily="@font/firesans_regular"
-            android:singleLine="true"
-            android:inputType="number"
-            android:maxLength="10"
-            android:hint="@string/loginTextNumber"
-            android:background="@null"
-            android:textColorHint="@color/gray_black"
-            android:textSize="@dimen/_12sdp">
-        </EditText>
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_7sdp"
-        android:orientation="vertical"
-        android:theme="@style/EditTextOutLineStyle">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxStrokeColor="@color/orange"
-            app:hintTextColor="@color/black"
-            android:outlineSpotShadowColor="@color/orange"
-            app:boxCornerRadiusTopStart="@dimen/_4sdp"
-            app:boxStrokeWidth="@dimen/_1sdp"
-            app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
-            app:boxCornerRadiusTopEnd="@dimen/_4sdp"
-            app:boxCornerRadiusBottomStart="@dimen/_4sdp"
-            app:endIconDrawable="@drawable/custom_eye"
-            app:endIconMode="password_toggle"
-            style="@style/EditTextOutLineStyle"
-            android:padding="@dimen/_10sdp">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_3sdp"
-                android:background="@null"
-                android:fontFamily="@font/firesans_regular"
-                android:hint="@string/loginTextPassword"
-                android:inputType="textPassword"
-                android:singleLine="true"
-                android:id="@+id/edtPassword"
-                android:maxLength="10"
-                android:imeOptions="actionNext"
-                android:textColorHint="@color/gray_black"
-                android:textSize="@dimen/_12sdp">
-
-            </EditText>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_gravity="center"
         android:layout_height="wrap_content">
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tvForgotPassword"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:textAlignment="center"
-            android:layout_marginBottom="@dimen/_15sdp"
-            android:fontFamily="@font/firesans_regular"
-            android:gravity="center_horizontal"
-            android:text="Forgot Password ?"
-            android:textColor="@color/gray_black" />
-    </LinearLayout>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_login"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_35sdp"
-            android:layout_gravity="center"
-            android:background="@drawable/background_button_orange"
+            android:text="Swiggy Clone"
+            android:textSize="@dimen/_18sdp"
+            android:textColor="@color/black"
             android:fontFamily="@font/firesans_bold"
-            android:paddingHorizontal="@dimen/_45sdp"
-            android:text="Login"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_14sdp" />
+            android:gravity="bottom|center"/>
     </LinearLayout>
-</RelativeLayout>
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        app:tabSelectedTextColor="@color/black"
+        app:tabTextColor="@color/black"
+        android:id="@+id/tablayout"
+        app:tabIndicatorColor="@color/orange"
+        app:tabIndicatorGravity="bottom"
+        android:layout_height="wrap_content">
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:text="LOGIN"
+
+            android:id="@+id/tblogin"
+            android:layout_gravity="start"
+            android:switchTextAppearance="@color/orange"
+            android:layout_height="wrap_content">
+
+
+
+
+        </com.google.android.material.tabs.TabItem>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:text="SIGN UP"
+            android:id="@+id/tbsignup"
+            android:layout_gravity="start"
+            android:switchTextAppearance="@color/orange"
+            android:layout_height="wrap_content">
+        </com.google.android.material.tabs.TabItem>
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:background="@color/black"
+        android:layout_height="match_parent"
+        android:id="@+id/tabsViewpager"/>
+
+
+
+</LinearLayout>
 </layout>

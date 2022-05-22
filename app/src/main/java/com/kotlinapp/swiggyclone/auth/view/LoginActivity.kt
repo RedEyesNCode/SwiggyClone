@@ -6,34 +6,46 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
+import com.google.android.material.tabs.TabLayout.TabLayoutOnPageChangeListener
 import com.kotlinapp.swiggyclone.auth.model.LoginDataClass
 import com.kotlinapp.swiggyclone.auth.model.LoginInputBody
+import com.kotlinapp.swiggyclone.auth.view.fragments.viewpager.TabAdapter
 import com.kotlinapp.swiggyclone.auth.viewModel.LoginViewModel
 import com.kotlinapp.swiggyclone.base.BaseActivity
 import com.kotlinapp.swiggyclone.databinding.ActivityLoginBinding
 import com.kotlinapp.swiggyclone.homeScreen.view.HomeActivity
 import com.kotlinapp.swiggyclone.sharedPreferences.AppSession
 import com.kotlinapp.swiggyclone.sharedPreferences.Constant
+import kotlin.math.log
 
 
 class LoginActivity : BaseActivity() {
 
-    private var binding:ActivityLoginBinding?=null
+    private lateinit var binding:ActivityLoginBinding
     private lateinit var loginViewModel:LoginViewModel
     private var loginLiveData: MutableLiveData<LoginDataClass>?=null
+    private lateinit var tabAdapter:TabAdapter
+
+    //CODE FOR TAB LAYOUT
+
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        loginViewModel = this!!.run {
+        /*loginViewModel = this!!.run {
             ViewModelProvider(this).get(LoginViewModel::class.java)
-        }
-       // loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-/*
-        loginViewModel = LoginViewModel()
-*/
+        }*/
+        // CHANGING ON HOW THE VIEW MODEL SHOULD BE INTIALZED
+        loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        //Intialzed just like java
+        attachObservers()
+
         binding = ActivityLoginBinding.inflate(layoutInflater)
+        intializeTabs()
+
         setContentView(binding!!.root)
         initViewClick()
 
@@ -43,25 +55,29 @@ class LoginActivity : BaseActivity() {
 
         //By !! this operator we are telling kotlin that this can't be null we are sure of that
     }
+
+    fun intializeTabs() {
+        tabAdapter = TabAdapter(supportFragmentManager, this@LoginActivity,binding.tablayout.tabCount)
+        binding.tabsViewpager.adapter = tabAdapter
+        binding.tablayout.setupWithViewPager(binding.tabsViewpager)
+        binding.tabsViewpager.addOnPageChangeListener(TabLayoutOnPageChangeListener(binding.tablayout))
+
+        binding.tablayout.addOnTabSelectedListener(object : OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                binding.tabsViewpager.setCurrentItem(tab.position)
+
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab) {}
+            override fun onTabReselected(tab: TabLayout.Tab) {}
+        })
+
+    }
+
     fun initViewClick(){
         var loginInputBody = LoginInputBody()
         loginInputBody.password=""
         loginInputBody.username=""
-
-        binding!!.btnLogin.setOnClickListener {
-            var number:String = binding!!.edtNumber.text.toString()
-            var password:String = binding!!.edtPassword.text.toString()
-            //Here we are defining that the binding variable cannot be null;
-            var loginInputBody = LoginInputBody()
-            loginInputBody.password = password
-            loginInputBody.username = number
-            showLoader()
-           loginViewModel.loginApiCall(this@LoginActivity, loginInputBody)
-            attachObservers()
-
-        }
-
-
 
     }
     fun attachObservers(){

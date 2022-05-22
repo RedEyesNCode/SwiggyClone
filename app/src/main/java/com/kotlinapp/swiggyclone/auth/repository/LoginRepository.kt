@@ -22,7 +22,7 @@ class LoginRepository {
 
     //Calling the login api and get Access Token from the Response
 
-    fun callLoginApi(context: Context,loginInputBody: LoginInputBody, loginListener: LoginListener):MutableLiveData<LoginDataClass>{
+    fun callLoginApi(context: Context,loginInputBody: LoginInputBody):MutableLiveData<LoginDataClass>{
         var call:Call<LoginDataClass>
         call = RetrofitService().apiInterface.loginApi(loginInputBody)
         call.enqueue(object :Callback<LoginDataClass>{
@@ -36,16 +36,12 @@ class LoginRepository {
 
                         loginDataClassMutableLiveData.postValue(response.body())
 
-
-
                         Log.i("RETROFIT","ONSUCCESS")
-                    response.body()?.let { loginListener.onSuccessListener(it) }
 
                 }else{
                     var serverHandling: String? = AppUtils().getServerError(response.code(),response.errorBody(),context)
                     if (serverHandling != null) {
 
-                        loginListener.onError(serverHandling)
 
                     }
                 }

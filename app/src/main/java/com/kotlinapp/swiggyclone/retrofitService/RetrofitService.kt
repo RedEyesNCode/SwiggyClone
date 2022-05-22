@@ -31,4 +31,5 @@ class RetrofitService {
         retrofitClient.build().create(ApiInterface::class.java)
     }
 
+
 }
