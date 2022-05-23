@@ -33,12 +33,13 @@
 
 
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:layout_marginHorizontal="@dimen/_12sdp"
             android:layout_alignBottom="@id/layoutProfile"
-            android:background="@color/gray_bg_custom"/>
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:background="@color/gray_bg_custom" />
 
 
 

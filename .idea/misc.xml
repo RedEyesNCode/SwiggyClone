@@ -16,11 +16,15 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/buyer_menu.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/buyer_menu.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/cart_item.xml" value="0.5" />
         <entry key="app/src/main/res/layout/custom_progress_dialog.xml" value="0.1921875" />
         <entry key="app/src/main/res/layout/food_item.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_cart_address.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_cart_payment.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_search_cuisines.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/fragment_search_food.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/fragment_signup.xml" value="0.22" />

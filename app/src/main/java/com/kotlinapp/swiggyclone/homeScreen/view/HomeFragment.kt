@@ -19,6 +19,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlinapp.swiggyclone.R
 import com.kotlinapp.swiggyclone.auth.viewModel.LoginViewModel
+import com.kotlinapp.swiggyclone.cart.view.CartFragment
+import com.kotlinapp.swiggyclone.databinding.BuyerMenuBinding
 import com.kotlinapp.swiggyclone.databinding.FragmentHomeBinding
 import com.kotlinapp.swiggyclone.homeScreen.models.Brands
 import com.kotlinapp.swiggyclone.homeScreen.models.Restaurants
@@ -27,6 +29,7 @@ import com.kotlinapp.swiggyclone.homeScreen.view.adapters.RestaurantsAdapter
 import com.kotlinapp.swiggyclone.homeScreen.viewModel.HomeViewModel
 import com.kotlinapp.swiggyclone.sharedPreferences.AppSession
 import com.kotlinapp.swiggyclone.sharedPreferences.Constant
+import com.kotlinapp.swiggyclone.utils.FragmentUtils
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -81,6 +84,13 @@ class HomeFragment : Fragment() {
     }
 
     private fun initClicksSideMenu() {
+        var buyerMenuView = binding.navview.getHeaderView(0)
+        var buyerMenuBinding = BuyerMenuBinding.bind(buyerMenuView)
+        buyerMenuBinding.btnSignout.setOnClickListener {
+            activity?.finish()
+        }
+
+
 
     }
 
@@ -99,7 +109,10 @@ class HomeFragment : Fragment() {
         }
         binding.btnCart.setOnClickListener {
             //OPEN THE CART FRAGMENT.
-
+            FragmentUtils()
+                .addFragmentBackStack(requireFragmentManager()
+                    ,R.id.mainHomeContainer,CartFragment()
+                    ,CartFragment::class.java.simpleName,true)
 
         }
 

@@ -22,15 +22,15 @@
             android:layout_marginTop="@dimen/_12sdp">
 
             <ImageView
+                android:id="@+id/btnMenu"
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp"
                 android:layout_alignParentLeft="true"
-                android:id="@+id/btnMenu"
                 android:src="@drawable/menu" />
 
             <ImageView
-                android:layout_width="@dimen/_25sdp"
                 android:id="@+id/btnCart"
+                android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp"
                 android:layout_alignParentRight="true"
                 android:src="@drawable/cart" />
