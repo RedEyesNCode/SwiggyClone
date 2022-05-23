@@ -57,7 +57,7 @@ class CartAddressFragment : Fragment() {
     private fun initClicks() {
         binding.back.setOnClickListener { requireActivity().onBackPressed() }
         binding.btnProceed.setOnClickListener { FragmentUtils().addFragmentBackStack(requireFragmentManager(),R.id.mainHomeContainer,CartPaymentFragment(),CartAddressFragment::class.java.simpleName,true) }
-
+        //COMMIT TEST
     }
 
     companion object {
