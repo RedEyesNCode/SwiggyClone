@@ -2,14 +2,18 @@ package com.kotlinapp.swiggyclone.homeScreen.view
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.os.Binder
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -69,10 +73,39 @@ class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater,container,false)
-
+        initNavigationView()
+        initClicks()
+        initClicksSideMenu()
 
         return binding.root
     }
+
+    private fun initClicksSideMenu() {
+
+    }
+
+    private fun initNavigationView() {
+        var toggle:ActionBarDrawerToggle
+        toggle = ActionBarDrawerToggle(activity,binding.mainDrawerLayout,android.R.string.ok,android.R.string.ok)
+        binding.mainDrawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+    }
+
+    private fun initClicks() {
+        binding.btnMenu.setOnClickListener {
+            binding.mainDrawerLayout.openDrawer(GravityCompat.START)
+
+        }
+        binding.btnCart.setOnClickListener {
+            //OPEN THE CART FRAGMENT.
+
+
+        }
+
+    }
+
+
 
     companion object {
         /**
@@ -100,30 +133,8 @@ class HomeFragment : Fragment() {
         var accessToken : String? = AppSession(contextFragment!!).getValue(Constant().ACCESS_TOKEN,contextFragment!!)
         Log.i("HOMEFRAGMENT : TOKEN : ",accessToken!!)
         //API CALLED BELOW
-        homeViewModel.getHomeResponse(requireContext(),accessToken)
-
-        //API RESPONSE IS OBSERVED BELOW.
-        homeViewModel.homeMutableLiveData.observe(this, Observer {
-
-            Toast.makeText(contextFragment,it.message,Toast.LENGTH_SHORT).show()
-            if(it.code==200){
-                //Got the SuccessFull response setting up the adapter
-                setTopPicksAdapter(it.restaurants)
-                setTopBrandsAdapter(it.brands)
-
-
-            }
-        })
     }
-    fun setTopPicksAdapter(restaurants: ArrayList<Restaurants>){
-        binding.recvtopPicks.adapter = RestaurantsAdapter(contextFragment!!,restaurants)
-        binding.recvtopPicks.layoutManager = LinearLayoutManager(contextFragment!!,LinearLayoutManager.HORIZONTAL,false)
-    }
-    fun setTopBrandsAdapter(brands: ArrayList<Brands>){
-        binding.recvBrands.adapter = BrandAdapter(contextFragment!!,brands)
-        binding.recvBrands.layoutManager = LinearLayoutManager(contextFragment!!,LinearLayoutManager.HORIZONTAL,false)
 
-    }
 
 
 }

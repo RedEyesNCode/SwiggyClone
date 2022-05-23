@@ -100,8 +100,30 @@ class LoginFragment : Fragment() {
     fun attachObserversofCouroutines(){
         loginViewModelCoroutines.loginResponse.observe(this, Observer { event ->
 
+            if (event.peekContent().data?.code == 200 && event.peekContent().data?.status!!.contains("success")) {
 
-            Toast.makeText(loginFragmentContext,"GOT RESPONSE FROM COROUTINES >> "+event.peekContent().data?.Token,Toast.LENGTH_SHORT).show()
+                //NOT USING THE CONSTANT STRING CLASS BECAUSE IT CAN'T STORE THE SPECIFIC VALUES IN THE STRING
+                AppSession(loginFragmentContext).clearAll()
+
+
+                AppSession(loginFragmentContext).setValue(Constant().USER_ID,event.peekContent().data?.data!!.id.toString(),loginFragmentContext)
+                AppSession(loginFragmentContext).setValue(Constant().ACCESS_TOKEN,event.peekContent().data?.Token,loginFragmentContext)
+
+                var stringAccessToken  = AppSession(loginFragmentContext).getValue(Constant().ACCESS_TOKEN,loginFragmentContext)
+                var userID  = AppSession(loginFragmentContext).getValue(Constant().USER_ID,loginFragmentContext)
+
+                if(stringAccessToken==null){
+                    Toast.makeText(loginFragmentContext,"USER SESSION NOT CREATED !", Toast.LENGTH_SHORT).show()
+
+                }else{
+                    startActivity(Intent(loginFragmentContext, HomeActivity::class.java))
+
+
+                }
+            }else{
+
+                Toast.makeText(loginFragmentContext,"Login Failed", Toast.LENGTH_SHORT).show()
+            }
         })
 
 
