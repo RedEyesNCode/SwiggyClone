@@ -91,53 +91,48 @@
 
 
 
-<!--        <com.google.android.material.tabs.TabLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            app:tabSelectedTextColor="@color/black"-->
-<!--            android:layout_marginTop="@dimen/_12sdp"-->
-<!--            app:tabTextColor="@color/black"-->
-<!--            android:id="@+id/tablayout"-->
-<!--            app:tabIndicatorColor="@color/orange"-->
-<!--            app:tabIndicatorGravity="bottom"-->
-<!--            android:isScrollContainer="true"-->
-<!--            app:tabMode="scrollable"-->
-<!--            android:layout_height="wrap_content">-->
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:text="Foods"-->
-<!--                android:id="@+id/tbFoods"-->
-<!--                android:layout_gravity="start"-->
-<!--                android:switchTextAppearance="@color/orange"-->
-<!--                android:layout_height="wrap_content"/>-->
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:text="Drinks"-->
-<!--                android:id="@+id/tbDrinks"-->
-<!--                android:layout_gravity="start"-->
-<!--                android:switchTextAppearance="@color/orange"-->
-<!--                android:layout_height="wrap_content"/>-->
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:text="Snacks"-->
-<!--                android:id="@+id/tSnacks"-->
-<!--                android:layout_gravity="start"-->
-<!--                android:switchTextAppearance="@color/orange"-->
-<!--                android:layout_height="wrap_content"/>-->
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:text="Italian"-->
-<!--                android:id="@+id/tbitalian"-->
-<!--                android:layout_gravity="start"-->
-<!--                android:switchTextAppearance="@color/orange"-->
-<!--                android:layout_height="wrap_content"/>-->
-<!--            <com.google.android.material.tabs.TabItem-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:text="South Indian"-->
-<!--                android:id="@+id/tbsignup"-->
-<!--                android:layout_gravity="start"-->
-<!--                android:switchTextAppearance="@color/orange"-->
-<!--                android:layout_height="wrap_content"/>-->
-<!--        </com.google.android.material.tabs.TabLayout>-->
+        <com.google.android.material.tabs.TabLayout
+            android:layout_width="match_parent"
+            app:tabSelectedTextColor="@color/black"
+            android:layout_marginTop="@dimen/_12sdp"
+            app:tabTextColor="@color/black"
+            android:id="@+id/tablayout"
+            app:tabIndicatorColor="@color/orange"
+            app:tabIndicatorGravity="bottom"
+            android:isScrollContainer="true"
+            app:tabMode="scrollable"
+            android:layout_height="wrap_content">
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:text="Foods"
+                android:layout_gravity="start"
+                android:switchTextAppearance="@color/orange"
+                android:layout_height="wrap_content"/>
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:text="Drinks"
+                android:layout_gravity="start"
+                android:switchTextAppearance="@color/orange"
+                android:layout_height="wrap_content"/>
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:text="Snacks"
+                android:layout_gravity="start"
+                android:switchTextAppearance="@color/orange"
+                android:layout_height="wrap_content"/>
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:text="Italian"
+                android:layout_gravity="start"
+                android:switchTextAppearance="@color/orange"
+                android:layout_height="wrap_content"/>
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:text="South Indian"
+                android:layout_gravity="start"
+                android:switchTextAppearance="@color/orange"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.tabs.TabLayout>
         <androidx.viewpager.widget.ViewPager
             android:layout_width="match_parent"
             android:id="@+id/foodsViewpager"

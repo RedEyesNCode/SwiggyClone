@@ -18,14 +18,15 @@
             android:id="@+id/back"
             android:src="@drawable/back"
             android:padding="@dimen/_4sdp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/rmedium"
             android:text="Cart"
             android:textColor="@color/black"
-            android:fontFamily="@font/rmedium"
-            android:layout_centerInParent="true"
-            android:textSize="@dimen/_21sdp"/>
+            android:textSize="@dimen/_21sdp" />
 
     </RelativeLayout>
 

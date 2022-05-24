@@ -19,15 +19,21 @@
         <entry key="app/src/main/res/layout/buyer_menu.xml" value="0.33" />
         <entry key="app/src/main/res/layout/cart_item.xml" value="0.5" />
         <entry key="app/src/main/res/layout/custom_progress_dialog.xml" value="0.1921875" />
-        <entry key="app/src/main/res/layout/food_item.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/food_item.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_cart_address.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_cart_payment.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_food.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_food_detail.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_italian.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_sauces.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/fragment_search_cuisines.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/fragment_search_food.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/fragment_signup.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_snacks.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/fragment_south_indian.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/fragment_user_account.xml" value="0.33" />
         <entry key="app/src/main/res/layout/home_restaurant_list.xml" value="0.33" />
         <entry key="app/src/main/res/layout/login_tab.xml" value="0.375" />

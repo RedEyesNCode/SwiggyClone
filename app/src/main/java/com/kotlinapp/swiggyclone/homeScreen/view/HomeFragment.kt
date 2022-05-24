@@ -17,11 +17,13 @@ import androidx.core.view.GravityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.tabs.TabLayout
 import com.kotlinapp.swiggyclone.R
 import com.kotlinapp.swiggyclone.auth.viewModel.LoginViewModel
 import com.kotlinapp.swiggyclone.cart.view.CartFragment
 import com.kotlinapp.swiggyclone.databinding.BuyerMenuBinding
 import com.kotlinapp.swiggyclone.databinding.FragmentHomeBinding
+import com.kotlinapp.swiggyclone.homeScreen.adapters.FoodsCategoryAdapter
 import com.kotlinapp.swiggyclone.homeScreen.models.Brands
 import com.kotlinapp.swiggyclone.homeScreen.models.Restaurants
 import com.kotlinapp.swiggyclone.homeScreen.view.adapters.BrandAdapter
@@ -29,6 +31,9 @@ import com.kotlinapp.swiggyclone.homeScreen.view.adapters.RestaurantsAdapter
 import com.kotlinapp.swiggyclone.homeScreen.viewModel.HomeViewModel
 import com.kotlinapp.swiggyclone.sharedPreferences.AppSession
 import com.kotlinapp.swiggyclone.sharedPreferences.Constant
+import com.kotlinapp.swiggyclone.smoothieKotlin.repository.AppRepository
+import com.kotlinapp.swiggyclone.smoothieKotlin.viewModel.LoginViewModelCoroutines
+import com.kotlinapp.swiggyclone.smoothieKotlin.viewModelFactory.ViewModelProviderFactory
 import com.kotlinapp.swiggyclone.utils.FragmentUtils
 
 // TODO: Rename parameter arguments, choose names that match
@@ -49,6 +54,8 @@ class HomeFragment : Fragment() {
     private lateinit var binding:FragmentHomeBinding
     private lateinit var homeViewModel: HomeViewModel
     var contextFragment: Context? = null
+    private lateinit var tabAdapter:FoodsCategoryAdapter
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -63,24 +70,79 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        homeViewModel = this!!.run {
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-        }
-        initView()
 
-
-
-    }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater,container,false)
         initNavigationView()
         initClicks()
         initClicksSideMenu()
+        initTabsViewPager()
+
+        // changes according to coroutines
+        // Create two methods
+        initCoroutines() // INTIALIZE THE REPO AND OTHER STUFF
+        attachObserversCouroutines() // SEPERATE THREAD WAITING FOR THE RESPONSE FROM THE API.
+
 
         return binding.root
+    }
+
+    private fun attachObserversCouroutines() {
+        homeViewModel.homeResponse.observe(this, Observer { event ->
+
+            if(event.peekContent().data?.code==200 && event.peekContent().data?.status!!.contains("success")){
+                // UPDATE THE UI ACCORDING
+
+                Toast.makeText(contextFragment,"Home Api Welcomes Coroutines.", Toast.LENGTH_SHORT).show()
+
+            }else{
+                Toast.makeText(contextFragment,"Oops Something Went Wrong.", Toast.LENGTH_SHORT).show()
+
+            }
+
+
+
+
+        })
+
+
+    }
+
+    private fun initCoroutines() {
+        //INTIALIZE THE REPO
+        val repository = AppRepository()
+        // GET THE VIEW-MODEL FACTORY INTO THE PLAY.
+        var factory = ViewModelProviderFactory(requireActivity().application,repository)
+        homeViewModel = ViewModelProvider(this,factory).get(HomeViewModel::class.java)
+
+        var stringAccessToken  = AppSession(contextFragment!!).getValue(Constant().ACCESS_TOKEN,contextFragment!!)
+
+        // Calling the home api as soon as user enters.
+        homeViewModel.callHomeapi(stringAccessToken!!)
+
+
+    }
+
+    private fun initTabsViewPager() {
+        tabAdapter = FoodsCategoryAdapter(requireFragmentManager(),contextFragment,5)
+        binding.foodsViewpager.adapter = tabAdapter
+        binding.tablayout.setupWithViewPager(binding.foodsViewpager)
+        binding.foodsViewpager.addOnPageChangeListener(
+            TabLayout.TabLayoutOnPageChangeListener(
+                binding.tablayout
+            )
+        )
+        binding.tablayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                binding.foodsViewpager.setCurrentItem(tab.position)
+
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab) {}
+            override fun onTabReselected(tab: TabLayout.Tab) {}
+        })
+
     }
 
     private fun initClicksSideMenu() {
@@ -139,15 +201,6 @@ class HomeFragment : Fragment() {
                 }
             }
     }
-    fun initView(){
-
-
-
-        var accessToken : String? = AppSession(contextFragment!!).getValue(Constant().ACCESS_TOKEN,contextFragment!!)
-        Log.i("HOMEFRAGMENT : TOKEN : ",accessToken!!)
-        //API CALLED BELOW
-    }
-
 
 
 }

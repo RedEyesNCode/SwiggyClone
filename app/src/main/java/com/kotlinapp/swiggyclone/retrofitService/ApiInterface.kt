@@ -35,6 +35,9 @@ interface ApiInterface {
     @GET("getFeed")
     fun getHomeFeedResponse(@Header("Authorization") accessToken:String):Call<HomeResponse>
 
+    //HOME FEED API
+    @GET("getFeed")
+    fun getHomeFeedResponseCoroutine(@Header("Authorization") accessToken:String):Call<HomeResponse>
 
     //GET USER ADDRESS BY ID ~ API
     @GET("getUserAddressById")

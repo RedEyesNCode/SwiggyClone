@@ -7,65 +7,68 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email address"
                 android:layout_marginLeft="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:textColor="@color/gray_black"
                 android:fontFamily="sans-serif-condensed-medium"
-                />
+                android:text="Email address"
+                android:textColor="@color/gray_black" />
+
             <EditText
-                android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_9sdp"
                 android:id="@+id/edtloginEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_8sdp"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:inputType="textEmailAddress"
-                android:layout_marginHorizontal="@dimen/_12sdp"
-                android:layout_height="wrap_content">
+                android:textColor="@color/black"
+                android:textSize="@dimen/_9sdp">
 
 
             </EditText>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Password"
                 android:layout_marginLeft="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:textColor="@color/gray_black"
                 android:fontFamily="sans-serif-condensed-medium"
-                />
+                android:text="Password"
+                android:textColor="@color/gray_black" />
+
             <EditText
                 android:id="@+id/edtLoginpassword"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_9sdp"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:inputType="textEmailAddress"
-                android:layout_marginHorizontal="@dimen/_12sdp"
-                android:layout_height="wrap_content">
+                android:textColor="@color/black"
+                android:textSize="@dimen/_9sdp">
 
 
             </EditText>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Forgot passcode ?"
-                android:textSize="@dimen/_12sdp"
                 android:layout_marginLeft="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:textColor="@color/orange"
                 android:fontFamily="@font/firesans_black"
-                />
+                android:text="Forgot passcode ?"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/_12sdp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
