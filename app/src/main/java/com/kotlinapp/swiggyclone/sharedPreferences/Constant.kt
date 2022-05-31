@@ -9,6 +9,7 @@ class Constant {
     var PREFERENCES_NAME : String= "SWIGGY_CLONE"
     var ACCESS_TOKEN : String = "ACCESS_TOKEN"
     var USER_ID : String = "USER_ID"
+    var IS_LOGIN : String = "IS_LOGIN"
 
 
 

@@ -7,6 +7,7 @@ import com.kotlinapp.swiggyclone.auth.viewModel.LoginViewModel
 import com.kotlinapp.swiggyclone.homeScreen.viewModel.HomeViewModel
 import com.kotlinapp.swiggyclone.smoothieKotlin.repository.AppRepository
 import com.kotlinapp.swiggyclone.smoothieKotlin.viewModel.LoginViewModelCoroutines
+import com.kotlinapp.swiggyclone.userAccount.viewModel.AccountViewModel
 
 class ViewModelProviderFactory(
     val app: Application,
@@ -19,6 +20,8 @@ class ViewModelProviderFactory(
             return LoginViewModelCoroutines(app, appRepository) as T
         } else if (modelClass.isAssignableFrom(HomeViewModel::class.java)){
             return HomeViewModel(app, appRepository) as T
+        }else if(modelClass.isAssignableFrom(AccountViewModel::class.java)){
+            return AccountViewModel(app, appRepository) as T
         }else{
             throw IllegalArgumentException("Unknown class name")
 

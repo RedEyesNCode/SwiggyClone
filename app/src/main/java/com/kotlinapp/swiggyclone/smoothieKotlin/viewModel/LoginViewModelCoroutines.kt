@@ -27,6 +27,7 @@ class LoginViewModelCoroutines(app:Application,private val appRepository: AppRep
     }
 
     private suspend fun login(body: LoginInputBody) {
+        // THE BELOW LINE WILL SEND THE DATA NULL. SO MANAGE IT ACCORDINGLY IN THE VIEW.
         _loginResponse.postValue(Event(Resource.Loading()))
         try {
             val response = appRepository.loginUserCoroutine(body)

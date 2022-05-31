@@ -10,10 +10,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlinapp.swiggyclone.R
+import com.kotlinapp.swiggyclone.base.BaseFragment
 import com.kotlinapp.swiggyclone.databinding.FragmentUserAccountBinding
 import com.kotlinapp.swiggyclone.homeScreen.viewModel.HomeViewModel
 import com.kotlinapp.swiggyclone.sharedPreferences.AppSession
 import com.kotlinapp.swiggyclone.sharedPreferences.Constant
+import com.kotlinapp.swiggyclone.smoothieKotlin.repository.AppRepository
+import com.kotlinapp.swiggyclone.smoothieKotlin.viewModelFactory.ViewModelProviderFactory
 import com.kotlinapp.swiggyclone.userAccount.view.adapter.PastOrderAdapter
 import com.kotlinapp.swiggyclone.userAccount.viewModel.AccountViewModel
 import com.kotlinapp.swiggyclone.utils.AppUtils
@@ -28,7 +31,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [UserAccountFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class UserAccountFragment : Fragment() {
+class UserAccountFragment : BaseFragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -54,10 +57,11 @@ class UserAccountFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //THIS IS NEW FROM JAVA this!!.run
-        accountViewModel = this!!.run {
+        /*accountViewModel = this!!.run {
             ViewModelProvider(this).get(AccountViewModel::class.java)
-        }
-        initView()
+        }*/
+//        initView()
+        initCouroutines()
 
     }
 
@@ -87,6 +91,41 @@ class UserAccountFragment : Fragment() {
                 }
             }
     }
+
+    fun initCouroutines(){
+        var appRepository = AppRepository()
+        var factory = ViewModelProviderFactory(requireActivity().application,appRepository)
+        accountViewModel = ViewModelProvider(this,factory).get(AccountViewModel::class.java)
+
+        var accessToken = AppSession(contextFragment!!).getValue(Constant().ACCESS_TOKEN,contextFragment!!)
+        var userId = AppSession(contextFragment!!).getValue(Constant().USER_ID,contextFragment!!)
+        accountViewModel.getUserDetailsCoroutines(accessToken!!,userId!!.toInt())
+
+        accountViewModel.isConnecting.observe(this, Observer { isLoading ->
+            if(isLoading==true){
+                showLoader()
+                // ONLY THE LOADER IS NOT SHOWING FROM A COMMON BASE FRAGMENT CLASS.
+//                showToast("Loading")
+            }
+            hideLoader()
+//            showToast("Completed api call.")
+        })
+        accountViewModel.isFailed.observe(this, Observer { error ->
+            showToast(error)
+        })
+
+        accountViewModel.userDetailResponseMutableLiveData.observe(this, Observer { response ->
+            if(response!=null){
+                binding.tvUserName.text = response.data?.userName?:"USERNAME"
+                binding.tvUserEmail.text = response.data?.userEmail?:"USEREMAIL"
+
+            }else{
+                showToast("Oops something went wrong !")
+            }
+        })
+    }
+
+/*
     fun initView(){
 
 
@@ -99,25 +138,12 @@ class UserAccountFragment : Fragment() {
         accountViewModel.getUserPastOrderById(accessToken!!,userId!!.toInt())
 
         accountViewModel.pastOrderResponseDataMutableLiveData.observe(this, Observer {
-
             if(it!=null){
                 if(it.pastOrders.size!=0){
-
                     binding.recvPastOrders.adapter = PastOrderAdapter(contextFragment!!,it.pastOrders)
                     binding.recvPastOrders.layoutManager = LinearLayoutManager(contextFragment!!)
-
-
-
                 }
-
-
-
             }
-
-
-
-
-
         })
 
         accountViewModel.userDetailResponseMutableLiveData.observe(this, Observer {
@@ -147,4 +173,5 @@ class UserAccountFragment : Fragment() {
 
 
     }
+*/
 }

@@ -20,11 +20,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
 import com.kotlinapp.swiggyclone.R
 import com.kotlinapp.swiggyclone.auth.viewModel.LoginViewModel
+import com.kotlinapp.swiggyclone.base.BaseFragment
 import com.kotlinapp.swiggyclone.cart.view.CartFragment
 import com.kotlinapp.swiggyclone.databinding.BuyerMenuBinding
 import com.kotlinapp.swiggyclone.databinding.FragmentHomeBinding
 import com.kotlinapp.swiggyclone.homeScreen.adapters.FoodsCategoryAdapter
 import com.kotlinapp.swiggyclone.homeScreen.models.Brands
+import com.kotlinapp.swiggyclone.homeScreen.models.HomeResponse
 import com.kotlinapp.swiggyclone.homeScreen.models.Restaurants
 import com.kotlinapp.swiggyclone.homeScreen.view.adapters.BrandAdapter
 import com.kotlinapp.swiggyclone.homeScreen.view.adapters.RestaurantsAdapter
@@ -46,7 +48,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -91,21 +93,40 @@ class HomeFragment : Fragment() {
     private fun attachObserversCouroutines() {
         homeViewModel.homeResponse.observe(this, Observer { event ->
 
-            if(event.peekContent().data?.code==200 && event.peekContent().data?.status!!.contains("success")){
-                // UPDATE THE UI ACCORDING
+            var resourceData = event.peekContent().data
 
-                Toast.makeText(contextFragment,"Home Api Welcomes Coroutines.", Toast.LENGTH_SHORT).show()
+            if(resourceData==null){
+                showLoader()
 
             }else{
-                Toast.makeText(contextFragment,"Oops Something Went Wrong.", Toast.LENGTH_SHORT).show()
+                hideLoader()
+                if(event.peekContent().data?.code==200 && event.peekContent().data?.status!!.contains("success")){
+                    // UPDATE THE UI ACCORDING
+                    if(event.peekContent().data!=null){
+                        updateUI(event.peekContent().data!!)
+                    }else{
+                        showToast("Oops something went wrong !")
+                    }
+
+
+                }else{
+                    Toast.makeText(contextFragment,"Oops Something Went Wrong.", Toast.LENGTH_SHORT).show()
+
+                }
+
 
             }
 
 
 
 
+
         })
 
+
+    }
+
+    private fun updateUI(data: HomeResponse) {
 
     }
 
@@ -120,6 +141,7 @@ class HomeFragment : Fragment() {
 
         // Calling the home api as soon as user enters.
         homeViewModel.callHomeapi(stringAccessToken!!)
+
 
 
     }
@@ -149,6 +171,7 @@ class HomeFragment : Fragment() {
         var buyerMenuView = binding.navview.getHeaderView(0)
         var buyerMenuBinding = BuyerMenuBinding.bind(buyerMenuView)
         buyerMenuBinding.btnSignout.setOnClickListener {
+            AppSession(contextFragment!!).getInstance(contextFragment!!).clearAll()
             activity?.finish()
         }
 

@@ -8,4 +8,7 @@ class AppRepository {
     suspend fun loginUserCoroutine(loginInputBody: LoginInputBody) = RetrofitService().apiInterface.loginApi(loginInputBody)
 
     suspend fun homeapiCoroutinesCall(accessToken:String) = RetrofitService().apiInterface.getHomeFeedResponseCoroutine(accessToken)
+
+    suspend fun getProfileCoroutines(accessToken: String, userId:Int) = RetrofitService().apiInterface.getUserDetailsById(accessToken, userId)
+
 }

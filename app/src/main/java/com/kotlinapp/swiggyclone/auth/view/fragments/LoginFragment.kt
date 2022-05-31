@@ -15,6 +15,7 @@ import com.kotlinapp.swiggyclone.R
 import com.kotlinapp.swiggyclone.auth.model.LoginInputBody
 import com.kotlinapp.swiggyclone.auth.view.LoginActivity
 import com.kotlinapp.swiggyclone.auth.viewModel.LoginViewModel
+import com.kotlinapp.swiggyclone.base.BaseFragment
 import com.kotlinapp.swiggyclone.databinding.FragmentLoginBinding
 import com.kotlinapp.swiggyclone.homeScreen.view.HomeActivity
 import com.kotlinapp.swiggyclone.sharedPreferences.AppSession
@@ -33,7 +34,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [LoginFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class LoginFragment : Fragment() {
+class LoginFragment : BaseFragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -100,74 +101,40 @@ class LoginFragment : Fragment() {
     fun attachObserversofCouroutines(){
         loginViewModelCoroutines.loginResponse.observe(this, Observer { event ->
 
-            if (event.peekContent().data?.code == 200 && event.peekContent().data?.status!!.contains("success")) {
+            var resourceData = event.peekContent().data
 
-                //NOT USING THE CONSTANT STRING CLASS BECAUSE IT CAN'T STORE THE SPECIFIC VALUES IN THE STRING
-                AppSession(loginFragmentContext).clearAll()
-
-
-                AppSession(loginFragmentContext).setValue(Constant().USER_ID,event.peekContent().data?.data!!.id.toString(),loginFragmentContext)
-                AppSession(loginFragmentContext).setValue(Constant().ACCESS_TOKEN,event.peekContent().data?.Token,loginFragmentContext)
-
-                var stringAccessToken  = AppSession(loginFragmentContext).getValue(Constant().ACCESS_TOKEN,loginFragmentContext)
-                var userID  = AppSession(loginFragmentContext).getValue(Constant().USER_ID,loginFragmentContext)
-
-                if(stringAccessToken==null){
-                    Toast.makeText(loginFragmentContext,"USER SESSION NOT CREATED !", Toast.LENGTH_SHORT).show()
-
-                }else{
-                    startActivity(Intent(loginFragmentContext, HomeActivity::class.java))
-
-
-                }
+            if(resourceData==null){
+                showLoader()
             }else{
+                hideLoader()
+                if (event.peekContent().data?.code == 200 && event.peekContent().data?.status!!.contains("success")) {
 
-                Toast.makeText(loginFragmentContext,"Login Failed", Toast.LENGTH_SHORT).show()
-            }
-        })
-
-
-    }
-    fun attachObservers(){
-        viewModel.loginDataClassLiveData?.observe(this, Observer {
+                    //NOT USING THE CONSTANT STRING CLASS BECAUSE IT CAN'T STORE THE SPECIFIC VALUES IN THE STRING
+                    AppSession(loginFragmentContext).clearAll()
 
 
-            if (it.code == 200 && it.status!!.contains("success")) {
+                    AppSession(loginFragmentContext).setValue(Constant().USER_ID,event.peekContent().data?.data!!.id.toString(),loginFragmentContext)
+                    AppSession(loginFragmentContext).setValue(Constant().ACCESS_TOKEN,event.peekContent().data?.Token,loginFragmentContext)
+                    AppSession(loginFragmentContext).setValue(Constant().IS_LOGIN,"true",loginFragmentContext)
 
-                //NOT USING THE CONSTANT STRING CLASS BECAUSE IT CAN'T STORE THE SPECIFIC VALUES IN THE STRING
-                AppSession(loginFragmentContext).clearAll()
+                    var stringAccessToken  = AppSession(loginFragmentContext).getValue(Constant().ACCESS_TOKEN,loginFragmentContext)
+                    var userID  = AppSession(loginFragmentContext).getValue(Constant().USER_ID,loginFragmentContext)
+
+                    if(stringAccessToken==null){
+                        Toast.makeText(loginFragmentContext,"USER SESSION NOT CREATED !", Toast.LENGTH_SHORT).show()
+
+                    }else{
+                        startActivity(Intent(loginFragmentContext, HomeActivity::class.java))
 
 
-                AppSession(loginFragmentContext).setValue(Constant().USER_ID,it.data!!.id.toString(),loginFragmentContext)
-                AppSession(loginFragmentContext).setValue(Constant().ACCESS_TOKEN,it.Token,loginFragmentContext)
-
-                var stringAccessToken  = AppSession(loginFragmentContext).getValue(Constant().ACCESS_TOKEN,loginFragmentContext)
-                var userID  = AppSession(loginFragmentContext).getValue(Constant().USER_ID,loginFragmentContext)
-
-                if(stringAccessToken==null){
-                    Toast.makeText(loginFragmentContext,"USER SESSION NOT CREATED !", Toast.LENGTH_SHORT).show()
-
+                    }
                 }else{
-                    startActivity(Intent(loginFragmentContext, HomeActivity::class.java))
 
-
+                    Toast.makeText(loginFragmentContext,"Login Failed", Toast.LENGTH_SHORT).show()
                 }
-            }else{
-
-                Toast.makeText(loginFragmentContext,"Login Failed", Toast.LENGTH_SHORT).show()
             }
+
         })
-
-
-
-
-
-
-
-
-
-
-
 
 
     }

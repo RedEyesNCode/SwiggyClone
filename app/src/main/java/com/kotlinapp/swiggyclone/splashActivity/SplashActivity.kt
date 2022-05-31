@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.os.Handler
 import com.kotlinapp.swiggyclone.auth.view.LoginActivity
 import com.kotlinapp.swiggyclone.databinding.ActivitySplashBinding
+import com.kotlinapp.swiggyclone.homeScreen.view.HomeActivity
+import com.kotlinapp.swiggyclone.sharedPreferences.AppSession
+import com.kotlinapp.swiggyclone.sharedPreferences.Constant
 
 class SplashActivity : AppCompatActivity() {
 
@@ -22,9 +25,16 @@ class SplashActivity : AppCompatActivity() {
 
         var handler = Handler().postDelayed(Runnable {
 
-            var intentHome = Intent(this,LoginActivity::class.java)
-            startActivity(intentHome)
-
+            var islogin = AppSession(this@SplashActivity).getString(Constant().IS_LOGIN)
+            if(islogin!!.contains("true")){
+                var intentHome = Intent(this,HomeActivity::class.java)
+                intentHome.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intentHome)
+            }else{
+                var intentHome = Intent(this,LoginActivity::class.java)
+                intentHome.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(intentHome)
+            }
 
         },3000)
 

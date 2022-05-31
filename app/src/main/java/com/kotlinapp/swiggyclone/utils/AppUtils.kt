@@ -6,7 +6,7 @@ import com.google.gson.GsonBuilder
 import com.kotlinapp.swiggyclone.auth.model.CommonStatusMessageResponse
 import okhttp3.ResponseBody
 
-class AppUtils {
+open class AppUtils {
     fun getServerError(responseCode: Int, responseBody: ResponseBody?, context: Context?): String? {
         var serverHandling = "Error $responseCode Please try again."
         when (responseCode) {
@@ -33,6 +33,11 @@ class AppUtils {
                 }
         }
         return serverHandling
+    }
+    fun showLog(message: String){
+        Log.i("SWIGGY_CLONE",message)
+
+
     }
 
 

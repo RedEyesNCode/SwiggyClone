@@ -1,14 +1,18 @@
 package com.kotlinapp.swiggyclone.userAccount.viewModel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.*
+import com.kotlinapp.swiggyclone.smoothieKotlin.repository.AppRepository
 import com.kotlinapp.swiggyclone.userAccount.accountRepository.AccountRepository
 import com.kotlinapp.swiggyclone.userAccount.model.AddressResponseData
 import com.kotlinapp.swiggyclone.userAccount.model.PastOrderResponseData
 import com.kotlinapp.swiggyclone.userAccount.model.UserDetailResponse
+import com.kotlinapp.swiggyclone.utils.AppUtils
+import kotlinx.coroutines.launch
+import retrofit2.awaitResponse
+import java.io.IOException
 
-class AccountViewModel:ViewModel() {
+class AccountViewModel(var app:Application,var appRepository: AppRepository):AndroidViewModel(app) {
 
 
     //OBSERVE THIS MUTABLE LIVE DATA IN YOUR VIEW
@@ -18,13 +22,15 @@ class AccountViewModel:ViewModel() {
 
 
 
-    var isFailed: LiveData<String> = MutableLiveData<String>()
-    var isConnecting: LiveData<String> = MutableLiveData<String>()
+
+
+    var isFailed: MutableLiveData<String> = MutableLiveData<String>()
+    var isConnecting: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
 
     fun getIsFailed(): LiveData<String> {
         return isFailed
     }
-    fun getIsConnecting(): LiveData<String> {
+    fun getIsConnecting(): LiveData<Boolean> {
         return isConnecting
     }
 
@@ -38,6 +44,35 @@ class AccountViewModel:ViewModel() {
     }
 
     //CALLING THE  GET USER PAST ORDER'S BY THE ID OF THE USER.
+
+    fun getUserDetailsCoroutines(accessToken: String,userId: Int) = viewModelScope.launch {
+        getUserdetailsSuspended(accessToken,userId)
+
+    }
+    suspend fun getUserdetailsSuspended(accessToken: String,userId: Int){
+
+        isConnecting.value = true
+
+        try {
+            var appRepository = AppRepository()
+
+            var response = appRepository.getProfileCoroutines(accessToken, userId).awaitResponse()
+            userDetailResponseMutableLiveData.postValue(response.body())
+        }catch (e:Throwable){
+            when(e){
+                is IOException -> {
+                    isFailed.value = "IO EXCEPTION PLEASE TRY AGAIN"
+                    AppUtils().showLog("IO EXCEPTION PLEASE TRY AGAIN")
+                }
+                is Exception -> {
+                    isFailed.value = "EXCEPTION OCCURED"
+                    AppUtils().showLog("EXCEPTION OCCURED !")
+                }
+            }
+        }
+    }
+
+
     fun getUserPastOrderById(accessToken: String, userId: Int):MutableLiveData<PastOrderResponseData>{
 
         pastOrderResponseDataMutableLiveData = accountRepository!!.getUserPastOrdersById(accessToken, userId)

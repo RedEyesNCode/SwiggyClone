@@ -32,7 +32,7 @@
                 android:fontFamily="sans-serif-condensed-medium"
                 android:inputType="textEmailAddress"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_9sdp">
+                android:textSize="@dimen/_13sdp">
 
 
             </EditText>
@@ -55,7 +55,7 @@
                 android:fontFamily="sans-serif-condensed-medium"
                 android:inputType="textEmailAddress"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_9sdp">
+                android:textSize="@dimen/_13sdp">
 
 
             </EditText>
