@@ -4,6 +4,8 @@ import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.kotlinapp.swiggyclone.sharedPreferences.AppSession
+import com.kotlinapp.swiggyclone.sharedPreferences.Constant
 
 open class BaseFragment : Fragment() {
 
@@ -48,6 +50,15 @@ open class BaseFragment : Fragment() {
         Log.i("SWIGGY_CLONE",message)
 
 
+    }
+    fun getAccessToken(): String {
+        var accessToken =AppSession(requireContext()).getString(Constant().ACCESS_TOKEN)
+
+        if(accessToken!=null){
+            return accessToken
+        }else{
+            return ""
+        }
     }
 
 

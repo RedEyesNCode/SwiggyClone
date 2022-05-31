@@ -1,14 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".productDetail.FoodDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:id="@+id/back"
+            android:src="@drawable/back"
+            android:padding="@dimen/_4sdp"/>
 
-</FrameLayout>
+        <ImageView
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:id="@+id/wishList"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/wishlist"
+            android:padding="@dimen/_2sdp"/>
+
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:src="@drawable/swipe"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_12sdp"
+            android:fontFamily="@font/rmedium"
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:textColor="@color/black"
+            android:text="Swipe on dishes to view menu"/>
+
+
+
+    </LinearLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:layout_height="@dimen/_170sdp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="Restaurant Name"
+            android:id="@+id/tvRestaurantName"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:fontFamily="@font/rmedium"
+            android:paddingVertical="@dimen/_8sdp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_21sdp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="@dimen/_22sdp"
+                    android:layout_height="@dimen/_22sdp"
+                    android:src="@drawable/ic_location"
+                    android:layout_gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/tvLocation"
+                    android:text="Near Haveli"
+                    android:textColor="@color/orange"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:fontFamily="@font/rmedium"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:paddingVertical="@dimen/_2sdp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_11sdp"/>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="@dimen/_22sdp"
+                    android:layout_height="@dimen/_22sdp"
+                    android:src="@drawable/rating"
+                    android:layout_gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/tvRating"
+                    android:text="3.0"
+                    android:textColor="@color/yellow"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:fontFamily="@font/rmedium"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:paddingVertical="@dimen/_2sdp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_11sdp"/>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="@dimen/_22sdp"
+                    android:layout_height="@dimen/_22sdp"
+                    android:src="@drawable/fast_delivery"
+                    android:layout_gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/tvDeliveryTime"
+                    android:text="35 - 40 mins"
+                    android:textColor="@color/yellow"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:fontFamily="@font/rmedium"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:paddingVertical="@dimen/_2sdp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_11sdp"/>
+
+
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnCompleteorder"
+                android:layout_width="@dimen/_195sdp"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_45sdp"
+                android:background="@drawable/background_button_orange"
+                android:gravity="center"
+                android:text="Add to Cart"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:translationZ="-90dp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+</LinearLayout>

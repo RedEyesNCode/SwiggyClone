@@ -64,7 +64,7 @@ class HomeViewModel(app: Application, private val appRepository: AppRepository):
 
     //CREATING A SUSPEND FUNCTIONS REQUIRED.
     private suspend fun callHomeSuspendFuntion(accessToken: String){
-        _homeResponse.postValue(Event(Resource.Loading()))
+//        _homeResponse.postValue(Event(Resource.Loading()))
 
         //THIS TRY CATCH BLOCK IS NESSCARY TO SOLVE THE JSON PARSING ERROR IF OCCURED ANY
         try {

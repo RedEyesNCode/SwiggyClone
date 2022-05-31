@@ -10,6 +10,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#FA4B0C</color>
+    <color name="yellow">#FFC800</color>
     <color name="red_custom">#e02b2d</color>
     <color name="gray_black">#BAB1B1</color>
     <color name="dark_blue">#098BFD</color>

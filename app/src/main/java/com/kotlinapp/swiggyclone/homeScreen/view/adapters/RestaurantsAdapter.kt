@@ -4,17 +4,23 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.kotlinapp.swiggyclone.databinding.FoodItemBinding
 import com.kotlinapp.swiggyclone.databinding.TopPicksListBinding
 import com.kotlinapp.swiggyclone.homeScreen.models.Restaurants
 import java.util.ArrayList
 
-class RestaurantsAdapter(var context: Context, var restaurants: ArrayList<Restaurants>) :RecyclerView.Adapter<RestaurantsAdapter.MyViewHolder>(){
+class RestaurantsAdapter(var context: Context, var restaurants: ArrayList<Restaurants>, var onClickedActivity: onClicked) :RecyclerView.Adapter<RestaurantsAdapter.MyViewHolder>(){
 
-    private lateinit var topPicksListBinding: TopPicksListBinding
+    private lateinit var topPicksListBinding: FoodItemBinding
+    private var  onClickedInterface: onClicked
+
+    init {
+        onClickedInterface=  onClickedActivity
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
-        topPicksListBinding = TopPicksListBinding.inflate(LayoutInflater.from(context),parent,false);
+        topPicksListBinding = FoodItemBinding.inflate(LayoutInflater.from(context),parent,false);
 
 
         return MyViewHolder(topPicksListBinding)
@@ -36,10 +42,16 @@ class RestaurantsAdapter(var context: Context, var restaurants: ArrayList<Restau
 
                 }*/
                 tvRestaurantName.text = restaurantName
-                tvDeliveryTime.text = deliveryTime
+//                tvDeliveryTime.text = deliveryTime
 
+                topPicksListBinding.foodLayout.setOnClickListener {
+                    restaurant.restaurantId?.let { it1 ->
+                        onClickedInterface.onViewDetails(position,
+                            it1
+                        )
+                    }
 
-
+                }
 
             }
 
@@ -54,6 +66,9 @@ class RestaurantsAdapter(var context: Context, var restaurants: ArrayList<Restau
        return restaurants.size
     }
 
-    class MyViewHolder(topPicksListBinding: TopPicksListBinding):RecyclerView.ViewHolder(topPicksListBinding.root)
+    class MyViewHolder(topPicksListBinding: FoodItemBinding):RecyclerView.ViewHolder(topPicksListBinding.root)
+    interface onClicked{
+        fun onViewDetails(position: Int, restaurantId:Int)
+    }
 
 }
