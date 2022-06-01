@@ -55,6 +55,7 @@
     <androidx.viewpager.widget.ViewPager
         android:layout_width="wrap_content"
         android:layout_marginTop="@dimen/_12sdp"
+        android:id="@+id/productsViewpager"
         android:layout_marginHorizontal="@dimen/_12sdp"
         android:layout_height="@dimen/_170sdp" />
     <LinearLayout

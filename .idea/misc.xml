@@ -42,6 +42,7 @@
         <entry key="app/src/main/res/layout/fragment_search_cuisines.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/fragment_search_food.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/fragment_signup.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_single_product.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_snacks.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/fragment_south_indian.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/fragment_user_account.xml" value="0.33" />
