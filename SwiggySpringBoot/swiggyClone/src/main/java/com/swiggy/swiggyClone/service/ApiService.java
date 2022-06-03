@@ -1,6 +1,10 @@
 package com.swiggy.swiggyClone.service;
 
 
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.swiggy.swiggyClone.amazonbucket.AWSConstant;
 import com.swiggy.swiggyClone.dataModel.*;
 import com.swiggy.swiggyClone.dataModel.address.AddressBody;
 import com.swiggy.swiggyClone.dataModel.address.AddressTable;
@@ -14,10 +18,16 @@ import com.swiggy.swiggyClone.repository.oneToOneRepository.ParentRepository;
 import com.swiggy.swiggyClone.repository.orderRepository.OrderDetailRepository;
 import com.swiggy.swiggyClone.repository.orderRepository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +64,11 @@ public class ApiService {
     private GenieRepository genieRepository;
 
 
+    @Value("${application.bucket.name}")
+    private String bucketName;
 
+    @Autowired
+    private AmazonS3 s3Client;
 
 
 
@@ -390,11 +404,37 @@ public class ApiService {
 
         }
     }
-    //Api to fetch the details from the user and place the order accordingly.
+
+    // UPLOAD THE USER PROFILE PICTURE TO S3 BUCKET.
+    public ResponseEntity<?> uploadFile(MultipartFile file, Long userId) {
+        File fileObj = convertMultiPartFileToFile(file);
+        String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+
+        // WE NEED TO WRITE THE ACL COMMANDS.
+        s3Client.putObject(new PutObjectRequest(bucketName, fileName, fileObj).withCannedAcl(CannedAccessControlList.PublicRead));
+        fileObj.delete();
+
+        // Need to update the profile column in DB with the base url + file name
+
+        userDataRepository.updateUserProfileImage(AWSConstant.BUCKET_BASE_URL+fileName,userId);
 
 
-    //Api to get all the Place orders By UserId of the customer.
+        return new ResponseEntity<>(new StatusCodeModel("success",200,"Profile pic uploaded successfully + "+fileName),HttpStatus.OK );
 
+
+
+    }
+
+
+    private File convertMultiPartFileToFile(MultipartFile file) {
+        File convertedFile = new File(file.getOriginalFilename());
+        try (FileOutputStream fos = new FileOutputStream(convertedFile)) {
+            fos.write(file.getBytes());
+        } catch (IOException e) {
+            System.out.print("IO EXCEPTION..");
+        }
+        return convertedFile;
+    }
 
 
 

@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+DatabaseConfiguration.java
+AWSConstant.java

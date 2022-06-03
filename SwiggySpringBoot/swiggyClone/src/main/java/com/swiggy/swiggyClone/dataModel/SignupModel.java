@@ -16,6 +16,24 @@ public class SignupModel {
     private String password;
     private String userName;
 
+    private String profileUrl;
+
+    public String getProfileUrl() {
+        return profileUrl;
+    }
+
+    public void setProfileUrl(String profileUrl) {
+        this.profileUrl = profileUrl;
+    }
+
+    public SignupModel(String userEmail, String number, String password, String userName, String profileUrl) {
+        this.userEmail = userEmail;
+        this.number = number;
+        this.password = password;
+        this.userName = userName;
+        this.profileUrl = profileUrl;
+    }
+
     public SignupModel(Long id, String userEmail, String number, String password, String userName) {
         this.id = id;
         this.userEmail = userEmail;
@@ -23,6 +41,7 @@ public class SignupModel {
         this.password = password;
         this.userName = userName;
     }
+
 
     public String getUserName() {
         return userName;

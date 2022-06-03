@@ -32,6 +32,11 @@ public interface UserDataRepository extends JpaRepository<SignupModel, Long> {
     @Query("UPDATE SignupModel s SET s.userName = :userNameQuery WHERE s.id = :id")
     int updateUserNamebyId(String userNameQuery, Long id);
 
+    @Transactional
+    @Modifying
+    @Query("UPDATE SignupModel s SET s.profileUrl = :completeFileName WHERE s.id = :id")
+    int updateUserProfileImage(String completeFileName,Long id);
+
 
     //Query to check if the User Exists in the database or not.
     @Query("SELECT s FROM SignupModel s WHERE s.number =:number AND s.password=:password")

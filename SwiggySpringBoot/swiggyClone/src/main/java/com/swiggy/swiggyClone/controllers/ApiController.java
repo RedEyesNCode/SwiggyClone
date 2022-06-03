@@ -13,8 +13,10 @@ import com.swiggy.swiggyClone.service.ApiService;
 import io.jsonwebtoken.SignatureException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -248,15 +250,12 @@ public class ApiController {
 
     }
 
-
-  /*  //Api to get the place the order by Orderid, addressId, and Userid
-    @GetMapping("/placeOrder")
-    public ResponseEntity<?> placeOrderCustomer(@RequestBody PlaceOrderBody placeOrderBody){
-
-
-
+    // API TO UPLOAD USER PROFILE IMAGE
+    @PostMapping("/uploadProfilePic")
+    public ResponseEntity<?> uploadProfileImage(@RequestParam(value = "avatar") MultipartFile file,@Param("userId") Long userId){
+        return new ResponseEntity<>(apiService.uploadFile(file,userId), HttpStatus.OK);
     }
-*/
+
 
 
 

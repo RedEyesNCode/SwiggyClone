@@ -24,6 +24,7 @@ class HomeViewModel(app: Application, private val appRepository: AppRepository):
 
     var isFailed: LiveData<String> = MutableLiveData<String>()
     var isConnecting: LiveData<String> = MutableLiveData<String>()
+    var isSuccess :LiveData<String> = MutableLiveData<String>()
 
     fun getIsFailed(): LiveData<String> {
         return isFailed
