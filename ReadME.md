@@ -62,6 +62,7 @@
 The Back-End System is Hosted on the Amazon EC2 instance or you can also use it while hosting it on your local Machine
 (Described Later)
 - Spring boot
+- AWS S3 BUCKET 
 - JWT TOKEN (ALONG WITH DB VALIDATION)
 - QUERY THE DATABASE WITH THE ID
 - CHECK IF THE DATABASE HAS A DATA WITH PARTICULAR ID
