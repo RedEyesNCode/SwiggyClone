@@ -12,4 +12,7 @@ class AppRepository {
     suspend fun getProfileCoroutines(accessToken: String, userId:Int) = RetrofitService().apiInterface.getUserDetailsById(accessToken, userId)
 
     suspend fun getRestaurantDetails(accessToken: String,restaurantId:Int) = RetrofitService().apiInterface.getRestaurantDetail(accessToken, restaurantId)
+
+    suspend fun getAllProducts(accessToken: String) = RetrofitService().apiInterface.getAllProducts(accessToken)
+
 }
