@@ -26,7 +26,7 @@
         android:layout_height="@dimen/_75sdp"
         android:layout_gravity="center_horizontal"
         android:id="@+id/profileImg"
-        android:background="@drawable/burger"
+        android:scaleType="fitXY"
         />
     <TextView
         android:layout_width="wrap_content"

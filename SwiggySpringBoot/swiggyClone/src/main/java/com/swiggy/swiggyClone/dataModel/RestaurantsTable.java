@@ -18,12 +18,24 @@ public class RestaurantsTable {
     private Double discount;
     private boolean isSwiggyOne;
 
-    public RestaurantsTable(String restaurantName, Double rating, String deliveryTime, Double discount, boolean isSwiggyOne) {
+    private String restaurantImage;
+
+    public String getRestaurantImage() {
+        return restaurantImage;
+    }
+
+    public void setRestaurantImage(String restaurantImage) {
+        this.restaurantImage = restaurantImage;
+    }
+
+    public RestaurantsTable(String restaurantName, Double rating, String deliveryTime, Double discount, boolean isSwiggyOne, String restaurantImage) {
         this.restaurantName = restaurantName;
         this.rating = rating;
         this.deliveryTime = deliveryTime;
         this.discount = discount;
         this.isSwiggyOne = isSwiggyOne;
+        this.restaurantImage = restaurantImage;
+
     }
 
     public RestaurantsTable(Long id, String restaurantName, Double rating, String deliveryTime, Double discount) {

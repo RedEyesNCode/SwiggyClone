@@ -14,6 +14,7 @@ data class Data (
     @SerializedName("rating"         ) var rating         : Int?     = null,
     @SerializedName("deliveryTime"   ) var deliveryTime   : String?  = null,
     @SerializedName("discount"       ) var discount       : Int?     = null,
-    @SerializedName("swiggyOne"      ) var swiggyOne      : Boolean? = null
+    @SerializedName("swiggyOne"      ) var swiggyOne      : Boolean? = null,
+    @SerializedName("restaurantImage" )var restaurantImage :String?=null
 
 )

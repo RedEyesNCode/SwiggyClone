@@ -440,4 +440,12 @@ public class ApiService {
         return new StatusCodeModel("success",200,"Item deleted successfully");
 
     }
+
+    public StatusCodeModel deleteWishlist(Long wishlistId) {
+
+        wishListRepository.deleteWishlistById(wishlistId);
+
+        return new StatusCodeModel("success",200,"Removed from wishlist !");
+
+    }
 }

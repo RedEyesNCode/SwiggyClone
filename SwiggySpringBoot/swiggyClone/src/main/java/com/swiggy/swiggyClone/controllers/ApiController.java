@@ -266,6 +266,14 @@ public class ApiController {
     }
 
 
+    @PostMapping("/deleteWishlist")
+    public StatusCodeModel deleteUserWishlist(@Param("wishListId") Long wishlistId){
+
+
+        return  apiService.deleteWishlist(wishlistId);
+
+    }
+
 
 
 

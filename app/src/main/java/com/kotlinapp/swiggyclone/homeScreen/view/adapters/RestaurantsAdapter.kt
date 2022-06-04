@@ -4,6 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.kotlinapp.swiggyclone.R
 import com.kotlinapp.swiggyclone.databinding.FoodItemBinding
 import com.kotlinapp.swiggyclone.databinding.TopPicksListBinding
 import com.kotlinapp.swiggyclone.homeScreen.models.Restaurants
@@ -27,6 +29,8 @@ class RestaurantsAdapter(var context: Context, var restaurants: ArrayList<Restau
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        Glide.with(context).load(restaurants.get(position).restaurantImage).into(topPicksListBinding.profileImg)
+
         with(holder){
             with(topPicksListBinding){
                 var restaurant:Restaurants = restaurants.get(position)

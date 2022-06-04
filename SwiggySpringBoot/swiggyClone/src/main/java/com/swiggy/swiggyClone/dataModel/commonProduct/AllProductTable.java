@@ -22,13 +22,24 @@ public class AllProductTable {
     private String description;
     private String productType;
 
+    private String productImage;
 
-    public AllProductTable(String dishName, boolean isVeg, Double price, String description, String productType) {
+
+    public String getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
+    }
+
+    public AllProductTable(String dishName, boolean isVeg, Double price, String description, String productType, String productImage) {
         this.dishName = dishName;
         this.isVeg = isVeg;
         this.price = price;
         this.description = description;
         this.productType = productType;
+        this.productImage = productImage;
     }
 
     public AllProductTable(Long menuId, String dishName, boolean isVeg, Double price, String description, String productType) {

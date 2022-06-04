@@ -17,7 +17,8 @@ data class Restaurants (
     @SerializedName("rating"         ) var rating         : Double?     = null,
     @SerializedName("deliveryTime"   ) var deliveryTime   : String?  = null,
     @SerializedName("discount"       ) var discount       : Double?     = null,
-    @SerializedName("swiggyOne"      ) var swiggyOne      : Boolean? = null
+    @SerializedName("swiggyOne"      ) var swiggyOne      : Boolean? = null,
+    @SerializedName("restaurantImage" )var restaurantImage :String?=null
 
 )
 data class Offers (
