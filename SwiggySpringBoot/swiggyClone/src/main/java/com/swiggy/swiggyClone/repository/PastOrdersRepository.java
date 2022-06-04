@@ -14,7 +14,7 @@ public interface PastOrdersRepository extends JpaRepository<PastOrders,Long> {
 
 
     @Query("SELECT s FROM PastOrders s WHERE s.userID = :userID")
-    List<PastOrders> getUserPastOrders(Long userID);
+    List<PastOrders> getUserPastOrders(int userID);
 
 
 }

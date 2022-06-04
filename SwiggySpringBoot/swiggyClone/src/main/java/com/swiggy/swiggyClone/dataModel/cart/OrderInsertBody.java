@@ -8,6 +8,10 @@ public class OrderInsertBody {
         private Long productId;
         private String type;
 
+        private String paymentType;
+
+
+
     public OrderInsertBody(Long userId, Long restaurantId, Long productId, String type) {
         this.userId = userId;
         this.restaurantId = restaurantId;

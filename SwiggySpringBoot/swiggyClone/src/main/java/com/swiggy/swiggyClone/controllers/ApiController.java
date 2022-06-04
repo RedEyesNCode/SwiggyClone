@@ -229,6 +229,15 @@ public class ApiController {
 
     }
 
+    @PostMapping("/deleteCart")
+    public StatusCodeModel deleteCartItem(@Param("orderId") Long orderId,@Param("userId") Long userId){
+
+
+        return apiService.deleteCartItem(orderId,userId);
+
+    }
+
+
     //Api to get cart information with the id of the user.
     @GetMapping("/getCart")
     public ResponseEntity<?> getCart(@Param("userId") Long userId){
@@ -252,8 +261,8 @@ public class ApiController {
 
     // API TO UPLOAD USER PROFILE IMAGE
     @PostMapping("/uploadProfilePic")
-    public ResponseEntity<?> uploadProfileImage(@RequestParam(value = "avatar") MultipartFile file,@Param("userId") Long userId){
-        return new ResponseEntity<>(apiService.uploadFile(file,userId), HttpStatus.OK);
+    public ResponseEntity<StatusCodeModel> uploadProfileImage(@RequestParam(value = "avatar") MultipartFile file,@Param("userId") Long userId){
+        return apiService.uploadFile(file, userId);
     }
 
 

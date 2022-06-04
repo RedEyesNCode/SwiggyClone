@@ -259,7 +259,7 @@ public class ApiService {
 
     //Get the user past Order by id
 
-    public List<PastOrders> getUserPastOrder(int userID){return pastOrdersRepository.getUserPastOrders(Long.valueOf(String.valueOf(userID)));}
+    public List<PastOrders> getUserPastOrder(int userID){return pastOrdersRepository.getUserPastOrders(userID);}
 
     //Get Restaurant Meny by Restaurant Id;
 
@@ -375,15 +375,17 @@ public class ApiService {
                 cartListData.setData(new CartData(restaurantId,restaurantDetailRepository.getById(restaurantId)));
                 cartListData.setOrderId(orderDetailTables.get(i).getOrderId());
                 cartListData.setProduct(new ProductData(productId,allProductsRepository.getById(productId)));
-                /*cartListData.setPaymentDetail(paymentDetailRepository.getById(paymentDetailId));*/
+                cartListData.setPaymentDetail(paymentDetailRepository.findByUserId(userId,orderDetailTables.get(i).getOrderId()).get());
+
+
+
                 cartLists.add(cartListData);
             }
             CartResponse cartResponse = new CartResponse("success" ,200,"Record Found",cartLists);
             return ResponseEntity.ok(cartResponse);
-
         }else {
 
-            return ResponseEntity.ok(new StatusCodeModel("fail",200,"Record Not Found"));
+            return ResponseEntity.ok(new StatusCodeModel("fail",200,"Cart is empty."));
         }
 
 
@@ -406,26 +408,17 @@ public class ApiService {
     }
 
     // UPLOAD THE USER PROFILE PICTURE TO S3 BUCKET.
-    public ResponseEntity<?> uploadFile(MultipartFile file, Long userId) {
+    public ResponseEntity<StatusCodeModel> uploadFile(MultipartFile file, Long userId) {
         File fileObj = convertMultiPartFileToFile(file);
         String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
 
         // WE NEED TO WRITE THE ACL COMMANDS.
         s3Client.putObject(new PutObjectRequest(bucketName, fileName, fileObj).withCannedAcl(CannedAccessControlList.PublicRead));
         fileObj.delete();
-
         // Need to update the profile column in DB with the base url + file name
-
-        userDataRepository.updateUserProfileImage(AWSConstant.BUCKET_BASE_URL+fileName,userId);
-
-
+        userDataRepository.updateUserProfileImage(fileName,userId);
         return new ResponseEntity<>(new StatusCodeModel("success",200,"Profile pic uploaded successfully + "+fileName),HttpStatus.OK );
-
-
-
     }
-
-
     private File convertMultiPartFileToFile(MultipartFile file) {
         File convertedFile = new File(file.getOriginalFilename());
         try (FileOutputStream fos = new FileOutputStream(convertedFile)) {
@@ -437,19 +430,14 @@ public class ApiService {
     }
 
 
+    // For deleting the item from the cart table of the user.
+    public StatusCodeModel deleteCartItem(Long orderId, Long userId) {
 
+        // Delete from the order table , order detail table
+        orderDetailRepository.deleteByOrderID(orderId);
+        orderRepository.deleteByUserIdandOrderId(orderId);
 
+        return new StatusCodeModel("success",200,"Item deleted successfully");
 
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 }

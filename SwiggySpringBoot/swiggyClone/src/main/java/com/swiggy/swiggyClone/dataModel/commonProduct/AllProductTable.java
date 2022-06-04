@@ -22,6 +22,7 @@ public class AllProductTable {
     private String description;
     private String productType;
 
+
     public AllProductTable(String dishName, boolean isVeg, Double price, String description, String productType) {
         this.dishName = dishName;
         this.isVeg = isVeg;
