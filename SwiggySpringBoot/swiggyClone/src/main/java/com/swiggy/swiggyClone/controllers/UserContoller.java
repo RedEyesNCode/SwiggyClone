@@ -58,6 +58,7 @@ public class UserContoller {
 		return ResponseEntity.ok(new AuthenticationResponse(jwt));
 	}
 */
+	@CrossOrigin
 	@RequestMapping(value = "/authJWT", method = RequestMethod.POST)
 	public ResponseEntity<?> createJWTFinal(@RequestBody AuthenticationRequest authRequest) throws Exception{
 		try {

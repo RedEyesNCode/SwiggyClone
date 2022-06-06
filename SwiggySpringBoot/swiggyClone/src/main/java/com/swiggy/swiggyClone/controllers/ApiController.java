@@ -264,8 +264,6 @@ public class ApiController {
     public ResponseEntity<StatusCodeModel> uploadProfileImage(@RequestParam(value = "avatar") MultipartFile file,@Param("userId") Long userId){
         return apiService.uploadFile(file, userId);
     }
-
-
     @PostMapping("/deleteWishlist")
     public StatusCodeModel deleteUserWishlist(@Param("wishListId") Long wishlistId){
 
