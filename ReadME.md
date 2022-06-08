@@ -6,15 +6,6 @@
 
 
 #### DESIGN OF THE ENTIRE APP
-
-<table>
-    <tr>
-    <td>Application Design</td>
-    </tr>
-    <tr>
-    <td><img src="media/flow_chart.png"></td>
-    </tr>
-</table>
 <table>
     <tr>
     <td>App Screens</td>
@@ -29,19 +20,26 @@
     <tr>
     <td>Payment Screen</td>
     <td>Profile Screen</td>
+    <td>Navigation Side bar Screen</td>
     </tr>
     <tr>
     <td><img src="media/payment_screen.png"></td>
     <td><img src="media/profile_screen.png"></td>
+    <td><img src="media/navigation_drawer.png"></td>
+
     </tr>
-    
+
 </table>
 <table>
- </tr>
     <tr>
-    <td><img src="media/navigation_drawer.png"></td>
+    <td>Application Design</td>
+    </tr>
+    <tr>
+    <td><img src="media/flow_chart.png"></td>
     </tr>
 </table>
+
+
 
 ***Topics Covered***
 ##### Front End
