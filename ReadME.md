@@ -18,30 +18,23 @@
 <table>
     <tr>
     <td>App Screens</td>
-    </tr>
-    <tr>
-    <td><img src="media/cart_screen.png"></td>
-    </tr>
-    <tr>
     <td>Dashboard Design</td>
     </tr>
     <tr>
+    <td><img src="media/cart_screen.png"></td>
     <td><img src="media/dashboard_home.png"></td>
     </tr>
 </table>
 <table>
     <tr>
     <td>Payment Screen</td>
-    </tr>
-    <tr>
-    <td><img src="media/payment_screen.png"></td>
-    </tr>
-    <tr>
     <td>Profile Screen</td>
     </tr>
     <tr>
+    <td><img src="media/payment_screen.png"></td>
     <td><img src="media/profile_screen.png"></td>
     </tr>
+    
 </table>
 <table>
  </tr>
