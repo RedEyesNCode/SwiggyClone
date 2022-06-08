@@ -1,17 +1,27 @@
 package com.kotlinapp.swiggyclone.productDetail
 
+import android.R
+import android.R.id.button1
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlinapp.swiggyclone.base.BaseFragment
 import com.kotlinapp.swiggyclone.databinding.FragmentFoodDetailBinding
-import com.kotlinapp.swiggyclone.productDetail.adapter.ProductsViewpager
+import com.kotlinapp.swiggyclone.productDetail.adapter.ProductAdapter
 import com.kotlinapp.swiggyclone.productDetail.model.Datum
 import com.kotlinapp.swiggyclone.productDetail.viewmodel.ProductDetailViewModel
+import com.kotlinapp.swiggyclone.sharedPreferences.AppSession
+import com.kotlinapp.swiggyclone.sharedPreferences.Constant
+import com.kotlinapp.swiggyclone.utils.CommonInteractiveDialog
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,14 +33,37 @@ private const val ARG_PARAM2 = "param2"
  * Use the [FoodDetailFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FoodDetailFragment : BaseFragment() {
+class FoodDetailFragment : BaseFragment() , ProductAdapter.onClicked,CommonInteractiveDialog.onClick {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var binding:FragmentFoodDetailBinding
     private lateinit var restaurantDetailViewModel : ProductDetailViewModel
+    private lateinit var popup :PopupMenu
+    private  var productIdUser: Int = 0
 
+    override fun onViewDetails(position: Int, productId: Int) {
+        showAddCartDialog(productId)
 
+    }
+
+    override fun onPositive() {
+        var userID  = AppSession(requireContext()).getValue(Constant().USER_ID,requireContext())
+
+        restaurantDetailViewModel.addtoCart(getAccessToken(),userID!!.toInt(),param1!!.toInt(),productIdUser)
+
+    }
+
+    override fun onNegative() {
+        // Do not do anything just dissmiss the dialog.
+    }
+
+    private fun showAddCartDialog(productId: Int) {
+        productIdUser= productId
+        var commonInteractiveDialog = CommonInteractiveDialog(requireContext())
+        commonInteractiveDialog.CommonDialogBox(requireContext(),this)
+        commonInteractiveDialog.showCommonDialog("Are you sure you want to add this item to cart ?","Add to Cart ?")
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +79,7 @@ class FoodDetailFragment : BaseFragment() {
     ): View? {
 
         binding = FragmentFoodDetailBinding.inflate(inflater,container,false)
+       popup = PopupMenu(context, binding.filter)
         initCoroutines()
         initClicks()
 
@@ -66,6 +100,12 @@ class FoodDetailFragment : BaseFragment() {
             }else{
                 hideLoader()
             }
+        })
+        restaurantDetailViewModel.commonStatusMessageResponseMutableLiveData.observe(this, Observer {
+            response ->
+
+            showToast(response.message!!)
+
         })
 
         try {
@@ -88,6 +128,17 @@ class FoodDetailFragment : BaseFragment() {
 
         })
         restaurantDetailViewModel.getAllProducts(getAccessToken())
+        restaurantDetailViewModel.getAllProductTypes(getAccessToken())
+
+        restaurantDetailViewModel.productTypeResponseMutableLiveData.observe(this, Observer {
+            response ->
+
+            for (productType in response)
+            {
+                popup.menu.add(productType.productType)
+            }
+
+        })
 
         restaurantDetailViewModel.allProductsResponseModelMutableLiveData.observe(this, Observer {
             response ->
@@ -101,12 +152,36 @@ class FoodDetailFragment : BaseFragment() {
     }
 
     private fun updateViewpager(data: ArrayList<Datum>) {
-        binding.productsViewpager.adapter = ProductsViewpager(requireFragmentManager(),requireContext(),data.size-1,data)
+        binding.recvProducts.adapter = ProductAdapter(requireContext(),data,this)
+        binding.recvProducts.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+
+
+
+
     }
 
     private fun initClicks() {
         binding.back.setOnClickListener {
             requireActivity().onBackPressed()
+
+        }
+        binding.filter.setOnClickListener {
+            //Inflating the Popup using xml file
+            //Inflating the Popup using xml file
+            popup.getMenuInflater()
+                .inflate(com.kotlinapp.swiggyclone.R.menu.food_filter_menu, popup.getMenu())
+
+            //registering popup with OnMenuItemClickListener
+
+            //registering popup with OnMenuItemClickListener
+            popup.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item: MenuItem? ->
+
+                showToast(item?.itemId.toString())
+                true
+            })
+
+            popup.show() //showing popup menu
+
 
         }
     }

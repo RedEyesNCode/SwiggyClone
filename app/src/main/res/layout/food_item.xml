@@ -14,29 +14,38 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="@dimen/_155sdp"
             android:layout_height="@dimen/_100sdp"
-            app:contentPadding="@dimen/_12sdp"
             app:cardElevation="@dimen/_12sdp"
             app:cardCornerRadius="@dimen/_9sdp"
-            app:cardBackgroundColor="@color/black">
+            android:background="@drawable/ic_food_bg">
             <!--other view items -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/ic_food_bg"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_food_item"
+                android:gravity="center"
+                android:layout_gravity="bottom"
+                android:id="@+id/tvRestaurantName"
+                android:textSize="@dimen/_12sdp"
+                android:fontFamily="@font/rmedium"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:textColor="@color/white"
+                android:text="Food Details here"/>
         </com.google.android.material.card.MaterialCardView>
     </FrameLayout>
-    <ImageView
+    <com.makeramen.roundedimageview.RoundedImageView
         android:layout_width="@dimen/_75sdp"
         android:layout_height="@dimen/_75sdp"
+        app:riv_corner_radius="@dimen/_3sdp"
+        app:riv_border_color="@color/transparent_real"
         android:layout_gravity="center_horizontal"
         android:id="@+id/profileImg"
         android:scaleType="fitXY"
         />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:id="@+id/tvRestaurantName"
-        android:textSize="@dimen/_12sdp"
-        android:fontFamily="@font/rmedium"
-        android:paddingHorizontal="@dimen/_8sdp"
-        android:textColor="@color/white"
-        android:text="Food Details here"/>
+
 
 </FrameLayout>

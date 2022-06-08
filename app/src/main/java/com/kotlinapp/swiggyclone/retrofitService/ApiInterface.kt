@@ -1,11 +1,14 @@
 package com.kotlinapp.swiggyclone.retrofitService
 
+import com.kotlinapp.swiggyclone.auth.model.CommonStatusMessageResponse
 import com.kotlinapp.swiggyclone.auth.model.LoginDataClass
 import com.kotlinapp.swiggyclone.auth.model.LoginInputBody
 import com.kotlinapp.swiggyclone.base.StatusCodeMessageModel
+import com.kotlinapp.swiggyclone.cart.view.model.AddCartBody
 import com.kotlinapp.swiggyclone.homeScreen.models.AllRestaurantsResponseData
 import com.kotlinapp.swiggyclone.homeScreen.models.HomeResponse
 import com.kotlinapp.swiggyclone.productDetail.model.AllProductsResponseModel
+import com.kotlinapp.swiggyclone.productDetail.model.ProductTypeResponse
 import com.kotlinapp.swiggyclone.productDetail.model.RestaurantDetailResponse
 import com.kotlinapp.swiggyclone.restaurantDetail.GetWishlistResponseData
 import com.kotlinapp.swiggyclone.userAccount.model.AddressInputBody
@@ -78,7 +81,11 @@ interface ApiInterface {
     @GET("getAllProducts")
     fun getAllProducts(@Header("Authorization") accessToken :String):Call<AllProductsResponseModel>
 
+    @GET("getProductTypes")
+    fun getProductTypes(@Header("Authorization") accessToken: String):Call<List<ProductTypeResponse>>
 
+    @POST("addtoCart")
+    fun addToCart(@Header("Authorization") accessToken: String,@Body addCartBody: AddCartBody):Call<CommonStatusMessageResponse>
 
 
 

@@ -14,6 +14,7 @@ data class Datum (
     @SerializedName("price"       ) var price       : Int?     = null,
     @SerializedName("description" ) var description : String?  = null,
     @SerializedName("productType" ) var productType : String?  = null,
-    @SerializedName("veg"         ) var veg         : Boolean? = null
+    @SerializedName("veg"         ) var veg         : Boolean? = null,
+    @SerializedName("productImage") var productImage :String?=null
 
 )

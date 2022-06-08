@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".productDetail.FoodDetailFragment">
 
@@ -19,12 +20,21 @@
             android:padding="@dimen/_4sdp"/>
 
         <ImageView
+            android:id="@+id/filter"
             android:layout_width="@dimen/_25sdp"
             android:layout_height="@dimen/_25sdp"
+            android:layout_marginRight="@dimen/_12sdp"
+            android:layout_toLeftOf="@id/wishList"
+            android:padding="@dimen/_2sdp"
+            android:src="@drawable/filter" />
+
+        <ImageView
             android:id="@+id/wishList"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
             android:layout_alignParentRight="true"
-            android:src="@drawable/wishlist"
-            android:padding="@dimen/_2sdp"/>
+            android:padding="@dimen/_2sdp"
+            android:src="@drawable/wishlist" />
 
 
     </RelativeLayout>
@@ -52,12 +62,16 @@
 
     </LinearLayout>
 
-    <androidx.viewpager.widget.ViewPager
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="wrap_content"
         android:layout_marginTop="@dimen/_12sdp"
-        android:id="@+id/productsViewpager"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:id="@+id/recvProducts"
+        tools:listitem="@layout/food_item"
+        android:paddingBottom="@dimen/_12sdp"
         android:layout_marginHorizontal="@dimen/_12sdp"
-        android:layout_height="@dimen/_170sdp" />
+        android:layout_height="wrap_content" />
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"

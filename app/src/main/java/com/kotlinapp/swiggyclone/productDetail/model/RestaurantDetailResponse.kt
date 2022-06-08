@@ -16,6 +16,6 @@ data class Data (
     @SerializedName("rating"             ) var rating             : Double?    = null,
     @SerializedName("time"               ) var time               : String? = null,
     @SerializedName("price"              ) var price              : String? = null,
-    @SerializedName("restaurantName"     ) var restaurantName     : String? = null
+    @SerializedName("restaurantName"     ) var restaurantName     : String? = null,
 
 )

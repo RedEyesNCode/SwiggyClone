@@ -5,7 +5,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.kotlinapp.swiggyclone.auth.model.CommonStatusMessageResponse
 import com.kotlinapp.swiggyclone.productDetail.model.AllProductsResponseModel
+import com.kotlinapp.swiggyclone.productDetail.model.ProductTypeResponse
 import com.kotlinapp.swiggyclone.productDetail.model.RestaurantDetailResponse
 import com.kotlinapp.swiggyclone.smoothieKotlin.repository.AppRepository
 import kotlinx.coroutines.launch
@@ -16,6 +18,8 @@ class ProductDetailViewModel(var app:Application):AndroidViewModel(app) {
 
     var restaurantDetailResponseMutableLiveData : MutableLiveData<RestaurantDetailResponse> = MutableLiveData()
     var allProductsResponseModelMutableLiveData : MutableLiveData<AllProductsResponseModel> = MutableLiveData()
+    var productTypeResponseMutableLiveData : MutableLiveData<List<ProductTypeResponse>> = MutableLiveData()
+    var commonStatusMessageResponseMutableLiveData : MutableLiveData<CommonStatusMessageResponse> = MutableLiveData()
 
 
 
@@ -40,6 +44,73 @@ class ProductDetailViewModel(var app:Application):AndroidViewModel(app) {
     fun getAllProducts(accessToken: String) = viewModelScope.launch {
 
         getAllProductsSuspended(accessToken)
+
+
+    }
+
+    fun getAllProductTypes(accessToken: String)= viewModelScope.launch {
+
+        getAllProductTypesSuspended(accessToken)
+
+    }
+
+    //Add to Cart Code.
+    fun addtoCart(accessToken: String,userId:Int,restaurantID: Int,productId:Int)= viewModelScope.launch {
+
+        addtoCartSuspended(accessToken,userId, restaurantID, productId)
+
+    }
+    suspend fun addtoCartSuspended(accessToken: String,userId:Int,restaurantID: Int,productId:Int){
+        isConnecting.value= true
+        try {
+            var response= appRepository.addToCart(accessToken,userId,restaurantID,productId).awaitResponse()
+            if(response.isSuccessful){
+                commonStatusMessageResponseMutableLiveData.postValue(response.body())
+            }else{
+                isFailed.value = "RESPONSE CODE IS " + response.code()
+            }
+
+        }catch (t:Throwable){
+            when(t){
+                is IOException -> {
+                    isFailed.value = "IO Exception Please try again"
+
+                }
+                is Exception -> {
+                    isFailed.value = "Exception occured ! "+t.message
+
+                }
+            }
+
+        }
+    }
+
+
+
+
+    suspend fun getAllProductTypesSuspended(accessToken: String){
+        isConnecting.value= true
+        try {
+            var response= appRepository.getAllProductsType(accessToken).awaitResponse()
+            if(response.isSuccessful){
+                productTypeResponseMutableLiveData.postValue(response.body())
+            }else{
+                isFailed.value = "RESPONSE CODE IS " + response.code()
+            }
+
+        }catch (t:Throwable){
+            when(t){
+                is IOException -> {
+                    isFailed.value = "IO Exception Please try again"
+
+                }
+                is Exception -> {
+                    isFailed.value = "Exception occured ! "+t.message
+
+                }
+            }
+
+        }
 
 
     }

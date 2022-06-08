@@ -5,14 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bba3ba2c-19de-40d1-b87d-13e2f40422e4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/dataModel/product/ProductTypeTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/repository/product/ProductTypeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/swiggyClone/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/cart/view/model/AddCartBody.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/productDetail/adapter/ProductAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/productDetail/model/ProductTypeResponse.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/utils/CommonInteractiveDialog.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/res/drawable/bg_food_item.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/res/drawable/filter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/res/drawable/ic_food_bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/res/layout/common_dialog_interactive.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/res/layout/product_detail_item.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/res/menu/food_filter_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/controllers/ApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/controllers/ApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/dataModel/RestaurantsTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/dataModel/RestaurantsTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/dataModel/commonProduct/AllProductTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/dataModel/commonProduct/AllProductTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/repository/WishListRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/repository/WishListRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/security/SecurityConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/security/SecurityConfigurer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/controllers/UserContoller.java" beforeDir="false" afterPath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/controllers/UserContoller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/service/ApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/service/ApiService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/swiggyClone/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/swiggyClone/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/productDetail/FoodDetailFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/productDetail/FoodDetailFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/productDetail/adapter/ProductsViewpager.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/productDetail/model/AllProductsResponseModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/productDetail/model/AllProductsResponseModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/productDetail/model/RestaurantDetailResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/productDetail/model/RestaurantDetailResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/productDetail/viewmodel/ProductDetailViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/productDetail/viewmodel/ProductDetailViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/retrofitService/ApiInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/retrofitService/ApiInterface.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/smoothieKotlin/repository/AppRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/smoothieKotlin/repository/AppRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/food_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/layout/food_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/fragment_food_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/layout/fragment_food_detail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/values-night/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/values-night/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/values/themes.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,16 +84,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "R:/BACKEND/awsS3/JavaTechieS3/s3-file-storage-example",
-    "settings.editor.selected.configurable": "preferences.editor"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;R:/BACKEND/awsS3/JavaTechieS3/s3-file-storage-example&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="SwiggyCloneApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-17" />
