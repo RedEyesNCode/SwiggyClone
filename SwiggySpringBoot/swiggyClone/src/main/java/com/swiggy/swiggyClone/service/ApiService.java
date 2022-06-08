@@ -17,6 +17,7 @@ import com.swiggy.swiggyClone.repository.oneToOneRepository.ChildRepository;
 import com.swiggy.swiggyClone.repository.oneToOneRepository.ParentRepository;
 import com.swiggy.swiggyClone.repository.orderRepository.OrderDetailRepository;
 import com.swiggy.swiggyClone.repository.orderRepository.OrderRepository;
+import com.swiggy.swiggyClone.repository.product.ProductTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -62,6 +63,7 @@ public class ApiService {
 
     private PaymentDetailRepository paymentDetailRepository;
     private GenieRepository genieRepository;
+    private ProductTypeRepository productTypeRepository;
 
 
     @Value("${application.bucket.name}")
@@ -91,7 +93,7 @@ public class ApiService {
                       ParentRepository parentRepository,
                       GenieRepository genieRepository,
                       ChildRepository childRepository,
-                      DessertMenuRepository dessertMenuRepository, MenuItemRepository menuItemRepository,
+                      DessertMenuRepository dessertMenuRepository, MenuItemRepository menuItemRepository,ProductTypeRepository productTypeRepository,
                       PizzaMenuItemRepository pizzaMenuItemRepository, SnacksMenuRepository snacksMenuRepository) {
         this.userDataRepository = userDataRepository;
         this.wishListRepository = wishListRepository;
@@ -114,6 +116,7 @@ public class ApiService {
         this.paymentDetailRepository = paymentDetailRepository;
         this.allProductsRepository = allProductsRepository;
         this.parentRepository = parentRepository;
+        this.productTypeRepository = productTypeRepository;
 
 
 
@@ -446,6 +449,14 @@ public class ApiService {
         wishListRepository.deleteWishlistById(wishlistId);
 
         return new StatusCodeModel("success",200,"Removed from wishlist !");
+
+    }
+
+    public ResponseEntity<?> getProductTypes() {
+
+
+        return new ResponseEntity(productTypeRepository.findAll(),HttpStatus.OK);
+
 
     }
 }

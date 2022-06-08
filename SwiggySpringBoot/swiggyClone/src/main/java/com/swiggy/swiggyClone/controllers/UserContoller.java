@@ -88,7 +88,12 @@ public class UserContoller {
 	@ExceptionHandler(SignatureException.class)
 	public StatusCodeModel HandlerException(){
 		return new StatusCodeModel("fail",400,"Invalid TOken Signature");
+	}
 
+	@GetMapping("/getProductTypes")
+	public ResponseEntity<?> getProductTypes(){
+
+		return apiService.getProductTypes();
 
 	}
 }
