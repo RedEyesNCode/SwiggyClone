@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <th:block th:include="fragments/header :: head"> </th:block>
+</head>
+<body>
+<div class="container">
+    <br>
+    <nav>  <th:block th:replace="fragments/nav :: nav"></th:block>   </nav>
+    <br>
+    <h1>
+        Add New Restaurant to Swiggy App.
+    </h1>
+    <div class="alert alert-primary" role="alert">
+        Add the restaurant details here.
+    </div>
+    <form  th:object="${restaurantDetail}"  method="post" th:action="@{/web/addRestaurant}" cssClass="form">
+
+        <input type="hidden" th:field="*{restaurantId}"/>
+
+
+        <div class="form-group">
+            <label>Restaurant Name</label>
+            <input th:field="*{restaurantName}" type="text" class="form-control"  />
+        </div>
+        <div class="form-group">
+            <label>rating</label>
+            <input type="number" class="form-control" th:field="*{rating}" step="any" />
+        </div>
+        <div class="form-group">
+            <label>deliveryTime</label>
+            <input type="text" class="form-control" th:field="*{deliveryTime}" />
+        </div>
+        <div class="form-group">
+            <label>discount</label>
+            <input type="number" class="form-control" th:field="*{discount}" step="any"/>
+        </div>
+       <!-- <div class="form-group">
+            <label>Restaurant Image</label>
+            <input type="file"  name="image" class="form-control" th:field="*{restaurantImage}" accept="image/png, image/jpeg"/>
+        </div>-->
+       <!-- <div class="form-group">
+            <label>isSwiggyOne</label>
+            <input type="checkbox" class="form-control" th:field="*{isSwiggyOne}" />
+        </div>-->
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+    <br>
+    <br>
+   <!-- <form method="POST" th:action="@{/web/uploadRestaurantImage}" enctype="multipart/form-data" >
+        <input type="file" name="restaurant_image" />
+        <input type="number" name="restaurantid">
+        <input type="submit" value="upload" />
+    </form>-->
+    <br>
+
+    <footer>
+
+        <th:block th:include="fragments/footer :: footer"></th:block>
+
+    </footer>
+
+</div>
+</body>
+</html>

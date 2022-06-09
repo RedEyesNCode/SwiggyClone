@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <th:block th:include="fragments/header :: head"> </th:block>
+    <link th:href="@{../static/loginform.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+    <br>
+    <nav>  <th:block th:replace="fragments/nav :: nav"></th:block>   </nav>
+    <br>
+    <h2>Kwigg Boot Restaurant List.</h2>
+    <br>
+    <br>
+    <a class="btn btn-primary" th:href="@{/web/addRestaurantForm}"  role="button" >Add New Restaurant.</a>
+    <br>
+    <br>
+    <br>
+    <form method="POST" th:action="@{/web/uploadRestaurantImage}" enctype="multipart/form-data" >
+        <label>Update Restaurant Image</label>
+        <input type="file" name="restaurant_image" required/>
+        <label>Restaurant Id</label>
+        <input type="number" name="restaurantid" required>
+        <input type="submit" value="upload" />
+    </form>
+    <br>
+
+    <table class="table table-striped">
+        <thead>
+        <th scope="row">#ID</th>
+        <th scope="row">Restaurant Name</th>
+        <th scope="row">Rating</th>
+        <th scope="row">Delivery Time</th>
+        <th scope="row">Dicount</th>
+        <th scope="row">is-Swiggy-One</th>
+        <th scope="row">Restaurant Image</th>
+
+       <!-- <th scope="row">Update</th>
+        <th scope="row">Delete</th>-->
+        </thead>
+        <tbody>
+        <tr th:each="restaurant : ${restaurantDBList}">
+            <td th:text="${restaurant.restaurantId}"></td>
+            <td th:text="${restaurant.restaurantName}"></td>
+            <td th:text="${restaurant.rating}"></td>
+            <td th:text="${restaurant.deliveryTime}"></td>
+            <td th:text="${restaurant.discount}"></td>
+            <td th:text="${restaurant.isSwiggyOne}"></td>
+            <td>
+                <img th:src="${restaurant.restaurantImage}" alt="restaurantImage" width="100" height="100">
+            </td>
+           <!-- <td>
+                <a class="btn btn-primary" th:href="@{/updateCourse/__${course.c_id}__}"  role="button" >Update</a>
+            </td>
+            <td>
+                <a class="btn btn-primary" th:href="@{/deleteCourse/__${course.c_id}__}" role="button" >Delete</a>
+            </td>-->
+        </tr>
+        </tbody>
+    </table>
+
+
+
+
+<!--
+    <nav aria-label="...">
+        <br>
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+                <span class="page-link">Previous</span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active" aria-current="page">
+      <span class="page-link">
+        2
+        <span class="sr-only">(current)</span>
+      </span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+-->
+
+
+    <footer>
+        <th:block th:include="fragments/footer :: footer"></th:block>
+    </footer>
+
+</div>
+</body>
+</html>
