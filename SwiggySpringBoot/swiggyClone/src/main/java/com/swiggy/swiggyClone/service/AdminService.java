@@ -24,6 +24,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
+
 @Component
 @Service
 public class AdminService {
@@ -91,6 +93,21 @@ public class AdminService {
 
     }
 
+    public void addRestaurantWeb(RestaurantsTable restaurantsTable){
+        RestaurantsTable restaurantsTableInput = new RestaurantsTable();
+
+        restaurantsTableInput.setRestaurantName(restaurantsTable.getRestaurantName());
+        restaurantsTableInput.setDiscount(restaurantsTable.getDiscount());
+        restaurantsTableInput.setRating(restaurantsTable.getRating());
+        restaurantsTableInput.setDeliveryTime(restaurantsTable.getDeliveryTime());
+        restaurantsTableInput.setSwiggyOne(false);
+        restaurantsTableInput.setRestaurantImage(AWSConstant.BUCKET_BASE_URL+restaurantsTable.getRestaurantImage());
+
+       Long restaurantId =  restaurantRepository.save(restaurantsTableInput).getRestaurantId();
+//        uploadRestaurantImage(file,restaurantId);
+
+    }
+
     public ResponseEntity<?> addRestaurant(RestaurantBody restaurantBody) {
         RestaurantsTable restaurantsTable = new RestaurantsTable();
         restaurantsTable.setRestaurantImage(AWSConstant.BUCKET_BASE_URL);
@@ -135,4 +152,9 @@ public class AdminService {
 
 
     }
+    public List<RestaurantsTable> getAllRestaurants(){
+        return restaurantRepository.findAll();
+
+    }
+
 }

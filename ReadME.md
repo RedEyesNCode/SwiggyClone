@@ -6,6 +6,8 @@
 
 
 #### DESIGN OF THE ENTIRE APP
+
+
 <table>
     <tr>
     <td>App Screens</td>
@@ -14,6 +16,18 @@
     <tr>
     <td><img src="media/cart_screen.png"></td>
     <td><img src="media/dashboard_home.png"></td>
+    </tr>
+</table>
+<table>
+    <tr>
+    <td>Web App</td>
+    <td>Restaurant List</td>
+    <td>Save Restaurant</td>
+    </tr>
+    <tr>
+    <td><img src="media/admin_home.png"></td>
+    <td><img src="media/admin_rlist.png"></td>
+    <td><img src="media/admin_rsave.png"></td>
     </tr>
 </table>
 <table>

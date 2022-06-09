@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <th:block th:include="fragments/header :: head"> </th:block>
+</head>
+<body>
+<div class="container">
+    <br>
+    <nav>  <th:block th:replace="fragments/nav :: nav"></th:block>   </nav>
+    <br>
+    <h1>
+      Kwigg-Boot Admin Panel
+    </h1>
+    <h4>Front end in Kotlin</h4>
+    <h4>Back end in Java</h4>
+    <h4>Web app in ThymeLeaf & HTML</h4>
+    <br>
+
+
+
+
+    <footer>
+        <th:block th:include="fragments/footer :: footer"></th:block>
+    </footer>
+
+</div>
+</body>
+</html>

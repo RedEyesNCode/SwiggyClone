@@ -6,8 +6,10 @@ import com.swiggy.swiggyClone.dataModel.adminModels.RestaurantBody;
 import com.swiggy.swiggyClone.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @RestController
 @RequestMapping("/admin")
@@ -43,6 +45,7 @@ public class AdminController {
         return adminService.uploadRestaurantImage(file, restaurantId);
 
     }
+
 
 
 }
