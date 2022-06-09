@@ -4,10 +4,15 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.swiggy.swiggyClone.amazonbucket.AWSConstant;
+import com.swiggy.swiggyClone.dataModel.RestaurantDetailTable;
+import com.swiggy.swiggyClone.dataModel.RestaurantsTable;
 import com.swiggy.swiggyClone.dataModel.StatusCodeModel;
 import com.swiggy.swiggyClone.dataModel.adminModels.FoodItemBody;
+import com.swiggy.swiggyClone.dataModel.adminModels.RestaurantBody;
 import com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable;
 import com.swiggy.swiggyClone.repository.AllProductsRepository;
+import com.swiggy.swiggyClone.repository.RestaurantDetailRepository;
+import com.swiggy.swiggyClone.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -23,14 +28,20 @@ import java.io.IOException;
 @Service
 public class AdminService {
     private AllProductsRepository allProductsRepository;
+    private RestaurantRepository restaurantRepository;
+
+    private RestaurantDetailRepository restaurantDetailRepository;
+
     @Value("${application.bucket.name}")
     private String bucketName;
 
     @Autowired
     private AmazonS3 s3Client;
 
-    public AdminService(AllProductsRepository allProductsRepository) {
+    public AdminService(AllProductsRepository allProductsRepository,RestaurantRepository restaurantRepository,RestaurantDetailRepository restaurantDetailRepository) {
         this.allProductsRepository = allProductsRepository;
+        this.restaurantRepository = restaurantRepository;
+        this.restaurantDetailRepository =restaurantDetailRepository;
     }
 
     public ResponseEntity<?> insertMenuItem(FoodItemBody foodItemBody) {
@@ -77,6 +88,51 @@ public class AdminService {
 
 
         return new ResponseEntity<>(new StatusCodeModel("success",200,"Image uploaded successfully"),HttpStatus.OK);
+
+    }
+
+    public ResponseEntity<?> addRestaurant(RestaurantBody restaurantBody) {
+        RestaurantsTable restaurantsTable = new RestaurantsTable();
+        restaurantsTable.setRestaurantImage(AWSConstant.BUCKET_BASE_URL);
+        restaurantsTable.setRestaurantName(restaurantBody.getRestaurantName());
+        restaurantsTable.setDiscount(restaurantBody.getDiscount());
+        restaurantsTable.setRating(restaurantBody.getRating());
+        restaurantsTable.setSwiggyOne(restaurantBody.isSwiggyOne());
+        restaurantsTable.setDeliveryTime(restaurantBody.getDeliveryTime());
+
+
+        Long restaurantTableId = restaurantRepository.save(restaurantsTable).getRestaurantId();
+
+        // Saving now in the restaurant detail table.
+
+        RestaurantDetailTable restaurantDetailTable = new RestaurantDetailTable();
+        restaurantDetailTable.setRestaurantDetailId(restaurantTableId);
+        restaurantDetailTable.setRestaurantName(restaurantBody.getRestaurantName());
+        restaurantDetailTable.setCuisines(restaurantBody.getCuisines());
+        restaurantDetailTable.setLat(restaurantBody.getLat());
+        restaurantDetailTable.setLng(restaurantBody.getLng());
+        restaurantDetailTable.setRating(restaurantBody.getRating());
+        restaurantDetailTable.setLocation(restaurantBody.getLocation());
+        restaurantDetailTable.setPrice(restaurantDetailTable.getPrice());
+        restaurantDetailTable.setTime(restaurantBody.getTime());
+
+        restaurantDetailRepository.save(restaurantDetailTable);
+
+        return new ResponseEntity<>(restaurantRepository.getById(restaurantTableId),HttpStatus.OK);
+    }
+
+    public ResponseEntity<?> uploadRestaurantImage(MultipartFile file,Long restaurantId){
+
+        File fileObj = convertMultiPartFileToFile(file);
+        String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+
+        s3Client.putObject(new PutObjectRequest(bucketName, fileName, fileObj).withCannedAcl(CannedAccessControlList.PublicRead));
+        fileObj.delete();
+        restaurantRepository.updateFoodImage(AWSConstant.BUCKET_BASE_URL+fileName,restaurantId);
+
+
+        return new ResponseEntity<>(new StatusCodeModel("success",200,"Image uploaded successfully"),HttpStatus.OK);
+
 
     }
 }
