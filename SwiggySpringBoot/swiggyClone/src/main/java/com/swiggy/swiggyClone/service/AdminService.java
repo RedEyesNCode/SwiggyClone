@@ -11,10 +11,12 @@ import com.swiggy.swiggyClone.dataModel.adminModels.FoodItemBody;
 import com.swiggy.swiggyClone.dataModel.adminModels.RestaurantBody;
 import com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable;
 import com.swiggy.swiggyClone.dataModel.placeOrder.PaymentDetailTable;
+import com.swiggy.swiggyClone.dataModel.placeOrder.RealtimeOrderTable;
 import com.swiggy.swiggyClone.repository.AllProductsRepository;
 import com.swiggy.swiggyClone.repository.PaymentDetailRepository;
 import com.swiggy.swiggyClone.repository.RestaurantDetailRepository;
 import com.swiggy.swiggyClone.repository.RestaurantRepository;
+import com.swiggy.swiggyClone.repository.orderRepository.RealtimeOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -37,17 +39,20 @@ public class AdminService {
     private RestaurantDetailRepository restaurantDetailRepository;
     private PaymentDetailRepository paymentDetailRepository;
 
+    private RealtimeOrderRepository repository;
+
     @Value("${application.bucket.name}")
     private String bucketName;
 
     @Autowired
     private AmazonS3 s3Client;
 
-    public AdminService(AllProductsRepository allProductsRepository,PaymentDetailRepository paymentDetailRepository,RestaurantRepository restaurantRepository,RestaurantDetailRepository restaurantDetailRepository) {
+    public AdminService(AllProductsRepository allProductsRepository,RealtimeOrderRepository repository,PaymentDetailRepository paymentDetailRepository,RestaurantRepository restaurantRepository,RestaurantDetailRepository restaurantDetailRepository) {
         this.allProductsRepository = allProductsRepository;
         this.restaurantRepository = restaurantRepository;
         this.restaurantDetailRepository =restaurantDetailRepository;
         this.paymentDetailRepository = paymentDetailRepository;
+        this.repository = repository;
 
     }
 
@@ -163,10 +168,23 @@ public class AdminService {
     }
 
 
-    public List<PaymentDetailTable> getAllOrders(){
+    public List<RealtimeOrderTable> getAllOrders(){
 
-        return paymentDetailRepository.findAll();
+        return repository.findAll();
 
     }
+
+    public StatusCodeModel updateOrderStatus(String orderStatus,Long orderId){
+        if(repository.existsById(orderId)){
+            repository.updateOrderStatus(orderStatus, orderId);
+            return new StatusCodeModel("success",200,"Order status Updated successfully !");
+        }else {
+            throw new RuntimeException();
+        }
+
+
+
+    }
+
 
 }

@@ -1,9 +1,11 @@
 package com.swiggy.swiggyClone.controllers;
 
 
+import com.swiggy.swiggyClone.dataModel.StatusCodeModel;
 import com.swiggy.swiggyClone.dataModel.adminModels.FoodItemBody;
 import com.swiggy.swiggyClone.dataModel.adminModels.RestaurantBody;
 import com.swiggy.swiggyClone.dataModel.placeOrder.PaymentDetailTable;
+import com.swiggy.swiggyClone.dataModel.placeOrder.RealtimeOrderTable;
 import com.swiggy.swiggyClone.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -50,8 +52,13 @@ public class AdminController {
     }
 
     @GetMapping("/getAllOrders")
-    public List<PaymentDetailTable> getAllOrders(){
+    public List<RealtimeOrderTable> getAllOrders(){
         return  adminService.getAllOrders();
+    }
+
+    @PostMapping("/updateOrderStatus")
+    public StatusCodeModel updateOrderStatus(@RequestParam("orderId") Long orderId, @RequestParam("orderStatus") String orderStatus){
+        return adminService.updateOrderStatus(orderStatus, orderId);
     }
 
 

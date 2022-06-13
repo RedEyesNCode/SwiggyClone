@@ -2,6 +2,8 @@ package com.swiggy.swiggyClone.controllers;
 
 
 import com.swiggy.swiggyClone.dataModel.RestaurantsTable;
+import com.swiggy.swiggyClone.dataModel.StatusCodeModel;
+import com.swiggy.swiggyClone.dataModel.placeOrder.RealtimeOrderTable;
 import com.swiggy.swiggyClone.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -41,12 +44,13 @@ public class WebController {
     public ModelAndView orderslist(){
 
         ModelAndView modelAndView = new ModelAndView();
+        List<RealtimeOrderTable> orders = service.getAllOrders();
+        modelAndView.addObject("orderDBList",orders);
+        modelAndView.setViewName("orderslist");
 
         return modelAndView;
 
     }
-
-
 
     @RequestMapping("/addRestaurantForm")
     public ModelAndView addRestaurantForm(){
@@ -56,6 +60,7 @@ public class WebController {
         modelAndView.setViewName("addRestaurantForm");
         return modelAndView;
     }
+
     @PostMapping("/addRestaurant")
     public ModelAndView addRestaurant(@ModelAttribute("restaurantDetail") RestaurantsTable restaurantsTable){
 
@@ -78,5 +83,15 @@ public class WebController {
 
 
     }
+   /* @PostMapping("/updateOrderStatus")
+    public ModelAndView updateOrderStatus(@ModelAttribute("orderStatus") Long orderId, @RequestParam("orderStatus") String orderStatus){
+        service.updateOrderStatus(orderStatus, orderId);
+        ModelAndView modelAndView = new ModelAndView();
+        List<RealtimeOrderTable> orders = service.getAllOrders();
+        modelAndView.addObject("orderDBList",orders);
+        modelAndView.setViewName("orderslist");
+
+        return modelAndView;
+    }*/
 
 }

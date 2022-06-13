@@ -10,6 +10,16 @@ public class PlaceOrderBody {
     private String orderStatus;
     private Double amount;
 
+    private String customerName;
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
     public Double getAmount() {
         return amount;
     }
@@ -18,7 +28,10 @@ public class PlaceOrderBody {
         this.amount = amount;
     }
 
-    public PlaceOrderBody(Long orderId, Long userId, Long addressId, String orderName, String provider, String orderStatus, Double amount) {
+    public PlaceOrderBody() {
+    }
+
+    public PlaceOrderBody(Long orderId, Long userId, Long addressId, String orderName, String provider, String orderStatus, Double amount, String customerName) {
         this.orderId = orderId;
         this.userId = userId;
         this.addressId = addressId;
@@ -26,6 +39,7 @@ public class PlaceOrderBody {
         this.provider = provider;
         this.amount= amount;
         this.orderStatus = orderStatus;
+        this.customerName = customerName;
     }
 
     public String getProvider() {

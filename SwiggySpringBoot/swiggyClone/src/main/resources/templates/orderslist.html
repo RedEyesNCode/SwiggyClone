@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <th:block th:include="fragments/header :: head"> </th:block>
+  <link th:href="@{../static/loginform.css}" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+  <br>
+  <nav>  <th:block th:replace="fragments/nav :: nav"></th:block>   </nav>
+  <br>
+  <h2>Kwigg Boot Orders List.</h2>
+  <br>
+  <br>
+  <br>
+  <br>
+  <table class="table table-striped">
+    <thead>
+    <th scope="row">#Place Order ID</th>
+    <th scope="row">Order ID</th>
+    <th scope="row">Payable Amount</th>
+    <th scope="row">Customer Name</th>
+    <th scope="row">Created At</th>
+    <th scope="row">Order Status</th>
+    <th scope="row">Update order status</th>
+
+    <!-- <th scope="row">Update</th>
+     <th scope="row">Delete</th>-->
+    </thead>
+    <tbody>
+    <tr th:each="order : ${orderDBList}">
+      <td th:text="${order.placeOrderid}"></td>
+      <td th:text="${order.orderId}"></td>
+      <td th:text="${order.amount}"></td>
+      <td th:text="${order.customerName}"></td>
+      <td th:text="${order.createdAt}"></td>
+      <td th:text="${order.orderStatus}"></td>
+
+       <!--<td>
+         <form  th:action="@{/web/updateOrderStatus}"  th:object="${orderStatus}" method="post">
+           <select class="form-control" id="dropDownList" th:field="${orderStatus}">
+             <option value="0">select option</option>
+             <option value="Placed">Placed</option>
+             <option value="On the way">On the way</option>
+             <option value="Delivered">Delivered</option>
+           </select>
+           <button type="submit">Update order status</button>
+         </form>
+
+       </td>-->
+      <!--th:href="@{/updateCourse/__${course.c_id}__}" -->
+    </tr>
+    </tbody>
+  </table>
+
+
+  <footer>
+    <th:block th:include="fragments/footer :: footer"></th:block>
+  </footer>
+
+</div>
+</body>
+</html>

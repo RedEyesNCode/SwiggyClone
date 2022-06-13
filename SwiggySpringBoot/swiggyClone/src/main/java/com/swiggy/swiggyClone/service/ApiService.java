@@ -14,11 +14,13 @@ import com.swiggy.swiggyClone.dataModel.oneToOneRelation.ChildTable;
 import com.swiggy.swiggyClone.dataModel.oneToOneRelation.ParentTable;
 import com.swiggy.swiggyClone.dataModel.orders.PlacedOrderResponse;
 import com.swiggy.swiggyClone.dataModel.placeOrder.PaymentDetailTable;
+import com.swiggy.swiggyClone.dataModel.placeOrder.RealtimeOrderTable;
 import com.swiggy.swiggyClone.repository.*;
 import com.swiggy.swiggyClone.repository.oneToOneRepository.ChildRepository;
 import com.swiggy.swiggyClone.repository.oneToOneRepository.ParentRepository;
 import com.swiggy.swiggyClone.repository.orderRepository.OrderDetailRepository;
 import com.swiggy.swiggyClone.repository.orderRepository.OrderRepository;
+import com.swiggy.swiggyClone.repository.orderRepository.RealtimeOrderRepository;
 import com.swiggy.swiggyClone.repository.product.ProductTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -66,6 +68,7 @@ public class ApiService {
     private PaymentDetailRepository paymentDetailRepository;
     private GenieRepository genieRepository;
     private ProductTypeRepository productTypeRepository;
+    private RealtimeOrderRepository repository;
 
 
     @Value("${application.bucket.name}")
@@ -96,7 +99,7 @@ public class ApiService {
                       GenieRepository genieRepository,
                       ChildRepository childRepository,
                       DessertMenuRepository dessertMenuRepository, MenuItemRepository menuItemRepository,ProductTypeRepository productTypeRepository,
-                      PizzaMenuItemRepository pizzaMenuItemRepository, SnacksMenuRepository snacksMenuRepository) {
+                      PizzaMenuItemRepository pizzaMenuItemRepository, SnacksMenuRepository snacksMenuRepository,RealtimeOrderRepository repository) {
         this.userDataRepository = userDataRepository;
         this.wishListRepository = wishListRepository;
         this.genieRepository = genieRepository;
@@ -119,6 +122,7 @@ public class ApiService {
         this.allProductsRepository = allProductsRepository;
         this.parentRepository = parentRepository;
         this.productTypeRepository = productTypeRepository;
+        this.repository = repository;
 
 
 
@@ -464,16 +468,19 @@ public class ApiService {
     }
 
     public ResponseEntity<?> placeOrder(PlaceOrderBody placeOrderBody){
+        RealtimeOrderTable orderTable = new RealtimeOrderTable();
+        orderTable.setOrderId(placeOrderBody.getOrderId());
+        orderTable.setOrderStatus("Placed");
+        orderTable.setAmount(placeOrderBody.getAmount());
+        orderTable.setCreatedAt(String.valueOf(System.currentTimeMillis()));
+        orderTable.setUserId(placeOrderBody.getUserId());
+        orderTable.setProvider(placeOrderBody.getProvider());
+        orderTable.setCustomerName(placeOrderBody.getCustomerName());
 
-        PaymentDetailTable paymentTable = new PaymentDetailTable();
+        repository.save(orderTable);
 
-        paymentTable.setOrderId(placeOrderBody.getOrderId());
-        paymentTable.setOrderStatus(placeOrderBody.getOrderStatus());
-        paymentTable.setProvider(placeOrderBody.getProvider());
-        paymentTable.setAmount(placeOrderBody.getAmount());
-        paymentTable.setCreatedAt(String.valueOf(System.currentTimeMillis()));
-        paymentTable.setUserId(placeOrderBody.getUserId());
-        paymentDetailRepository.save(paymentTable);
+
+
 
 
         return new ResponseEntity<>(new StatusCodeModel("success",200,"Order placed successfully !"),HttpStatus.OK);
