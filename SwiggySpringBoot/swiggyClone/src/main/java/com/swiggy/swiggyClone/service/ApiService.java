@@ -9,8 +9,10 @@ import com.swiggy.swiggyClone.dataModel.*;
 import com.swiggy.swiggyClone.dataModel.address.AddressBody;
 import com.swiggy.swiggyClone.dataModel.address.AddressTable;
 import com.swiggy.swiggyClone.dataModel.cart.*;
+import com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable;
 import com.swiggy.swiggyClone.dataModel.oneToOneRelation.ChildTable;
 import com.swiggy.swiggyClone.dataModel.oneToOneRelation.ParentTable;
+import com.swiggy.swiggyClone.dataModel.orders.PlacedOrderResponse;
 import com.swiggy.swiggyClone.dataModel.placeOrder.PaymentDetailTable;
 import com.swiggy.swiggyClone.repository.*;
 import com.swiggy.swiggyClone.repository.oneToOneRepository.ChildRepository;
@@ -336,16 +338,17 @@ public class ApiService {
         paymentDetailTable.setCreatedAt(localTime);
         paymentDetailTable.setOrderStatus("Placed");
         paymentDetailTable.setProvider("Cash");
-        paymentDetailRepository.save(paymentDetailTable);
+       Long paymentDetailId =  paymentDetailRepository.save(paymentDetailTable).getPaymentId();
 
 
 
 
+       OrderDetailTable orderDetailTable = new OrderDetailTable(orderTable.getOrderId(),paymentDetailId,restaurantId,productId,String.valueOf(System.currentTimeMillis()));
 
 
-        orderDetailRepository.save(new OrderDetailTable(orderTable.getOrderId(),restaurantId,productId,localTime));
+       orderDetailRepository.save(orderDetailTable);
 
-        return new StatusCodeModel("success",200,"Item Added to Cart SuccessFully");
+        return new StatusCodeModel("success",200,"Item Added to Cart SuccessFully ");
 
 
 
@@ -457,6 +460,51 @@ public class ApiService {
 
         return new ResponseEntity(productTypeRepository.findAll(),HttpStatus.OK);
 
+
+    }
+
+    public ResponseEntity<?> placeOrder(PlaceOrderBody placeOrderBody){
+
+        PaymentDetailTable paymentTable = new PaymentDetailTable();
+
+        paymentTable.setOrderId(placeOrderBody.getOrderId());
+        paymentTable.setOrderStatus(placeOrderBody.getOrderStatus());
+        paymentTable.setProvider(placeOrderBody.getProvider());
+        paymentTable.setAmount(placeOrderBody.getAmount());
+        paymentTable.setCreatedAt(String.valueOf(System.currentTimeMillis()));
+        paymentTable.setUserId(placeOrderBody.getUserId());
+        paymentDetailRepository.save(paymentTable);
+
+
+        return new ResponseEntity<>(new StatusCodeModel("success",200,"Order placed successfully !"),HttpStatus.OK);
+
+    }
+
+
+    public PlacedOrderResponse getOrderDetailbyId(int orderId) {
+
+
+        boolean isExists = orderDetailRepository.existsById(Long.valueOf(orderId));
+        if(isExists){
+            PaymentDetailTable paymentDetailTable;
+            RestaurantDetailTable restaurantDetailTable;
+            AllProductTable productData;
+            OrderDetailTable orderDetailTable = orderDetailRepository.getById(Long.valueOf(orderId));
+            restaurantDetailTable = restaurantDetailRepository.getById(orderDetailTable.getRestaurantId());
+            paymentDetailTable = paymentDetailRepository.getById(orderDetailTable.getPaymentDetailId());
+
+            CartData cartData = new CartData(orderDetailTable.getRestaurantId(), restaurantDetailTable);
+            ProductData product = new ProductData(orderDetailTable.getProductId(),allProductsRepository.getById(orderDetailTable.getProductId()));
+
+
+            return new PlacedOrderResponse("success",200,"Record Found !",Long.valueOf(orderId),cartData,product,paymentDetailTable);
+
+
+
+
+        }else {
+            throw new RuntimeException();
+        }
 
     }
 }

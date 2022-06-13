@@ -36,6 +36,18 @@ public class WebController {
         model.setViewName("restaurantlist");
         return model;
     }
+
+    @RequestMapping("/orderslist")
+    public ModelAndView orderslist(){
+
+        ModelAndView modelAndView = new ModelAndView();
+
+        return modelAndView;
+
+    }
+
+
+
     @RequestMapping("/addRestaurantForm")
     public ModelAndView addRestaurantForm(){
         RestaurantsTable restaurantsTable = new RestaurantsTable();

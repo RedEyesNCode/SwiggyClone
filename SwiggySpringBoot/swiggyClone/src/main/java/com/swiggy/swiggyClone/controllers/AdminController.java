@@ -3,6 +3,7 @@ package com.swiggy.swiggyClone.controllers;
 
 import com.swiggy.swiggyClone.dataModel.adminModels.FoodItemBody;
 import com.swiggy.swiggyClone.dataModel.adminModels.RestaurantBody;
+import com.swiggy.swiggyClone.dataModel.placeOrder.PaymentDetailTable;
 import com.swiggy.swiggyClone.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/admin")
@@ -44,6 +47,11 @@ public class AdminController {
 
         return adminService.uploadRestaurantImage(file, restaurantId);
 
+    }
+
+    @GetMapping("/getAllOrders")
+    public List<PaymentDetailTable> getAllOrders(){
+        return  adminService.getAllOrders();
     }
 
 

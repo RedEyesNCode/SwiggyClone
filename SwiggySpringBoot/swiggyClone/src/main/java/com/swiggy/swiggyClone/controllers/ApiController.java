@@ -8,6 +8,7 @@ import com.swiggy.swiggyClone.dataModel.cart.CartResponse;
 import com.swiggy.swiggyClone.dataModel.cart.OrderInsertBody;
 import com.swiggy.swiggyClone.dataModel.oneToOneRelation.ChildTable;
 import com.swiggy.swiggyClone.dataModel.oneToOneRelation.ParentTable;
+import com.swiggy.swiggyClone.dataModel.orders.PlacedOrderResponse;
 import com.swiggy.swiggyClone.exceptionHandling.ForbiddenException;
 import com.swiggy.swiggyClone.service.ApiService;
 import io.jsonwebtoken.SignatureException;
@@ -276,7 +277,21 @@ public class ApiController {
 
 
 
+    @RequestMapping("/placeOrder")
+    public ResponseEntity<?> placeOrder(@RequestBody PlaceOrderBody placeOrderBody){
 
+        return apiService.placeOrder(placeOrderBody);
+    }
+
+    @RequestMapping("/getOrderDetail")
+    public PlacedOrderResponse getOrderDetailById(@RequestParam("orderId") int orderId){
+
+        return apiService.getOrderDetailbyId(orderId);
+
+
+
+
+    }
 
 
 

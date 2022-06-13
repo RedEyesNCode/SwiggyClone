@@ -10,7 +10,9 @@ import com.swiggy.swiggyClone.dataModel.StatusCodeModel;
 import com.swiggy.swiggyClone.dataModel.adminModels.FoodItemBody;
 import com.swiggy.swiggyClone.dataModel.adminModels.RestaurantBody;
 import com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable;
+import com.swiggy.swiggyClone.dataModel.placeOrder.PaymentDetailTable;
 import com.swiggy.swiggyClone.repository.AllProductsRepository;
+import com.swiggy.swiggyClone.repository.PaymentDetailRepository;
 import com.swiggy.swiggyClone.repository.RestaurantDetailRepository;
 import com.swiggy.swiggyClone.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,7 @@ public class AdminService {
     private RestaurantRepository restaurantRepository;
 
     private RestaurantDetailRepository restaurantDetailRepository;
+    private PaymentDetailRepository paymentDetailRepository;
 
     @Value("${application.bucket.name}")
     private String bucketName;
@@ -40,10 +43,12 @@ public class AdminService {
     @Autowired
     private AmazonS3 s3Client;
 
-    public AdminService(AllProductsRepository allProductsRepository,RestaurantRepository restaurantRepository,RestaurantDetailRepository restaurantDetailRepository) {
+    public AdminService(AllProductsRepository allProductsRepository,PaymentDetailRepository paymentDetailRepository,RestaurantRepository restaurantRepository,RestaurantDetailRepository restaurantDetailRepository) {
         this.allProductsRepository = allProductsRepository;
         this.restaurantRepository = restaurantRepository;
         this.restaurantDetailRepository =restaurantDetailRepository;
+        this.paymentDetailRepository = paymentDetailRepository;
+
     }
 
     public ResponseEntity<?> insertMenuItem(FoodItemBody foodItemBody) {
@@ -154,6 +159,13 @@ public class AdminService {
     }
     public List<RestaurantsTable> getAllRestaurants(){
         return restaurantRepository.findAll();
+
+    }
+
+
+    public List<PaymentDetailTable> getAllOrders(){
+
+        return paymentDetailRepository.findAll();
 
     }
 

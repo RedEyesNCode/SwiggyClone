@@ -6,6 +6,43 @@ public class PlaceOrderBody {
     private Long userId;
     private Long addressId;
     private String orderName;
+    private String provider;
+    private String orderStatus;
+    private Double amount;
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
+    public PlaceOrderBody(Long orderId, Long userId, Long addressId, String orderName, String provider, String orderStatus, Double amount) {
+        this.orderId = orderId;
+        this.userId = userId;
+        this.addressId = addressId;
+        this.orderName = orderName;
+        this.provider = provider;
+        this.amount= amount;
+        this.orderStatus = orderStatus;
+    }
+
+    public String getProvider() {
+        return provider;
+    }
+
+    public void setProvider(String provider) {
+        this.provider = provider;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
+    }
 
     public PlaceOrderBody(Long orderId, Long userId, Long addressId, String orderName) {
         this.orderId = orderId;

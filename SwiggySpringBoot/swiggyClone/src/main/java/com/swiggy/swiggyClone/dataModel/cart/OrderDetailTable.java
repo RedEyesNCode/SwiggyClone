@@ -21,23 +21,33 @@ public class OrderDetailTable {
     private Long restaurantId;
     private Long productId;
     private String createdAt;
+    private Long paymentDetailId;
 
-    public OrderDetailTable(Long orderDetailId, Long orderId, Long restaurantId, Long productId, String createdAt) {
-        this.orderDetailId = orderDetailId;
+    public Long getPaymentDetailId() {
+        return paymentDetailId;
+    }
+
+    public void setPaymentDetailId(Long paymentDetailId) {
+        this.paymentDetailId = paymentDetailId;
+    }
+
+    public OrderDetailTable(Long orderId, Long paymentDetailId,Long restaurantId, Long productId, String createdAt) {
         this.orderId = orderId;
         this.restaurantId = restaurantId;
         this.productId = productId;
         this.createdAt = createdAt;
+        this.paymentDetailId = paymentDetailId;
     }
 
     public OrderDetailTable() {
     }
 
-    public OrderDetailTable(Long orderId, Long restaurantId, Long productId, String createdAt) {
+    public OrderDetailTable(Long orderId, Long restaurantId, Long productId, String createdAt,Long paymentDetailId) {
         this.orderId = orderId;
         this.restaurantId = restaurantId;
         this.productId = productId;
         this.createdAt = createdAt;
+        this.paymentDetailId = paymentDetailId;
     }
 
     public Long getOrderDetailId() {
