@@ -23,5 +23,7 @@
         <item name="dialogCornerRadius">@dimen/_4sdp</item>
 
     </style>
+    <style name="EditTextTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    </style>
 
 </resources>

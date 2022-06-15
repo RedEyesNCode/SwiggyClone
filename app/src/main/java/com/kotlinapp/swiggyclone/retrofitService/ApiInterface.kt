@@ -5,6 +5,7 @@ import com.kotlinapp.swiggyclone.auth.model.LoginDataClass
 import com.kotlinapp.swiggyclone.auth.model.LoginInputBody
 import com.kotlinapp.swiggyclone.base.StatusCodeMessageModel
 import com.kotlinapp.swiggyclone.cart.view.model.AddCartBody
+import com.kotlinapp.swiggyclone.cart.view.model.GetCartResponseModel
 import com.kotlinapp.swiggyclone.homeScreen.models.AllRestaurantsResponseData
 import com.kotlinapp.swiggyclone.homeScreen.models.HomeResponse
 import com.kotlinapp.swiggyclone.productDetail.model.AllProductsResponseModel
@@ -87,6 +88,9 @@ interface ApiInterface {
     @POST("addtoCart")
     fun addToCart(@Header("Authorization") accessToken: String,@Body addCartBody: AddCartBody):Call<CommonStatusMessageResponse>
 
+
+    @GET("getCart")
+    fun getCart(@Header("Authorization") accessToken: String,@Query("userId") userId: Int):Call<GetCartResponseModel>
 
 
 

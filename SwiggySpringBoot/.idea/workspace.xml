@@ -4,7 +4,51 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bba3ba2c-19de-40d1-b87d-13e2f40422e4" name="Changes" comment="" />
+    <list default="true" id="bba3ba2c-19de-40d1-b87d-13e2f40422e4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/cart/view/adapter/CartItemsAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/cart/view/cartViewModel/CartViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/cart/view/model/GetCartResponseModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/userAccount/view/UserAddressFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/res/drawable/background_orange_border.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/res/drawable/ic_cart_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/res/drawable/toolbar_bg.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/res/font/lato_bold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/res/font/lato_medium.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/res/font/lato_regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/res/layout/common_title_bar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../app/src/main/res/layout/fragment_user_address.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/sonarlint/issuestore/3/9/39ee4f3730fac7a25b17c81bcae943294f51be25" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/sonarlint/issuestore/5/b/5b72516d94065ee57fa19981008177a891ad6640" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/sonarlint/issuestore/6/c/6c3dc1e63282c66f982b25fcc32e8a9521736336" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/sonarlint/issuestore/9/0/90f2af77230453b4112b648f25921b88b781fa1f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/sonarlint/issuestore/9/4/94af7e807cdcbc79fc521b6f15a1f9b3fef6063e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/sonarlint/issuestore/9/b/9b7869b731c99245d89638dc74b699fe781c2d65" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/sonarlint/issuestore/b/d/bd028bf5765818757bd73ec9f59d1255adad8415" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/sonarlint/issuestore/e/a/eace76422eb981860641be9b544450f6899321af" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/base/BaseFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/base/BaseFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/cart/view/CartFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/cart/view/CartFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/productDetail/FoodDetailFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/productDetail/FoodDetailFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/productDetail/adapter/ProductAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/productDetail/adapter/ProductAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/retrofitService/ApiInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/retrofitService/ApiInterface.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/retrofitService/RetrofitService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/retrofitService/RetrofitService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/smoothieKotlin/repository/AppRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/smoothieKotlin/repository/AppRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/userAccount/view/UserAccountFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/com/kotlinapp/swiggyclone/userAccount/view/UserAccountFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/activity_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/layout/activity_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/cart_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/layout/cart_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/fragment_cart.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/layout/fragment_cart.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/fragment_cart_address.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/layout/fragment_cart_address.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/fragment_food_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/layout/fragment_food_detail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/fragment_user_account.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/layout/fragment_user_account.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/product_detail_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/layout/product_detail_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/values-night/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/values-night/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/values/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../build.gradle" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +57,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -55,17 +99,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "R:/GIT_REPOS/SwiggyClone/SwiggySpringBoot/swiggyClone/src/main/resources",
-    "settings.editor.selected.configurable": "preferences.editor"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;R:/GIT_REPOS/SwiggyClone/SwiggySpringBoot/swiggyClone/src/main/resources&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="R:\GIT_REPOS\SwiggyClone\SwiggySpringBoot\swiggyClone\src\main\resources" />

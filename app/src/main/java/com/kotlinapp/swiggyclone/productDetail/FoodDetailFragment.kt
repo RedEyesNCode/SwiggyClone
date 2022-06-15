@@ -1,7 +1,6 @@
 package com.kotlinapp.swiggyclone.productDetail
 
-import android.R
-import android.R.id.button1
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -10,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlinapp.swiggyclone.base.BaseFragment
@@ -47,9 +45,22 @@ class FoodDetailFragment : BaseFragment() , ProductAdapter.onClicked,CommonInter
 
     }
 
+    override fun onAddtoCart(position: Int, productId: Int) {
+        // Call the api for add to cart
+        productIdUser = productId
+showAddCartDialog(productId)
+    }
+
+    fun addtoCart(productId: Int){
+        var userID  = AppSession(requireContext()).getValue(Constant().USER_ID,requireContext())
+        restaurantDetailViewModel.addtoCart(getAccessToken(),userID!!.toInt(),param1!!.toInt(),productIdUser)
+
+
+
+    }
+
     override fun onPositive() {
         var userID  = AppSession(requireContext()).getValue(Constant().USER_ID,requireContext())
-
         restaurantDetailViewModel.addtoCart(getAccessToken(),userID!!.toInt(),param1!!.toInt(),productIdUser)
 
     }
@@ -59,6 +70,7 @@ class FoodDetailFragment : BaseFragment() , ProductAdapter.onClicked,CommonInter
     }
 
     private fun showAddCartDialog(productId: Int) {
+        // Setting the product user id when the adapter gets notified.
         productIdUser= productId
         var commonInteractiveDialog = CommonInteractiveDialog(requireContext())
         commonInteractiveDialog.CommonDialogBox(requireContext(),this)
@@ -84,29 +96,29 @@ class FoodDetailFragment : BaseFragment() , ProductAdapter.onClicked,CommonInter
         initClicks()
 
 
-
         return binding.root
     }
 
     private fun initCoroutines() {
         restaurantDetailViewModel = ViewModelProvider(this).get(ProductDetailViewModel::class.java)
 
-        restaurantDetailViewModel.isFailed.observe(this, Observer {
+        restaurantDetailViewModel.isFailed.observe(viewLifecycleOwner, {
             error -> showToast(error)
         })
-        restaurantDetailViewModel.isConnecting.observe(this, Observer { isLoading ->
+        restaurantDetailViewModel.isConnecting.observe(viewLifecycleOwner, { isLoading ->
             if(isLoading){
                 showLoader()
             }else{
                 hideLoader()
             }
         })
-        restaurantDetailViewModel.commonStatusMessageResponseMutableLiveData.observe(this, Observer {
-            response ->
+        restaurantDetailViewModel.commonStatusMessageResponseMutableLiveData.observe(viewLifecycleOwner,
+            {
+                response ->
 
-            showToast(response.message!!)
+                showToast(response.message!!)
 
-        })
+            })
 
         try {
             restaurantDetailViewModel.getRestaurantDetails(getAccessToken(),param1!!.toInt())
@@ -114,25 +126,25 @@ class FoodDetailFragment : BaseFragment() , ProductAdapter.onClicked,CommonInter
             showToast("Parsing Error !")
             e.printStackTrace()
         }
-        restaurantDetailViewModel.restaurantDetailResponseMutableLiveData.observe(this, Observer {
-            response ->
+        restaurantDetailViewModel.restaurantDetailResponseMutableLiveData.observe(viewLifecycleOwner,
+            {
+                response ->
 
-            if(response.code==200 && response.status!!.contains("success")){
-                binding.tvRestaurantName.text = response.data?.restaurantName
-                binding.tvDeliveryTime.text = response.data?.time
-                binding.tvRating.text = response.data?.rating.toString()
-                //Setting the location
-                binding.tvLocation.text = response.data?.location.toString()
-            }
+                if(response.code==200 && response.status!!.contains("success")){
+                    binding.tvRestaurantName.text = response.data?.restaurantName
+                    binding.tvDeliveryTime.text = response.data?.time
+                    binding.tvRating.text = response.data?.rating.toString()
+                    //Setting the location
+                    binding.tvLocation.text = response.data?.location.toString()
+                }
 
 
-        })
+            })
         restaurantDetailViewModel.getAllProducts(getAccessToken())
         restaurantDetailViewModel.getAllProductTypes(getAccessToken())
 
-        restaurantDetailViewModel.productTypeResponseMutableLiveData.observe(this, Observer {
+        restaurantDetailViewModel.productTypeResponseMutableLiveData.observe(viewLifecycleOwner, {
             response ->
-
             for (productType in response)
             {
                 popup.menu.add(productType.productType)
@@ -140,14 +152,22 @@ class FoodDetailFragment : BaseFragment() , ProductAdapter.onClicked,CommonInter
 
         })
 
-        restaurantDetailViewModel.allProductsResponseModelMutableLiveData.observe(this, Observer {
+        restaurantDetailViewModel.allProductsResponseModelMutableLiveData.observe(viewLifecycleOwner,
+            {
+                response ->
+                // FEED THIS DATA TO THE VIEWPAGER MADE FOR THE PRODUCTS.
+                try {
+                    updateViewpager(response.data)
+                }catch (e:Exception){
+                    e.printStackTrace()
+                }
+            })
+
+        restaurantDetailViewModel.commonStatusMessageResponseMutableLiveData.observe(viewLifecycleOwner,{
+
             response ->
-            // FEED THIS DATA TO THE VIEWPAGER MADE FOR THE PRODUCTS.
-            try {
-                updateViewpager(response.data)
-            }catch (e:Exception){
-                e.printStackTrace()
-            }
+            Toast.makeText(requireContext(),response.message, Toast.LENGTH_SHORT).show()
+
         })
     }
 
@@ -195,7 +215,6 @@ class FoodDetailFragment : BaseFragment() , ProductAdapter.onClicked,CommonInter
          * @param param2 Parameter 2.
          * @return A new instance of fragment FoodDetailFragment.
          */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             FoodDetailFragment().apply {

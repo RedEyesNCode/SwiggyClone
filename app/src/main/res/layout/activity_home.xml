@@ -16,7 +16,13 @@
         android:layout_centerInParent="true">
 
     </FrameLayout>
+    <FrameLayout
+        android:id="@+id/fullContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true">
 
+    </FrameLayout>
     <LinearLayout
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"

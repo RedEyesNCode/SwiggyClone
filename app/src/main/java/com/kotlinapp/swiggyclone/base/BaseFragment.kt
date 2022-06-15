@@ -4,6 +4,8 @@ import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
+import com.kotlinapp.swiggyclone.R
 import com.kotlinapp.swiggyclone.sharedPreferences.AppSession
 import com.kotlinapp.swiggyclone.sharedPreferences.Constant
 
@@ -60,6 +62,27 @@ open class BaseFragment : Fragment() {
             return ""
         }
     }
+    fun getUserId():String{
+        var userID  = AppSession(requireContext()).getValue(Constant().USER_ID,requireContext())
+        if(userID!=null){
+            return userID
+        }else{
+            return ""
+        }
+
+
+    }
+    fun addFragmentBackStackFullContainer(fragment:Fragment,tag:String, isAddtoBackSTack: Boolean){
+
+        var fragmentTransaction : FragmentTransaction = requireFragmentManager().beginTransaction()
+        fragmentTransaction.add(R.id.fullContainer, fragment);
+        if (isAddtoBackSTack) {
+            fragmentTransaction.addToBackStack(tag);
+        }
+        fragmentTransaction.commit();
+
+    }
+
 
 
 

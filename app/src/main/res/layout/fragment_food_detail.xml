@@ -184,7 +184,7 @@
                 android:layout_marginTop="@dimen/_45sdp"
                 android:background="@drawable/background_button_orange"
                 android:gravity="center"
-                android:text="Add to Cart"
+                android:text="Restaurant Location"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:translationZ="-90dp" />

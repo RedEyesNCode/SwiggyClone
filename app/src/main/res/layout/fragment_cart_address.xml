@@ -11,8 +11,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_marginHorizontal="@dimen/_8sdp"
         android:layout_marginTop="@dimen/_25sdp"
-        android:layout_marginHorizontal="@dimen/_25sdp"
         android:layout_height="wrap_content">
 
         <ImageView
@@ -32,188 +32,207 @@
             android:textSize="@dimen/_21sdp" />
 
     </RelativeLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_marginHorizontal="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/_12sdp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:fontFamily="@font/rmedium"
-        android:padding="@dimen/_4sdp"
-        android:textSize="@dimen/_32sdp"
-        android:text="Delivery"
-        />
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/_25sdp"
-        android:layout_marginHorizontal="@dimen/_25sdp"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="@dimen/_8sdp"
         android:layout_height="wrap_content">
-
         <TextView
             android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:fontFamily="@font/rmedium"
-            android:text="Address details"
             android:textColor="@color/black"
-            android:textSize="@dimen/_12sdp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnChangeaddress"
-            android:layout_alignParentRight="true"
             android:fontFamily="@font/rmedium"
-            android:text="change"
-            android:textColor="@color/orange"
-            android:textSize="@dimen/_12sdp" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/_25sdp"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            app:cardCornerRadius="@dimen/_2sdp"
-            app:cardElevation="@dimen/_8sdp"
-            app:contentPadding="@dimen/_18sdp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tvName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:fontFamily="@font/rmedium"
-                    android:paddingVertical="@dimen/_4sdp"
-                    android:text="RedEyesNCode"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_1sdp"
-                    android:layout_alignBottom="@id/layoutProfile"
-                    android:background="@color/gray_black" />
-
-                <TextView
-                    android:id="@+id/tvAddress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:fontFamily="@font/rmedium"
-                    android:paddingVertical="@dimen/_4sdp"
-                    android:text="Near a Keyboard \u0026 Chair"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_9sdp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_1sdp"
-                    android:layout_alignBottom="@id/layoutProfile"
-                    android:background="@color/gray_black" />
-
-                <TextView
-                    android:id="@+id/tvMobileNumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:fontFamily="@font/rmedium"
-                    android:paddingVertical="@dimen/_4sdp"
-                    android:text="+4444 4444 4444 4444"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_9sdp" />
-            </LinearLayout>
-
-
-        </com.google.android.material.card.MaterialCardView>
-
-
-    </RelativeLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_marginHorizontal="@dimen/_25sdp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_12sdp"
-        android:layout_alignParentLeft="true"
-        android:fontFamily="@font/rmedium"
-        android:text="Delivery method"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_12sdp" />
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/_25sdp"
-        android:layout_height="wrap_content">
-
+            android:padding="@dimen/_4sdp"
+            android:textSize="@dimen/_32sdp"
+            android:text="Delivery"
+            />
 
         <LinearLayout
-            android:layout_width="match_parent"
             android:orientation="vertical"
-            android:layout_marginHorizontal="@dimen/_35sdp"
-            android:background="@drawable/background_search_ic"
-            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <RadioGroup
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:padding="@dimen/_12sdp"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/_8sdp"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="@drawable/background_search_ic"
                 android:layout_height="wrap_content">
-                <RadioButton
-                    android:layout_width="wrap_content"
 
-                    android:layout_height="wrap_content"
-                    android:text="Door Delivery"/>
-
-                <View
+                <RelativeLayout
+                    android:id="@+id/nameEditLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_1sdp"
-                    android:layout_alignBottom="@id/layoutProfile"
-                    android:background="@color/orange" />
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pick up"/>
+                    android:layout_height="wrap_content">
 
-            </RadioGroup>
+                    <TextView
+                        android:id="@+id/deliveryAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="@dimen/_12ssp"
+                        android:fontFamily="@font/firesans_regular"
+                        android:gravity="center_vertical"
+                        android:paddingVertical="@dimen/_2sdp"
+                        android:text="@string/delivery_address"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <TextView
+                        android:id="@+id/tvChangeAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="@dimen/_12sdp"
+                        android:fontFamily="@font/lato_bold"
+                        android:gravity="center_vertical"
+                        android:paddingVertical="@dimen/_2sdp"
+                        android:text="@string/change"
+                        android:textColor="@color/orange"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <TextView
+                        android:id="@+id/tvUserName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/deliveryAddress"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="@dimen/_12ssp"
+                        android:fontFamily="@font/lato_bold"
+                        android:gravity="center_vertical"
+                        android:paddingVertical="@dimen/_2sdp"
+                        android:text="@string/jelly_grande"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10sdp" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/numberaddressLayout"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nameEditLayout"
+                    android:layout_marginStart="@dimen/_12ssp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvUserNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_regular"
+                        android:gravity="start"
+                        android:text="@string/_91_6261319133"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/tvAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:fontFamily="@font/lato_regular"
+                        android:gravity="start"
+                        android:text="@string/_5705_centennial_center_blvd_ste_120_las_vegas_nv_89149"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp"/>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp">
+
+                </RelativeLayout>
+            </RelativeLayout>
 
 
 
         </LinearLayout>
 
-
-
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/_25sdp"
-        android:layout_marginHorizontal="@dimen/_25sdp"
-        android:layout_height="wrap_content">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
             android:layout_alignParentLeft="true"
             android:fontFamily="@font/rmedium"
-            android:text="Total"
+            android:text="Delivery method"
             android:textColor="@color/black"
-            android:textSize="@dimen/_12sdp" />
+            android:textSize="@dimen/_15sdp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_9sdp"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvTotalAmount"
-            android:layout_alignParentRight="true"
-            android:fontFamily="@font/rmedium"
-            android:text="$ 130"
-            android:textColor="@color/orange"
-            android:textSize="@dimen/_12sdp" />
-    </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/background_search_ic"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content">
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:padding="@dimen/_14sdp"
+                    android:layout_height="wrap_content">
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:buttonTint="@color/orange"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_12sdp"
+                        android:text="Door Delivery"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_alignBottom="@id/layoutProfile"
+                        android:background="@color/orange" />
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:textSize="@dimen/_12sdp"
+                        android:buttonTint="@color/orange"
+                        android:layout_height="wrap_content"
+                        android:text="Pick up"/>
+
+                </RadioGroup>
+
+
+
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:fontFamily="@font/rmedium"
+                android:text="Total"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_18sdp" />
+
+            <TextView
+                android:id="@+id/tvTotalAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:fontFamily="@font/rmedium"
+                android:text="$ 130"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/_18sdp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnProceed"
         android:layout_width="@dimen/_195sdp"

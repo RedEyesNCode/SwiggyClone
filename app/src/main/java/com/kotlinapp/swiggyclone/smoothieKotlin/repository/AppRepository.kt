@@ -3,6 +3,7 @@ package com.kotlinapp.swiggyclone.smoothieKotlin.repository
 import com.kotlinapp.swiggyclone.auth.model.CommonStatusMessageResponse
 import com.kotlinapp.swiggyclone.auth.model.LoginInputBody
 import com.kotlinapp.swiggyclone.cart.view.model.AddCartBody
+import com.kotlinapp.swiggyclone.cart.view.model.GetCartResponseModel
 import com.kotlinapp.swiggyclone.retrofitService.RetrofitService
 import retrofit2.Call
 
@@ -30,6 +31,8 @@ class AppRepository {
         addCartBody.restaurantId = restaurantId
        return RetrofitService().apiInterface.addToCart(accessToken,addCartBody)
     }
+
+    suspend fun getCart(accessToken: String,userId: Int) = RetrofitService().apiInterface.getCart(accessToken, userId)
 
 
 }

@@ -17,4 +17,12 @@
         <item name="dialogCornerRadius">@dimen/_4sdp</item>
 
     </style>
+    <style name="EditTextTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    </style>
+    <style name="EditTextOutLineStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/orange</item>
+        <item name="boxStrokeWidth">@dimen/_1sdp</item>
+        <item name="colorOnSurface">@color/orange</item>
+        <item name="colorPrimary">@color/orange</item>
+    </style>
 </resources>

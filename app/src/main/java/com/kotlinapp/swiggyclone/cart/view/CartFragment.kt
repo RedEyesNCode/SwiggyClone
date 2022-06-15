@@ -5,8 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlinapp.swiggyclone.R
+import com.kotlinapp.swiggyclone.base.BaseFragment
+import com.kotlinapp.swiggyclone.cart.view.adapter.CartItemsAdapter
 import com.kotlinapp.swiggyclone.cart.view.cartAddress.CartAddressFragment
+import com.kotlinapp.swiggyclone.cart.view.cartViewModel.CartViewModel
+import com.kotlinapp.swiggyclone.cart.view.model.Cart
+import com.kotlinapp.swiggyclone.cart.view.model.Product
 import com.kotlinapp.swiggyclone.databinding.FragmentCartBinding
 import com.kotlinapp.swiggyclone.utils.FragmentUtils
 
@@ -20,12 +27,15 @@ private const val ARG_PARAM2 = "param2"
  * Use the [CartFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class CartFragment : Fragment() {
+class CartFragment : BaseFragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     private  lateinit var cartFragmentContext :CartFragment
     private lateinit var binding:FragmentCartBinding
+    private lateinit var cartViewModel : CartViewModel
+    private lateinit var adapter: CartItemsAdapter
+    var carts = ArrayList<Cart>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,8 +53,38 @@ class CartFragment : Fragment() {
 
         binding = FragmentCartBinding.inflate(inflater,container,false)
         initClicks()
+        initCouroutines()
+        setUpCartAdapter()
 
         return binding.root
+    }
+
+    private fun initCouroutines() {
+        cartViewModel = ViewModelProvider(this).get(CartViewModel::class.java)
+        cartViewModel.isFailed.observe(viewLifecycleOwner, {
+                error -> showToast(error)
+        })
+        cartViewModel.isConnecting.observe(viewLifecycleOwner, { isLoading ->
+            if(isLoading){
+                showLoader()
+            }else{
+                hideLoader()
+            }
+        })
+
+        cartViewModel.getUserCart(getAccessToken(),getUserId().toInt())
+        cartViewModel.getCartMutableLiveData.observe(viewLifecycleOwner,{
+            response ->
+            carts.addAll(response.cart)
+            adapter.notifyDataSetChanged()
+        })
+    }
+
+    private fun setUpCartAdapter() {
+        adapter = CartItemsAdapter(requireContext(),carts)
+        binding.recvCart.adapter =  adapter
+        binding.recvCart.layoutManager = LinearLayoutManager(context)
+
     }
 
     private fun initClicks() {

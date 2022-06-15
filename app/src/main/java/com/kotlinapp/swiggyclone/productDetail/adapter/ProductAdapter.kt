@@ -40,6 +40,12 @@ class ProductAdapter(var context: Context, var restaurants: ArrayList<Datum>, va
                     product!!.menuId?.let { it1 -> onClickedInterface.onViewDetails(position, it1) }
 
                 }
+                btnAddtoCart.setOnClickListener {
+                    product.menuId?.let { it1 -> onClickedInterface.onAddtoCart(position, it1) }
+
+                }
+
+
             }
 
         }
@@ -54,5 +60,6 @@ class ProductAdapter(var context: Context, var restaurants: ArrayList<Datum>, va
     class MyViewHolder(topPicksListBinding: ProductDetailItemBinding): RecyclerView.ViewHolder(topPicksListBinding.root)
     interface onClicked{
         fun onViewDetails(position: Int, productId:Int)
+        fun onAddtoCart(position: Int,productId: Int)
     }
 }

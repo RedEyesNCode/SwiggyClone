@@ -20,6 +20,7 @@ import com.kotlinapp.swiggyclone.smoothieKotlin.viewModelFactory.ViewModelProvid
 import com.kotlinapp.swiggyclone.userAccount.view.adapter.PastOrderAdapter
 import com.kotlinapp.swiggyclone.userAccount.viewModel.AccountViewModel
 import com.kotlinapp.swiggyclone.utils.AppUtils
+import com.kotlinapp.swiggyclone.utils.FragmentUtils
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -68,8 +69,14 @@ class UserAccountFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentUserAccountBinding.inflate(inflater,container,false);
 
-
+        initClicks()
         return binding.root
+    }
+
+    private fun initClicks() {
+        binding.btnuserAddress.setOnClickListener {
+            addFragmentBackStackFullContainer(UserAddressFragment(),UserAddressFragment.javaClass.simpleName,true)
+        }
     }
 
     companion object {
