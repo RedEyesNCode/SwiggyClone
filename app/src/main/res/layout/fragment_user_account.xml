@@ -169,6 +169,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
+        android:id="@+id/btnChatSupport"
         android:layout_marginTop="@dimen/_4sdp"
         android:layout_marginHorizontal="@dimen/_10sdp"
         android:layout_height="wrap_content">
@@ -183,7 +184,7 @@
                 android:fontFamily="@font/firasans_medium"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_10sdp"
-                android:text="Swiggy Money">
+                android:text="Support ">
             </TextView>
 
         </LinearLayout>
@@ -196,7 +197,7 @@
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:fontFamily="@font/firesans_regular"
-                android:text="View Account Balance \u0026 Transaction History"
+                android:text="Get a Private chat using Spring boot web socket."
                 android:textSize="@dimen/_7sdp"
                 android:layout_height="wrap_content">
 

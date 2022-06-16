@@ -7,6 +7,8 @@
         <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/drawable/background_button_orange.xml" value="0.188" />
         <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/drawable/background_orange_border.xml" value="0.1225" />
         <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/drawable/bg_food_item.xml" value="0.188" />
+        <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/drawable/shape_bg_incoming_bubble.xml" value="0.1325" />
+        <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/drawable/shape_bg_outgoing_bubble.xml" value="0.1325" />
         <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/drawable/toolbar_bg.xml" value="0.188" />
         <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/layout/activity_home.xml" value="0.136" />
         <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/layout/activity_splash.xml" value="0.264" />
@@ -15,6 +17,7 @@
         <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/layout/common_title_bar.xml" value="0.264" />
         <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/layout/custom_progress_dialog.xml" value="0.25416666666666665" />
         <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/layout/food_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/layout/fragment_admin_chat.xml" value="0.25416666666666665" />
         <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/layout/fragment_cart.xml" value="0.264" />
         <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/layout/fragment_cart_address.xml" value="0.264" />
         <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/layout/fragment_food.xml" value="0.4031141868512111" />
@@ -23,8 +26,11 @@
         <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/layout/fragment_login.xml" value="0.25416666666666665" />
         <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/layout/fragment_user_account.xml" value="0.264" />
         <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/layout/fragment_user_address.xml" value="0.176" />
+        <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/layout/incoming_message_list.xml" value="0.2" />
+        <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/layout/outgoing_message_list.xml" value="0.253125" />
         <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/layout/past_order_list.xml" value="0.2570921985815603" />
         <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/layout/product_detail_item.xml" value="0.4" />
+        <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/layout/shape_bg_outgoing_bubble.xml" value="0.253125" />
         <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/layout/swiggy_service_list.xml" value="0.25416666666666665" />
         <entry key="..\:/GIT_REPOS/SwiggyClone/app/src/main/res/menu/food_filter_menu.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/drawable/background_button_orange.xml" value="0.1795" />
