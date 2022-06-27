@@ -177,9 +177,11 @@
                 <RadioGroup
                     android:layout_width="match_parent"
                     android:padding="@dimen/_14sdp"
+                    android:id="@+id/rgroupDelivery"
                     android:layout_height="wrap_content">
                     <RadioButton
                         android:layout_width="wrap_content"
+                        android:id="@+id/rbtnDoorDelivery"
                         android:buttonTint="@color/orange"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/_12sdp"
@@ -194,6 +196,7 @@
                         android:layout_width="wrap_content"
                         android:textSize="@dimen/_12sdp"
                         android:buttonTint="@color/orange"
+                        android:id="@+id/rbtnPickup"
                         android:layout_height="wrap_content"
                         android:text="Pick up"/>
 

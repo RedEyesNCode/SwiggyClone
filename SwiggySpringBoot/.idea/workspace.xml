@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bba3ba2c-19de-40d1-b87d-13e2f40422e4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_websocket_2_7_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_messaging_5_3_16.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_websocket_5_3_21.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/websockets/WebSocketConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/websockets/controller/ChatController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/websockets/model/ChatMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/swiggyClone/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/swiggyClone/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/swiggyClone/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/websockets/WebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/websockets/WebSocketConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +68,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;R:/SPRING WEB/SPRING WEBSOCKET/spring-boot-websocket-chat-demo&quot;,
+    &quot;last_opened_file_path&quot;: &quot;R:/SPRING WEB/AndroidServer/springboot-android-chat-server&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;
   }
 }</component>
@@ -85,6 +83,11 @@
       <recent name="R:\GIT_REPOS\SwiggyClone\SwiggySpringBoot\swiggyClone\src\main\resources\templates\css" />
       <recent name="R:\GIT_REPOS\SwiggyClone\SwiggySpringBoot\swiggyClone\src\main\resources\templates" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn package" />
+    </option>
   </component>
   <component name="RunManager">
     <configuration name="SwiggyCloneApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">

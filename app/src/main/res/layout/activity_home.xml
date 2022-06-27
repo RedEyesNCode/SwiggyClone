@@ -27,7 +27,7 @@
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:background="@color/white"
-        android:layout_height="@dimen/_60sdp"
+        android:layout_height="@dimen/_45sdp"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:layout_centerInParent="true"
@@ -40,8 +40,8 @@
             android:layout_weight="1"
             android:layout_height="wrap_content">
             <ImageView
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="@dimen/_35sdp"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
                 android:src="@drawable/ic_swiggy_home"
                 android:padding="@dimen/_8sdp">
             </ImageView>
@@ -66,8 +66,8 @@
             android:layout_weight="1"
             android:layout_height="wrap_content">
             <ImageView
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="@dimen/_35sdp"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
                 android:src="@drawable/ic_food"
                 android:padding="@dimen/_8sdp">
             </ImageView>
@@ -91,9 +91,9 @@
             android:layout_weight="1"
             android:layout_height="wrap_content">
             <ImageView
-                android:layout_width="@dimen/_35sdp"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
                 android:src="@drawable/ic_search"
-                android:layout_height="@dimen/_35sdp"
                 android:padding="@dimen/_8sdp">
             </ImageView>
             <TextView
@@ -116,8 +116,8 @@
             android:layout_weight="1"
             android:layout_height="wrap_content">
             <ImageView
-                android:layout_width="@dimen/_35sdp"
-                android:layout_height="@dimen/_35sdp"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
                 android:id="@+id/ic_swiggyhome"
                 android:src="@drawable/account"
                 android:padding="@dimen/_8sdp">

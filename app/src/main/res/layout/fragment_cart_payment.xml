@@ -76,10 +76,13 @@
             <RadioGroup
                 android:layout_width="match_parent"
                 android:padding="@dimen/_12sdp"
+                android:id="@+id/rbgroupPayment"
                 android:layout_height="wrap_content">
                 <RadioButton
                     android:layout_width="wrap_content"
-
+                    android:checked="true"
+                    android:id="@+id/rbUpiPayment"
+                    android:buttonTint="@color/orange"
                     android:layout_height="wrap_content"
                     android:text="Upi Payment"/>
 
@@ -90,7 +93,9 @@
                     android:background="@color/orange" />
                 <RadioButton
                     android:layout_width="wrap_content"
+                    android:buttonTint="@color/orange"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rbCardPayment"
                     android:text="Card Payment"/>
 
             </RadioGroup>
@@ -102,16 +107,6 @@
 
 
     </RelativeLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_marginHorizontal="@dimen/_25sdp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_12sdp"
-        android:layout_alignParentLeft="true"
-        android:fontFamily="@font/rmedium"
-        android:text="Delivery method"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_12sdp" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/_25sdp"
@@ -125,27 +120,6 @@
             android:background="@drawable/background_search_ic"
             android:layout_centerInParent="true"
             android:layout_height="wrap_content">
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:padding="@dimen/_12sdp"
-                android:layout_height="wrap_content">
-                <RadioButton
-                    android:layout_width="wrap_content"
-
-                    android:layout_height="wrap_content"
-                    android:text="Door Delivery"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_1sdp"
-                    android:layout_alignBottom="@id/layoutProfile"
-                    android:background="@color/orange" />
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pick up"/>
-
-            </RadioGroup>
 
 
 
@@ -170,9 +144,9 @@
             android:textSize="@dimen/_12sdp" />
 
         <TextView
+            android:id="@+id/tvTotalAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvTotalAmount"
             android:layout_alignParentRight="true"
             android:fontFamily="@font/rmedium"
             android:text="$ 130"

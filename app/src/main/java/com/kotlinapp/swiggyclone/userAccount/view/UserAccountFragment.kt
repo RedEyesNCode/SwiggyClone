@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlinapp.swiggyclone.R
 import com.kotlinapp.swiggyclone.base.BaseFragment
-import com.kotlinapp.swiggyclone.chat.AdminChatFragment
 import com.kotlinapp.swiggyclone.databinding.FragmentUserAccountBinding
 import com.kotlinapp.swiggyclone.homeScreen.viewModel.HomeViewModel
 import com.kotlinapp.swiggyclone.sharedPreferences.AppSession
@@ -78,10 +77,7 @@ class UserAccountFragment : BaseFragment() {
         binding.btnuserAddress.setOnClickListener {
             addFragmentBackStackFullContainer(UserAddressFragment(),UserAddressFragment.javaClass.simpleName,true)
         }
-        binding.btnChatSupport.setOnClickListener {
-            addFragmentBackStackFullContainer(AdminChatFragment(),AdminChatFragment::class.java.simpleName,true)
 
-        }
     }
 
     companion object {

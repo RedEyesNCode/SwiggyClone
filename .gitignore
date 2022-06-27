@@ -12,6 +12,8 @@
 /captures
 .externalNativeBuild
 .cxx
+/.IGotYouKotlin(Jar Here)
+/.SwiggySpringBoot
 local.properties
 DatabaseConfiguration.java
 AWSConstant.java

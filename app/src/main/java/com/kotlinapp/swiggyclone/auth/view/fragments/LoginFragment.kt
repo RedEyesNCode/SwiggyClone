@@ -82,20 +82,21 @@ class LoginFragment : BaseFragment() {
     }
     fun initClicks() {
         binding.btnLogin.setOnClickListener {
-            var email = binding.edtloginEmail.text.toString()
-            var password = binding.edtLoginpassword.text.toString()
-            if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(email)){
-                var loginInputBody = LoginInputBody(email,password)
+            val email = binding.edtloginEmail.text.toString()
+            val password = binding.edtLoginpassword.text.toString()
+
+            if(TextUtils.isEmpty(email) ){
+                binding.edtloginEmail.setError("Invalid")
+                showToast("Please enter your password to conitnue.")
+            }else if(TextUtils.isEmpty(password)){
+                binding.edtLoginpassword.setError("Invalid")
+                showToast("Please enter your password to conitnue.")
+            }else{
+                val loginInputBody = LoginInputBody(email,password)
 //                viewModel.loginApiCall(loginFragmentContext,loginInputBody)
                 loginViewModelCoroutines.loginUser(loginInputBody)
-            }else{
-                Toast.makeText(loginFragmentContext,"Please fill in the valid details", Toast.LENGTH_SHORT).show()
-
             }
-
         }
-
-
     }
 
     fun attachObserversofCouroutines(){

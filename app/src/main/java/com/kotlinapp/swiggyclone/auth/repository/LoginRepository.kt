@@ -62,13 +62,12 @@ class LoginRepository {
 
 
     //Calling the Api to Send the Otp to Required Number.
-    fun sendOtp(context: Context): MutableLiveData<StatusCodeMessageModel>{
+    fun sendOtp(): MutableLiveData<StatusCodeMessageModel>{
         var call: Call<StatusCodeMessageModel>
         call = RetrofitService().apiInterface.testApi()
         call.enqueue(object : Callback<StatusCodeMessageModel> {
             override fun onResponse(call: Call<StatusCodeMessageModel>, response: Response<StatusCodeMessageModel>) {
-                var message:String
-                var data =  response.body()
+                var data: StatusCodeMessageModel? =  response.body()
 /*
                 message = data!!.message.toString()
 */

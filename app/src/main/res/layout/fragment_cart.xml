@@ -71,6 +71,7 @@
             android:id="@+id/btnCompleteorder"
             android:layout_width="@dimen/_195sdp"
             android:layout_height="@dimen/_45sdp"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/_45sdp"
             android:background="@drawable/background_button_orange"

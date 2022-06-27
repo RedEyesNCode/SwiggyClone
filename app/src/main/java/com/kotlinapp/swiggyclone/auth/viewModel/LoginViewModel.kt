@@ -1,7 +1,6 @@
 package com.kotlinapp.swiggyclone.auth.viewModel
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,7 +8,6 @@ import com.kotlinapp.swiggyclone.auth.model.LoginDataClass
 import com.kotlinapp.swiggyclone.auth.model.LoginInputBody
 import com.kotlinapp.swiggyclone.auth.repository.LoginRepository
 import com.kotlinapp.swiggyclone.base.StatusCodeMessageModel
-import com.kotlinapp.swiggyclone.callbacks.LoginListener
 
 class LoginViewModel:ViewModel() {
 
@@ -37,7 +35,7 @@ class LoginViewModel:ViewModel() {
 
 
     fun testApi(context: Context):MutableLiveData<StatusCodeMessageModel>{
-        verifyOtpLiveData = LoginRepository().sendOtp(context)
+        verifyOtpLiveData = LoginRepository().sendOtp()
         return verifyOtpLiveData as MutableLiveData<StatusCodeMessageModel>
 
 

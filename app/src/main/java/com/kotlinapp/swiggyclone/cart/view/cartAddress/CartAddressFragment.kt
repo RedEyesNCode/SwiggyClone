@@ -29,7 +29,9 @@ class CartAddressFragment : Fragment() {
     private var param2: String? = null
     private lateinit var binding:FragmentCartAddressBinding
     private lateinit var contextFragment:Context
-
+    private var addressId:Int =0
+    private var deliveryMethod:String = "DOOR_DELIVERY"
+    private var orderTotal:String = ""
     override fun onAttach(context: Context) {
         super.onAttach(context)
         this.contextFragment = context
@@ -49,6 +51,10 @@ class CartAddressFragment : Fragment() {
     ): View? {
         binding = FragmentCartAddressBinding.inflate(inflater,container,false)
         initClicks()
+        if(param1!=null){
+            binding.tvTotalAmount.setText(" $ "+param1)
+            orderTotal = param1.toString()
+        }
 
 
         return binding.root
@@ -56,8 +62,23 @@ class CartAddressFragment : Fragment() {
 
     private fun initClicks() {
         binding.back.setOnClickListener { requireActivity().onBackPressed() }
-        binding.btnProceed.setOnClickListener { FragmentUtils().addFragmentBackStack(requireFragmentManager(),R.id.mainHomeContainer,CartPaymentFragment(),CartAddressFragment::class.java.simpleName,true) }
+        binding.btnProceed.setOnClickListener {
+            var cartPaymentFragment = CartPaymentFragment.newInstance(addressId.toString(),orderTotal.toString(),deliveryMethod)
+            FragmentUtils().addFragmentBackStack(requireFragmentManager(),R.id.fullContainer,cartPaymentFragment,CartAddressFragment::class.java.simpleName,true) }
         //COMMIT TEST
+        binding.rbtnDoorDelivery.isChecked = true
+        binding.rgroupDelivery.setOnCheckedChangeListener { group, checkedId ->
+            if(checkedId==R.id.rbtnDoorDelivery){
+                deliveryMethod = "DOOR_DELIVERY"
+            }else if(checkedId==R.id.rbtnPickup){
+                deliveryMethod = "PICK_UP"
+
+            }
+
+
+
+        }
+
     }
 
     companion object {
