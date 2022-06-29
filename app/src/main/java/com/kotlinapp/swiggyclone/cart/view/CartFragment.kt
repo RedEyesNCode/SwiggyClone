@@ -37,6 +37,8 @@ class CartFragment : BaseFragment() {
     private lateinit var adapter: CartItemsAdapter
     var carts = ArrayList<Cart>()
     var totalPayableAmount:Int = 0
+    private lateinit var cartOrderIds:IntArray
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,11 +79,12 @@ class CartFragment : BaseFragment() {
         cartViewModel.getCartMutableLiveData.observe(viewLifecycleOwner,{
             response ->
             carts.addAll(response.cart)
+            cartOrderIds = IntArray(carts.size)
+
             adapter.notifyDataSetChanged()
             for (index in response.cart.indices){
                 totalPayableAmount += response.cart.get(index).product?.productData?.price!!
-
-
+                carts.get(index).orderId?.let { cartOrderIds.set(index, it) }
             }
             binding.btnCompleteorder.setText("Complete Order \n (Payable amount) : $ $totalPayableAmount")
         })
@@ -96,7 +99,7 @@ class CartFragment : BaseFragment() {
 
     private fun initClicks() {
         binding.btnCompleteorder.setOnClickListener {
-            var cartAddressFragment = CartAddressFragment.newInstance(totalPayableAmount.toString(),"")
+            var cartAddressFragment = CartAddressFragment.newInstance(totalPayableAmount.toString(),cartOrderIds)
             FragmentUtils().addFragmentBackStack(requireFragmentManager(),R.id.fullContainer,cartAddressFragment,CartAddressFragment::class.java.simpleName,true)
 
         }

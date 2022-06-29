@@ -6,11 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.kotlinapp.swiggyclone.R
 import com.kotlinapp.swiggyclone.cart.view.cartPaymentFragment.CartPaymentFragment
 import com.kotlinapp.swiggyclone.databinding.FragmentCartAddressBinding
-import com.kotlinapp.swiggyclone.databinding.FragmentCartBinding
 import com.kotlinapp.swiggyclone.utils.FragmentUtils
 
 // TODO: Rename parameter arguments, choose names that match
@@ -26,7 +24,7 @@ private const val ARG_PARAM2 = "param2"
 class CartAddressFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
-    private var param2: String? = null
+    private var orderIds: IntArray? = null
     private lateinit var binding:FragmentCartAddressBinding
     private lateinit var contextFragment:Context
     private var addressId:Int =0
@@ -41,7 +39,7 @@ class CartAddressFragment : Fragment() {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            orderIds = it.getIntArray(ARG_PARAM2)
         }
     }
 
@@ -63,7 +61,7 @@ class CartAddressFragment : Fragment() {
     private fun initClicks() {
         binding.back.setOnClickListener { requireActivity().onBackPressed() }
         binding.btnProceed.setOnClickListener {
-            var cartPaymentFragment = CartPaymentFragment.newInstance(addressId.toString(),orderTotal.toString(),deliveryMethod)
+            var cartPaymentFragment = CartPaymentFragment.newInstance(addressId.toString(),orderTotal.toString(),deliveryMethod,orderIds!!)
             FragmentUtils().addFragmentBackStack(requireFragmentManager(),R.id.fullContainer,cartPaymentFragment,CartAddressFragment::class.java.simpleName,true) }
         //COMMIT TEST
         binding.rbtnDoorDelivery.isChecked = true
@@ -92,11 +90,11 @@ class CartAddressFragment : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(param1: String, orderIds: IntArray) =
             CartAddressFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putIntArray(ARG_PARAM2, orderIds)
                 }
             }
     }

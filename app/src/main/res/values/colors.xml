@@ -10,10 +10,37 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#FA4B0C</color>
-    <color name="yellow">#FFC800</color>
     <color name="red_custom">#e02b2d</color>
     <color name="gray_black">#BAB1B1</color>
     <color name="dark_blue">#098BFD</color>
     <color name="gray_bg_custom">#F2F2F2</color>
     <color name="orange_light">#C9FA4B0C</color>
+    <color name="light_black">#343434</color>
+    <color name="white_light">#9EFEFFFF</color>
+    <color name="yellow">#f5c500</color>
+    <color name="dark_yellow">#D6AD03</color>
+    <color name="gray_light_black">#f7f5f8</color>
+    <color name="text_blue_color">#3c3e96</color>
+    <color name="view_line_color">#77749e</color>
+    <color name="dark_purpule">#95218b</color>
+    <color name="light_gray_black">#f7f5f8</color>
+    <color name="default_indicator_color">#bababa</color>
+    <color name="green">#1FC609</color>
+    <color name="gray_view_line">#d7d7d7</color>
+    <color name="tv_lite_black">#333333</color>
+
+    <!--SellerappColours-->
+    <!--EXTRA ADDED COLOURS-->
+
+    <color name="red">#FF0000</color>
+    <color name="darkRed">#B11515</color>
+
+    <color name="feedgrey">#cdcdcd</color>
+    <color name="feed_grey_bg">#d1d1dd</color>
+    <color name="bnk_name_bg">#f8f8f8</color>
+    <color name="purple_line">#828ed5</color>
+    <color name="text_grey">#656565</color>
+    <color name="bg_light_grey">#f6f6f6</color>
+    <color name="color_switch_off">#cecece</color>
+    <color name="lighter_grey">#549F9F9F</color>
 </resources>

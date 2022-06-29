@@ -4,6 +4,7 @@ import com.kotlinapp.swiggyclone.auth.model.CommonStatusMessageResponse
 import com.kotlinapp.swiggyclone.auth.model.LoginInputBody
 import com.kotlinapp.swiggyclone.cart.view.model.AddCartBody
 import com.kotlinapp.swiggyclone.cart.view.model.GetCartResponseModel
+import com.kotlinapp.swiggyclone.cart.view.model.PlaceOrderBody
 import com.kotlinapp.swiggyclone.retrofitService.RetrofitService
 import retrofit2.Call
 
@@ -33,6 +34,8 @@ class AppRepository {
     }
 
     suspend fun getCart(accessToken: String,userId: Int) = RetrofitService().apiInterface.getCart(accessToken, userId)
+
+    suspend fun placeOrder(accessToken:String , placeOrderBody: PlaceOrderBody) = RetrofitService().apiInterface.placeOrder(accessToken, placeOrderBody)
 
 
 }
