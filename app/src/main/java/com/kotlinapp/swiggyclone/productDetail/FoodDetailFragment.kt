@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlinapp.swiggyclone.base.BaseFragment
+import com.kotlinapp.swiggyclone.cart.view.CartFragment
 import com.kotlinapp.swiggyclone.databinding.FragmentFoodDetailBinding
 import com.kotlinapp.swiggyclone.productDetail.adapter.ProductAdapter
 import com.kotlinapp.swiggyclone.productDetail.model.Datum
@@ -203,6 +204,9 @@ showAddCartDialog(productId)
             popup.show() //showing popup menu
 
 
+        }
+        binding.wishList.setOnClickListener {
+            addFragmentBackStackFullContainer(CartFragment(),CartFragment::class.java.simpleName,true)
         }
     }
 

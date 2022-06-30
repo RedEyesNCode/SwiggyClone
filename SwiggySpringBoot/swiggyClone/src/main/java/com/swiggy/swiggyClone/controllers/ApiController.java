@@ -1,6 +1,7 @@
 package com.swiggy.swiggyClone.controllers;
 
 
+import com.amazonaws.services.dynamodbv2.xspec.S;
 import com.swiggy.swiggyClone.dataModel.*;
 import com.swiggy.swiggyClone.dataModel.address.AddressBody;
 import com.swiggy.swiggyClone.dataModel.address.AddressUserResponse;
@@ -184,8 +185,10 @@ public class ApiController {
 
     }
 
+    // THIS DATA SHOULD BE SAME AS MENTIONED IN THE MODEL CLASS
     @GetMapping("/getUserAddressById")
-    public AddressUserResponse getUserAddressById(@Param("userId") int userId){
+    public AddressUserResponse getUserAddressById(@Param("userId") String userId){
+        // todo string type is important please take care of that.
 
 
         if(apiService.getUserAddressByUserID(userId).size()==0){

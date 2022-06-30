@@ -22,7 +22,7 @@ class ViewModelProviderFactory(
             return HomeViewModel(app, appRepository) as T
         }else if(modelClass.isAssignableFrom(AccountViewModel::class.java)){
             return AccountViewModel(app, appRepository) as T
-        }else{
+        } else{
             throw IllegalArgumentException("Unknown class name")
 
         }

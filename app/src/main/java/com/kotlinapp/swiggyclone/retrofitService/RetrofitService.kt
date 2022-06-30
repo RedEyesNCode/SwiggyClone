@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitService {
 
-    val  serverUrl = "http:// CURIOUS ARE YOU ?? /swiggy/"
+    val  serverUrl = "http://192.168.128.191:9090/swiggy/"
 
 
     //Step 2
@@ -21,12 +21,11 @@ class RetrofitService {
         loggingInterceptor.setLevel(levelType)
         val okHttpClient = OkHttpClient.Builder()
         okHttpClient.addInterceptor(loggingInterceptor)
-        Retrofit.Builder().baseUrl(serverUrl).client(okHttpClient.build()).addConverterFactory(
-            GsonConverterFactory.create())
+        Retrofit.Builder().baseUrl(serverUrl).client(okHttpClient.build()).addConverterFactory(GsonConverterFactory.create())
+
     }
 
     //Step 3
-
     val apiInterface:ApiInterface by lazy {
         retrofitClient.build().create(ApiInterface::class.java)
     }

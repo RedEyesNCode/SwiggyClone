@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingVertical="@dimen/_12ssp"
+        android:layout_marginHorizontal="@dimen/_4sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:background="@drawable/background_edit_text"
+        android:layout_height="wrap_content">
+
+
+        <RadioButton
+            android:id="@+id/rbnSelectRadio"
+            android:layout_width="wrap_content"
+            android:buttonTint="@color/orange_light"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true" />
+
+
+
+        <RelativeLayout
+            android:id="@+id/nameEditLayout"
+            android:layout_width="match_parent"
+            android:layout_toRightOf="@id/rbnSelectRadio"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentRight="true"
+                android:gravity="start"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/btnEditAddress"
+                    android:layout_width="wrap_content"
+                    android:paddingHorizontal="@dimen/_12sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_12ssp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/_12ssp"
+                    android:background="@drawable/background_button_orange"
+                    android:fontFamily="@font/lato_regular">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:paddingVertical="@dimen/_4sdp"
+                        android:text="EDIT ADDRESS"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_10ssp">
+
+                    </TextView>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/_9sdp"
+                android:fontFamily="@font/lato_bold"
+                android:gravity="center_vertical"
+                android:paddingVertical="@dimen/_2sdp"
+                android:text="RedEyesNCode"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_9sdp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/numberaddressLayout"
+            android:layout_toRightOf="@id/rbnSelectRadio"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nameEditLayout"
+            android:layout_marginLeft="@dimen/_9sdp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvUserNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_regular"
+                android:gravity="start"
+                android:text="+91 Still Curious? "
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:fontFamily="@font/lato_medium"
+                android:gravity="start"
+                android:text="Near Keyboard and Chair."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp"/>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_height="wrap_content">
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+
+</LinearLayout>

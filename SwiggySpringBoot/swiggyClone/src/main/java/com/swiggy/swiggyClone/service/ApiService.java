@@ -1,6 +1,7 @@
 package com.swiggy.swiggyClone.service;
 
 
+import com.amazonaws.services.dynamodbv2.xspec.S;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
@@ -299,8 +300,11 @@ public class ApiService {
 
 
     //Get user Address by id
-    public List<AddressTable> getUserAddressByUserID(int id){
-        return addressRepository.findByUserId(Long.valueOf(String.valueOf(id)));
+    public List<AddressTable> getUserAddressByUserID(String id){
+        // THIS DATA TYPE SHOULD BE SAME AS MENTIONED IN THE MODEL CLASS
+        // todo string type is important please take care of that.
+
+        return addressRepository.findByUserId(id);
 
     }
 

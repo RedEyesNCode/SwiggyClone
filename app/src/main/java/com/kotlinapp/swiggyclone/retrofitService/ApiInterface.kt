@@ -48,7 +48,7 @@ interface ApiInterface {
 
     //GET USER ADDRESS BY ID ~ API
     @GET("getUserAddressById")
-    fun getAddressUserById(@Header("Authorization") accessToken: String, @Query("userId") userId:Int):Call<AddressResponseData>
+    fun getAddressUserById(@Header("Authorization") accessToken: String, @Query("userId") userId:String):Call<AddressResponseData>
 
     //GET USER DETAILS BY ID.
     @GET("getUser")
@@ -70,7 +70,7 @@ interface ApiInterface {
 
 
     @POST("saveUserAddress")
-    fun saveUserAddress(@Header("Authorization") accessToken: String , @Body addressInputBody: AddressInputBody)
+    fun saveUserAddress(@Header("Authorization") accessToken: String , @Body addressInputBody: AddressInputBody):Call<CommonStatusMessageResponse>
 
 
     // GET DETAILS OF THE RESTAURANT BY THE ID

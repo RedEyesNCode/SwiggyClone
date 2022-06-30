@@ -2,8 +2,11 @@ package com.kotlinapp.swiggyclone.userAccount.viewModel
 
 import android.app.Application
 import androidx.lifecycle.*
+import com.kotlinapp.swiggyclone.auth.model.CommonStatusMessageResponse
+import com.kotlinapp.swiggyclone.callbacks.AccountListener
 import com.kotlinapp.swiggyclone.smoothieKotlin.repository.AppRepository
 import com.kotlinapp.swiggyclone.userAccount.accountRepository.AccountRepository
+import com.kotlinapp.swiggyclone.userAccount.model.AddressInputBody
 import com.kotlinapp.swiggyclone.userAccount.model.AddressResponseData
 import com.kotlinapp.swiggyclone.userAccount.model.PastOrderResponseData
 import com.kotlinapp.swiggyclone.userAccount.model.UserDetailResponse
@@ -19,6 +22,7 @@ class AccountViewModel(var app:Application,var appRepository: AppRepository):And
     var addressResponseMutableLiveData:MutableLiveData<AddressResponseData> = MutableLiveData()
     var userDetailResponseMutableLiveData:MutableLiveData<UserDetailResponse> = MutableLiveData()
     var pastOrderResponseDataMutableLiveData : MutableLiveData<PastOrderResponseData> = MutableLiveData()
+    var commonStatusMessageResponse:MutableLiveData<CommonStatusMessageResponse> = MutableLiveData()
 
 
 
@@ -43,8 +47,67 @@ class AccountViewModel(var app:Application,var appRepository: AppRepository):And
 
     }
 
-    //CALLING THE  GET USER PAST ORDER'S BY THE ID OF THE USER.
+    fun saveUserAddress(accessToken: String,addressInputBody: AddressInputBody)= viewModelScope.launch {
+        saveUserAddressSuspended(accessToken,addressInputBody)
+    }
+    fun getUserAddress(accessToken: String,userId: String)=viewModelScope.launch {
+        getUserAddressSuspended(accessToken,userId)
+    }
 
+    suspend fun getUserAddressSuspended(accessToken: String, userId: String) {
+        isConnecting.value = true
+        try {
+            var appRepository = AppRepository()
+            var response = appRepository.getUserAddress(accessToken, userId).awaitResponse()
+            addressResponseMutableLiveData.postValue(response.body())
+        }catch (e:Throwable){
+            when(e){
+                is IOException->{
+                    isFailed.value = "IO EXCEPTION PLEASE TRY AGAIN"
+                    AppUtils().showLog("IO EXCEPTION PLEASE TRY AGAIN")
+                }
+                is Exception->{
+                    isFailed.value = "EXCEPTION OCCURED"
+                    AppUtils().showLog("EXCEPTION OCCURED !")
+
+                }
+
+
+
+            }
+
+        }
+    }
+
+
+    suspend fun saveUserAddressSuspended(accessToken: String, addressInputBody: AddressInputBody) {
+        isConnecting.value = true
+        try {
+            var appRepository = AppRepository()
+            var response = appRepository.saveUserAddress(accessToken, addressInputBody).awaitResponse()
+            commonStatusMessageResponse.postValue(response.body())
+        }catch (e:Throwable){
+            when(e){
+                is IOException->{
+                    isFailed.value = "IO EXCEPTION PLEASE TRY AGAIN"
+                    AppUtils().showLog("IO EXCEPTION PLEASE TRY AGAIN")
+                }
+                is Exception->{
+                    isFailed.value = "EXCEPTION OCCURED"
+                    AppUtils().showLog("EXCEPTION OCCURED !")
+
+                }
+
+
+
+            }
+
+        }
+
+    }
+
+
+    //CALLING THE  GET USER PAST ORDER'S BY THE ID OF THE USER.
     fun getUserDetailsCoroutines(accessToken: String,userId: Int) = viewModelScope.launch {
         getUserdetailsSuspended(accessToken,userId)
 
@@ -92,7 +155,7 @@ class AccountViewModel(var app:Application,var appRepository: AppRepository):And
 
 
     //CALLING THE GET ADDRESSES API FROM THE VIEW MODEL
-    fun getAddressUserById(accessToken : String, userId:Int):MutableLiveData<AddressResponseData>{
+    fun getAddressUserById(accessToken : String, userId:String):MutableLiveData<AddressResponseData>{
         addressResponseMutableLiveData = accountRepository!!.callGetAddressUserByID(accessToken, userId)
         return addressResponseMutableLiveData
 

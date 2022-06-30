@@ -15,7 +15,7 @@ public class AddressTable {
     public AddressTable() {
     }
 
-    private int userId;
+    private String userId;
     private String firstName;
     private String lastName;
     private String phoneNumber;
@@ -25,7 +25,7 @@ public class AddressTable {
     private String city;
 
 
-    public AddressTable(Long addressId, int userId, String firstName, String lastName, String phoneNumber, String apartMent, String address, String postalCode, String city) {
+    public AddressTable(Long addressId, String userId, String firstName, String lastName, String phoneNumber, String apartMent, String address, String postalCode, String city) {
         this.addressId = addressId;
         this.userId = userId;
         this.firstName = firstName;
@@ -37,7 +37,7 @@ public class AddressTable {
         this.city = city;
     }
 
-    public AddressTable(int userId, String firstName, String lastName, String phoneNumber, String apartMent, String address, String postalCode, String city) {
+    public AddressTable(String userId, String firstName, String lastName, String phoneNumber, String apartMent, String address, String postalCode, String city) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -58,11 +58,11 @@ public class AddressTable {
         this.addressId = addressId;
     }
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true"
+    tools:context=".userAccount.view.UserAllAddressFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
+        <include layout="@layout/common_title_bar"
+            android:id="@+id/title"/>
+
+        <TextView
+            android:id="@+id/tvNoSaveAddress"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:fontFamily="@font/lato_bold"
+            android:gravity="center"
+            android:text="You have no saved addresses"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recvAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/layout"
+            android:layout_below="@id/title"
+            android:visibility="visible"
+            tools:itemCount="12"
+            tools:listitem="@layout/address_list_layout">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_12sdp"
+            android:orientation="horizontal"
+            android:paddingVertical="@dimen/_12sdp"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/btnAddNewAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:layout_weight="1"
+                android:background="@drawable/background_edit_text"
+                android:fontFamily="@font/lato_regular"
+                android:gravity="center"
+                android:paddingVertical="@dimen/_9sdp"
+                android:text="Add New Address"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp" />
+
+            <TextView
+                android:id="@+id/btn_AddandContinuePayment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:layout_weight="1"
+                android:background="@drawable/background_edit_text"
+                android:fontFamily="@font/lato_regular"
+                android:gravity="center"
+                android:paddingVertical="@dimen/_9sdp"
+                android:text="Continue"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp"
+                android:visibility="visible" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

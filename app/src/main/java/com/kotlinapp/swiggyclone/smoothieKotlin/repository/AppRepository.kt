@@ -6,6 +6,7 @@ import com.kotlinapp.swiggyclone.cart.view.model.AddCartBody
 import com.kotlinapp.swiggyclone.cart.view.model.GetCartResponseModel
 import com.kotlinapp.swiggyclone.cart.view.model.PlaceOrderBody
 import com.kotlinapp.swiggyclone.retrofitService.RetrofitService
+import com.kotlinapp.swiggyclone.userAccount.model.AddressInputBody
 import retrofit2.Call
 
 class AppRepository {
@@ -32,8 +33,10 @@ class AppRepository {
         addCartBody.restaurantId = restaurantId
        return RetrofitService().apiInterface.addToCart(accessToken,addCartBody)
     }
+    suspend fun saveUserAddress(accessToken: String,addressInputBody: AddressInputBody) = RetrofitService().apiInterface.saveUserAddress(accessToken, addressInputBody)
 
     suspend fun getCart(accessToken: String,userId: Int) = RetrofitService().apiInterface.getCart(accessToken, userId)
+    suspend fun getUserAddress(accessToken: String,userId: String) = RetrofitService().apiInterface.getAddressUserById(accessToken,userId)
 
     suspend fun placeOrder(accessToken:String , placeOrderBody: PlaceOrderBody) = RetrofitService().apiInterface.placeOrder(accessToken, placeOrderBody)
 

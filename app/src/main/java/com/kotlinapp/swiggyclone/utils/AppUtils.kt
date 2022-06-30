@@ -2,12 +2,13 @@ package com.kotlinapp.swiggyclone.utils
 
 import android.content.Context
 import android.util.Log
+import androidx.annotation.Nullable
 import com.google.gson.GsonBuilder
 import com.kotlinapp.swiggyclone.auth.model.CommonStatusMessageResponse
 import okhttp3.ResponseBody
 
 open class AppUtils {
-    fun getServerError(responseCode: Int, responseBody: ResponseBody?, context: Context?): String? {
+    fun getServerError(responseCode: Int, responseBody: ResponseBody?, @Nullable context: Context?): String? {
         var serverHandling = "Error $responseCode Please try again."
         when (responseCode) {
             401 -> {

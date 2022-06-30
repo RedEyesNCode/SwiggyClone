@@ -3,8 +3,11 @@ package com.kotlinapp.swiggyclone.userAccount.accountRepository
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
+import com.kotlinapp.swiggyclone.auth.model.CommonStatusMessageResponse
+import com.kotlinapp.swiggyclone.callbacks.AccountListener
 import com.kotlinapp.swiggyclone.retrofitService.ApiInterface
 import com.kotlinapp.swiggyclone.retrofitService.RetrofitService
+import com.kotlinapp.swiggyclone.userAccount.model.AddressInputBody
 import com.kotlinapp.swiggyclone.userAccount.model.AddressResponseData
 import com.kotlinapp.swiggyclone.userAccount.model.PastOrderResponseData
 import com.kotlinapp.swiggyclone.userAccount.model.UserDetailResponse
@@ -18,6 +21,9 @@ class AccountRepository {
     var addressResponseDataMutableLiveData: MutableLiveData<AddressResponseData> = MutableLiveData<AddressResponseData>()
     var userDetailsMutableLiveData:MutableLiveData<UserDetailResponse> = MutableLiveData<UserDetailResponse>()
     var pastOrderResponseMutableLiveData:MutableLiveData<PastOrderResponseData> = MutableLiveData<PastOrderResponseData>()
+    var commonStatusMessageResponse:MutableLiveData<CommonStatusMessageResponse> = MutableLiveData<CommonStatusMessageResponse>()
+
+
 
     var apiInterface : ApiInterface ?= null
 
@@ -29,6 +35,45 @@ class AccountRepository {
 
 
     //Calling the api to get the user past order's by the id of the user.
+
+    fun saveUserAddress(accessToken: String,addressInputBody: AddressInputBody, listener: AccountListener){
+        var call = apiInterface!!.saveUserAddress(accessToken, addressInputBody)
+        call.enqueue(object:Callback<CommonStatusMessageResponse>{
+
+
+            override fun onResponse(
+                call: Call<CommonStatusMessageResponse>,
+                response: Response<CommonStatusMessageResponse>
+            ) {
+                if (response.isSuccessful && response.body()?.status!!.contains("success")){
+
+                    commonStatusMessageResponse.postValue(response.body())
+
+                }else{
+                    var serverHandling = AppUtils().getServerError(response.code(),response.errorBody(),null)
+                    if (serverHandling != null) {
+                        listener.onError(serverHandling)
+                    }
+
+
+                }
+
+            }
+
+            override fun onFailure(call: Call<CommonStatusMessageResponse>, t: Throwable) {
+                Log.i("ALLTHISFOR4HEARTS",t.message.toString())
+                listener.onError(t.message.toString())
+                commonStatusMessageResponse.postValue(null)
+
+            }
+        })
+
+
+
+
+    }
+
+
 
     fun getUserPastOrdersById(accessToken: String, userId: Int):MutableLiveData<PastOrderResponseData>{
         var call = apiInterface!!.getUserPastOrders(accessToken, userId)
@@ -96,7 +141,7 @@ class AccountRepository {
     }
 
     //Calling the Api to get User Addresses by the Id of the user.
-    fun callGetAddressUserByID(accessToken:String, userId:Int):MutableLiveData<AddressResponseData>{
+    fun callGetAddressUserByID(accessToken:String, userId:String):MutableLiveData<AddressResponseData>{
         var  call = apiInterface!!.getAddressUserById(accessToken, userId)
         call.enqueue(object :Callback<AddressResponseData>{
             override fun onResponse(

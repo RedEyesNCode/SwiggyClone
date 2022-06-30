@@ -248,9 +248,6 @@
                         android:layout_width="match_parent"
                         android:singleLine="true"
                         android:layout_height="wrap_content"
-                        android:clickable="false"
-                        android:editable="false"
-                        android:focusable="false"
                         android:paddingHorizontal="@dimen/_4sdp"
                         android:hint="@string/city"
                         android:layout_marginStart="@dimen/_4sdp"
@@ -289,9 +286,6 @@
                         android:layout_height="wrap_content"
                         android:paddingHorizontal="@dimen/_4sdp"
                         android:hint="@string/select_state"
-                        android:clickable="false"
-                        android:editable="false"
-                        android:focusable="false"
                         android:textColor="@color/black"
                         android:singleLine="true"
                         android:textSize="@dimen/_10sdp"
@@ -320,7 +314,7 @@
                         android:id="@+id/shipCountry"
                         android:layout_width="match_parent"
                         android:textColor="@color/black"
-                        android:text="@string/united_states"
+                        android:text="India"
                         android:fontFamily="@font/lato_regular"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_4sdp"
@@ -343,7 +337,7 @@
 
 
             <TextView
-                android:id="@+id/btn_continuePayment"
+                android:id="@+id/btnSaveAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_3sdp"

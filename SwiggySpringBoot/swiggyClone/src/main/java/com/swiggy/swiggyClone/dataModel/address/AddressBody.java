@@ -3,7 +3,7 @@ package com.swiggy.swiggyClone.dataModel.address;
 public class AddressBody {
 
 
-    private int userId;
+    private String userId;
     private String firstName;
     private String lastName;
     private String phoneNumber;
@@ -12,7 +12,7 @@ public class AddressBody {
     private String postalCode;
     private String city;
 
-    public AddressBody(int userId, String firstName, String lastName, String phoneNumber, String apartMent, String address, String postalCode, String city) {
+    public AddressBody(String userId, String firstName, String lastName, String phoneNumber, String apartMent, String address, String postalCode, String city) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -23,11 +23,11 @@ public class AddressBody {
         this.city = city;
     }
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

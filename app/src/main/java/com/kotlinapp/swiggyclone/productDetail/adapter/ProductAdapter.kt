@@ -35,7 +35,7 @@ class ProductAdapter(var context: Context, var restaurants: ArrayList<Datum>, va
             with(topPicksListBinding) {
                 Glide.with(context).load(product.productImage).into(profileImg)
                 tvRestaurantName.text = product.dishName
-                tvPrice.text = product.price.toString()
+                tvPrice.text = "$ "+product.price.toString()
                 foodLayout.setOnClickListener {
                     product!!.menuId?.let { it1 -> onClickedInterface.onViewDetails(position, it1) }
 

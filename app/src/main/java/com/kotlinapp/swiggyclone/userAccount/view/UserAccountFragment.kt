@@ -75,7 +75,7 @@ class UserAccountFragment : BaseFragment() {
 
     private fun initClicks() {
         binding.btnuserAddress.setOnClickListener {
-            addFragmentBackStackFullContainer(UserAddressFragment(),UserAddressFragment.javaClass.simpleName,true)
+            addFragmentBackStackFullContainer(UserAllAddressFragment(),UserAllAddressFragment.javaClass.simpleName,true)
         }
 
     }
