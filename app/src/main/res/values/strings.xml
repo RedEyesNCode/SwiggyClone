@@ -17,4 +17,7 @@
     <string name="select_state">Select State</string>
     <string name="united_states">United States</string>
     <string name="delivery_address">Delivery Address</string>
+    <string name="swiggy">Swiggy</string>
+    <string name="food">Food</string>
+    <string name="search">Search</string>
 </resources>

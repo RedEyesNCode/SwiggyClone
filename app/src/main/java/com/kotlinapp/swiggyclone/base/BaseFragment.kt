@@ -75,7 +75,7 @@ open class BaseFragment : Fragment() {
     fun addFragmentBackStackFullContainer(fragment:Fragment,tag:String, isAddtoBackSTack: Boolean){
 
         var fragmentTransaction : FragmentTransaction = requireFragmentManager().beginTransaction()
-        fragmentTransaction.add(R.id.fullContainer, fragment);
+        fragmentTransaction.add(R.id.mainHomeContainer, fragment);
         if (isAddtoBackSTack) {
             fragmentTransaction.addToBackStack(tag);
         }

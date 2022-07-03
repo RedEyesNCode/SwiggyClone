@@ -15,7 +15,7 @@ class ViewModelProviderFactory(
 ) : ViewModelProvider.Factory {
 
     // ADD ALL YOUR VIEW MODELS IN A SINGLE FACTORY.
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(LoginViewModelCoroutines::class.java)) {
             return LoginViewModelCoroutines(app, appRepository) as T
         } else if (modelClass.isAssignableFrom(HomeViewModel::class.java)){

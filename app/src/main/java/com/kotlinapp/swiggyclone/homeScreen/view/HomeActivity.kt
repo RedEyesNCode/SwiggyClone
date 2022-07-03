@@ -2,6 +2,10 @@ package com.kotlinapp.swiggyclone.homeScreen.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.view.get
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.kotlinapp.swiggyclone.R
 import com.kotlinapp.swiggyclone.databinding.ActivityHomeBinding
 import com.kotlinapp.swiggyclone.searchCuisines.FragmentSearchCuisines
@@ -24,34 +28,48 @@ class HomeActivity : AppCompatActivity() {
     }
     fun initViewClick(){
         var fragmentUtils = FragmentUtils()
+//
+//        fragmentUtils.replaceFragmentBackStack(supportFragmentManager,R.id.mainHomeContainer,
+//            HomeFragment(),
+//            HomeFragment().tagFragment,true)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.mainHomeContainer) as NavHostFragment
+        val navHostController = navHostFragment.navController
 
-        fragmentUtils.addFragmentBackStack(supportFragmentManager,R.id.mainHomeContainer,
-            HomeFragment(),
-            HomeFragment().tagFragment,true)
-        binding.btnUserAccount.setOnClickListener {
+        binding.bottomNavigation.setupWithNavController(navHostController)
 
-            fragmentUtils.addFragmentBackStack(supportFragmentManager,R.id.mainHomeContainer,UserAccountFragment(),UserAccountFragment().tagFragment,true)
+        binding.bottomNavigation.menu.get(0).isChecked = true
 
+
+        binding.bottomNavigation.setOnNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.swiggyhome-> fragmentUtils.replaceFragmentBackStack(supportFragmentManager,R.id.mainHomeContainer,
+                    HomeFragment(),
+                    HomeFragment().tagFragment,false)
+                R.id.food-> fragmentUtils.replaceFragmentBackStack(supportFragmentManager,R.id.mainHomeContainer,SearchFoodFragment(),SearchFoodFragment().tagFragment,false)
+                R.id.search->fragmentUtils.replaceFragmentBackStack(supportFragmentManager,R.id.mainHomeContainer,FragmentSearchCuisines(),FragmentSearchCuisines().tagFragment,false)
+                R.id.account->fragmentUtils.replaceFragmentBackStack(supportFragmentManager,R.id.mainHomeContainer,UserAccountFragment(),UserAccountFragment().tagFragment,false)
+
+
+            }
+            true
         }
-        binding.btnHome.setOnClickListener {
-            fragmentUtils.addFragmentBackStack(supportFragmentManager,R.id.mainHomeContainer,
+
+
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        //remember backstack count should be zero and then incase of 0 go to homefragment and if instance of homefragment exit app.
+
+        if(supportFragmentManager.backStackEntryCount==0){
+            FragmentUtils().replaceFragmentBackStack(supportFragmentManager,R.id.mainHomeContainer,
                 HomeFragment(),
-                HomeFragment().tagFragment,true)
+                HomeFragment().tagFragment,false)
 
+        }else if(supportFragmentManager.fragments[0]==HomeFragment()){
+            finish()
         }
-        binding.btnFood.setOnClickListener {
-           // fragmentUtils.addFragmentBackStack(supportFragmentManager,R.id.mainHomeContainer,HomeFragment(),HomeFragment().tagFragment,true)
-            System.out.println("BTN_FOOD_CLICK")
-            fragmentUtils.addFragmentBackStack(supportFragmentManager,R.id.mainHomeContainer,SearchFoodFragment(),SearchFoodFragment().tagFragment,true)
-        }
-        binding.btnSearch.setOnClickListener {
-
-            fragmentUtils.addFragmentBackStack(supportFragmentManager,R.id.mainHomeContainer,FragmentSearchCuisines(),FragmentSearchCuisines().tagFragment,true)
-
-        }
-
-
-
 
     }
 

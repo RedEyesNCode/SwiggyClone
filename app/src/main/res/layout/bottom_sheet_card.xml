@@ -28,7 +28,7 @@
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_25sdp"
             android:layout_alignParentRight="true"
-            android:src="@drawable/ic_close_pink" />
+            android:src="@drawable/ic_close_orange" />
 
         <View
             android:id="@+id/viewline1"

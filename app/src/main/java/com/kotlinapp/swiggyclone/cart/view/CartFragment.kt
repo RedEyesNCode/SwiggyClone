@@ -100,7 +100,7 @@ class CartFragment : BaseFragment() {
     private fun initClicks() {
         binding.btnCompleteorder.setOnClickListener {
             var cartAddressFragment = CartAddressFragment.newInstance(totalPayableAmount.toString(),cartOrderIds)
-            FragmentUtils().addFragmentBackStack(requireFragmentManager(),R.id.fullContainer,cartAddressFragment,CartAddressFragment::class.java.simpleName,true)
+            FragmentUtils().addFragmentBackStack(requireFragmentManager(),R.id.mainHomeContainer,cartAddressFragment,CartAddressFragment::class.java.simpleName,true)
 
         }
         binding.back.setOnClickListener {

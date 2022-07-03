@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/swiggyhome"
+        android:title="@string/swiggy"
+        android:icon="@drawable/ic_swiggy_home" />
+    <item android:id="@+id/food"
+        android:title="@string/food"
+        android:icon="@drawable/ic_food"/>
+    <item android:id="@+id/search"
+        android:title="@string/search"
+        android:icon="@drawable/ic_search" />
+    <item android:id="@+id/account"
+        android:title="Account"
+        android:icon="@drawable/account"/>
+</menu>

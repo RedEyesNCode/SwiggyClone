@@ -37,7 +37,8 @@
         <entry key="..\:/My_Repositories/SwiggyClone/app/src/main/res/drawable/background_edit_text.xml" value="0.134" />
         <entry key="..\:/My_Repositories/SwiggyClone/app/src/main/res/drawable/background_edit_text_black.xml" value="0.134" />
         <entry key="..\:/My_Repositories/SwiggyClone/app/src/main/res/drawable/bottom_sheet_background.xml" value="0.134" />
-        <entry key="..\:/My_Repositories/SwiggyClone/app/src/main/res/layout/activity_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/My_Repositories/SwiggyClone/app/src/main/res/layout/activity_home.xml" value="0.176" />
+        <entry key="..\:/My_Repositories/SwiggyClone/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/My_Repositories/SwiggyClone/app/src/main/res/layout/address_list_layout.xml" value="0.264" />
         <entry key="..\:/My_Repositories/SwiggyClone/app/src/main/res/layout/bottom_sheet_card.xml" value="0.2" />
         <entry key="..\:/My_Repositories/SwiggyClone/app/src/main/res/layout/cart_item.xml" value="0.25416666666666665" />
@@ -48,6 +49,7 @@
         <entry key="..\:/My_Repositories/SwiggyClone/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
         <entry key="..\:/My_Repositories/SwiggyClone/app/src/main/res/layout/fragment_user_address.xml" value="0.25416666666666665" />
         <entry key="..\:/My_Repositories/SwiggyClone/app/src/main/res/layout/fragment_user_all_address.xml" value="0.20555555555555555" />
+        <entry key="..\:/My_Repositories/SwiggyClone/app/src/main/res/menu/bottomsheetnavmenu.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/drawable/background_button_orange.xml" value="0.1795" />
         <entry key="app/src/main/res/drawable/background_search_ic.xml" value="0.1995" />
         <entry key="app/src/main/res/drawable/explore_now_bg.xml" value="0.203" />

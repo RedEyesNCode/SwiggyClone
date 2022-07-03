@@ -62,7 +62,7 @@ class CartAddressFragment : Fragment() {
         binding.back.setOnClickListener { requireActivity().onBackPressed() }
         binding.btnProceed.setOnClickListener {
             var cartPaymentFragment = CartPaymentFragment.newInstance(addressId.toString(),orderTotal.toString(),deliveryMethod,orderIds!!)
-            FragmentUtils().addFragmentBackStack(requireFragmentManager(),R.id.fullContainer,cartPaymentFragment,CartAddressFragment::class.java.simpleName,true) }
+            FragmentUtils().addFragmentBackStack(requireFragmentManager(),R.id.mainHomeContainer,cartPaymentFragment,CartAddressFragment::class.java.simpleName,true) }
         //COMMIT TEST
         binding.rbtnDoorDelivery.isChecked = true
         binding.rgroupDelivery.setOnCheckedChangeListener { group, checkedId ->

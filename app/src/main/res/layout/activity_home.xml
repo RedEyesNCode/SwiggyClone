@@ -8,138 +8,30 @@
     android:layout_height="match_parent"
     tools:context=".homeScreen.view.HomeActivity">
 
-    <FrameLayout
+    <fragment
         android:id="@+id/mainHomeContainer"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottomNavigation"
-        android:layout_centerInParent="true">
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph" />
 
-    </FrameLayout>
-    <FrameLayout
-        android:id="@+id/fullContainer"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true">
-
-    </FrameLayout>
-    <LinearLayout
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:background="@color/white"
-        android:layout_height="@dimen/_45sdp"
+        style="@style/Widget.MaterialComponents.BottomNavigationView.PrimarySurface"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:layout_centerInParent="true"
-        android:weightSum="4">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:id="@+id/btnHome"
-            android:layout_weight="1"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"
-                android:src="@drawable/ic_swiggy_home"
-                android:padding="@dimen/_8sdp">
-            </ImageView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="SWIGGY"
-                android:textColor="@color/black"
-                android:fontFamily="@font/firasans_medium"
-
-                android:textSize="@dimen/_9sdp"
-                android:layout_height="wrap_content">
-
-            </TextView>
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:id="@+id/btnFood"
-            android:layout_weight="1"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"
-                android:src="@drawable/ic_food"
-                android:padding="@dimen/_8sdp">
-            </ImageView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="FOOD"
-                android:fontFamily="@font/firasans_medium"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_9sdp"
-                android:layout_height="wrap_content">
-
-            </TextView>
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/btnSearch"
-            android:gravity="center_horizontal"
-            android:layout_weight="1"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"
-                android:src="@drawable/ic_search"
-                android:padding="@dimen/_8sdp">
-            </ImageView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:text="Search"
-                android:fontFamily="@font/firasans_medium"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_9sdp"
-                android:layout_height="wrap_content">
-
-            </TextView>
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:id="@+id/btnUserAccount"
-            android:layout_weight="1"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"
-                android:id="@+id/ic_swiggyhome"
-                android:src="@drawable/account"
-                android:padding="@dimen/_8sdp">
-            </ImageView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:id="@+id/tvSwiggyHome"
-                android:text="Account"
-                android:textColor="@color/black"
-
-                android:fontFamily="@font/firasans_medium"
-                android:textSize="@dimen/_9sdp"
-                android:layout_height="wrap_content">
-
-            </TextView>
-
-
-        </LinearLayout>
+        android:id="@+id/bottomNavigation"
+        android:background="@color/orange_lighter"
+        app:itemRippleColor="@color/orange_lighter"
+        app:elevation="@dimen/_6sdp"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/bottomsheetnavmenu"
+        android:layout_height="@dimen/_60sdp">
 
 
 
-    </LinearLayout>
 
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </RelativeLayout>

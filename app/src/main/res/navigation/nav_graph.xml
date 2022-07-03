@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/homeActivity">
+    <activity
+        android:id="@+id/homeActivity"
+        android:name="com.kotlinapp.swiggyclone.homeScreen.view.HomeActivity"
+        android:label="activity_home"
+        tools:layout="@layout/activity_home" />
+    <fragment
+        android:id="@+id/swiggyhome"
+        android:name="com.kotlinapp.swiggyclone.homeScreen.view.HomeFragment"
+        tools:layout="@layout/fragment_home"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/food"
+
+        android:name="com.kotlinapp.swiggyclone.homeScreen.view.fragments.FoodFragment"
+        android:label="fragment_food"
+        tools:layout="@layout/fragment_food" />
+    <fragment
+        android:id="@+id/search"
+        android:name="com.kotlinapp.swiggyclone.searchCuisines.FragmentSearchCuisines"
+        android:label="fragment_search_cuisines"
+        tools:layout="@layout/fragment_search_cuisines" />
+    <!--Need to match the ids in navgraph and the menu xml files.-->
+    <fragment
+        android:id="@+id/account"
+        android:name="com.kotlinapp.swiggyclone.userAccount.view.UserAccountFragment"
+        android:label="UserAccountFragment" />
+</navigation>
