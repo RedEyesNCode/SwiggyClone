@@ -3,31 +3,60 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/homeActivity">
-    <activity
-        android:id="@+id/homeActivity"
-        android:name="com.kotlinapp.swiggyclone.homeScreen.view.HomeActivity"
-        android:label="activity_home"
-        tools:layout="@layout/activity_home" />
-    <fragment
-        android:id="@+id/swiggyhome"
-        android:name="com.kotlinapp.swiggyclone.homeScreen.view.HomeFragment"
-        tools:layout="@layout/fragment_home"
-        android:label="HomeFragment" />
-    <fragment
-        android:id="@+id/food"
+    app:startDestination="@id/homeFragment">
 
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.kotlinapp.swiggyclone.homeScreen.view.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodFragment"
         android:name="com.kotlinapp.swiggyclone.homeScreen.view.fragments.FoodFragment"
         android:label="fragment_food"
         tools:layout="@layout/fragment_food" />
     <fragment
-        android:id="@+id/search"
+        android:id="@+id/fragmentSearchCuisines"
         android:name="com.kotlinapp.swiggyclone.searchCuisines.FragmentSearchCuisines"
         android:label="fragment_search_cuisines"
         tools:layout="@layout/fragment_search_cuisines" />
-    <!--Need to match the ids in navgraph and the menu xml files.-->
     <fragment
-        android:id="@+id/account"
+        android:id="@+id/userAccountFragment"
         android:name="com.kotlinapp.swiggyclone.userAccount.view.UserAccountFragment"
         android:label="UserAccountFragment" />
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.kotlinapp.swiggyclone.cart.view.CartFragment"
+        android:label="CartFragment" >
+        <action
+            android:id="@+id/action_cartFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_cartAddressFragment"
+            app:destination="@id/cartAddressFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartPaymentFragment"
+        android:name="com.kotlinapp.swiggyclone.cart.view.cartPaymentFragment.CartPaymentFragment"
+        android:label="CartPaymentFragment" >
+        <action
+            android:id="@+id/action_cartPaymentFragment_to_cartAddressFragment"
+            app:destination="@id/cartAddressFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartAddressFragment"
+        android:name="com.kotlinapp.swiggyclone.cart.view.cartAddress.CartAddressFragment"
+        android:label="fragment_cart_address"
+        tools:layout="@layout/fragment_cart_address" >
+        <action
+            android:id="@+id/action_cartAddressFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+        <action
+            android:id="@+id/action_cartAddressFragment_to_cartPaymentFragment"
+            app:destination="@id/cartPaymentFragment" />
+    </fragment>
 </navigation>

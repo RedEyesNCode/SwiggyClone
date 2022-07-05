@@ -9,12 +9,17 @@
     tools:context=".homeScreen.view.HomeActivity">
 
     <fragment
-        android:id="@+id/mainHomeContainer"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
+        android:id="@+id/activity_main_nav_host_fragment"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:id="@+id/mainHomeContainer"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomNavigation"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"

@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitService {
 
-    val  serverUrl = "ALWAYS A QUESTION MARK IN MY HEAD ?"
+    val  serverUrl = "You are really curious about me ? Aren't you?"
 
 
     //Step 2

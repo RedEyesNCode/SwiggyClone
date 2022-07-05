@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/swiggyhome"
+    <item android:id="@+id/homeFragment"
         android:title="@string/swiggy"
         android:icon="@drawable/ic_swiggy_home" />
-    <item android:id="@+id/food"
+    <item android:id="@+id/foodFragment"
         android:title="@string/food"
         android:icon="@drawable/ic_food"/>
-    <item android:id="@+id/search"
+    <item android:id="@+id/fragmentSearchCuisines"
         android:title="@string/search"
         android:icon="@drawable/ic_search" />
-    <item android:id="@+id/account"
+    <item android:id="@+id/userAccountFragment"
         android:title="Account"
         android:icon="@drawable/account"/>
 </menu>
