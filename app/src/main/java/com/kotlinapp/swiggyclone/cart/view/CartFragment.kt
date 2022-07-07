@@ -38,8 +38,9 @@ class CartFragment : BaseFragment() {
     var carts = ArrayList<Cart>()
     var totalPayableAmount:Int = 0
     private lateinit var cartOrderIds:IntArray
-
-
+    override var bottomNavigationViewVisibility: Int
+        get() = super.bottomNavigationViewVisibility
+        set(value) {View.GONE}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -100,11 +101,12 @@ class CartFragment : BaseFragment() {
     private fun initClicks() {
         binding.btnCompleteorder.setOnClickListener {
             var cartAddressFragment = CartAddressFragment.newInstance(totalPayableAmount.toString(),cartOrderIds)
-            FragmentUtils().addFragmentBackStack(requireFragmentManager(),R.id.mainHomeContainer,cartAddressFragment,CartAddressFragment::class.java.simpleName,true)
+            FragmentUtils().addFragmentBackStack(requireFragmentManager(),R.id.activity_main_nav_host_fragment,cartAddressFragment,CartAddressFragment::class.java.simpleName,true)
 
         }
         binding.back.setOnClickListener {
             requireActivity().onBackPressed()
+
         }
 
     }

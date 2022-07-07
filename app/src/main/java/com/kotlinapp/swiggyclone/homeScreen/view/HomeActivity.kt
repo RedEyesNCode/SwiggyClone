@@ -2,6 +2,7 @@ package com.kotlinapp.swiggyclone.homeScreen.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.core.view.get
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -10,13 +11,14 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.kotlinapp.swiggyclone.R
+import com.kotlinapp.swiggyclone.base.BaseActivity
 import com.kotlinapp.swiggyclone.databinding.ActivityHomeBinding
 import com.kotlinapp.swiggyclone.searchCuisines.FragmentSearchCuisines
 import com.kotlinapp.swiggyclone.searchFood.SearchFoodFragment
 import com.kotlinapp.swiggyclone.userAccount.view.UserAccountFragment
 import com.kotlinapp.swiggyclone.utils.FragmentUtils
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
     private lateinit var binding: ActivityHomeBinding
 
 
@@ -40,7 +42,11 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
+    fun bottomNavigationVisibilty(visibility:Int){
+        binding.bottomNavigation.visibility = visibility
 
+
+    }
 
 
 }

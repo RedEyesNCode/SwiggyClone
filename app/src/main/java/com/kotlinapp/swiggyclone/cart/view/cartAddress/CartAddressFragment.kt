@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.kotlinapp.swiggyclone.R
+import com.kotlinapp.swiggyclone.base.BaseFragment
 import com.kotlinapp.swiggyclone.cart.view.cartPaymentFragment.CartPaymentFragment
 import com.kotlinapp.swiggyclone.databinding.FragmentCartAddressBinding
 import com.kotlinapp.swiggyclone.utils.FragmentUtils
@@ -21,7 +22,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [CartAddressFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class CartAddressFragment : Fragment() {
+class CartAddressFragment : BaseFragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var orderIds: IntArray? = null
@@ -62,7 +63,7 @@ class CartAddressFragment : Fragment() {
         binding.back.setOnClickListener { requireActivity().onBackPressed() }
         binding.btnProceed.setOnClickListener {
             var cartPaymentFragment = CartPaymentFragment.newInstance(addressId.toString(),orderTotal.toString(),deliveryMethod,orderIds!!)
-            FragmentUtils().addFragmentBackStack(requireFragmentManager(),R.id.mainHomeContainer,cartPaymentFragment,CartAddressFragment::class.java.simpleName,true) }
+            FragmentUtils().addFragmentBackStack(requireFragmentManager(),R.id.activity_main_nav_host_fragment,cartPaymentFragment,CartAddressFragment::class.java.simpleName,true) }
         //COMMIT TEST
         binding.rbtnDoorDelivery.isChecked = true
         binding.rgroupDelivery.setOnCheckedChangeListener { group, checkedId ->

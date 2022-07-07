@@ -204,7 +204,7 @@ class HomeFragment : BaseFragment() {
             //OPEN THE CART FRAGMENT.
             FragmentUtils()
                 .addFragmentBackStack(requireFragmentManager()
-                    ,R.id.mainHomeContainer,CartFragment()
+                    ,R.id.activity_main_nav_host_fragment,CartFragment()
                     ,CartFragment::class.java.simpleName,true)
 
         }

@@ -1,11 +1,14 @@
 package com.kotlinapp.swiggyclone.base
 
 import android.content.Context
+import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.kotlinapp.swiggyclone.R
+import com.kotlinapp.swiggyclone.homeScreen.view.HomeActivity
 import com.kotlinapp.swiggyclone.sharedPreferences.AppSession
 import com.kotlinapp.swiggyclone.sharedPreferences.Constant
 
@@ -13,6 +16,7 @@ open class BaseFragment : Fragment() {
 
 
     private var commonProgress:CommonProgressDialog ?=null
+    protected open var bottomNavigationViewVisibility = View.VISIBLE
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -53,6 +57,21 @@ open class BaseFragment : Fragment() {
 
 
     }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        if(activity is HomeActivity){
+            HomeActivity().bottomNavigationVisibilty(bottomNavigationViewVisibility)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if(activity is HomeActivity){
+            HomeActivity().bottomNavigationVisibilty(bottomNavigationViewVisibility)
+        }
+    }
+
     fun getAccessToken(): String {
         var accessToken =AppSession(requireContext()).getString(Constant().ACCESS_TOKEN)
 
