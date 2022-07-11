@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitService {
 
-    val  serverUrl = "You are really curious about me ? Aren't you?"
+    val  serverUrl = "A bit late sorry for that..Commits after long time feels different."
 
 
     //Step 2

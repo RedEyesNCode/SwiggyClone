@@ -30,6 +30,7 @@ import com.kotlinapp.swiggyclone.homeScreen.models.HomeResponse
 import com.kotlinapp.swiggyclone.homeScreen.models.Restaurants
 import com.kotlinapp.swiggyclone.homeScreen.view.adapters.BrandAdapter
 import com.kotlinapp.swiggyclone.homeScreen.view.adapters.RestaurantsAdapter
+import com.kotlinapp.swiggyclone.homeScreen.view.fragments.*
 import com.kotlinapp.swiggyclone.homeScreen.viewModel.HomeViewModel
 import com.kotlinapp.swiggyclone.sharedPreferences.AppSession
 import com.kotlinapp.swiggyclone.sharedPreferences.Constant
@@ -57,7 +58,9 @@ class HomeFragment : BaseFragment() {
     private lateinit var homeViewModel: HomeViewModel
     var contextFragment: Context? = null
     private lateinit var tabAdapter:FoodsCategoryAdapter
-
+    var datalist:ArrayList<Fragment> = arrayListOf(FoodFragment(), SnacksFragment(),
+        ItalianFragment(), SaucesFragment(),SouthIndianFragment()
+    )
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -91,7 +94,7 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun attachObserversCouroutines() {
-        homeViewModel.homeResponse.observe(this, Observer { event ->
+        homeViewModel.homeResponse.observe(viewLifecycleOwner, Observer { event ->
 
             var resourceData = event.peekContent().data
 
@@ -147,7 +150,8 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun initTabsViewPager() {
-        tabAdapter = FoodsCategoryAdapter(requireFragmentManager(),contextFragment,5)
+
+        tabAdapter = FoodsCategoryAdapter(requireFragmentManager(),contextFragment,datalist)
         binding.foodsViewpager.adapter = tabAdapter
         binding.tablayout.setupWithViewPager(binding.foodsViewpager)
         binding.foodsViewpager.addOnPageChangeListener(
@@ -165,6 +169,10 @@ class HomeFragment : BaseFragment() {
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
 
+    }
+    override fun onResume() {
+        super.onResume()
+        initTabsViewPager()
     }
 
     private fun initClicksSideMenu() {

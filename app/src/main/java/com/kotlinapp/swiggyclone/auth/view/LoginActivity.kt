@@ -35,9 +35,6 @@ class LoginActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        /*loginViewModel = this!!.run {
-            ViewModelProvider(this).get(LoginViewModel::class.java)
-        }*/
         // CHANGING ON HOW THE VIEW MODEL SHOULD BE INTIALZED
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         //Intialzed just like java

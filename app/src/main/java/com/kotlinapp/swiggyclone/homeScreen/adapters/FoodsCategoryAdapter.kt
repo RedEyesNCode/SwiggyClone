@@ -8,38 +8,20 @@ import com.kotlinapp.swiggyclone.auth.view.fragments.LoginFragment
 import com.kotlinapp.swiggyclone.auth.view.fragments.SignupFragment
 import com.kotlinapp.swiggyclone.homeScreen.view.fragments.*
 
-class FoodsCategoryAdapter(fragmentManager: FragmentManager, context: Context?, totalTabs: Int) : FragmentPagerAdapter(fragmentManager,totalTabs) {
+class FoodsCategoryAdapter(fragmentManager: FragmentManager, context: Context?, datalist:ArrayList<Fragment>) : FragmentPagerAdapter(fragmentManager,datalist.size) {
     private var myContext: Context? = null
-    var totalTabs = totalTabs
+    var totalTabs = datalist.size
+    var fragments= datalist
 
-    fun MyAdapter(context: Context?, fm: FragmentManager?, totalTabs: Int) {
+    fun MyAdapter(context: Context?, fm: FragmentManager?, totalTabs: Int,datalist: ArrayList<Fragment> ) {
         myContext = context
         this.totalTabs = totalTabs
+        this.fragments = datalist
     }
 
     // this is for fragment tabs
     override fun getItem(position: Int): Fragment {
-        return when (position) {
-            0 -> {
-                return FoodFragment()
-            }
-            1 -> {
-                return SnacksFragment()
-            }
-            2 -> {
-
-                return ItalianFragment()
-            }
-            3 -> {
-                return SaucesFragment()
-            }
-            4 -> {
-                return  SouthIndianFragment()
-
-            }
-
-            else -> return LoginFragment()
-        }
+        return fragments.get(position)
     }
 
     // this counts total number of tabs
