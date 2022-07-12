@@ -37,12 +37,11 @@ class HomeActivity : BaseActivity() {
         val bottomNavigationView = binding.bottomNavigation
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
 
-
-
-
     }
 
     fun bottomNavigationVisibilty(visibility:Int){
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+
         binding.bottomNavigation.visibility = visibility
 
 

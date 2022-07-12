@@ -75,7 +75,7 @@ class FoodFragment : BaseFragment() , RestaurantsAdapter.onClicked {
 
     }
     override fun onViewDetails(position: Int, restaurantId: Int) {
-        FragmentUtils().replaceFragmentBackStack(requireFragmentManager(),R.id.mainHomeContainer,
+        FragmentUtils().replaceFragmentBackStack(requireFragmentManager(),R.id.cartcontainer,
             FoodDetailFragment.newInstance(restaurantId.toString(),""),
             FoodDetailFragment::class.java.simpleName,true)
     }

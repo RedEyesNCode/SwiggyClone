@@ -138,6 +138,9 @@ class CartPaymentFragment : BaseFragment() {
 
 
         }
+        binding.back.setOnClickListener {
+            fragmentManager?.popBackStack()
+        }
 
 
     }

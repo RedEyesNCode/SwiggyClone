@@ -17,11 +17,7 @@
         android:layout_centerInParent="true"
         android:layout_above="@id/bottomNavigation"
         app:navGraph="@navigation/nav_graph" />
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:id="@+id/mainHomeContainer"
-        android:layout_height="match_parent"
-        android:layout_above="@id/bottomNavigation"/>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"

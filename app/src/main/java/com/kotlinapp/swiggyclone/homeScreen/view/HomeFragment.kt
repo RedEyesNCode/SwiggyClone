@@ -1,6 +1,7 @@
 package com.kotlinapp.swiggyclone.homeScreen.view
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Binder
 import android.os.Bundle
@@ -22,6 +23,7 @@ import com.kotlinapp.swiggyclone.R
 import com.kotlinapp.swiggyclone.auth.viewModel.LoginViewModel
 import com.kotlinapp.swiggyclone.base.BaseFragment
 import com.kotlinapp.swiggyclone.cart.view.CartFragment
+import com.kotlinapp.swiggyclone.cart.view.CartMainActivity
 import com.kotlinapp.swiggyclone.databinding.BuyerMenuBinding
 import com.kotlinapp.swiggyclone.databinding.FragmentHomeBinding
 import com.kotlinapp.swiggyclone.homeScreen.adapters.FoodsCategoryAdapter
@@ -151,7 +153,7 @@ class HomeFragment : BaseFragment() {
 
     private fun initTabsViewPager() {
 
-        tabAdapter = FoodsCategoryAdapter(requireFragmentManager(),contextFragment,datalist)
+        tabAdapter = FoodsCategoryAdapter(childFragmentManager,contextFragment,datalist)
         binding.foodsViewpager.adapter = tabAdapter
         binding.tablayout.setupWithViewPager(binding.foodsViewpager)
         binding.foodsViewpager.addOnPageChangeListener(
@@ -202,10 +204,8 @@ class HomeFragment : BaseFragment() {
         }
         binding.btnCart.setOnClickListener {
             //OPEN THE CART FRAGMENT.
-            FragmentUtils()
-                .addFragmentBackStack(requireFragmentManager()
-                    ,R.id.activity_main_nav_host_fragment,CartFragment()
-                    ,CartFragment::class.java.simpleName,true)
+            var cartIntent = Intent(contextFragment,CartMainActivity::class.java)
+            startActivity(cartIntent)
 
         }
 

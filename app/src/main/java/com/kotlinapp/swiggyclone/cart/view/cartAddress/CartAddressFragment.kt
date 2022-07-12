@@ -60,10 +60,10 @@ class CartAddressFragment : BaseFragment() {
     }
 
     private fun initClicks() {
-        binding.back.setOnClickListener { requireActivity().onBackPressed() }
+        binding.back.setOnClickListener { fragmentManager?.popBackStack() }
         binding.btnProceed.setOnClickListener {
             var cartPaymentFragment = CartPaymentFragment.newInstance(addressId.toString(),orderTotal.toString(),deliveryMethod,orderIds!!)
-            FragmentUtils().addFragmentBackStack(requireFragmentManager(),R.id.activity_main_nav_host_fragment,cartPaymentFragment,CartAddressFragment::class.java.simpleName,true) }
+            FragmentUtils().addFragmentBackStack(requireFragmentManager(),R.id.cartcontainer,cartPaymentFragment,CartAddressFragment::class.java.simpleName,true) }
         //COMMIT TEST
         binding.rbtnDoorDelivery.isChecked = true
         binding.rgroupDelivery.setOnCheckedChangeListener { group, checkedId ->
