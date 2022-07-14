@@ -1,16 +1,17 @@
 package com.swiggy.swiggyClone.service;
 
 
-import com.amazonaws.services.dynamodbv2.xspec.S;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.swiggy.swiggyClone.amazonbucket.AWSConstant;
 import com.swiggy.swiggyClone.dataModel.*;
 import com.swiggy.swiggyClone.dataModel.address.AddressBody;
 import com.swiggy.swiggyClone.dataModel.address.AddressTable;
 import com.swiggy.swiggyClone.dataModel.cart.*;
 import com.swiggy.swiggyClone.dataModel.commonProduct.AllProductTable;
+import com.swiggy.swiggyClone.dataModel.offers.ApplyPromoBody;
+import com.swiggy.swiggyClone.dataModel.offers.OfferTable;
+import com.swiggy.swiggyClone.dataModel.offers.OffersResponse;
 import com.swiggy.swiggyClone.dataModel.oneToOneRelation.ChildTable;
 import com.swiggy.swiggyClone.dataModel.oneToOneRelation.ParentTable;
 import com.swiggy.swiggyClone.dataModel.orders.PlacedOrderResponse;
@@ -47,9 +48,11 @@ public class ApiService {
     private WishListRepository wishListRepository;
     private RestaurantRepository restaurantRepository;
     private RestaurantDetailRepository restaurantDetailRepository;
+
+    private OffersRespository offersRespository;
     private PopularCurationsRespository popularCurationsRespository;
     private PopularBrandsRepository popularBrandsRepository;
-    private OffersRespository offersRespository;
+    private OfferRepostiory offerRepo;
     private PastOrdersRepository pastOrdersRepository;
 
     private DessertMenuRepository dessertMenuRepository;
@@ -93,6 +96,7 @@ public class ApiService {
                       AllergensRepo allergensRepo,
                       PaymentDetailRepository paymentDetailRepository,
                       AllProductsRepository allProductsRepository,
+                      OfferRepostiory offerRepostiory,
                       OrderDetailRepository orderDetailRepository,
                       OrderRepository orderRepository,
                       AddressRepository addressRepository,
@@ -106,6 +110,7 @@ public class ApiService {
         this.genieRepository = genieRepository;
         this.restaurantRepository = restaurantRepository;
         this.childRepository = childRepository;
+        this.offerRepo = offerRepostiory;
         this.pastOrdersRepository = pastOrdersRepository;
         this.restaurantDetailRepository = restaurantDetailRepository;
         this.popularBrandsRepository = popularBrandsRepository;
@@ -517,5 +522,27 @@ public class ApiService {
             throw new RuntimeException();
         }
 
+    }
+
+    public ResponseEntity<OffersResponse> getOffersTable(){
+        return new ResponseEntity<>(new OffersResponse("success",200,"Record found !",offerRepo.findAll()),HttpStatus.OK);
+
+
+    }
+
+    public ResponseEntity<StatusCodeModel> applyPromocode(ApplyPromoBody applyPromoBody) {
+
+        Optional<OfferTable> offer = offerRepo.findById((long) applyPromoBody.getOfferId());
+        Optional<PaymentDetailTable> paymentDetailTable = paymentDetailRepository.findByOrderId((long) applyPromoBody.getOrderId());
+
+        if(offer.isPresent() && paymentDetailTable.isPresent()){
+            paymentDetailRepository.applyPromocode((long) applyPromoBody.getOrderId(),paymentDetailTable.get().getAmount()-offer.get().getDiscount());
+            return new  ResponseEntity<>(new StatusCodeModel("success",200,"Promocode applied successfully !"),HttpStatus.OK);
+
+        }else{
+
+            return new  ResponseEntity<>(new StatusCodeModel("fail",400,"Invalid Offer code"),HttpStatus.OK);
+
+        }
     }
 }

@@ -7,6 +7,8 @@ import com.swiggy.swiggyClone.dataModel.address.AddressBody;
 import com.swiggy.swiggyClone.dataModel.address.AddressUserResponse;
 import com.swiggy.swiggyClone.dataModel.cart.CartResponse;
 import com.swiggy.swiggyClone.dataModel.cart.OrderInsertBody;
+import com.swiggy.swiggyClone.dataModel.offers.ApplyPromoBody;
+import com.swiggy.swiggyClone.dataModel.offers.OffersResponse;
 import com.swiggy.swiggyClone.dataModel.oneToOneRelation.ChildTable;
 import com.swiggy.swiggyClone.dataModel.oneToOneRelation.ParentTable;
 import com.swiggy.swiggyClone.dataModel.orders.PlacedOrderResponse;
@@ -294,6 +296,18 @@ public class ApiController {
 
 
 
+    }
+
+
+    @GetMapping("/getOffers")
+    public ResponseEntity<OffersResponse> getOffers(){
+        return apiService.getOffersTable();
+
+    }
+
+    @PostMapping("/applyPromocode")
+    public ResponseEntity<StatusCodeModel> applyPromocode(@RequestBody ApplyPromoBody applyPromoBody){
+        return apiService.applyPromocode(applyPromoBody);
     }
 
 
