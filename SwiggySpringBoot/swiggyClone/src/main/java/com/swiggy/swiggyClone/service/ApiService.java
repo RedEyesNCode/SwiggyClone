@@ -462,7 +462,8 @@ public class ApiService {
 
     public StatusCodeModel deleteWishlist(Long wishlistId) {
 
-        wishListRepository.deleteWishlistById(wishlistId);
+//        wishListRepository.deleteWishlistById(wishlistId);
+        wishListRepository.deleteById(wishlistId);
 
         return new StatusCodeModel("success",200,"Removed from wishlist !");
 

@@ -1,5 +1,6 @@
 package com.swiggy.swiggyClone.service;
 
+import com.amazonaws.services.dynamodbv2.xspec.S;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
@@ -174,12 +175,17 @@ public class AdminService {
 
     }
 
-    public StatusCodeModel updateOrderStatus(String orderStatus,Long orderId){
-        if(repository.existsById(orderId)){
-            repository.updateOrderStatus(orderStatus, orderId);
+    public StatusCodeModel updateOrderStatus(String orderStatus, String orderId){
+        if(repository.existsById(Long.valueOf(orderId))){
+
+            RealtimeOrderTable realtimeOrderTable = repository.getById(Long.valueOf(orderId));
+            realtimeOrderTable.setOrderStatus(orderStatus);
+            repository.save(realtimeOrderTable);
+
+//            repository.updateOrderStatus(orderStatus,Long.valueOf(orderId));
             return new StatusCodeModel("success",200,"Order status Updated successfully !");
         }else {
-            throw new RuntimeException();
+            return new StatusCodeModel("fail",200,"No such order exists !");
         }
 
 

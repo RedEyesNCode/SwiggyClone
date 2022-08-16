@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -57,8 +58,8 @@ public class AdminController {
     }
 
     @PostMapping("/updateOrderStatus")
-    public StatusCodeModel updateOrderStatus(@RequestParam("orderId") Long orderId, @RequestParam("orderStatus") String orderStatus){
-        return adminService.updateOrderStatus(orderStatus, orderId);
+    public StatusCodeModel updateOrderStatus(@RequestBody HashMap<String,String> orderUpdateBody){
+        return adminService.updateOrderStatus(orderUpdateBody.get("orderStatus"), orderUpdateBody.get("placeOrderid"));
     }
 
 

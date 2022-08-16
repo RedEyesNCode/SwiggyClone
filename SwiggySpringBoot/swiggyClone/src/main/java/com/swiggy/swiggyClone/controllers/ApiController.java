@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -271,10 +272,10 @@ public class ApiController {
         return apiService.uploadFile(file, userId);
     }
     @PostMapping("/deleteWishlist")
-    public StatusCodeModel deleteUserWishlist(@Param("wishListId") Long wishlistId){
+    public StatusCodeModel deleteUserWishlist(@RequestBody HashMap<String,Long> wishlistId){
 
 
-        return  apiService.deleteWishlist(wishlistId);
+        return  apiService.deleteWishlist(wishlistId.get("wishlistId"));
 
     }
 
