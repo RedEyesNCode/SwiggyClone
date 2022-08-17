@@ -139,10 +139,10 @@ class HomeFragment : BaseFragment() {
         //INTIALIZE THE REPO
         val repository = AppRepository()
         // GET THE VIEW-MODEL FACTORY INTO THE PLAY.
-        var factory = ViewModelProviderFactory(requireActivity().application,repository)
+        val factory = ViewModelProviderFactory(requireActivity().application,repository)
         homeViewModel = ViewModelProvider(this,factory).get(HomeViewModel::class.java)
 
-        var stringAccessToken  = AppSession(contextFragment!!).getValue(Constant().ACCESS_TOKEN,contextFragment!!)
+        val stringAccessToken  = AppSession(contextFragment!!).getValue(Constant().ACCESS_TOKEN,contextFragment!!)
 
         // Calling the home api as soon as user enters.
         homeViewModel.callHomeapi(stringAccessToken!!)

@@ -6,6 +6,10 @@
 
 ### I just Posted AWS Keys for Few mins and My bill was 2500 , it's funny in both ways if you know what i am saying.
 
+## POSTMAN Collection : https://www.getpostman.com/collections/072514c410f61ef4c597 
+
+- Over 25+ Api's written in core java.
+
 #### DESIGN OF THE ENTIRE APP
 
 

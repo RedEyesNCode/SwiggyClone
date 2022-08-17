@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bba3ba2c-19de-40d1-b87d-13e2f40422e4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/swiggyClone/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/controllers/ApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/controllers/ApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/service/ApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/swiggyClone/src/main/java/com/swiggy/swiggyClone/service/ApiService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,12 +68,13 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "R:/My_Repositories/TradingTonicLive/TradingTonicLive/SpringBoot/tonictrade",
+    "last_opened_file_path": "R:/My_Repositories/SwiggyClone/SwiggySpringBoot/swiggyClone/src/main/resources",
     "settings.editor.selected.configurable": "preferences.editor"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="R:\My_Repositories\SwiggyClone\SwiggySpringBoot\swiggyClone\src\main\resources" />
       <recent name="R:\GIT_REPOS\SwiggyClone\SwiggySpringBoot\swiggyClone\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">

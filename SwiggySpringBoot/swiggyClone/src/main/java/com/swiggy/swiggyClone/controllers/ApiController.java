@@ -211,6 +211,11 @@ public class ApiController {
 
     }
 
+    @PostMapping("/deleteUserAddress")
+    public StatusCodeModel deleteUserAddressById(@RequestBody HashMap<String,String> hashMap){
+        return apiService.deleteUserAddress(hashMap.get("userId"),hashMap.get("addressId"));
+    }
+
     @GetMapping("/403")
     public String error(){
         return "Error 403";
