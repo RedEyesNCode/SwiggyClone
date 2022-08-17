@@ -546,4 +546,19 @@ public class ApiService {
 
         }
     }
+
+    public StatusCodeModel deleteUserAddress(String userId, String addressId) {
+
+        if(addressRepository.existsById(Long.valueOf(addressId))){
+            addressRepository.deleteById(Long.valueOf(addressId));
+            return new StatusCodeModel("success",200,"Deleted address successfully !");
+
+        }else{
+            return new StatusCodeModel("fail",200,"No such address exits !");
+
+        }
+
+
+
+    }
 }
