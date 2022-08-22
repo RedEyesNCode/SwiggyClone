@@ -80,16 +80,16 @@ open class BaseFragment : Fragment() {
 
 
     }
-    fun addFragmentBackStackFullContainer(fragment:Fragment,tag:String, isAddtoBackSTack: Boolean){
-
-        var fragmentTransaction : FragmentTransaction = requireFragmentManager().beginTransaction()
-        fragmentTransaction.add(R.id.cartcontainer, fragment);
-        if (isAddtoBackSTack) {
-            fragmentTransaction.addToBackStack(tag);
-        }
-        fragmentTransaction.commit();
-
-    }
+//    fun addFragmentBackStackFullContainer(fragment:Fragment,tag:String, isAddtoBackSTack: Boolean){
+//
+//        var fragmentTransaction : FragmentTransaction = requireFragmentManager().beginTransaction()
+//        fragmentTransaction.add(R.id.cartcontainer, fragment);
+//        if (isAddtoBackSTack) {
+//            fragmentTransaction.addToBackStack(tag);
+//        }
+//        fragmentTransaction.commit();
+//
+//    }
 
 
 

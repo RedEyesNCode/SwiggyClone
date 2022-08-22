@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitService {
 
-    val  serverUrl = "http://LOOKING FOR SOMETHING HERE ?? /swiggy/"
+    val  serverUrl = "http://43.205.18.211:9090/swiggy/"
 
 
     //Step 2

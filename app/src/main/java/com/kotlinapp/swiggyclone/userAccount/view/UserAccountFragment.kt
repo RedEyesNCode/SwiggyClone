@@ -1,6 +1,7 @@
 package com.kotlinapp.swiggyclone.userAccount.view
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -75,7 +76,11 @@ class UserAccountFragment : BaseFragment() {
 
     private fun initClicks() {
         binding.btnuserAddress.setOnClickListener {
-            addFragmentBackStackFullContainer(UserAllAddressFragment(),UserAllAddressFragment.javaClass.simpleName,true)
+            var intentAddressActivity = Intent(contextFragment!!,UserAllAddressActivity::class.java)
+            startActivity(intentAddressActivity)
+
+
+//            addFragmentBackStackFullContainer(UserAllAddressFragment(),UserAllAddressFragment.javaClass.simpleName,true)
         }
 
     }

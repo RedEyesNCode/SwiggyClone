@@ -12,6 +12,7 @@ import com.kotlinapp.swiggyclone.base.BaseFragment
 import com.kotlinapp.swiggyclone.databinding.FragmentUserAllAddressBinding
 import com.kotlinapp.swiggyclone.smoothieKotlin.repository.AppRepository
 import com.kotlinapp.swiggyclone.smoothieKotlin.viewModelFactory.ViewModelProviderFactory
+import com.kotlinapp.swiggyclone.userAccount.model.AddressTables
 import com.kotlinapp.swiggyclone.userAccount.view.adapter.AddressAdapter
 import com.kotlinapp.swiggyclone.userAccount.viewModel.AccountViewModel
 
@@ -25,12 +26,17 @@ private const val ARG_PARAM2 = "param2"
  * Use the [UserAllAddressFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class UserAllAddressFragment : BaseFragment() {
+class UserAllAddressFragment : BaseFragment(), AddressAdapter.onClickedAddress {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var binding:FragmentUserAllAddressBinding
     private lateinit var viewModel:AccountViewModel
+    lateinit var addressAdapter:AddressAdapter
+
+    override fun onEditAddress(addressTables: AddressTables) {
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +55,6 @@ class UserAllAddressFragment : BaseFragment() {
         initCoroutines()
 
 
-
         return binding.root
     }
 
@@ -59,7 +64,8 @@ class UserAllAddressFragment : BaseFragment() {
         viewModel = ViewModelProvider(this,factory).get(AccountViewModel::class.java)
         viewModel.getUserAddress(getAccessToken(),getUserId())
         viewModel.addressResponseMutableLiveData.observe((viewLifecycleOwner)) {
-            binding.recvAddress.adapter = AddressAdapter(requireContext(),it.addressTables)
+            binding.recvAddress.adapter = AddressAdapter(requireContext(),ArrayList(),this)
+
             binding.recvAddress.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
         }
     }
@@ -71,7 +77,6 @@ class UserAllAddressFragment : BaseFragment() {
         }
 
         binding.btnAddNewAddress.setOnClickListener {
-            addFragmentBackStackFullContainer(UserAddressFragment(),UserAddressFragment.javaClass.simpleName,true)
 
         }
     }

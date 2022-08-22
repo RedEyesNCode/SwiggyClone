@@ -1,6 +1,7 @@
 package com.kotlinapp.swiggyclone.userAccount.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class AddressResponseData(@SerializedName("status"        ) var status        : String?                  = null,
                                @SerializedName("code"          ) var code          : Int?                     = null,

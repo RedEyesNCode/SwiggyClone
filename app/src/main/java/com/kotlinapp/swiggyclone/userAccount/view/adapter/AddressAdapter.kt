@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kotlinapp.swiggyclone.databinding.AddressListLayoutBinding
 import com.kotlinapp.swiggyclone.userAccount.model.AddressTables
 
-class AddressAdapter(var context:Context ,var addressList:ArrayList<AddressTables>) :RecyclerView.Adapter<AddressAdapter.myViewHolder>() {
+class AddressAdapter(var context:Context ,var addressList:ArrayList<AddressTables>, var onClicked: AddressAdapter.onClickedAddress) :RecyclerView.Adapter<AddressAdapter.myViewHolder>() {
     var selectitem = -1
 
     lateinit var binding:AddressListLayoutBinding
@@ -33,6 +33,10 @@ class AddressAdapter(var context:Context ,var addressList:ArrayList<AddressTable
 
         }
 
+        binding.btnEditAddress.setOnClickListener {
+            onClicked.onEditAddress(addressList.get(position))
+        }
+
         binding.rbnSelectRadio.setOnClickListener(View.OnClickListener {
             selectitem = position
             notifyDataSetChanged()
@@ -48,6 +52,10 @@ class AddressAdapter(var context:Context ,var addressList:ArrayList<AddressTable
     override fun getItemCount(): Int {
 
         return addressList.size
+    }
+
+    interface onClickedAddress{
+        fun onEditAddress(addressTables: AddressTables)
     }
 
     class myViewHolder(var addressListLayoutBinding: AddressListLayoutBinding):RecyclerView.ViewHolder(addressListLayoutBinding.root)

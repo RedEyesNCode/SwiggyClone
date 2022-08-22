@@ -15,6 +15,9 @@
         android:theme="@style/Theme.SwiggyClone"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".userAccount.view.UserAllAddressActivity"
+            android:exported="false" />
+        <activity
             android:name=".cart.view.CartMainActivity"
             android:exported="false" />
         <activity
@@ -31,7 +34,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".auth.view.LoginActivity"
             android:exported="false" />

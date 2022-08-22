@@ -206,7 +206,7 @@ showAddCartDialog(productId)
 
         }
         binding.wishList.setOnClickListener {
-            addFragmentBackStackFullContainer(CartFragment(),CartFragment::class.java.simpleName,true)
+//            addFragmentBackStackFullContainer(CartFragment(),CartFragment::class.java.simpleName,true)
         }
     }
 

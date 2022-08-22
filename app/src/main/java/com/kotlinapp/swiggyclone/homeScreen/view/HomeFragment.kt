@@ -20,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
 import com.kotlinapp.swiggyclone.R
+import com.kotlinapp.swiggyclone.auth.view.LoginActivity
 import com.kotlinapp.swiggyclone.auth.viewModel.LoginViewModel
 import com.kotlinapp.swiggyclone.base.BaseFragment
 import com.kotlinapp.swiggyclone.cart.view.CartFragment
@@ -39,6 +40,7 @@ import com.kotlinapp.swiggyclone.sharedPreferences.Constant
 import com.kotlinapp.swiggyclone.smoothieKotlin.repository.AppRepository
 import com.kotlinapp.swiggyclone.smoothieKotlin.viewModel.LoginViewModelCoroutines
 import com.kotlinapp.swiggyclone.smoothieKotlin.viewModelFactory.ViewModelProviderFactory
+import com.kotlinapp.swiggyclone.utils.CommonInteractiveDialog
 import com.kotlinapp.swiggyclone.utils.FragmentUtils
 
 // TODO: Rename parameter arguments, choose names that match
@@ -51,7 +53,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [HomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HomeFragment : BaseFragment() {
+class HomeFragment : BaseFragment() , CommonInteractiveDialog.onClick {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -178,11 +180,16 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun initClicksSideMenu() {
+        var commonInteractiveDialog = CommonInteractiveDialog(contextFragment!!)
+
+
         var buyerMenuView = binding.navview.getHeaderView(0)
         var buyerMenuBinding = BuyerMenuBinding.bind(buyerMenuView)
         buyerMenuBinding.btnSignout.setOnClickListener {
-            AppSession(contextFragment!!).getInstance(contextFragment!!).clearAll()
-            activity?.finish()
+            commonInteractiveDialog.CommonDialogBox(contextFragment!!,this)
+            commonInteractiveDialog.showCommonDialog("Are you sure you want to logout ? ","Alert")
+
+
         }
 
 
@@ -211,7 +218,21 @@ class HomeFragment : BaseFragment() {
 
     }
 
+    override fun onPositive() {
+        AppSession(contextFragment!!).getInstance(contextFragment!!).clearAll()
 
+        var intentLoginActivity = Intent(contextFragment,LoginActivity::class.java)
+
+        //WAY TO COMBINE INTENT FLAGS IN KOTLIN
+        intentLoginActivity.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        contextFragment!!.startActivity(intentLoginActivity)
+        activity?.finish()
+
+    }
+
+    override fun onNegative() {
+        // WILL BE IMPLEMENTED IF NEEDED
+    }
 
     companion object {
         /**
