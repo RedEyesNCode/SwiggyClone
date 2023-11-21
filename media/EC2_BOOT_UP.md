@@ -37,4 +37,12 @@ _Other important points to note_
 - kill -9 pid
 
 
+docker run --name springBootApp -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD= -p 5432:5432 -v /data:/var/lib/postgresql/data -d postgres
 
+- The Above code may not work please read below links to setup ec2-user linux AMI 2023 
+
+https://dev.to/andre347/how-to-easily-create-a-postgres-database-in-docker-4moj
+
+https://stackoverflow.com/questions/47854463/docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socke
+
+sudo usermod -a -G docker ec2-user
